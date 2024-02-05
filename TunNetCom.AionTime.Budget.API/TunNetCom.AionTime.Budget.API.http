@@ -1,0 +1,6 @@
+@TunNetCom.AionTime.Budget.API_HostAddress = http://localhost:5082
+
+GET {{TunNetCom.AionTime.Budget.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

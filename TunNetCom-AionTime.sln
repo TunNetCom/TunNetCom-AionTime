@@ -5,6 +5,16 @@ VisualStudioVersion = 17.9.34526.213
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunNetCom-AionTime.Domain", "TunNetCom-AionTime.Domain\TunNetCom-AionTime.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{97CACF4A-AA5F-4755-AB9D-C164B81B497E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{641ADFEA-5755-4724-9A95-237298626BDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunNetCom.AionTime.Budget.API", "TunNetCom.AionTime.Budget.API\TunNetCom.AionTime.Budget.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "results", "results", "{3D4380FC-A83B-4A48-91DD-FA9A1C4D33F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{16C90B73-DBFE-44C1-8A18-48BEDDDEBE6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +25,16 @@ Global
 		{675B95E6-2277-44E4-9D29-C8BA92C55B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{675B95E6-2277-44E4-9D29-C8BA92C55B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{675B95E6-2277-44E4-9D29-C8BA92C55B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93A58C27-047A-4C95-9A4D-BB10B1BF4512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93A58C27-047A-4C95-9A4D-BB10B1BF4512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93A58C27-047A-4C95-9A4D-BB10B1BF4512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93A58C27-047A-4C95-9A4D-BB10B1BF4512}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{93A58C27-047A-4C95-9A4D-BB10B1BF4512} = {97CACF4A-AA5F-4755-AB9D-C164B81B497E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9A31BB7-D618-49AB-A06A-907C5BA16305}
