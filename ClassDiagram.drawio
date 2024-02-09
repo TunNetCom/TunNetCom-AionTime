@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-09T22:41:03.430Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 OPR/107.0.0.0" etag="x9vl0pm14zVFYZyKcoyK" version="23.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-09T22:48:32.294Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 OPR/107.0.0.0" etag="-_L4r0FUaUijKh6fQL4R" version="23.1.2" type="github">
   <diagram name="Page-1" id="HMoWm8q01mGYL6mocgkL">
     <mxGraphModel dx="996" dy="1728" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -105,6 +105,12 @@
             <mxPoint x="388" y="813" as="sourcePoint" />
             <mxPoint x="438" y="763" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="uwcOLz1gDEWIKycSYIdj-31" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="560" y="923" width="165" height="165" as="geometry" />
+        </mxCell>
+        <mxCell id="uwcOLz1gDEWIKycSYIdj-32" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;toutes les cas d&#39;utilisation nécessitent d&#39;appartenir àl&#39;organisation de projet comme condition prealable pour l&#39;execution&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="933.5" width="167" height="144" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
