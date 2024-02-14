@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-14T14:04:30.176Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="SLmRJ3uh5hoPMS49Zf1n" version="23.1.4" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2024-02-14T14:04:45.919Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="9wC799IGPqngw7CjlXB_" version="23.1.4" type="github" pages="3">
   <diagram name="Global use case" id="HMoWm8q01mGYL6mocgkL">
     <mxGraphModel dx="1434" dy="1915" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -73,7 +73,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="4BNHJ1mr-sLuKrSLhk_P" name="Page-2">
+  <diagram id="4BNHJ1mr-sLuKrSLhk_P" name="Manage time logs use cases">
     <mxGraphModel dx="1434" dy="1915" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
