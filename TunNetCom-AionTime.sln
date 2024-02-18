@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34526.213
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom-AionTime.Domain", "TunNetCom-AionTime.Domain\TunNetCom-AionTime.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom-AionTime.Domain", "src\TunNetCom-AionTime.Domain\TunNetCom-AionTime.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{97CACF4A-AA5F-4755-AB9D-C164B81B497E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{641ADFEA-5755-4724-9A95-237298626BDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.Budget.API", "TunNetCom.AionTime.Budget.API\TunNetCom.AionTime.Budget.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.Budget.API", "src\TunNetCom.AionTime.Budget.API\TunNetCom.AionTime.Budget.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "results", "results", "{3D4380FC-A83B-4A48-91DD-FA9A1C4D33F7}"
 EndProject
