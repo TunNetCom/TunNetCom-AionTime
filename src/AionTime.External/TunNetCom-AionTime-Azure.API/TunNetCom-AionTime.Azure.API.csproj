@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <RootNamespace>TunNetCom_AionTime_Azure.API</RootNamespace>
+    <RootNamespace>TunNetCom_AionTime.Azure.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
