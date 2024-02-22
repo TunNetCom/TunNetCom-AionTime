@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-22T20:07:19.917Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="uKJ4dMZZ32IVhLSOumQZ" version="23.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-22T20:10:01.832Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="CG4KI-pWOLXprzpIYunF" version="23.1.5" type="github">
   <diagram name="TimeLog App" id="AGfrPkhGgoIjOt-BJV3r">
     <mxGraphModel dx="1434" dy="738" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -28,8 +28,24 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-6" target="dWOf83Pedq_plMjNgrLh-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-6" target="dWOf83Pedq_plMjNgrLh-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1042" y="362" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="dWOf83Pedq_plMjNgrLh-6" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;TimeLog Api&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="486" y="291" width="141" height="141" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-7" target="dWOf83Pedq_plMjNgrLh-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-7" target="dWOf83Pedq_plMjNgrLh-18">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="dWOf83Pedq_plMjNgrLh-7" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Azure DevOps Api&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="502" y="658" width="139" height="139" as="geometry" />
@@ -53,6 +69,15 @@
         </mxCell>
         <mxCell id="dWOf83Pedq_plMjNgrLh-13" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Response queue&lt;/font&gt;" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.queue_generic;pointerEvents=1;" vertex="1" parent="1">
           <mxGeometry x="636" y="510" width="177" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-14" value="Database" style="image;html=1;image=img/lib/clip_art/computers/Database_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="516.5" y="127" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-16" value="Database" style="image;html=1;image=img/lib/clip_art/computers/Database_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="334" y="690" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-18" value="Redis cache" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Cache_Redis_Product.svg;" vertex="1" parent="1">
+          <mxGeometry x="998" y="400" width="88" height="73.92" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
