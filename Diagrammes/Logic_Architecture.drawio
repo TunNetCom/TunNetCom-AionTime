@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-22T20:13:35.495Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="TrC3qHPiaeiTxB2YbfkR" version="23.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-22T20:13:53.200Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="avyh8feYg1Iifs27LvQR" version="23.1.5" type="github">
   <diagram name="TimeLog App" id="AGfrPkhGgoIjOt-BJV3r">
     <mxGraphModel dx="2261" dy="738" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -65,7 +65,7 @@
         <mxCell id="dWOf83Pedq_plMjNgrLh-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.424;entryY=0.022;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-8" target="dWOf83Pedq_plMjNgrLh-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="dWOf83Pedq_plMjNgrLh-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-13">
+        <mxCell id="dWOf83Pedq_plMjNgrLh-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-13" target="dWOf83Pedq_plMjNgrLh-6">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="595" y="437" as="targetPoint" />
           </mxGeometry>
