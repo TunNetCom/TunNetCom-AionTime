@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>TunNetCom_AionTime.Azure.Database</Name>
+    <Name>TunNetCom.AionTime.AzureDevopsService.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{7f6c83bb-8a56-43cf-82c0-b6d6df8f8b3a}</ProjectGuid>

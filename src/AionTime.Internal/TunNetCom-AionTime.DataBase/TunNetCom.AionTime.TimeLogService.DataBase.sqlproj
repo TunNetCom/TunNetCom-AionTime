@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>TunNetCom_AionTime.DataBase</Name>
+    <Name>TunNetCom.AionTime.TimeLogService.DataBase</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a32f3c43-2a64-46ce-9b84-7ea07a7e08e1}</ProjectGuid>
@@ -56,5 +56,12 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Organisation.sql" />
+    <Build Include="Project.sql" />
+    <Build Include="Ticket.sql" />
+    <Build Include="TicketHistory.sql" />
+    <Build Include="TicketTimeLog.sql" />
   </ItemGroup>
 </Project>
