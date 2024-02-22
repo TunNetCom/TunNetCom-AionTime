@@ -1,9 +1,59 @@
-<mxfile host="app.diagrams.net" modified="2024-02-22T20:05:41.974Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" version="23.1.5" etag="Wm4GDjYGoyXBKC-_12_h" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-22T20:06:33.398Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="gqIOa2WOPy4kAxbLMd71" version="23.1.5" type="github">
   <diagram name="Page-1" id="AGfrPkhGgoIjOt-BJV3r">
-    <mxGraphModel>
+    <mxGraphModel dx="1434" dy="738" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="dWOf83Pedq_plMjNgrLh-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-3" target="dWOf83Pedq_plMjNgrLh-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-2" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Http request&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="dWOf83Pedq_plMjNgrLh-1">
+          <mxGeometry x="-0.4566" y="4" relative="1" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-3" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Client App&lt;br&gt;Blazor&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="86" y="294" width="135" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;jumpSize=16;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-6" target="dWOf83Pedq_plMjNgrLh-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="418" y="395" />
+              <mxPoint x="418" y="395" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-5" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Http response&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="dWOf83Pedq_plMjNgrLh-4">
+          <mxGeometry x="0.3585" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-6" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;TimeLog Api&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="486" y="291" width="141" height="141" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-7" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Azure DevOps Api&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="502" y="658" width="139" height="139" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-8" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Request queue&lt;/font&gt;" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.queue_generic;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="389" y="510" width="177" height="59" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.435;entryY=0.085;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-6" target="dWOf83Pedq_plMjNgrLh-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.424;entryY=0.022;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-8" target="dWOf83Pedq_plMjNgrLh-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="437" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dWOf83Pedq_plMjNgrLh-13" target="dWOf83Pedq_plMjNgrLh-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dWOf83Pedq_plMjNgrLh-13" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;Response queue&lt;/font&gt;" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.queue_generic;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="636" y="510" width="177" height="59" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
