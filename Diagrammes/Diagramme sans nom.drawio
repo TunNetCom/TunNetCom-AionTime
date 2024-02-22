@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-02-22T20:00:10.985Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="ZedqEvfpGsg_7HE8gzGi" version="23.1.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-22T20:01:30.047Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="DpytSJHt6XI_zh9d4hN1" version="23.1.5" type="github">
   <diagram name="Page-1" id="b5b7bab2-c9e2-2cf4-8b2a-24fd1a2a6d21">
     <mxGraphModel dx="1434" dy="738" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
       <root>
@@ -12,7 +12,7 @@
             <mxPoint y="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2m1gmCIRVApNMBWWAgiM-1" value="Client App&lt;br&gt;Blazor" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="2m1gmCIRVApNMBWWAgiM-1" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Client App&lt;br&gt;Blazor&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="86" y="294" width="135" height="135" as="geometry" />
         </mxCell>
         <mxCell id="2m1gmCIRVApNMBWWAgiM-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="2m1gmCIRVApNMBWWAgiM-2" target="2m1gmCIRVApNMBWWAgiM-1">
@@ -28,10 +28,10 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2m1gmCIRVApNMBWWAgiM-2" value="TimeLog Api" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="2m1gmCIRVApNMBWWAgiM-2" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;TimeLog Api&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="486" y="291" width="141" height="141" as="geometry" />
         </mxCell>
-        <mxCell id="2m1gmCIRVApNMBWWAgiM-3" value="Azure DevOps Api" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+        <mxCell id="2m1gmCIRVApNMBWWAgiM-3" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Azure DevOps Api&lt;/font&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
           <mxGeometry x="502" y="658" width="139" height="139" as="geometry" />
         </mxCell>
         <mxCell id="2m1gmCIRVApNMBWWAgiM-10" value="Request queue" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.queue_generic;pointerEvents=1;" vertex="1" parent="1">
