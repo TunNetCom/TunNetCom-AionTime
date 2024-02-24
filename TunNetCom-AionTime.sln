@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34526.213
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Domain", "src\AionTime.Internal\TunNetCom-AionTime.Domain\TunNetCom.AionTime.TimeLogService.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Domain", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Domain\TunNetCom.AionTime.TimeLogService.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{97CACF4A-AA5F-4755-AB9D-C164B81B497E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{641ADFEA-5755-4724-9A95-237298626BDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Budget.API", "src\AionTime.Internal\TunNetCom.AionTime.Budget.API\TunNetCom.AionTime.TimeLogService.Budget.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Budget.API", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Budget.API\TunNetCom.AionTime.TimeLogService.Budget.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "results", "results", "{3D4380FC-A83B-4A48-91DD-FA9A1C4D33F7}"
 EndProject
@@ -17,11 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{16C90B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.Test", "test\TunNetCom_Aion_Test\TunNetCom.AionTime.Test.csproj", "{A2598620-8079-4A8A-A9CD-1BCEC6FF7020}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.API", "src\AionTime.External\TunNetCom-AionTime-Azure.API\TunNetCom.AionTime.AzureDevopsService.API.csproj", "{46205348-F624-4030-858F-0CE85DB755FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.API", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.API\TunNetCom.AionTime.AzureDevopsService.API.csproj", "{46205348-F624-4030-858F-0CE85DB755FA}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.TimeLogService.DataBase", "src\AionTime.Internal\TunNetCom-AionTime.DataBase\TunNetCom.AionTime.TimeLogService.DataBase.sqlproj", "{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.TimeLogService.DataBase", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.DataBase\TunNetCom.AionTime.TimeLogService.DataBase.sqlproj", "{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.AzureDevopsService.Database", "src\AionTime.External\TunNetCom-AionTime.Azure.Database\TunNetCom.AionTime.AzureDevopsService.Database.sqlproj", "{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.AzureDevopsService.Database", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Database\TunNetCom.AionTime.AzureDevopsService.Database.sqlproj", "{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TunNetCom.AionTime.TimeLogService", "TunNetCom.AionTime.TimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
 EndProject
