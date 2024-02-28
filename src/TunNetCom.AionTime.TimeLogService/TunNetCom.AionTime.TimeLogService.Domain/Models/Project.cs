@@ -21,5 +21,5 @@ public partial class Project
     public virtual Organisation Organisation { get; set; }
 
     [InverseProperty("Project")]
-    public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+    public virtual ICollection<WorkItem> WorkItems { get; set; } = new List<WorkItem>();
 }

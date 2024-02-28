@@ -8,25 +8,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 
-[Table("Ticket")]
-public partial class Ticket
+[Table("WorkItem")]
+public partial class WorkItem
 {
     [Key]
-    public int TicketId { get; set; }
+    public int WorkItemId { get; set; }
 
     [StringLength(1000)]
     [Unicode(false)]
-    public string TicketDiscription { get; set; }
+    public string WorkItemDiscription { get; set; }
 
     public int ProjectId { get; set; }
 
     [ForeignKey("ProjectId")]
-    [InverseProperty("Tickets")]
+    [InverseProperty("WorkItems")]
     public virtual Project Project { get; set; }
 
-    [InverseProperty("Ticket")]
-    public virtual ICollection<TicketHistory> TicketHistories { get; set; } = new List<TicketHistory>();
+    [InverseProperty("WorkItem")]
+    public virtual ICollection<WorkItemHistory> WorkItemHistories { get; set; } = new List<WorkItemHistory>();
 
-    [InverseProperty("Ticket")]
-    public virtual ICollection<TicketTimeLog> TicketTimeLogs { get; set; } = new List<TicketTimeLog>();
+    [InverseProperty("WorkItem")]
+    public virtual ICollection<WorkItemTimeLog> WorkItemTimeLogs { get; set; } = new List<WorkItemTimeLog>();
 }

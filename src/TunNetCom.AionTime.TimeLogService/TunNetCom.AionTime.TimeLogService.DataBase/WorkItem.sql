@@ -1,7 +1,7 @@
-﻿CREATE TABLE [dbo].[Ticket]
+﻿CREATE TABLE [dbo].[WorkItem]
 (
-	[TicketId] INT NOT NULL PRIMARY KEY,
-	[TicketDiscription] varchar(1000) null,
+	[WorkItemId] INT NOT NULL PRIMARY KEY,
+	[WorkItemDiscription] varchar(1000) null,
     [ProjectId] int not null,
 	CONSTRAINT FKProjectTicket 
         FOREIGN KEY (ProjectId) 

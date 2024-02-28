@@ -24,15 +24,15 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Ticket]",
+         "Name": "[dbo].[WorkItem]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[TicketHistory]",
+         "Name": "[dbo].[WorkItemHistory]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[TicketTimeLog]",
+         "Name": "[dbo].[WorkItemTimeLog]",
          "ObjectType": 0
       }
    ],
@@ -41,7 +41,7 @@
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDateOnlyTimeOnly": true,
-   "UseDbContextSplitting": false,
+   "UseDbContextSplitting": true,
    "UseDecimalDataAnnotationForSprocResult": true,
    "UseFluentApiOnly": false,
    "UseHandleBars": false,

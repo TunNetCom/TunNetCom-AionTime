@@ -60,8 +60,8 @@
   <ItemGroup>
     <Build Include="Organisation.sql" />
     <Build Include="Project.sql" />
-    <Build Include="Ticket.sql" />
-    <Build Include="TicketHistory.sql" />
-    <Build Include="TicketTimeLog.sql" />
+    <Build Include="WorkItem.sql" />
+    <Build Include="WorkItemHistory.sql" />
+    <Build Include="WorkItemTimeLog.sql" />
   </ItemGroup>
 </Project>

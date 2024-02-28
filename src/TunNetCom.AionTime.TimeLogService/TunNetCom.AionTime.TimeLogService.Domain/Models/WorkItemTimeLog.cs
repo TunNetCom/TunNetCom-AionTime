@@ -8,21 +8,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 
-[Table("TicketHistory")]
-public partial class TicketHistory
+[Table("WorkItemTimeLog")]
+public partial class WorkItemTimeLog
 {
     [Key]
-    public int TicketHistoryId { get; set; }
+    public int WorkItemTimeLogId { get; set; }
 
-    [Required]
-    [Column("TicketHistory")]
-    [StringLength(1000)]
+    [StringLength(200)]
     [Unicode(false)]
-    public string TicketHistory1 { get; set; }
+    public string LogDescription { get; set; }
 
-    public int TicketId { get; set; }
+    public DateOnly? LogTime { get; set; }
 
-    [ForeignKey("TicketId")]
-    [InverseProperty("TicketHistories")]
-    public virtual Ticket Ticket { get; set; }
+    public int WorkItemId { get; set; }
+
+    [ForeignKey("WorkItemId")]
+    [InverseProperty("WorkItemTimeLogs")]
+    public virtual WorkItem WorkItem { get; set; }
 }
