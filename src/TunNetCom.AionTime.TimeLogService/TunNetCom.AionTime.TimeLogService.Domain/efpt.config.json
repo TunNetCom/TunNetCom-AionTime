@@ -1,0 +1,62 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "TunNetCom.AionTime.TimeLogService.DataBaseContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": true,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "TunNetCom.AionTime.TimeLogService.Domain",
+   "Schemas": [ ],
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 2,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Organisation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Project]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Ticket]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TicketHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TicketTimeLog]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "..\\TunNetCom.AionTime.TimeLogService.DataBase\\TunNetCom.AionTime.TimeLogService.DataBase.sqlproj",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}
