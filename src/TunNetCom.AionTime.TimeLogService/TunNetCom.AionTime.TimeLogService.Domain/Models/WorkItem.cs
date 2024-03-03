@@ -12,11 +12,11 @@ namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 public partial class WorkItem
 {
     [Key]
-    public int WorkItemId { get; set; }
+    public int Id { get; set; }
 
     [StringLength(1000)]
     [Unicode(false)]
-    public string WorkItemDiscription { get; set; }
+    public string Discription { get; set; }
 
     public int ProjectId { get; set; }
 

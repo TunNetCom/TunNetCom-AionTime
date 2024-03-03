@@ -12,12 +12,11 @@ namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 public partial class WorkItemHistory
 {
     [Key]
-    public int WorkItemHistoryId { get; set; }
+    public int Id { get; set; }
 
-    [Column("WorkItemHistory")]
     [StringLength(1000)]
     [Unicode(false)]
-    public string WorkItemHistory1 { get; set; }
+    public string History { get; set; }
 
     public int WorkItemId { get; set; }
 

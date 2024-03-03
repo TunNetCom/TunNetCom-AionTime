@@ -12,13 +12,13 @@ namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 public partial class WorkItemTimeLog
 {
     [Key]
-    public int WorkItemTimeLogId { get; set; }
+    public int Id { get; set; }
 
     [StringLength(200)]
     [Unicode(false)]
-    public string LogDescription { get; set; }
+    public string Description { get; set; }
 
-    public DateOnly? LogTime { get; set; }
+    public DateOnly? Time { get; set; }
 
     public int WorkItemId { get; set; }
 

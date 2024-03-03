@@ -12,7 +12,7 @@ namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 public partial class Project
 {
     [Key]
-    public int ProjectId { get; set; }
+    public int Id { get; set; }
 
     public int OrganisationId { get; set; }
 
