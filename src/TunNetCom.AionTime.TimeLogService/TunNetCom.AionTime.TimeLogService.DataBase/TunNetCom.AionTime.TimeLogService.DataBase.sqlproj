@@ -56,13 +56,15 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Organisation.sql" />
-    <Build Include="Project.sql" />
-    <Build Include="WorkItem.sql" />
-    <Build Include="WorkItemHistory.sql" />
-    <Build Include="WorkItemTimeLog.sql" />
+    <Build Include="dbo\Tables\Organisation.sql" />
+    <Build Include="dbo\Tables\Project.sql" />
+    <Build Include="dbo\Tables\WorkItem.sql" />
+    <Build Include="dbo\Tables\WorkItemHistory.sql" />
+    <Build Include="dbo\Tables\WorkItemTimeLog.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TunNetCom.AionTime.TimeLogService.DataBase.publish.xml" />
