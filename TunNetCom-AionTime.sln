@@ -23,11 +23,11 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.TimeLogS
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.AzureDevopsService.Database", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Database\TunNetCom.AionTime.AzureDevopsService.Database.sqlproj", "{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TunNetCom.AionTime.TimeLogService", "TunNetCom.AionTime.TimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeLogService", "TimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TunNetCom.AionTime.AzureDevopsService", "TunNetCom.AionTime.AzureDevopsService", "{B75B5856-BD77-4339-8247-0FA02F8AAF4D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsService", "AzureDevopsService", "{B75B5856-BD77-4339-8247-0FA02F8AAF4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunNetCom.AionTime.TimeLogService.Infrastructure", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Infrastructure\TunNetCom.AionTime.TimeLogService.Infrastructure.csproj", "{473BA510-4088-4A23-9A9E-133273A5CC93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Infrastructure", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Infrastructure\TunNetCom.AionTime.TimeLogService.Infrastructure.csproj", "{473BA510-4088-4A23-9A9E-133273A5CC93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
