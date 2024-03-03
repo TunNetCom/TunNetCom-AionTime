@@ -1,12 +1,12 @@
 ﻿CREATE TABLE [dbo].[WorkItemTimeLog]
 (
-	[WorkItemTimeLogId] INT NOT NULL PRIMARY KEY,
-	[LogDescription] varchar(200) null,
-	[LogTime] date null,
+	[Id] INT NOT NULL PRIMARY KEY,
+	[Description] varchar(200) null,
+	[Time] date null,
 	[WorkItemId] int not null,
 	CONSTRAINT FKProjectTicketLog
     FOREIGN KEY (WorkItemId) 
-    REFERENCES [dbo].[WorkItem] (WorkItemId) 
+    REFERENCES [dbo].[WorkItem] (Id) 
     ON DELETE CASCADE
     ON UPDATE CASCADE
 )

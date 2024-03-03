@@ -1,11 +1,11 @@
 ﻿CREATE TABLE [dbo].[WorkItem]
 (
-	[WorkItemId] INT NOT NULL PRIMARY KEY,
-	[WorkItemDiscription] varchar(1000) null,
+	[Id] INT NOT NULL PRIMARY KEY,
+	[Discription] varchar(1000) null,
     [ProjectId] int not null,
 	CONSTRAINT FKProjectTicket 
         FOREIGN KEY (ProjectId) 
-        REFERENCES [dbo].[Project] (ProjectId) 
+        REFERENCES [dbo].[Project] (Id) 
         ON DELETE CASCADE
         ON UPDATE CASCADE
 )

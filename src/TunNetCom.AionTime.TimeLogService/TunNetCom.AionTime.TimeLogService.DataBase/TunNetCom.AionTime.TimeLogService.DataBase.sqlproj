@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>TunNetCom.AionTime.TimeLogService.DataBase</Name>
+    <Name>TunNetCom.AionTime.TimeLogService.Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{a32f3c43-2a64-46ce-9b84-7ea07a7e08e1}</ProjectGuid>
@@ -63,5 +63,8 @@
     <Build Include="WorkItem.sql" />
     <Build Include="WorkItemHistory.sql" />
     <Build Include="WorkItemTimeLog.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TunNetCom.AionTime.TimeLogService.DataBase.publish.xml" />
   </ItemGroup>
 </Project>
