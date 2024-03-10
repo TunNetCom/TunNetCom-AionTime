@@ -1,8 +1,4 @@
-﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
-using TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
-using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
-
-namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
+﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
 
 public class GeniricRepository<T> : IGeniricRepository<T> where T : BaseEntity
 {

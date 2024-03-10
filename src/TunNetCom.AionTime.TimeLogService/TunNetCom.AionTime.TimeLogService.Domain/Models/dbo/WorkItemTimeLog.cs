@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
-using TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
-
-
-namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 
 [Table("WorkItemTimeLog")]
 
