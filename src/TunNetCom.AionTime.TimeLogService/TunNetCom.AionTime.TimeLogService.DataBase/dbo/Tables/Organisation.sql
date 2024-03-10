@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Organisation]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[Id] INT  IDENTITY (1, 1) PRIMARY KEY NOT NULL,
 	[OrganisationName] Varchar(50) not null
 )

@@ -1,6 +1,6 @@
 ﻿{
    "CodeGenerationMode": 4,
-   "ContextClassName": "TunNetCom.AionTime.TimeLogService.DataBaseContext",
+   "ContextClassName": "TunNetCom.AionTime.TimeLogService.DatabaseContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
@@ -39,11 +39,11 @@
    "UiHint": "..\\TunNetCom.AionTime.TimeLogService.DataBase\\TunNetCom.AionTime.TimeLogService.Database.sqlproj",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
-   "UseDatabaseNames": true,
+   "UseDatabaseNames": false,
    "UseDateOnlyTimeOnly": true,
    "UseDbContextSplitting": true,
    "UseDecimalDataAnnotationForSprocResult": true,
-   "UseFluentApiOnly": false,
+   "UseFluentApiOnly": true,
    "UseHandleBars": false,
    "UseHierarchyId": false,
    "UseInflector": true,
@@ -53,10 +53,10 @@
    "UseNoNavigations": false,
    "UseNoObjectFilter": false,
    "UseNodaTime": false,
-   "UseNullableReferences": false,
+   "UseNullableReferences": true,
    "UsePrefixNavigationNaming": false,
-   "UseSchemaFolders": false,
+   "UseSchemaFolders": true,
    "UseSchemaNamespaces": false,
    "UseSpatial": false,
-   "UseT4": false
+   "UseT4": true
 }

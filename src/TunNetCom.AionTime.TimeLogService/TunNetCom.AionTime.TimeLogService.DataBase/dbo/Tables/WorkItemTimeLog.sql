@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[WorkItemTimeLog]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[Id] INT IDENTITY (1, 1) PRIMARY KEY NOT NULL,
 	[Description] varchar(200) null,
 	[Time] date null,
 	[WorkItemId] int not null,

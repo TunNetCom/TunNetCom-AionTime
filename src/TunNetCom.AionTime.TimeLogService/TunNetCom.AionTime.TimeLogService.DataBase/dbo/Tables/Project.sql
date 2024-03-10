@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Project]
 (
-    [Id] INT NOT NULL PRIMARY KEY,
+    [Id] INT IDENTITY (1, 1) PRIMARY KEY NOT NULL,
     [OrganisationId] INT NOT NULL,
     CONSTRAINT FKOrganisationProject 
         FOREIGN KEY (OrganisationId) 
