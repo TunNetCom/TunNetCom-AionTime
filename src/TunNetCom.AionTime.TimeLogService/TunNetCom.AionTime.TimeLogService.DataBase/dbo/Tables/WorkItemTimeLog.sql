@@ -2,7 +2,7 @@
 (
 	[Id] INT IDENTITY (1, 1) PRIMARY KEY NOT NULL,
 	[Description] varchar(200) null,
-	[Time] date null,
+	[Time] datetime null,
 	[WorkItemId] int not null,
 	CONSTRAINT FKProjectTicketLog
     FOREIGN KEY (WorkItemId) 

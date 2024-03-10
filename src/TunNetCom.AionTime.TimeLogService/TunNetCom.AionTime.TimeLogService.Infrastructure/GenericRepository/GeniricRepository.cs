@@ -1,4 +1,4 @@
-﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces;
+﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
 using TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
 using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
 
@@ -6,13 +6,19 @@ namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
 
 public class GeniricRepository<T> : IGeniricRepository<T> where T : BaseEntity
 {
-    private readonly TunNetComAionTimeTimeLogServiceDataBaseContext _context;
+    protected readonly TunNetComAionTimeTimeLogServiceDataBaseContext _context;
     public GeniricRepository(TunNetComAionTimeTimeLogServiceDataBaseContext context)
     {
         _context = context;
     }
 
-    public async Task CreateAsync(T entity)
+    public async Task AddRangeAsync(List<T> entitys)
+    {
+        await _context.AddRangeAsync(entitys);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task AddAsync(T entity)
     {
        await _context.AddAsync(entity);
        await _context.SaveChangesAsync();
@@ -33,7 +39,6 @@ public class GeniricRepository<T> : IGeniricRepository<T> where T : BaseEntity
     {
         return await _context.Set<T>()
                 .FirstOrDefaultAsync(q => q.Id == id);
-        throw new NotImplementedException();
     }
 
     public async Task UpdateAsync(T entity)

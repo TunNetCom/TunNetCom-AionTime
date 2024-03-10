@@ -37,6 +37,7 @@
     {
         usings.Add("System.ComponentModel.DataAnnotations");
         usings.Add("System.ComponentModel.DataAnnotations.Schema");
+        usings.Add("System.Text.Json.Serialization");
         usings.Add("Microsoft.EntityFrameworkCore");
     }
 
@@ -134,7 +135,8 @@ public partial class <#= EntityType.Name #> : BaseEntity
         if (navigation.IsCollection)
         {
 #>
-    public virtual ICollection<<#= targetType #>> <#= navigation.Name #> { get; set; } = new List<<#= targetType #>>();
+    [JsonIgnore]
+    public virtual ICollection<<#= targetType #>><#="?"#>  <#= navigation.Name #> { get; set; } //= new List<<#= targetType #>>();
 <#
         }
         else
@@ -142,7 +144,8 @@ public partial class <#= EntityType.Name #> : BaseEntity
             var needsNullable = Options.UseNullableReferenceTypes && !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
             var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired && navigation.IsOnDependent;
 #>
-    public virtual <#= targetType #><#= needsNullable ? "?" : "" #> <#= navigation.Name #> { get; set; }<#= needsInitializer ? " = null!;" : "" #>
+    [JsonIgnore]
+    public virtual <#= targetType #><#="?"#> <#= navigation.Name #> { get; set; }
 <#
         }
     }
