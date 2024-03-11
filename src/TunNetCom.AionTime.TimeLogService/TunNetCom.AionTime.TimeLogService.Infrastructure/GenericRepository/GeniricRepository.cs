@@ -1,9 +1,9 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
 
-public class GeniricRepository<T> : IGeniricRepository<T> where T : BaseEntity
+public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
     protected readonly TunNetComAionTimeTimeLogServiceDataBaseContext _context;
-    public GeniricRepository(TunNetComAionTimeTimeLogServiceDataBaseContext context)
+    public GenericRepository(TunNetComAionTimeTimeLogServiceDataBaseContext context)
     {
         _context = context;
     }
@@ -40,6 +40,18 @@ public class GeniricRepository<T> : IGeniricRepository<T> where T : BaseEntity
     public async Task UpdateAsync(T entity)
     {
         _context.Entry(entity).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateRangeAsync(List<T> entitys)
+    {
+        _context.Entry(entitys).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeleteRangeAsync(List<T> entitys)
+    {
+        _context.RemoveRange(entitys);
         await _context.SaveChangesAsync();
     }
 }

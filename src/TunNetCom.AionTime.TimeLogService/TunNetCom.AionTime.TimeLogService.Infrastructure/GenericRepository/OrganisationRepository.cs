@@ -1,36 +1,36 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
 
-public class OrganisationRepository : GeniricRepository<Organisation>, IOrganisationRepository
+public class OrganisationRepository : GenericRepository<Organisation>, IOrganisationRepository
 {
     public OrganisationRepository(TunNetComAionTimeTimeLogServiceDataBaseContext context) : base(context)
     {
     }
 
-    public async Task AddOrganisation(Organisation Organisation)
+    public async Task AddOrganization(Organisation organization)
     {
-        await AddAsync(Organisation);
+        await AddAsync(organization);
     }
 
-    public async Task AddOrganisations(List<Organisation> organisations)
+    public async Task AddOrganizations(List<Organisation> organizations)
     {
-        await AddRangeAsync(organisations);
+        await AddRangeAsync(organizations);
     }
-    public async Task<IReadOnlyList<Organisation>> GetOrganisations()
+    public async Task<IReadOnlyList<Organisation>> GetOrganizations()
     {
         return await GetAsync();
     }
 
-    public Task<Organisation> GetOrganisationWithDetails(int id)
+    public Task<Organisation> GetOrganizationWithDetails(int id)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<List<Organisation>> GetOrganisationsWithDetails()
+    public async Task<List<Organisation>> GetOrganizationsWithDetails()
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> OrganisationExists(int Id)
+    public Task<bool> OrganizationExists(int Id)
     {
         throw new NotImplementedException();
     }

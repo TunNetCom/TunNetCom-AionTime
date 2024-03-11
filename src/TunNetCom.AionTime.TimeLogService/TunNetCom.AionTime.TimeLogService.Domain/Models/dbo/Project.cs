@@ -1,18 +1,19 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+﻿using System;
+using System.Collections.Generic;
+using TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
 
-[Table("Project")]
+
+namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+
 
 
 public partial class Project : BaseEntity
 {
     public int OrganisationId { get; set; }
 
-    [ForeignKey("OrganisationId")]
-    [InverseProperty("Projects")]
     [JsonIgnore]
     public virtual Organisation? Organisation { get; set; }
 
-    [InverseProperty("Project")]
     [JsonIgnore]
     public virtual ICollection<WorkItem>?  WorkItems { get; set; } //= new List<WorkItem>();
 }

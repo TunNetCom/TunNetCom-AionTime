@@ -2,10 +2,10 @@
 
 public interface IOrganisationRepository
 {
-    Task AddOrganisation(Organisation Organisation);
-    Task<Organisation> GetOrganisationWithDetails(int id);
-    Task<List<Organisation>> GetOrganisationsWithDetails();
-    Task<bool> OrganisationExists(int Id);
-    Task AddOrganisations(List<Organisation> organisations);
-    Task<IReadOnlyList<Organisation>> GetOrganisations();
+    Task AddOrganization(Organisation Organisation);
+    Task<Organisation> GetOrganizationWithDetails(int id);
+    Task<List<Organisation>> GetOrganizationsWithDetails();
+    Task<bool> OrganizationExists(int Id);
+    Task AddOrganizations(List<Organisation> organisations);
+    Task<IReadOnlyList<Organisation>> GetOrganizations();
 }

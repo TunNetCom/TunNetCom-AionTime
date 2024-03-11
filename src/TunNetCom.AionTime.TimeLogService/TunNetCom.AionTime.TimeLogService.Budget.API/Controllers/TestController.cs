@@ -10,13 +10,13 @@ namespace TunNetCom.AionTime.Budget.API.Controllers
     {
         private readonly ILogger<WorkItemTimeLog> _logger;
         private readonly IWorkItemTimeLogRepository  _workItemTimeLogRepository;
-        private readonly IOrganisationRepository _organisationRepository;
+        private readonly IOrganisationRepository _organizationRepository;
 
-        public TestController(ILogger<WorkItemTimeLog> logger , IWorkItemTimeLogRepository workItemTimeLogRepository, IOrganisationRepository organisationRepository)
+        public TestController(ILogger<WorkItemTimeLog> logger , IWorkItemTimeLogRepository workItemTimeLogRepository, IOrganisationRepository organizationRepository)
         {
             _workItemTimeLogRepository = workItemTimeLogRepository;
             _logger = logger;
-            _organisationRepository = organisationRepository;
+            _organizationRepository = organizationRepository;
         }
 
         [HttpPost()]
@@ -28,25 +28,25 @@ namespace TunNetCom.AionTime.Budget.API.Controllers
         }
 
         [HttpPost()]
-        [Route("CreateOrganisation")]
-        public async Task<IActionResult> CreateOrganisation(Organisation organisation)
+        [Route("CreateOrganization")]
+        public async Task<IActionResult> CreateOrganization(Organisation organization)
         {
-            await _organisationRepository.CreateOrganisation(organisation);
+            await _organizationRepository.AddOrganization(organization);
             return Ok();
         }
 
         [HttpPost()]
-        [Route("GetOrganisations")]
-        public async Task<IActionResult> GetOrganisations()
+        [Route("GetOrganizations")]
+        public async Task<IActionResult> GetOrganizations()
         {
-            return Ok(await _organisationRepository.GetOrganisations());
+            return Ok(await _organizationRepository.GetOrganizations());
         }
 
         [HttpPost()]
-        [Route("AddOrganisations")]
-        public async Task<IActionResult> AddOrganisations(List<Organisation> organisations)
+        [Route("AddOrganizations")]
+        public async Task<IActionResult> AddOrganizations(List<Organisation> organizations)
         {
-            await _organisationRepository.AddOrganisations(organisations);
+            await _organizationRepository.AddOrganizations(organizations);
             return Ok();
         }
     }

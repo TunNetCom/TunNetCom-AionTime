@@ -1,6 +1,6 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
 
-public class WorkItemTimeLogRepository:GeniricRepository<WorkItemTimeLog>, IWorkItemTimeLogRepository
+public class WorkItemTimeLogRepository:GenericRepository<WorkItemTimeLog>, IWorkItemTimeLogRepository
 {
     public WorkItemTimeLogRepository(TunNetComAionTimeTimeLogServiceDataBaseContext context):base(context)
     {

@@ -1,11 +1,13 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
 
-public interface IGeniricRepository<T> where T : class
+public interface IGenericRepository<T> where T : BaseEntity
 {
     Task<IReadOnlyList<T>> GetAsync();
     Task<T> GetByIdAsync(int id);
     Task AddAsync(T entity);
     Task AddRangeAsync(List<T> entitys);
     Task UpdateAsync(T entity);
+    Task UpdateRangeAsync(List<T> entitys);
     Task DeleteAsync(T entity);
+    Task DeleteRangeAsync (List<T> entitys);
 }

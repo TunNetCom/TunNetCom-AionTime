@@ -1,18 +1,18 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+﻿using System;
+using System.Collections.Generic;
+using TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
 
-[Table("WorkItemHistory")]
+
+namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+
 
 
 public partial class WorkItemHistory : BaseEntity
 {
-    [StringLength(1000)]
-    [Unicode(false)]
     public string? History { get; set; }
 
     public int WorkItemId { get; set; }
 
-    [ForeignKey("WorkItemId")]
-    [InverseProperty("WorkItemHistories")]
     [JsonIgnore]
     public virtual WorkItem? WorkItem { get; set; }
 }

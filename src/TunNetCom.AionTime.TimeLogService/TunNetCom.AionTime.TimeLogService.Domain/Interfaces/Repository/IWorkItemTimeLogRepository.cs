@@ -1,6 +1,6 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
 
-public interface IWorkItemTimeLogRepository:IGeniricRepository<WorkItemTimeLog>
+public interface IWorkItemTimeLogRepository:IGenericRepository<WorkItemTimeLog>
 {
     Task<WorkItemTimeLog> GetWorkItemTimeLogWithDetails(int id);
     Task<List<WorkItemTimeLog>> GetWorkItemTimeLogWithDetails();
