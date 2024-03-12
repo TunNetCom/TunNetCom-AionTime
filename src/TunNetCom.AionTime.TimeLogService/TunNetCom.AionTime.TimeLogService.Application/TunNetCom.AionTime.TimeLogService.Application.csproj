@@ -6,4 +6,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Feature\Organization\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TunNetCom.AionTime.TimeLogService.Domain\TunNetCom.AionTime.TimeLogService.Domain.csproj" />
+    <ProjectReference Include="..\TunNetCom.AionTime.TimeLogService.Infrastructure\TunNetCom.AionTime.TimeLogService.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

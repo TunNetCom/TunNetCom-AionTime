@@ -1,4 +1,6 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NPOI.SS.Formula.Functions;
 using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
 using TunNetCom.AionTime.TimeLogService.Domain.Models;
 
@@ -11,11 +13,16 @@ namespace TunNetCom.AionTime.Budget.API.Controllers
         private readonly ILogger<WorkItemTimeLog> _logger;
         private readonly IWorkItemTimeLogRepository  _workItemTimeLogRepository;
         private readonly IOrganisationRepository _organizationRepository;
+        private readonly IMediator _mediator;
 
-        public TestController(ILogger<WorkItemTimeLog> logger , IWorkItemTimeLogRepository workItemTimeLogRepository, IOrganisationRepository organizationRepository)
+        public TestController(ILogger<WorkItemTimeLog> logger , 
+            IWorkItemTimeLogRepository workItemTimeLogRepository, 
+            IOrganisationRepository organizationRepository,
+            IMediator mediator)
         {
             _workItemTimeLogRepository = workItemTimeLogRepository;
             _logger = logger;
+            _mediator = mediator;
             _organizationRepository = organizationRepository;
         }
 
@@ -31,8 +38,8 @@ namespace TunNetCom.AionTime.Budget.API.Controllers
         [Route("CreateOrganization")]
         public async Task<IActionResult> CreateOrganization(Organisation organization)
         {
-            await _organizationRepository.AddOrganization(organization);
-            return Ok();
+            var response = await _mediator.Send(organization);
+            return Ok(organization);
         }
 
         [HttpPost()]
