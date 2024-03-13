@@ -1,24 +1,19 @@
-﻿using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
-using TunNetCom.AionTime.TimeLogService.Domain.Models;
-
-namespace TunNetCom.AionTime.TimeLogService.Application.Feature.Organization.Commands
+﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.Organization.Commands
 {
-    public class CreateOrganizationCommand : IRequestHandler<Organisation, Unit>
+    using MediatR;
+    using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
+    using TunNetCom.AionTime.TimeLogService.Domain.Models;
+
+    public class CreateOrganizationCommand : IRequestHandler<Organisation, int>
     {
-        private readonly IOrganisationRepository _organisationRepository;
-        public CreateOrganizationCommand(IOrganisationRepository organisationRepository) {
-            _organisationRepository = organisationRepository;
+        private readonly IGenericRepository<Organisation> organizationRepository;
+        public CreateOrganizationCommand(IGenericRepository<Organisation> organizationRepository) {
+            this.organizationRepository = organizationRepository;
         }
-        public async Task<Unit> Handle(Organisation request, CancellationToken cancellationToken)
+        public async Task<int> Handle(Organisation request, CancellationToken cancellationToken)
         {
-            await _organisationRepository.AddOrganization(request);
-            return Unit.Value;
+           await this.organizationRepository.AddAsync(request);
+           return request.Id;
         }
     }
 }

@@ -1,11 +1,8 @@
-﻿
-
-using MediatR;
-using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
 
 namespace TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
 
-public partial class BaseEntity: IRequest<Unit>
+public partial class BaseEntity: IRequest<int>
 {
     [Key]
     public int Id { get; set; }

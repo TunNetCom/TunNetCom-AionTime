@@ -15,10 +15,7 @@ namespace TunNetCom.AionTime.TimeLogService.Infrastructure
                 options.UseSqlServer(configuration.GetConnectionString("TimeLogContext"));
             });
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IWorkItemTimeLogRepository, WorkItemTimeLogRepository>();
-            services.AddScoped<IOrganisationRepository,OrganisationRepository>();
-
+            services.AddScoped(typeof(IGenericRepository<>), typeof(Repository<>));
             return services;
         }
     }

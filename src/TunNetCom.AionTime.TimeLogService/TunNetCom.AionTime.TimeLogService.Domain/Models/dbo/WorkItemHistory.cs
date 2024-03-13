@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
-
-
-namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
-
-
+﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
 
 public partial class WorkItemHistory : BaseEntity
 {
@@ -16,6 +9,3 @@ public partial class WorkItemHistory : BaseEntity
     [JsonIgnore]
     public virtual WorkItem? WorkItem { get; set; }
 }
-
-
-
