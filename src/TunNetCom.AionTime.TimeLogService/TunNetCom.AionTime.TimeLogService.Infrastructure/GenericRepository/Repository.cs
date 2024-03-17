@@ -3,11 +3,11 @@
 public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext context) : IGenericRepository<T>
     where T : BaseEntity
 {
-    protected readonly TunNetComAionTimeTimeLogServiceDataBaseContext context = context;
+    private readonly TunNetComAionTimeTimeLogServiceDataBaseContext context = context;
 
-    public async Task AddRangeAsync(List<T> entitys)
+    public async Task AddRangeAsync(List<T> entities)
     {
-        await this.context.AddRangeAsync(entitys);
+        await this.context.AddRangeAsync(entities);
         _ = await this.context.SaveChangesAsync();
     }
 

@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
-using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
-using TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
-
-namespace TunNetCom.AionTime.TimeLogService.Infrastructure
+﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure
 {
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
+
     public static class InfrastructureServiceRegistration
     {
         public static IServiceCollection AddInfrastructureServiceRegistration(this IServiceCollection services,

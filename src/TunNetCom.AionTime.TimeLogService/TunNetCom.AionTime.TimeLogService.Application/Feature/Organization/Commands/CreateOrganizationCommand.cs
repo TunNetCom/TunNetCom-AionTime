@@ -4,12 +4,10 @@
     using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repository;
     using TunNetCom.AionTime.TimeLogService.Domain.Models;
 
-    public class CreateOrganizationCommand : IRequestHandler<Organisation, int>
+    public class CreateOrganizationCommand(IGenericRepository<Organisation> organizationRepository) : IRequestHandler<Organisation, int>
     {
-        private readonly IGenericRepository<Organisation> organizationRepository;
-        public CreateOrganizationCommand(IGenericRepository<Organisation> organizationRepository) {
-            this.organizationRepository = organizationRepository;
-        }
+        private readonly IGenericRepository<Organisation> organizationRepository = organizationRepository;
+
         public async Task<int> Handle(Organisation request, CancellationToken cancellationToken)
         {
            await this.organizationRepository.AddAsync(request);

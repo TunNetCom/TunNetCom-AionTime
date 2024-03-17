@@ -10,8 +10,8 @@ public partial class WorkItem : BaseEntity
     public virtual Project? Project { get; set; }
 
     [JsonIgnore]
-    public virtual ICollection<WorkItemHistory>?  WorkItemHistories { get; set; }
+    public virtual ICollection<WorkItemHistory>? WorkItemHistories { get; set; }
 
     [JsonIgnore]
-    public virtual ICollection<WorkItemTimeLog>?  WorkItemTimeLogs { get; set; }
+    public virtual ICollection<WorkItemTimeLog>? WorkItemTimeLogs { get; set; }
 }
