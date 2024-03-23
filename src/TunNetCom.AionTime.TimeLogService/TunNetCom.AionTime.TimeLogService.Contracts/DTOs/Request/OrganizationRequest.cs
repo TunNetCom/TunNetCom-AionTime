@@ -2,4 +2,7 @@
 
 public class OrganizationRequest
 {
+    public int Id { get; set; }
+
+    public string OrganisationName { get; set; } = null!;
 }
