@@ -60,7 +60,7 @@
     <Folder Include="dbo\Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\Organisation.sql" />
+    <Build Include="dbo\Tables\Organization.sql" />
     <Build Include="dbo\Tables\Project.sql" />
     <Build Include="dbo\Tables\WorkItem.sql" />
     <Build Include="dbo\Tables\WorkItemHistory.sql" />
