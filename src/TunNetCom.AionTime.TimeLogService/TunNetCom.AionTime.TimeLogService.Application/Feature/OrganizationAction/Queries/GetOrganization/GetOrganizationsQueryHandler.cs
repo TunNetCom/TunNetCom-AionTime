@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TunNetCom.AionTime.TimeLogService.Application.Feature.Organization.Queries.GetOrganization
+namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization
 {
-    public class GetOrganizationsQueryHandler(IGenericRepository<Organisation> organizationRepository, IMapper mapper) : IRequestHandler<GetOrganizationsQuery, IReadOnlyList<OrganizationRequest>>
+    public class GetOrganizationsQueryHandler(IGenericRepository<Organization> organizationRepository, IMapper mapper) : IRequestHandler<GetOrganizationsQuery, IReadOnlyList<OrganizationRequest>>
     {
-        private readonly IGenericRepository<Organisation> organizationRepository = organizationRepository;
+        private readonly IGenericRepository<Organization> organizationRepository = organizationRepository;
         private readonly IMapper mapper = mapper;
 
         public async Task<IReadOnlyList<OrganizationRequest>> Handle(GetOrganizationsQuery request, CancellationToken cancellationToken)

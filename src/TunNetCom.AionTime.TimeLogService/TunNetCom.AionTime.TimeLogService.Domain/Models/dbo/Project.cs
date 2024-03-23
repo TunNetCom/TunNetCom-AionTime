@@ -2,11 +2,9 @@
 
 public partial class Project : BaseEntity
 {
-    public int OrganisationId { get; set; }
+    public int OrganizationId { get; set; }
 
-    [JsonIgnore]
-    public virtual Organisation? Organisation { get; set; }
+    public virtual Organization? Organization { get; set; }
 
-    [JsonIgnore]
-    public virtual ICollection<WorkItem>?  WorkItems { get; set; }
+    public virtual ICollection<WorkItem>?  WorkItems { get; set; } //= new List<WorkItem>();
 }
