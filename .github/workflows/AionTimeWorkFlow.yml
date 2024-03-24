@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Add automatic reviewer to pull request
+      - name: Add Automatic Reviewer
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.payload.repository.owner.login;
+            const repo = context.payload.repository.name;
+            const prNumber = context.payload.pull_request.number;
+            const reviewer = 'username'; // Specify the username of the reviewer
+
+            await github.pulls.createReviewRequest({
+              owner: owner,
+              repo: repo,
+              pull_number: prNumber,
+              reviewers: [Nieze-BenMansour]
+            });
+
+      # Other steps for building, testing, and deploying your project
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
