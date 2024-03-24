@@ -15,8 +15,8 @@ namespace TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext.Confi
         {
             entity.ToTable("Project");
 
-            entity.HasOne(d => d.Organisation).WithMany(p => p.Projects)
-                .HasForeignKey(d => d.OrganisationId)
+            entity.HasOne(d => d.Organization).WithMany(p => p.Projects)
+                .HasForeignKey(d => d.OrganizationId)
                 .HasConstraintName("FKOrganisationProject");
 
             OnConfigurePartial(entity);

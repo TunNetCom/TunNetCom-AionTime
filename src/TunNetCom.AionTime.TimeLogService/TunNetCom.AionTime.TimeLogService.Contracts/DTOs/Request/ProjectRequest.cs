@@ -2,4 +2,7 @@
 
 public class ProjectRequest
 {
+    public int Id { get; set; }
+
+    public int OrganizationId { get; set; }
 }

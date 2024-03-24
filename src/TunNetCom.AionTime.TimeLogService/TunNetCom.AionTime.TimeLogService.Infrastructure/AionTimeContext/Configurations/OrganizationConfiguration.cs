@@ -9,11 +9,11 @@ using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
 
 namespace TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext.Configurations
 {
-    public partial class OrganisationConfiguration : IEntityTypeConfiguration<Organization>
+    public partial class OrganizationConfiguration : IEntityTypeConfiguration<Organization>
     {
         public void Configure(EntityTypeBuilder<Organization> entity)
         {
-            entity.ToTable("Organisation");
+            entity.ToTable("Organization");
 
             entity.Property(e => e.OrganizationName)
                 .HasMaxLength(50)
