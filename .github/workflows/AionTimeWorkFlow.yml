@@ -26,13 +26,13 @@ jobs:
             const owner = context.payload.repository.owner.login;
             const repo = context.payload.repository.name;
             const prNumber = context.payload.pull_request.number;
-            const reviewer = 'username'; // Specify the username of the reviewer
+            const reviewer = 'Nieze-BenMansour'; // Specify the username of the reviewer
 
             await github.pulls.createReviewRequest({
               owner: owner,
               repo: repo,
               pull_number: prNumber,
-              reviewers: [Nieze-BenMansour]
+              reviewers: [reviewer]
             });
 
       # Other steps for building, testing, and deploying your project
