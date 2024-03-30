@@ -31,9 +31,9 @@ public class TimeLogServiceController : ControllerBase
 
     [HttpPost]
     [Route("DeletOrganization")]
-    public async Task<IActionResult> DeletOrganization(OrganizationRequest organization)
+    public async Task<IActionResult> DeletOrganization(int id)
     {
-        return this.Ok(await this.mediator.Send(new DeleteOrganizationCommand(organization)));
+        return this.Ok(await this.mediator.Send(new DeleteOrganizationCommand(id)));
     }
 
     [HttpGet]

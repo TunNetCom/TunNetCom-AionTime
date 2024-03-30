@@ -1,6 +1,6 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
+﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.Repository;
 
-public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext context) : IGenericRepository<T>
+public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext context) : IRepository<T>
     where T : BaseEntity
 {
     private readonly TunNetComAionTimeTimeLogServiceDataBaseContext context = context;
@@ -17,10 +17,14 @@ public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext contex
         _ = await this.context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(T entity)
+    public async Task DeleteAsync(int id)
     {
-        _ = this.context.Remove(entity);
-        _ = await this.context.SaveChangesAsync();
+        var entity = await this.context.Set<T>().SingleOrDefaultAsync(x => x.Id == id);
+        if (entity is not null)
+        {
+            _ = this.context.Remove(entity);
+            _ = await this.context.SaveChangesAsync();
+        } 
     }
 
     public async Task<IReadOnlyList<T>> GetAsync()

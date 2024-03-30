@@ -1,14 +1,13 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
 
-public class DeleteOrganizationCommandHandler(IGenericRepository<Organization> organizationRepository, IMapper mapper) : IRequestHandler<DeleteOrganizationCommand, int>
+public class DeleteOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper) : IRequestHandler<DeleteOrganizationCommand, int>
 {
     private readonly IMapper mapper=mapper;
-    private readonly IGenericRepository<Organization> organizationRepository = organizationRepository;
+    private readonly IRepository<Organization> organizationRepository = organizationRepository;
 
     public async Task<int> Handle(DeleteOrganizationCommand request, CancellationToken cancellationToken)
     {
-        var organization = this.mapper.Map<Organization>(request.organization);
-        await this.organizationRepository.DeleteAsync(organization);
-        return organization.Id;
+        await this.organizationRepository.DeleteAsync(request.id);
+        return request.id;
     }
 }

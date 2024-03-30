@@ -1,9 +1,5 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Application.AutoMapping
 {
-    using AutoMapper;
-    using TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Request;
-    using TunNetCom.AionTime.TimeLogService.Domain.Models;
-
     public class MappingProfile: Profile
     {
         public MappingProfile()
