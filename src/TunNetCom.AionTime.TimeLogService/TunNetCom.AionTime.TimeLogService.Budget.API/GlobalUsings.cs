@@ -9,3 +9,6 @@ global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationA
 global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
 global using TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Request;
 global using TunNetCom.AionTime.TimeLogService.Domain.Models;
+global using Newtonsoft.Json;
+global using System.Net;
+global using Microsoft.AspNetCore.Diagnostics;
