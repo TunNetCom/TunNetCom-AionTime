@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 
 public class GetOrganizationQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper):IRequestHandler<GetOrganizationByIdQuery, OrganizationRequest>
 {
@@ -9,6 +9,8 @@ public class GetOrganizationQueryHandler(IRepository<Organization> organizationR
     {
         var res = await this.organizationRepository.GetByIdAsync(request.id);
         var organization = this.mapper.Map<OrganizationRequest>(res);
+        if (organization is null)
+            throw new NotFoundException($"Cannot find organization with this Id {request.id}");
         return organization;
     }
 }

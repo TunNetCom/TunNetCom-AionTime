@@ -1,3 +1,3 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 
 public record GetOrganizationByIdQuery(int id):IRequest<OrganizationRequest>;

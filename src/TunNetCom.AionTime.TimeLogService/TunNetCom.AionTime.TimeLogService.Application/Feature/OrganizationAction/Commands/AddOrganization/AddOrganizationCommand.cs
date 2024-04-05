@@ -1,2 +1,2 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands;
+﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 public record AddOrganizationCommand(OrganizationRequest organization) : IRequest<int>;

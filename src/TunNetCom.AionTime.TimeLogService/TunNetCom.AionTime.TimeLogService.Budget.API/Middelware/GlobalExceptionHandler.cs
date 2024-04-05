@@ -12,13 +12,42 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
     {
         HttpStatusCode statusCode = HttpStatusCode.InternalServerError;
-        var problem = new ProblemDetails
+        CustomProblemDetails problem;
+        switch (exception)
         {
-            Title = exception.Message,
-            Status = (int)statusCode,
-            Detail = exception.InnerException?.Message,
-            Type = exception.GetType().Name,
-        };
+            case BadRequestException:
+                statusCode = HttpStatusCode.BadRequest;
+                problem = new CustomProblemDetails
+                {
+                    Title = exception.Message,
+                    Status = (int)statusCode,
+                    Detail = exception.InnerException?.Message,
+                    Type = exception.GetType().Name,
+                };
+                break;
+            case NotFoundException:
+                statusCode = HttpStatusCode.NotFound;
+                problem = new CustomProblemDetails
+                {
+                    Title = exception.Message,
+                    Status = (int)statusCode,
+                    Detail = exception.InnerException?.Message,
+                    Type = exception.GetType().Name,
+                };
+                break;
+            default:
+                problem = new CustomProblemDetails
+                {
+                    Title = exception.Message,
+                    Status = (int)statusCode,
+                    Detail = exception.InnerException?.Message,
+                    Type = exception.GetType().Name,
+                }; 
+                break;
+
+        }
+
+
         httpContext.Response.StatusCode = (int)statusCode;
         string logMessage = JsonConvert.SerializeObject(problem);
         this.logger.LogError(logMessage);

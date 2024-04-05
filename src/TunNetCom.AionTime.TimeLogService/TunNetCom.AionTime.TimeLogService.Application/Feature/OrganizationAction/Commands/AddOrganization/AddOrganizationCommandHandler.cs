@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
+﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 
 public class AddOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper) : IRequestHandler<AddOrganizationCommand, int>
 {

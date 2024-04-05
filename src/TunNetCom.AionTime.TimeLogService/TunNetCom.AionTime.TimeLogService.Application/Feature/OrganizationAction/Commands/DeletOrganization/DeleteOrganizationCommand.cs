@@ -1,3 +1,3 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
+﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 
 public record DeleteOrganizationCommand(int id) : IRequest<int>;

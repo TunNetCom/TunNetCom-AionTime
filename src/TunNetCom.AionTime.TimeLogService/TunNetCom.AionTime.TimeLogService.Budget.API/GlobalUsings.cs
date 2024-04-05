@@ -2,12 +2,8 @@
 global using TunNetCom.AionTime.TimeLogService.Application;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
-global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands;
-global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
-global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
-global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
-global using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
 global using TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Request;
+global using TunNetCom.AionTime.TimeLogService.Contracts;
 global using TunNetCom.AionTime.TimeLogService.Domain.Models;
 global using Newtonsoft.Json;
 global using System.Net;
