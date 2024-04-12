@@ -2,7 +2,7 @@
 {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using TunNetCom.AionTime.TimeLogService.Infrastructure.GenericRepository;
+    using TunNetCom.AionTime.TimeLogService.Infrastructure.Repository;
 
     public static class InfrastructureServiceRegistration
     {
@@ -13,7 +13,7 @@
                 options.UseSqlServer(configuration.GetConnectionString("TimeLogContext"));
             });
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             return services;
         }
     }

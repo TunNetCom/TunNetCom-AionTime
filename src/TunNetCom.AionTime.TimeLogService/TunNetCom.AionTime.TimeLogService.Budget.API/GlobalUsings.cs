@@ -1,3 +1,10 @@
 ﻿global using TunNetCom.AionTime.TimeLogService.Infrastructure;
-global using TunNetCom.AionTime.TimeLogService.Domain;
 global using TunNetCom.AionTime.TimeLogService.Application;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
+global using TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Request;
+global using TunNetCom.AionTime.TimeLogService.Contracts;
+global using TunNetCom.AionTime.TimeLogService.Domain.Models;
+global using Newtonsoft.Json;
+global using System.Net;
+global using Microsoft.AspNetCore.Diagnostics;

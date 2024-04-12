@@ -14,7 +14,7 @@ public partial class TunNetComAionTimeTimeLogServiceDataBaseContext : DbContext
     {
     }
 
-    public virtual DbSet<Organisation> Organisations { get; set; }
+    public virtual DbSet<Organization> Organizations { get; set; }
 
     public virtual DbSet<Project> Projects { get; set; }
 
@@ -26,7 +26,7 @@ public partial class TunNetComAionTimeTimeLogServiceDataBaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new Configurations.OrganisationConfiguration());
+        modelBuilder.ApplyConfiguration(new Configurations.OrganizationConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.ProjectConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.WorkItemConfiguration());
         modelBuilder.ApplyConfiguration(new Configurations.WorkItemHistoryConfiguration());
