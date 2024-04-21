@@ -4,11 +4,11 @@ namespace TunNetCom.AionTime.Budget.API.Controllers;
 [Route("[controller]")]
 public class TimeLogServiceController : ControllerBase
 {
-    private readonly ILogger<WorkItemTimeLog> logger;
+    private readonly ILogger<TimeLogServiceController> logger;
     private readonly IMediator mediator;
 
     public TimeLogServiceController(
-        ILogger<WorkItemTimeLog> logger,
+        ILogger<TimeLogServiceController> logger,
         IMediator mediator)
     {
         this.logger = logger;
