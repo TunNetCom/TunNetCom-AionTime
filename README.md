@@ -19,24 +19,6 @@ To get started with Aion Time, follow these steps:
 3. **Start Tracking**: Start tracking time for your work items directly within Azure Boards or through the Aion Time interface.
 4. **Generate Reports**: Generate reports to gain insights into time spent on different work items and projects.
 
-## Usage
-
-### Track Time
-
-To track time for a work item:
-
-1. Open the work item in Azure Boards or navigate to it within Aion Time.
-2. Click on the time tracking section and start the timer.
-3. When finished, stop the timer to record the time spent.
-
-### Generate Reports
-
-To generate reports:
-
-1. Navigate to the reporting section within Aion Time.
-2. Select the time period and work items for which you want to generate a report.
-3. Generate the report and export it in your desired format (e.g., CSV, PDF).
-
 ## Contributing
 
 Contributions are welcome! If you have any ideas, suggestions, or bug reports, feel free to open an issue or submit a pull request on the [GitHub repository](https://github.com/yourusername/aion-time).
@@ -48,11 +30,7 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgements
 
 - Special thanks to the contributors who have helped improve Aion Time.
-- Built with [Azure DevOps API](https://docs.microsoft.com/en-us/rest/api/azure/devops/?view=azure-devops-rest-6.0) and [Your Favorite Tech Stack].
-
-## Contact
-
-For any inquiries or support, please contact [your email address].
+- Built with [Azure DevOps API](https://docs.microsoft.com/en-us/rest/api/azure/devops/?view=azure-devops-rest-6.0) and .Net.
 
 ---
 
