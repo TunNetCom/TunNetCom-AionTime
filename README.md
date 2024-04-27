@@ -13,7 +13,7 @@ Aion Time is a complementary app designed to enhance time tracking for Azure Boa
 ```mermaid
 flowchart LR;
     FrontendWebApp <--> TimeLogService;
-    TimeLogService --> SyncQueue;
+    TimeLogService --> AzureSyncQueue;
     AzureSyncQueue --> AzureDevOpsService;
     AzureDevOpsService --> TimeLogSyncQueue
     AzureDevOpsService --> ChangeFeedQueue;
