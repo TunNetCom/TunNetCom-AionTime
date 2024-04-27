@@ -11,10 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{641ADFEA-5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.API", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Budget.API\TunNetCom.AionTime.TimeLogService.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "results", "results", "{3D4380FC-A83B-4A48-91DD-FA9A1C4D33F7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{16C90B73-DBFE-44C1-8A18-48BEDDDEBE6C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.Test", "test\TunNetCom_Aion_Test\TunNetCom.AionTime.Test.csproj", "{A2598620-8079-4A8A-A9CD-1BCEC6FF7020}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.TimeLogService.Database", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.DataBase\TunNetCom.AionTime.TimeLogService.Database.sqlproj", "{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}"
