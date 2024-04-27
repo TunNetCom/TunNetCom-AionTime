@@ -15,7 +15,8 @@ flowchart LR;
     FrontendWebApp <--> TimeLogService;
     TimeLogService --> AzureSyncQueue;
     AzureSyncQueue --> AzureDevOpsService;
-    AzureDevOpsService --> TimeLogSyncQueue
+    AzureDevOpsService --> TimeLogSyncQueue;
+    TimeLogSyncQueue --> TimeLogService;
     AzureDevOpsService --> ChangeFeedQueue;
     AzureDevOpsService <--> AzureDevOpsDatabase;
     TimeLogService <--> TimeLogDatabase;
