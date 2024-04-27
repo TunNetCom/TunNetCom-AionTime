@@ -43,3 +43,13 @@ The following code-block will be rendered as a Mermaid diagram:
 flowchart LR
   A --> B
 ```
+
+graph TD;
+    FrontendWebApp --> AzureDevOpsService;
+    FrontendWebApp --> TimeLogService;
+    AzureDevOpsService --> SyncQueue;
+    TimeLogService --> SyncQueue;
+    SyncQueue --> RedisDatabase;
+    SyncQueue --> SQLDatabase1;
+    SyncQueue --> SQLDatabase2;
+
