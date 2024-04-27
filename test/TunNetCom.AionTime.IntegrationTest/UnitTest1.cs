@@ -1,4 +1,4 @@
-namespace TunNetCom_Aion_Test
+namespace TunNetCom.AionTime.IntegrationTest
 {
     public class UnitTest1
     {

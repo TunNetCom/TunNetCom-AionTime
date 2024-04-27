@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\test\TunNetCom_Aion_Test\TunNetCom.AionTime.Test.csproj" />
     <ProjectReference Include="..\TunNetCom.AionTime.TimeLogService.Application\TunNetCom.AionTime.TimeLogService.Application.csproj" />
     <ProjectReference Include="..\TunNetCom.AionTime.TimeLogService.DataBase\TunNetCom.AionTime.TimeLogService.Database.sqlproj" />
     <ProjectReference Include="..\TunNetCom.AionTime.TimeLogService.Domain\TunNetCom.AionTime.TimeLogService.Domain.csproj" />
