@@ -1,7 +1,7 @@
-using TunNetCom.AionTime.TimeLogService.API.Middleware;
+
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
 builder.Services.AddControllers();
 builder.Services.AddInfrastructureServiceRegistration(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);

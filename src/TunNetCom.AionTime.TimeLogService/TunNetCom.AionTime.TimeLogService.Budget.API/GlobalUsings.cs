@@ -8,3 +8,6 @@ global using TunNetCom.AionTime.TimeLogService.Domain.Models;
 global using Newtonsoft.Json;
 global using System.Net;
 global using Microsoft.AspNetCore.Diagnostics;
+global using TunNetCom.AionTime.TimeLogService.API.Middleware;
+global using Serilog.Debugging;
+global using Serilog;

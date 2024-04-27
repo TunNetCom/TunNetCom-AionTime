@@ -135,7 +135,6 @@ public partial class <#= EntityType.Name #> : BaseEntity
         if (navigation.IsCollection)
         {
 #>
-    [JsonIgnore]
     public virtual ICollection<<#= targetType #>><#="?"#>  <#= navigation.Name #> { get; set; } //= new List<<#= targetType #>>();
 <#
         }
@@ -144,7 +143,6 @@ public partial class <#= EntityType.Name #> : BaseEntity
             var needsNullable = Options.UseNullableReferenceTypes && !(navigation.ForeignKey.IsRequired && navigation.IsOnDependent);
             var needsInitializer = Options.UseNullableReferenceTypes && navigation.ForeignKey.IsRequired && navigation.IsOnDependent;
 #>
-    [JsonIgnore]
     public virtual <#= targetType #><#="?"#> <#= navigation.Name #> { get; set; }
 <#
         }
