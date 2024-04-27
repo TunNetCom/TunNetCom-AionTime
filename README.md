@@ -16,7 +16,7 @@ flowchart LR;
     TimeLogService --> SyncQueue;
     SyncQueue --> AzureDevOpsService;
     AzureDevOpsService --> ChangeFeedQueue;
-    AzureDevOpsService --> AzureDevOpsDatabase;
+    AzureDevOpsService <--> AzureDevOpsDatabase;
     TimeLogService <--> TimeLogDatabase;
 ```
 
