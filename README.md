@@ -41,7 +41,7 @@ The following code-block will be rendered as a Mermaid diagram:
 
 ```mermaid
 flowchart LR;
-    FrontendWebApp --> AzureDevOpsService;
+    FrontendWebApp <--> AzureDevOpsService;
     FrontendWebApp --> TimeLogService;
     AzureDevOpsService --> AzureDevOpsDatabase;
     TimeLogService --> TimeLogDatabase;
