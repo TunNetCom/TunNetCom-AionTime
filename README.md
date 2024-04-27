@@ -40,12 +40,10 @@ This project is licensed under the [MIT License](LICENSE).
 The following code-block will be rendered as a Mermaid diagram:
 
 ```mermaid
-graph TD;
+flowchart LR;
     FrontendWebApp --> AzureDevOpsService;
     FrontendWebApp --> TimeLogService;
-    AzureDevOpsService --> SyncQueue;
-    TimeLogService --> SyncQueue;
-    SyncQueue --> RedisDatabase;
-    SyncQueue --> SQLDatabase1;
-    SyncQueue --> SQLDatabase2;
+    AzureDevOpsService --> AzureDevOpsDatabase;
+    TimeLogService --> TimeLogDatabase;
+
 ```
