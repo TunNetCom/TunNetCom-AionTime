@@ -10,7 +10,7 @@ Aion Time is a complementary app designed to enhance time tracking for Azure Boa
 - **Customization**: Customize time tracking settings and reports to suit your team's specific needs.
 - **User-friendly Interface**: Aion Time features a clean and intuitive interface for effortless time tracking and management.
 
-- ## Diagram
+ ## Diagram
   
 ```mermaid
 flowchart LR;
