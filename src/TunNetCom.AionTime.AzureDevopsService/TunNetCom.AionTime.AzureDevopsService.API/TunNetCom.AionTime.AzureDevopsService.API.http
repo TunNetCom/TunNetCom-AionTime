@@ -1,0 +1,6 @@
+@TunNetCom.AionTime.AzureDevopsService.API_HostAddress = http://localhost:5191
+
+GET {{TunNetCom.AionTime.AzureDevopsService.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
