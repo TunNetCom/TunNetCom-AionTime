@@ -2,4 +2,13 @@
 global using System.Text;
 global using System.Net;
 global using OneOf;
-
+global using Serilog;
+global using TunNetCom.AionTime.AzureDevopsService.API;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
+global using Newtonsoft.Json;
+global using System.Net.Http.Headers;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects.Contracts;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems;

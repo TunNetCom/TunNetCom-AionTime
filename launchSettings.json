@@ -4,7 +4,8 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "tunnetcom.aiontime.timelogservice.api": "StartDebugging"
+        "tunnetcom.aiontime.timelogservice.api": "StartDebugging",
+        "tunnetcom.aiontime.azuredevopsservice.api": "StartDebugging"
       }
     }
   }

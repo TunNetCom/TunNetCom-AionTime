@@ -1,5 +1,3 @@
-
-
 using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +24,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
 app.UseExceptionHandler();
 app.UseAuthorization();

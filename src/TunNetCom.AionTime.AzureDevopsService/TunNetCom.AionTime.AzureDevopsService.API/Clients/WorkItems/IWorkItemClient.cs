@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems;
 
 public interface IWorkItemClient
 {

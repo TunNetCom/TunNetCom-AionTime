@@ -1,13 +1,9 @@
-using TunNetCom.AionTime.AzureDevopsService.API;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
 builder.Services.AddAzureDevOpsClients();
 
 var app = builder.Build();
