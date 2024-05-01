@@ -4,5 +4,5 @@ public class OrganizationRequest
 {
     public int Id { get; set; }
 
-    public string OrganizationName { get; set; } = null!;
+    public string Name { get; set; } = null!;
 }
