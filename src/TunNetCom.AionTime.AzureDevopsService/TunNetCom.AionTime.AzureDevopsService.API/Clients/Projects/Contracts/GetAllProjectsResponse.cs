@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects.Contracts;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects.Contracts;
 
 public class GetAllProjectsResponse
 {

@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Net.Http;
-using System.Net.Http.Headers;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers
 {
-    public class HttpClientPatHandler : DelegatingHandler
+    public class HttpClientPatHandler(ILogger<HttpClientPatHandler> logger) : DelegatingHandler
     {
+        private ILogger<HttpClientPatHandler> logger= logger;
+
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             var requestBody = await request.Content.ReadAsStringAsync();
@@ -15,6 +13,7 @@ namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers
 
             if (string.IsNullOrEmpty(organizationName))
             {
+                this.logger.LogError("Password not provided in the request body");
                 throw new ArgumentException("Password not provided in the request body");
             }
 

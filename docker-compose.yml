@@ -1,6 +1,14 @@
 version: '3.4'
 
 services:
+  SqlServerDb:
+        container_name: SqlServerContainer
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+            - 8002:1433
+        environment:
+            - ACCEPT_EULA=Y
+            - MSSQL_SA_PASSWORD=TunetCom2024 
 
   tunnetcom.aiontime.timelogservice.api:
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimetimelogserviceapi
@@ -14,9 +22,25 @@ services:
     ports:
         - 8085:80
         - 8086:443
-    depends_on:
-        loki:
-            condition: service_healthy
+    depends_on: 
+        - SqlServerDb
+        - loki 
+  tunnetcom.aiontime.azuredevopsservice.api:
+    image: ${DOCKER_REGISTRY-}tunnetcomaiontimeazuredevopsserviceapi
+    build:
+      context: .
+      dockerfile: src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API/Dockerfile
+    environment:
+        loki: http://loki:3100
+        ASPNETCORE_ENVIRONMENT: Development
+        ASPNETCORE_URLS: https://+:443;http://+:80
+    ports:
+        - 8090:80
+        - 8091:443
+    depends_on: 
+            loki : 
+             condition: service_healthy
+
 
   loki:
     container_name: loki
@@ -39,3 +63,4 @@ services:
     depends_on:
         loki:
             condition: service_healthy
+

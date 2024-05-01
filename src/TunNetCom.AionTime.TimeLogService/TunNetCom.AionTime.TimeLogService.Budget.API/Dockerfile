@@ -20,6 +20,12 @@ COPY . .
 WORKDIR "/src/src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API"
 RUN dotnet build "./TunNetCom.AionTime.TimeLogService.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
+# Copy the SSL certificate file
+COPY server.crt /usr/local/share/ca-certificates/
+
+# Update CA certificates
+RUN update-ca-certificates
+
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./TunNetCom.AionTime.TimeLogService.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false

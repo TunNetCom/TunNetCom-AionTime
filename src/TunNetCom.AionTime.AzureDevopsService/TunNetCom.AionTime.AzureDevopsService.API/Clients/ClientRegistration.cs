@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
 
 public static class ClientRegistration
 {

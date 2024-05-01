@@ -1,4 +1,4 @@
-
+using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
@@ -14,10 +14,16 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var Context = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
+        Context.Database.EnsureCreated();
+
+    };
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
 app.UseExceptionHandler();
 app.UseAuthorization();

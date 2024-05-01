@@ -10,9 +10,13 @@
         IConfiguration configuration)
         {
             services.AddDbContext<TunNetComAionTimeTimeLogServiceDataBaseContext>(options => {
-                options.UseSqlServer(configuration.GetConnectionString("TimeLogContext"));
+                options.UseSqlServer(
+                    configuration.GetConnectionString("TimeLogContext"),
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure();
+                    });
             });
-
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             return services;
         }
