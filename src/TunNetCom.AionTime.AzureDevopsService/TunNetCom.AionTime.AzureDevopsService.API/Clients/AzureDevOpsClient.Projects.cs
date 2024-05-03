@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects.Contracts;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
 
 public partial class AzureDevOpsClient
 {
@@ -15,6 +13,7 @@ public partial class AzureDevOpsClient
         {
             return null;
         }
+
         if (response.StatusCode == HttpStatusCode.OK)
         {
             var wiqlResponses = await response.Content.ReadFromJsonAsync<GetAllProjectsResponse>();

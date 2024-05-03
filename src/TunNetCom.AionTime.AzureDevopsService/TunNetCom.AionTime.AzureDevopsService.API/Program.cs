@@ -17,7 +17,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
 app.MapPost("/todoitems", async (IAzureDevOpsClient azureDevOpsClient) =>
 {
     var wiqlRequest = new WiqlRequest
@@ -28,7 +27,7 @@ app.MapPost("/todoitems", async (IAzureDevOpsClient azureDevOpsClient) =>
         Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
         Query = @"SELECT [System.Id], [System.Title], [System.State], [System.IterationPath] 
                     FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> '' 
-                    AND EVER [System.AssignedTo] = 'Nieze <nieze.benmansour@outlook.fr>'"
+                    AND EVER [System.AssignedTo] = 'Nieze <nieze.benmansour@outlook.fr>'",
     };
 
     var wiqlResponses = await azureDevOpsClient.GetWiqlResponses(wiqlRequest);
@@ -43,7 +42,7 @@ app.MapPost("/projects", async (IAzureDevOpsClient azureDevOpsClient) =>
         ApiVersion = "v5",
         Organization = "TunNetCom",
         Project = "Aoin_Time",
-        Team = "938eb754-ae25-4088-bf34-c9bf242e966c"
+        Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
     };
 
     var res = await azureDevOpsClient.GetAll(baseRequest);

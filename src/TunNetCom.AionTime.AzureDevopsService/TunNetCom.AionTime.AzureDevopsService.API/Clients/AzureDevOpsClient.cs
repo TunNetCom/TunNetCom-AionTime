@@ -9,7 +9,7 @@ public partial class AzureDevOpsClient : IAzureDevOpsClient
         HttpClient httpClient,
         ILogger<AzureDevOpsClient> logger)
     {
-        _httpClient = httpClient;
+        this._httpClient = httpClient;
         _logger = logger;
     }
 }

@@ -4,7 +4,7 @@ public static class ClientRegistration
 {
     public static void AddAzureDevOpsClients(this IServiceCollection services)
     {
-        services.AddTransient<HttpClientPatHandler>(); 
+        services.AddTransient<HttpClientPatHandler>();
 
         services.AddHttpClient<IAzureDevOpsClient, AzureDevOpsClient>((serviceProvider, client) =>
         {

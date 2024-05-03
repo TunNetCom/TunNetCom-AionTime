@@ -1,11 +1,8 @@
-﻿using OneOf;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
 
 public partial class AzureDevOpsClient
 {
-    public async Task<OneOf<WiqlResponses?,WiqlBadRequest?>> GetWiqlResponses(WiqlRequest wiqlRequest)
+    public async Task<OneOf<WiqlResponses?, WiqlBadRequest?>> GetWiqlResponses(WiqlRequest wiqlRequest)
     {
         _logger.LogInformation("Get Work Item for {Organisation}", wiqlRequest.Organization);
 
