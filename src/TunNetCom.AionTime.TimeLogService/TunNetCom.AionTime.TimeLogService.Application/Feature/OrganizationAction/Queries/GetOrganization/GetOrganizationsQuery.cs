@@ -1,3 +1,4 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 
-public record GetOrganizationsQuery():IRequest<IReadOnlyList<OrganizationRequest>>;
+public record GetOrganizationsQuery()
+    : IRequest<IReadOnlyList<OrganizationRequest>>;

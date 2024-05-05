@@ -1,2 +1,3 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Application;
-public record AddOrganizationCommand(OrganizationRequest organization) : IRequest<int>;
+public record AddOrganizationCommand(OrganizationRequest Organization)
+    : IRequest<int>;

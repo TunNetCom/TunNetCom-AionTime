@@ -2,11 +2,11 @@
 
 internal sealed class GlobalExceptionHandler : IExceptionHandler
 {
-    private readonly ILogger<GlobalExceptionHandler> logger;
+    private readonly ILogger<GlobalExceptionHandler> _logger;
 
     public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
     {
-        this.logger = logger;
+        _logger = logger;
     }
 
     public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
@@ -42,15 +42,13 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
                     Status = (int)statusCode,
                     Detail = exception.InnerException?.Message,
                     Type = exception.GetType().Name,
-                }; 
+                };
                 break;
-
         }
-
 
         httpContext.Response.StatusCode = (int)statusCode;
         string logMessage = JsonConvert.SerializeObject(problem);
-        this.logger.LogError(logMessage);
+        _logger.LogError(logMessage);
         await httpContext.Response.WriteAsJsonAsync(problem, cancellationToken);
 
         return true;

@@ -1,10 +1,11 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Interfaces.IRepository;
 
-public interface IRepository<T> where T : BaseEntity
+public interface IRepository<T>
+    where T : BaseEntity
 {
     Task<IReadOnlyList<T>> GetAsync();
 
-    Task<T> GetByIdAsync(int id);
+    Task<T?> GetByIdAsync(int id);
 
     Task AddAsync(T entity);
 
@@ -17,5 +18,4 @@ public interface IRepository<T> where T : BaseEntity
     Task DeleteAsync(int id);
 
     Task DeleteRangeAsync(List<T> entities);
-
 }

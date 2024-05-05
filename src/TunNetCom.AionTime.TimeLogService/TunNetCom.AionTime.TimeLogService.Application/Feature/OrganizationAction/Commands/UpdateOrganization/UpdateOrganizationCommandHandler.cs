@@ -1,14 +1,15 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Application;
 
-public class UpdateOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper) : IRequestHandler<UpdateOrganizationCommand, int>
+public class UpdateOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper)
+    : IRequestHandler<UpdateOrganizationCommand, int>
 {
-    private readonly IRepository<Organization> organizationRepository = organizationRepository;
-    private readonly IMapper mapper = mapper;
+    private readonly IRepository<Organization> _organizationRepository = organizationRepository;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<int> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
     {
-        var organization = this.mapper.Map<Organization>(request.organization);
-        await this.organizationRepository.UpdateAsync(organization);
+        var organization = _mapper.Map<Organization>(request.Organization);
+        await _organizationRepository.UpdateAsync(organization);
         return organization.Id;
     }
 }

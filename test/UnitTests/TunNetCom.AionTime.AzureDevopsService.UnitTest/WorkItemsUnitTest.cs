@@ -2,7 +2,6 @@ namespace TunNetCom.AionTime.AzureDevopsService.UnitTest;
 
 public class WorkItemsUnitTest
 {
-
     [Fact]
     public async Task GetWorkItemsTest()
     {
@@ -19,7 +18,7 @@ public class WorkItemsUnitTest
             Project = "Aion_Time",
             Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
             Query = @"SELECT [System.Id], [System.Title], [System.State], [System.IterationPath] 
-                      FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> ''"
+                      FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> ''",
         };
 
         var result = await sut.GetWiqlResponses(wiqlRequest);
@@ -27,6 +26,11 @@ public class WorkItemsUnitTest
         result.Should().NotBeNull();
 
         result.AsT0.Should().NotBeNull();
+
+        if (result.AsT0 is null)
+        {
+            throw new Exception("WorkItems response was null!");
+        }
 
         result.AsT0.WorkItems.Should()
             .NotBeNull();
@@ -40,10 +44,8 @@ internal sealed class TestHttpMessageHandlerBuilderFilter
 {
     private readonly IEnumerable<HttpMessageHandlerMockWrapper> _httpMessageHandlerWrappers;
 
-    public TestHttpMessageHandlerBuilderFilter(
-        // Injection of previously registered maps
-        IEnumerable<HttpMessageHandlerMockWrapper> httpMessageHandlerWrappers)
-
+    // Injection of previously registered maps
+    public TestHttpMessageHandlerBuilderFilter(IEnumerable<HttpMessageHandlerMockWrapper> httpMessageHandlerWrappers)
     {
         _httpMessageHandlerWrappers = httpMessageHandlerWrappers;
     }
@@ -65,6 +67,7 @@ internal sealed class TestHttpMessageHandlerBuilderFilter
                 Debug.WriteLine($"Overriding {nameof(builder.PrimaryHandler)} for '{builder.Name}' typed HTTP client");
                 builder.PrimaryHandler = mockHandlerWrapper.HttpMessageHandlerMock;
             }
+
             next(builder);
         };
     }
@@ -81,6 +84,7 @@ internal sealed class HttpMessageHandlerMockWrapper
     }
 
     public Type TypedHttpClientType { get; }
+
     public HttpMessageHandler HttpMessageHandlerMock { get; }
 }
 
@@ -90,8 +94,15 @@ internal static class DependencyInjectionExtensions
         this IServiceCollection services,
         HttpMessageHandler mockMessageHandler)
     {
-        if (services == null) throw new ArgumentNullException(nameof(services));
-        if (mockMessageHandler == null) throw new ArgumentNullException(nameof(mockMessageHandler));
+        if (services == null)
+        {
+            throw new ArgumentNullException(nameof(services));
+        }
+
+        if (mockMessageHandler == null)
+        {
+            throw new ArgumentNullException(nameof(mockMessageHandler));
+        }
 
         // Register a mock handler
         services

@@ -1,36 +1,39 @@
 ﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers;
 
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
-
 public class HttpClientPatHandler(
     ILogger<HttpClientPatHandler> logger)
     : DelegatingHandler
 {
-    private ILogger<HttpClientPatHandler> logger = logger;
+    private ILogger<HttpClientPatHandler> _logger = logger;
 
-    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    protected override async Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request,
+        CancellationToken cancellationToken)
     {
-        var requestBody = await request.Content.ReadAsStringAsync();
+        if (request.Content is null)
+        {
+            throw new ArgumentNullException(nameof(request));
+        }
+
+        var requestBody = await request.Content.ReadAsStringAsync(cancellationToken);
         var baseRequest = JsonConvert.DeserializeObject<BaseRequest>(requestBody);
 
         var organizationName = baseRequest?.Organization;
 
         if (string.IsNullOrEmpty(organizationName))
         {
-            this.logger.LogError("Password not provided in the request body");
+            _logger.LogError("Password not provided in the request body");
             throw new ArgumentException("Password not provided in the request body");
         }
 
-
         // TODO get the PAT from this DB by organisation name
         var config = new ConfigurationBuilder()
-  .AddUserSecrets<IAzureDevOpsClient>()
-  .Build();
+            .AddUserSecrets<IAzureDevOpsClient>()
+            .Build();
+
         var basicAuthenticationPassword = config["tmp_pat:default"];
 
         var basicAuthenticationUsername = "Basic";
-
 
         var basicAuthenticationValue = Convert.ToBase64String(
                 Encoding.ASCII.GetBytes($"{basicAuthenticationUsername}:{basicAuthenticationPassword}"));

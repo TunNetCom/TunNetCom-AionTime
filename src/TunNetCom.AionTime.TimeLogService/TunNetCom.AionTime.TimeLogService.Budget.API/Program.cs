@@ -14,16 +14,16 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-
     using (var scope = app.Services.CreateScope())
     {
-        var Context = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
-        Context.Database.EnsureCreated();
+        var dbContext = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
+        dbContext.Database.EnsureCreated();
+    }
 
-    };
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseHttpsRedirection();
 app.UseExceptionHandler();
 app.UseAuthorization();

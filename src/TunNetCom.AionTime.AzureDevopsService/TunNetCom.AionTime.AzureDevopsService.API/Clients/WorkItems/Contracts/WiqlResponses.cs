@@ -20,7 +20,6 @@ public class Column
     public string Name { get; set; }
 
     public string Url { get; set; }
-
 }
 
 public class WorkItem
@@ -28,5 +27,4 @@ public class WorkItem
     public int Id { get; set; }
 
     public string Url { get; set; }
-
 }

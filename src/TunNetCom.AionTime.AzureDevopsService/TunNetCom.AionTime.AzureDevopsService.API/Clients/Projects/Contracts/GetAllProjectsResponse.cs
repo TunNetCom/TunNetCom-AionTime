@@ -7,7 +7,6 @@ public class GetAllProjectsResponse
 
     [JsonPropertyName("value")]
     public IEnumerable<ProjectInfo> ProjectInfos { get; set; } = Enumerable.Empty<ProjectInfo>();
-
 }
 
 public class ProjectInfo

@@ -2,14 +2,14 @@
 
 public partial class AzureDevOpsClient : IAzureDevOpsClient
 {
-    private readonly HttpClient httpClient;
-    private readonly ILogger<AzureDevOpsClient> logger;
+    private readonly HttpClient _httpClient;
+    private readonly ILogger<AzureDevOpsClient> _logger;
 
     public AzureDevOpsClient(
         HttpClient httpClient,
         ILogger<AzureDevOpsClient> logger)
     {
-        this.httpClient = httpClient;
-        this.logger = logger;
+        _httpClient = httpClient;
+        _logger = logger;
     }
 }
