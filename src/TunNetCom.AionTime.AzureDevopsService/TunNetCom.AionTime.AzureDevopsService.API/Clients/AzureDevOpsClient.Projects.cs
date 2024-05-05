@@ -4,7 +4,7 @@ public partial class AzureDevOpsClient
 {
     public async Task<GetAllProjectsResponse?> GetAll(BaseRequest baseRequest)
     {
-        var response = await _httpClient.GetAsync(
+        var response = await httpClient.GetAsync(
         @$"/{baseRequest.Organization}/_apis/projects?api-version={baseRequest.ApiVersion}");
 
         response.EnsureSuccessStatusCode();
