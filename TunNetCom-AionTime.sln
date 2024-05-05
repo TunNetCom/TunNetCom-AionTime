@@ -40,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "Integra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FunctionnelTests", "FunctionnelTests", "{30199D22-9C94-4259-99E0-96BFB51E85A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunNetCom.AionTime.AzureDevopsService.UnitTest", "test\UnitTests\TunNetCom.AionTime.AzureDevopsService.UnitTest\TunNetCom.AionTime.AzureDevopsService.UnitTest.csproj", "{A97F9362-A47E-49A7-88DD-BAAABD8B37D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.UnitTest", "test\UnitTests\TunNetCom.AionTime.AzureDevopsService.UnitTest\TunNetCom.AionTime.AzureDevopsService.UnitTest.csproj", "{A97F9362-A47E-49A7-88DD-BAAABD8B37D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
