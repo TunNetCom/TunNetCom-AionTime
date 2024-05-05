@@ -1,86 +1,109 @@
-using Moq;
-using Newtonsoft.Json;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
-
 namespace TunNetCom.AionTime.AzureDevopsService.UnitTest;
 
 public class WorkItemsUnitTest
 {
+
     [Fact]
-    public async Task GetTo10WorkItemFromAnOrganisationAsync()
+    public async Task GetWorkItemsTest()
     {
-        // Arrange
-        string json = @"{
-            ""queryType"": ""flat"",
-            ""queryResultType"": ""workItem"",
-            ""asOf"": ""2024-05-01T14:44:32.22Z"",
-            ""columns"": [
-                {
-                    ""referenceName"": ""System.Id"",
-                    ""name"": ""ID"",
-                    ""url"": ""https://dev.azure.com/TunNetCom/_apis/wit/fields/System.Id""
-                },
-                {
-                    ""referenceName"": ""System.Title"",
-                    ""name"": ""Title"",
-                    ""url"": ""https://dev.azure.com/TunNetCom/_apis/wit/fields/System.Title""
-                },
-                {
-                    ""referenceName"": ""System.State"",
-                    ""name"": ""State"",
-                    ""url"": ""https://dev.azure.com/TunNetCom/_apis/wit/fields/System.State""
-                },
-                {
-                    ""referenceName"": ""System.IterationPath"",
-                    ""name"": ""Iteration Path"",
-                    ""url"": ""https://dev.azure.com/TunNetCom/_apis/wit/fields/System.IterationPath""
-                }
-            ],
-            ""workItems"": [
-                {
-                    ""id"": 3,
-                    ""url"": ""https://dev.azure.com/TunNetCom/3348a3bb-788f-42b4-a0ab-ba7210c86b88/_apis/wit/workItems/3""
-                },
-                {
-                    ""id"": 7,
-                    ""url"": ""https://dev.azure.com/TunNetCom/3348a3bb-788f-42b4-a0ab-ba7210c86b88/_apis/wit/workItems/7""
-                },
-                {
-                    ""id"": 10,
-                    ""url"": ""https://dev.azure.com/TunNetCom/3348a3bb-788f-42b4-a0ab-ba7210c86b88/_apis/wit/workItems/10""
-                }
-            ]
-        }";
+        var serviceProvider = new ServiceCollection()
+            .AddAzureDevOpsClients()
+            .BuildServiceProvider();
 
-        WiqlResponses expectedResponses = JsonConvert.DeserializeObject<WiqlResponses>(json);
+        var sut = serviceProvider.GetRequiredService<IAzureDevOpsClient>();
 
-        var azureDevOpsClientMock = new Mock<IAzureDevOpsClient>();
-        azureDevOpsClientMock.Setup(x => x.GetWiqlResponses(It.IsAny<WiqlRequest>())).ReturnsAsync(expectedResponses);
-
-        // Use your implementation of IAzureDevOpsClient here
-        IAzureDevOpsClient azureDevOpsClient = azureDevOpsClientMock.Object;
-
-        var wiqlRequest = new WiqlRequest
+        WiqlRequest wiqlRequest = new WiqlRequest
         {
             ApiVersion = "v5",
             Organization = "TunNetCom",
             Project = "Aion_Time",
             Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
             Query = @"SELECT [System.Id], [System.Title], [System.State], [System.IterationPath] 
-                      FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> '' 
-                      AND EVER [System.AssignedTo] = 'Nieze <nieze.benmansour@outlook.fr>'"
+                      FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> ''"
         };
 
-        // Act
-        var result = await azureDevOpsClient.GetWiqlResponses(wiqlRequest);
+        var result = await sut.GetWiqlResponses(wiqlRequest);
 
+        result.Should().NotBeNull();
 
-        
+        result.AsT0.Should().NotBeNull();
 
-        // Assert
-        Assert.NotNull(result.AsT0);
-        Assert.Equal(expectedResponses, result);
+        result.AsT0.WorkItems.Should()
+            .NotBeNull();
 
+        result.AsT0.WorkItems.Count.Should().BePositive();
+    }
+}
+
+internal sealed class TestHttpMessageHandlerBuilderFilter
+    : IHttpMessageHandlerBuilderFilter
+{
+    private readonly IEnumerable<HttpMessageHandlerMockWrapper> _httpMessageHandlerWrappers;
+
+    public TestHttpMessageHandlerBuilderFilter(
+        // Injection of previously registered maps
+        IEnumerable<HttpMessageHandlerMockWrapper> httpMessageHandlerWrappers)
+
+    {
+        _httpMessageHandlerWrappers = httpMessageHandlerWrappers;
+    }
+
+    public Action<HttpMessageHandlerBuilder> Configure(Action<HttpMessageHandlerBuilder> next)
+    {
+        return builder =>
+        {
+            // Checking if a given HttpClient has a registered HttpMessageHandler mock
+            var mockHandlerWrapper = _httpMessageHandlerWrappers
+                .SingleOrDefault(x =>
+                    x.TypedHttpClientType.Name.Equals(
+                        builder.Name,
+                        StringComparison.InvariantCultureIgnoreCase));
+
+            if (mockHandlerWrapper is not null)
+            {
+                // If so, the default handler is replaced with mock
+                Debug.WriteLine($"Overriding {nameof(builder.PrimaryHandler)} for '{builder.Name}' typed HTTP client");
+                builder.PrimaryHandler = mockHandlerWrapper.HttpMessageHandlerMock;
+            }
+            next(builder);
+        };
+    }
+}
+
+internal sealed class HttpMessageHandlerMockWrapper
+{
+    public HttpMessageHandlerMockWrapper(
+        Type typedHttpClientType,
+        HttpMessageHandler httpMessageHandlerMock)
+    {
+        TypedHttpClientType = typedHttpClientType;
+        HttpMessageHandlerMock = httpMessageHandlerMock;
+    }
+
+    public Type TypedHttpClientType { get; }
+    public HttpMessageHandler HttpMessageHandlerMock { get; }
+}
+
+internal static class DependencyInjectionExtensions
+{
+    public static IServiceCollection OverridePrimaryHttpMessageHandler<TClient>(
+        this IServiceCollection services,
+        HttpMessageHandler mockMessageHandler)
+    {
+        if (services == null) throw new ArgumentNullException(nameof(services));
+        if (mockMessageHandler == null) throw new ArgumentNullException(nameof(mockMessageHandler));
+
+        // Register a mock handler
+        services
+            .AddTransient(_ => new HttpMessageHandlerMockWrapper(typeof(TClient), mockMessageHandler));
+
+        // Replace the default or already registered IHttpMessageHandlerBuilderFilter
+        // with our TestHttpMessageHandlerBuilderFilter
+        services
+            .Replace(
+                ServiceDescriptor
+                    .Transient<IHttpMessageHandlerBuilderFilter, TestHttpMessageHandlerBuilderFilter>());
+
+        return services;
     }
 }

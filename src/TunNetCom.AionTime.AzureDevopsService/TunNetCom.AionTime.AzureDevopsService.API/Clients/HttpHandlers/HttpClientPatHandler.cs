@@ -3,7 +3,8 @@
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
 
-public class HttpClientPatHandler(ILogger<HttpClientPatHandler> logger)
+public class HttpClientPatHandler(
+    ILogger<HttpClientPatHandler> logger)
     : DelegatingHandler
 {
     private ILogger<HttpClientPatHandler> logger = logger;
@@ -21,10 +22,16 @@ public class HttpClientPatHandler(ILogger<HttpClientPatHandler> logger)
             throw new ArgumentException("Password not provided in the request body");
         }
 
-        var basicAuthenticationUsername = "Basic";
 
         // TODO get the PAT from this DB by organisation name
-        var basicAuthenticationPassword = string.Empty;
+        var config = new ConfigurationBuilder()
+  .AddUserSecrets<IAzureDevOpsClient>()
+  .Build();
+        var basicAuthenticationPassword = config["tmp_pat:default"];
+
+        var basicAuthenticationUsername = "Basic";
+
+
         var basicAuthenticationValue = Convert.ToBase64String(
                 Encoding.ASCII.GetBytes($"{basicAuthenticationUsername}:{basicAuthenticationPassword}"));
 

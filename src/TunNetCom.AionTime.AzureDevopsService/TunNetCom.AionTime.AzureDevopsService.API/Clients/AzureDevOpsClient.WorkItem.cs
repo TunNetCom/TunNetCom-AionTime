@@ -7,7 +7,7 @@ public partial class AzureDevOpsClient
         _logger.LogInformation("Get Work Item for {Organisation}", wiqlRequest.Organization);
 
         using HttpResponseMessage response = await _httpClient.PostAsJsonAsync(
-        @$"/{wiqlRequest.Organization}/{wiqlRequest.Project}/{wiqlRequest.Team}/_apis/wit/wiql?api-version={wiqlRequest.ApiVersion}&top=10",
+        @$"/{wiqlRequest.Organization}/{wiqlRequest.Project}/{wiqlRequest.Team}/_apis/wit/wiql?api-version={wiqlRequest.ApiVersion}",
         wiqlRequest);
 
         if (response.StatusCode == HttpStatusCode.OK)

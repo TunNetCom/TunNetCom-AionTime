@@ -1,1 +1,10 @@
 global using Xunit;
+global using FluentAssertions;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using Microsoft.Extensions.Http;
+global using RichardSzalay.MockHttp;
+global using System.Diagnostics;
+global using System.Net.Mime;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients;
+global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;

@@ -2,7 +2,7 @@
 
 public static class ClientRegistration
 {
-    public static void AddAzureDevOpsClients(this IServiceCollection services)
+    public static IServiceCollection AddAzureDevOpsClients(this IServiceCollection services)
     {
         services.AddTransient<HttpClientPatHandler>();
 
@@ -16,5 +16,7 @@ public static class ClientRegistration
         })
             .SetHandlerLifetime(Timeout.InfiniteTimeSpan)
             .AddHttpMessageHandler<HttpClientPatHandler>();
+
+        return services;
     }
 }
