@@ -5,13 +5,13 @@ public class WorkItemsUnitTest
     [Fact]
     public async Task GetWorkItemsTest()
     {
-        var serviceProvider = new ServiceCollection()
+        ServiceProvider serviceProvider = new ServiceCollection()
             .AddAzureDevOpsClients()
             .BuildServiceProvider();
 
-        var sut = serviceProvider.GetRequiredService<IAzureDevOpsClient>();
+        IAzureDevOpsClient azureDevOpsClient = serviceProvider.GetRequiredService<IAzureDevOpsClient>();
 
-        WiqlRequest wiqlRequest = new WiqlRequest
+        var wiqlRequest = new WiqlRequest
         {
             ApiVersion = "v5",
             Organization = "TunNetCom",
@@ -21,20 +21,21 @@ public class WorkItemsUnitTest
                       FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> ''",
         };
 
-        var result = await sut.GetWiqlResponses(wiqlRequest);
+        OneOf<WiqlResponses?, WiqlBadRequest?> getWiqlResponses
+            = await azureDevOpsClient.GetWiqlResponses(wiqlRequest);
 
-        result.Should().NotBeNull();
+        _ = getWiqlResponses.Should().NotBeNull();
 
-        result.AsT0.Should().NotBeNull();
+        _ = getWiqlResponses.AsT0.Should().NotBeNull();
 
-        if (result.AsT0 is null)
+        if (getWiqlResponses.AsT0 is null)
         {
             throw new Exception("WorkItems response was null!");
         }
 
-        result.AsT0.WorkItems.Should()
+        _ = getWiqlResponses.AsT0.WorkItems.Should()
             .NotBeNull();
 
-        result.AsT0.WorkItems.Count.Should().BePositive();
+        _ = getWiqlResponses.AsT0.WorkItems.Count.Should().BePositive();
     }
 }

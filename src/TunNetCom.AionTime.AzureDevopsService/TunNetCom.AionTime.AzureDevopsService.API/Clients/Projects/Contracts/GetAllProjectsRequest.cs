@@ -2,4 +2,5 @@
 
 public class GetAllProjectsRequest
 {
+    public int InvoiczesId { get; set; }
 }
