@@ -1,10 +1,10 @@
-﻿global using System.Net;
+﻿global using Newtonsoft.Json;
+global using OneOf;
+global using Serilog;
+global using System.Net;
 global using System.Net.Http.Headers;
 global using System.Text;
 global using System.Text.Json.Serialization;
-global using Newtonsoft.Json;
-global using OneOf;
-global using Serilog;
 global using TunNetCom.AionTime.AzureDevopsService.API;
 global using TunNetCom.AionTime.AzureDevopsService.API.Clients;
 global using TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers;

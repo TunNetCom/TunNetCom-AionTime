@@ -1,4 +1,5 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+
 public partial class WorkItemHistory : BaseEntity
 {
     public string? History { get; set; }

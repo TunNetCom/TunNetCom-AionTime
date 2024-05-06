@@ -12,7 +12,7 @@ public class GetOrganizationsQueryHandler(IRepository<Organization> organization
     {
         var res = await _organizationRepository.GetAsync();
         var organizations = _mapper.Map<IReadOnlyList<OrganizationRequest>>(res);
-        if (organizations is null or[])
+        if (organizations is null or [])
         {
             throw new NotFoundException("there's no organizations");
         }

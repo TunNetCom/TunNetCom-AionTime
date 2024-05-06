@@ -1,4 +1,5 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+
 public partial class WorkItem : BaseEntity
 {
     public string? Discription { get; set; }

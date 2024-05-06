@@ -1,4 +1,5 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+
 public partial class Organization : BaseEntity
 {
     public string Name { get; set; } = null!;

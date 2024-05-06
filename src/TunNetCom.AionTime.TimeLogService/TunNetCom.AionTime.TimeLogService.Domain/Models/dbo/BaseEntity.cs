@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace TunNetCom.AionTime.TimeLogService.Domain.Models.dbo;
+namespace TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
 
 public partial class BaseEntity : IRequest<int>
 {
