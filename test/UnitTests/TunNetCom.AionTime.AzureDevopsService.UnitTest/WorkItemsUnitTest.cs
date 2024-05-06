@@ -11,7 +11,7 @@ public class WorkItemsUnitTest
 
         IAzureDevOpsClient azureDevOpsClient = serviceProvider.GetRequiredService<IAzureDevOpsClient>();
 
-        var wiqlRequest = new WiqlRequest
+        WiqlRequest wiqlRequest = new()
         {
             ApiVersion = "v5",
             Organization = "TunNetCom",
