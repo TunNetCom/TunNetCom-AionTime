@@ -84,7 +84,7 @@
     <Rule Id="IDE0120" Action="Error" />
     <Rule Id="IDE0130" Action="Error" />
     <Rule Id="IDE0150" Action="Error" />
-    <Rule Id="IDE0160" Action="Error" />
+    <Rule Id="IDE0160" Action="None" />
     <Rule Id="IDE0161" Action="Error" />
     <Rule Id="IDE0170" Action="Error" />
     <Rule Id="IDE0180" Action="Error" />

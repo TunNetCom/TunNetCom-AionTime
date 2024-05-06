@@ -20,12 +20,8 @@ public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext contex
 
     public async Task DeleteAsync(int id)
     {
-        var entity = await _context.Set<T>().SingleOrDefaultAsync(x => x.Id == id);
-
-        if (entity is null)
-        {
-            throw new KeyNotFoundException(id.ToString());
-        }
+        T? entity = await _context.Set<T>().SingleOrDefaultAsync(x => x.Id == id)
+            ?? throw new KeyNotFoundException(id.ToString());
 
         _ = _context.Remove(entity);
         _ = await _context.SaveChangesAsync();
