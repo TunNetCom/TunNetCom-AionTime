@@ -12,12 +12,12 @@ public partial class AzureDevOpsClient
 
         if (response.StatusCode == HttpStatusCode.OK)
         {
-            var wiqlResponses = await response.Content.ReadFromJsonAsync<WiqlResponses>();
+            WiqlResponses? wiqlResponses = await response.Content.ReadFromJsonAsync<WiqlResponses>();
 
             return wiqlResponses;
         }
 
-        var wiqlBadResponses = await response.Content.ReadFromJsonAsync<WiqlBadRequest>();
+        WiqlBadRequest? wiqlBadResponses = await response.Content.ReadFromJsonAsync<WiqlBadRequest>();
 
         return wiqlBadResponses;
     }

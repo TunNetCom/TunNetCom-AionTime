@@ -2,13 +2,13 @@
 
 public class WiqlResponses
 {
-    public string QueryType { get; set; }
+    public string QueryType { get; set; } = string.Empty;
 
-    public string QueryResultType { get; set; }
+    public string QueryResultType { get; set; } = string.Empty;
 
     public DateTime AsOf { get; set; }
 
-    public List<Column> Columns { get; set; }
+    public IEnumerable<Column> Columns { get; set; } = Enumerable.Empty<Column>();
 
-    public List<WorkItem> WorkItems { get; set; }
+    public IEnumerable<WorkItem> WorkItems { get; set; } = Enumerable.Empty<WorkItem>();
 }

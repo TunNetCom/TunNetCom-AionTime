@@ -1,8 +1,10 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models;
+﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
 
-public partial class Organization : BaseEntity
+public partial class Organization(IEnumerable<Project> projects, string name) : BaseEntity
 {
-    public string Name { get; set; } = null!;
+    private readonly List<Project> _projects = projects.ToList();
 
-    public virtual ICollection<Project>? Projects { get; set; }
+    public IReadOnlyCollection<Project> Projects => _projects.AsReadOnly();
+
+    public string Name { get; set; } = name;
 }

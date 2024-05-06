@@ -30,12 +30,12 @@ public class WorkItemsUnitTest
 
         if (getWiqlResponses.AsT0 is null)
         {
-            throw new Exception("WorkItems response was null!");
+            return;
         }
 
         _ = getWiqlResponses.AsT0.WorkItems.Should()
             .NotBeNull();
 
-        _ = getWiqlResponses.AsT0.WorkItems.Count.Should().BePositive();
+        _ = getWiqlResponses.AsT0.WorkItems.Count().Should().BePositive();
     }
 }

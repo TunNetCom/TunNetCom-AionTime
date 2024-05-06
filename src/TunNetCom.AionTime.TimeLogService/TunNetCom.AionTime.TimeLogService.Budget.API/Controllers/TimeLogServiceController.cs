@@ -1,19 +1,16 @@
-namespace TunNetCom.AionTime.Budget.API.Controllers;
+using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
+using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
+using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
+using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
+using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+
+namespace TunNetCom.AionTime.TimeLogService.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class TimeLogServiceController : ControllerBase
+public class TimeLogServiceController(IMediator mediator) : ControllerBase
 {
-    private readonly ILogger<TimeLogServiceController> _logger;
-    private readonly IMediator _mediator;
-
-    public TimeLogServiceController(
-        ILogger<TimeLogServiceController> logger,
-        IMediator mediator)
-    {
-        _logger = logger;
-        _mediator = mediator;
-    }
+    private readonly IMediator _mediator = mediator;
 
     [HttpPost]
     [Route("CreateOrganization")]

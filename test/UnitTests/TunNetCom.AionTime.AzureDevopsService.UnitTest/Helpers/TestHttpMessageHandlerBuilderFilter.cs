@@ -1,26 +1,21 @@
 ﻿namespace TunNetCom.AionTime.AzureDevopsService.UnitTest.Helpers;
 
-internal sealed class TestHttpMessageHandlerBuilderFilter
-    : IHttpMessageHandlerBuilderFilter
+internal sealed class TestHttpMessageHandlerBuilderFilter(
+    IEnumerable<HttpMessageHandlerMockWrapper> httpMessageHandlerWrappers)
+        : IHttpMessageHandlerBuilderFilter
 {
-    private readonly IEnumerable<HttpMessageHandlerMockWrapper> _httpMessageHandlerWrappers;
-
-    // Injection of previously registered maps
-    public TestHttpMessageHandlerBuilderFilter(IEnumerable<HttpMessageHandlerMockWrapper> httpMessageHandlerWrappers)
-    {
-        _httpMessageHandlerWrappers = httpMessageHandlerWrappers;
-    }
+    private readonly IEnumerable<HttpMessageHandlerMockWrapper> _httpMessageHandlerWrappers = httpMessageHandlerWrappers;
 
     public Action<HttpMessageHandlerBuilder> Configure(Action<HttpMessageHandlerBuilder> next)
     {
         return builder =>
         {
             // Checking if a given HttpClient has a registered HttpMessageHandler mock
-            var mockHandlerWrapper = _httpMessageHandlerWrappers
+            HttpMessageHandlerMockWrapper? mockHandlerWrapper = _httpMessageHandlerWrappers
                 .SingleOrDefault(x =>
                     x.TypedHttpClientType.Name.Equals(
                         builder.Name,
-                        StringComparison.InvariantCultureIgnoreCase));
+                        StringComparison.OrdinalIgnoreCase));
 
             if (mockHandlerWrapper is not null)
             {

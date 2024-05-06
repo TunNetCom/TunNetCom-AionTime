@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Interfaces.IRepository;
+﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
 
 public interface IRepository<T>
     where T : BaseEntity
@@ -9,13 +9,13 @@ public interface IRepository<T>
 
     Task AddAsync(T entity);
 
-    Task AddRangeAsync(List<T> entities);
+    Task AddRangeAsync(IEnumerable<T> entities);
 
     Task UpdateAsync(T entity);
 
-    Task UpdateRangeAsync(List<T> entities);
+    Task UpdateRangeAsync(IEnumerable<T> entities);
 
     Task DeleteAsync(int id);
 
-    Task DeleteRangeAsync(List<T> entities);
+    Task DeleteRangeAsync(IEnumerable<T> entities);
 }

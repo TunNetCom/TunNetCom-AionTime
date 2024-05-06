@@ -1,4 +1,6 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure.Repository;
+﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
+
+namespace TunNetCom.AionTime.TimeLogService.Infrastructure.Repositories;
 
 public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext context)
     : IRepository<T>
@@ -6,7 +8,7 @@ public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext contex
 {
     private readonly TunNetComAionTimeTimeLogServiceDataBaseContext _context = context;
 
-    public async Task AddRangeAsync(List<T> entities)
+    public async Task AddRangeAsync(IEnumerable<T> entities)
     {
         await _context.AddRangeAsync(entities);
         _ = await _context.SaveChangesAsync();
@@ -43,13 +45,13 @@ public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext contex
         _ = await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateRangeAsync(List<T> entities)
+    public async Task UpdateRangeAsync(IEnumerable<T> entities)
     {
         _ = _context.Entry(entities).State = EntityState.Modified;
         _ = await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteRangeAsync(List<T> entities)
+    public async Task DeleteRangeAsync(IEnumerable<T> entities)
     {
         _context.RemoveRange(entities);
         _ = await _context.SaveChangesAsync();

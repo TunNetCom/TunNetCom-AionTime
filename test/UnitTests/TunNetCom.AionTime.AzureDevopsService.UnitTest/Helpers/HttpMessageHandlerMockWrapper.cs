@@ -1,16 +1,10 @@
 ﻿namespace TunNetCom.AionTime.AzureDevopsService.UnitTest.Helpers;
 
-internal sealed class HttpMessageHandlerMockWrapper
+internal sealed class HttpMessageHandlerMockWrapper(
+    Type typedHttpClientType,
+    HttpMessageHandler httpMessageHandlerMock)
 {
-    public HttpMessageHandlerMockWrapper(
-        Type typedHttpClientType,
-        HttpMessageHandler httpMessageHandlerMock)
-    {
-        TypedHttpClientType = typedHttpClientType;
-        HttpMessageHandlerMock = httpMessageHandlerMock;
-    }
+    public Type TypedHttpClientType { get; } = typedHttpClientType;
 
-    public Type TypedHttpClientType { get; }
-
-    public HttpMessageHandler HttpMessageHandlerMock { get; }
+    public HttpMessageHandler HttpMessageHandlerMock { get; } = httpMessageHandlerMock;
 }

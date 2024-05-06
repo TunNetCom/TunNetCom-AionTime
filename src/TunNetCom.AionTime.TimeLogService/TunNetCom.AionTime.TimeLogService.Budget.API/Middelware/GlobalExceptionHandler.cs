@@ -1,50 +1,25 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.API.Middleware;
+﻿namespace TunNetCom.AionTime.TimeLogService.API.Middelware;
 
-internal sealed class GlobalExceptionHandler : IExceptionHandler
+internal sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
+    : IExceptionHandler
 {
-    private readonly ILogger<GlobalExceptionHandler> _logger;
+    private readonly ILogger<GlobalExceptionHandler> _logger = logger;
 
-    public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
-    {
-        _logger = logger;
-    }
-
-    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
+    public async ValueTask<bool> TryHandleAsync(
+        HttpContext httpContext,
+        Exception exception,
+        CancellationToken cancellationToken)
     {
         HttpStatusCode statusCode = HttpStatusCode.InternalServerError;
-        CustomProblemDetails problem;
-        switch (exception)
+        ProblemDetails problem;
+
+        problem = new ProblemDetails
         {
-            case BadRequestException:
-                statusCode = HttpStatusCode.BadRequest;
-                problem = new CustomProblemDetails
-                {
-                    Title = exception.Message,
-                    Status = (int)statusCode,
-                    Detail = exception.InnerException?.Message,
-                    Type = exception.GetType().Name,
-                };
-                break;
-            case NotFoundException:
-                statusCode = HttpStatusCode.NotFound;
-                problem = new CustomProblemDetails
-                {
-                    Title = exception.Message,
-                    Status = (int)statusCode,
-                    Detail = exception.InnerException?.Message,
-                    Type = exception.GetType().Name,
-                };
-                break;
-            default:
-                problem = new CustomProblemDetails
-                {
-                    Title = exception.Message,
-                    Status = (int)statusCode,
-                    Detail = exception.InnerException?.Message,
-                    Type = exception.GetType().Name,
-                };
-                break;
-        }
+            Title = exception.Message,
+            Status = (int)statusCode,
+            Detail = exception.InnerException?.Message,
+            Type = exception.GetType().Name,
+        };
 
         httpContext.Response.StatusCode = (int)statusCode;
         string logMessage = JsonConvert.SerializeObject(problem);

@@ -1,4 +1,6 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application;
+﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
+
+namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
 
 public class DeleteOrganizationCommandHandler(IRepository<Organization> organizationRepository)
     : IRequestHandler<DeleteOrganizationCommand, int>

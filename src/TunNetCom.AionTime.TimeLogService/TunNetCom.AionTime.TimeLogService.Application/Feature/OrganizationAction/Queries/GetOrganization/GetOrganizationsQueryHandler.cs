@@ -1,4 +1,7 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application;
+﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
+using TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
+
+namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
 
 public class GetOrganizationsQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<GetOrganizationsQuery, IReadOnlyList<OrganizationRequest>>
@@ -10,12 +13,9 @@ public class GetOrganizationsQueryHandler(IRepository<Organization> organization
         GetOrganizationsQuery request,
         CancellationToken cancellationToken)
     {
-        var res = await _organizationRepository.GetAsync();
-        var organizations = _mapper.Map<IReadOnlyList<OrganizationRequest>>(res);
-        if (organizations is null or [])
-        {
-            throw new NotFoundException("there's no organizations");
-        }
+        IReadOnlyList<Organization> organisationList = await _organizationRepository.GetAsync();
+        IReadOnlyList<OrganizationRequest> organizations =
+            _mapper.Map<IReadOnlyList<OrganizationRequest>>(organisationList);
 
         return organizations;
     }

@@ -1,4 +1,4 @@
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
@@ -6,20 +6,20 @@ builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
 builder.Services.AddAzureDevOpsClients();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    _ = app.UseSwagger();
+    _ = app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.MapPost("/todoitems", async (IAzureDevOpsClient azureDevOpsClient) =>
+app.MapPost("/wiql", async (IAzureDevOpsClient azureDevOpsClient) =>
 {
-    var wiqlRequest = new WiqlRequest
+    WiqlRequest wiqlRequest = new()
     {
         ApiVersion = "v5",
         Organization = "TunNetCom",
@@ -30,14 +30,14 @@ app.MapPost("/todoitems", async (IAzureDevOpsClient azureDevOpsClient) =>
                     AND EVER [System.AssignedTo] = 'Nieze <nieze.benmansour@outlook.fr>'",
     };
 
-    var wiqlResponses = await azureDevOpsClient.GetWiqlResponses(wiqlRequest);
+    OneOf<WiqlResponses?, WiqlBadRequest?> wiqlResponses = await azureDevOpsClient.GetWiqlResponses(wiqlRequest);
 
     return Results.Ok(wiqlResponses.AsT0);
 });
 
 app.MapPost("/projects", async (IAzureDevOpsClient azureDevOpsClient) =>
 {
-    var baseRequest = new BaseRequest
+    BaseRequest baseRequest = new()
     {
         ApiVersion = "v5",
         Organization = "TunNetCom",
@@ -45,9 +45,9 @@ app.MapPost("/projects", async (IAzureDevOpsClient azureDevOpsClient) =>
         Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
     };
 
-    var res = await azureDevOpsClient.GetAll(baseRequest);
+    GetAllProjectsResponse? getAllProjectsResponse = await azureDevOpsClient.GetAll(baseRequest);
 
-    return Results.Ok(res);
+    return Results.Ok(getAllProjectsResponse);
 });
 
 app.Run();

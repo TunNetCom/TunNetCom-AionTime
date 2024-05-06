@@ -17,12 +17,12 @@ internal static class DependencyInjectionExtensions
         }
 
         // Register a mock handler
-        services
+        _ = services
             .AddTransient(_ => new HttpMessageHandlerMockWrapper(typeof(TClient), mockMessageHandler));
 
         // Replace the default or already registered IHttpMessageHandlerBuilderFilter
         // with our TestHttpMessageHandlerBuilderFilter
-        services
+        _ = services
             .Replace(
                 ServiceDescriptor
                     .Transient<IHttpMessageHandlerBuilderFilter, TestHttpMessageHandlerBuilderFilter>());

@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application;
+﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
 
 public class GetOrganizationQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<GetOrganizationByIdQuery, OrganizationRequest>
@@ -8,13 +8,13 @@ public class GetOrganizationQueryHandler(IRepository<Organization> organizationR
 
     public async Task<OrganizationRequest> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
     {
-        var res = await _organizationRepository.GetByIdAsync(request.Id);
-        var organization = _mapper.Map<OrganizationRequest>(res);
-        if (organization is null)
-        {
-            throw new NotFoundException($"Cannot find organization with this Id {request.Id}");
-        }
+        Organization? organization = await _organizationRepository.GetByIdAsync(request.Id);
+        OrganizationRequest organizationRequest = _mapper.Map<OrganizationRequest>(organization);
 
-        return organization;
+        // if (organizationRequest is null)
+        // {
+        //    throw new NotFoundException($"Cannot find organization with this Id {request.Id}");
+        // }
+        return organizationRequest;
     }
 }

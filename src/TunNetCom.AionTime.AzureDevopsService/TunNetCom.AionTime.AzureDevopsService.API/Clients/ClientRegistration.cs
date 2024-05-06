@@ -4,9 +4,9 @@ public static class ClientRegistration
 {
     public static IServiceCollection AddAzureDevOpsClients(this IServiceCollection services)
     {
-        services.AddTransient<HttpClientPatHandler>();
+        _ = services.AddTransient<HttpClientPatHandler>();
 
-        services.AddHttpClient<IAzureDevOpsClient, AzureDevOpsClient>((serviceProvider, client) =>
+        _ = services.AddHttpClient<IAzureDevOpsClient, AzureDevOpsClient>((serviceProvider, client) =>
         {
             client.DefaultRequestHeaders.Clear();
 

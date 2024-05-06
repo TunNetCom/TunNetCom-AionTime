@@ -4,7 +4,7 @@ public class HttpClientPatHandler(
     ILogger<HttpClientPatHandler> logger)
     : DelegatingHandler
 {
-    private ILogger<HttpClientPatHandler> _logger = logger;
+    private readonly ILogger<HttpClientPatHandler> _logger = logger;
 
     protected override async Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request,
@@ -15,10 +15,10 @@ public class HttpClientPatHandler(
             throw new ArgumentNullException(nameof(request));
         }
 
-        var requestBody = await request.Content.ReadAsStringAsync(cancellationToken);
-        var baseRequest = JsonConvert.DeserializeObject<BaseRequest>(requestBody);
+        string requestBody = await request.Content.ReadAsStringAsync(cancellationToken);
+        BaseRequest? baseRequest = JsonConvert.DeserializeObject<BaseRequest>(requestBody);
 
-        var organizationName = baseRequest?.Organization;
+        string? organizationName = baseRequest?.Organization;
 
         if (string.IsNullOrEmpty(organizationName))
         {
@@ -27,15 +27,15 @@ public class HttpClientPatHandler(
         }
 
         // TODO get the PAT from this DB by organisation name
-        var config = new ConfigurationBuilder()
+        IConfigurationRoot config = new ConfigurationBuilder()
             .AddUserSecrets<IAzureDevOpsClient>()
             .Build();
 
-        var basicAuthenticationPassword = config["tmp_pat:default"];
+        string? basicAuthenticationPassword = config["tmp_pat:default"];
 
-        var basicAuthenticationUsername = "Basic";
+        string basicAuthenticationUsername = "Basic";
 
-        var basicAuthenticationValue = Convert.ToBase64String(
+        string basicAuthenticationValue = Convert.ToBase64String(
                 Encoding.ASCII.GetBytes($"{basicAuthenticationUsername}:{basicAuthenticationPassword}"));
 
         request.Headers.Authorization = new AuthenticationHeaderValue("Basic", basicAuthenticationValue);
