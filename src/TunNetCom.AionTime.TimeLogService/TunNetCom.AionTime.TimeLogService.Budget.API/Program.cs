@@ -18,17 +18,17 @@ if (app.Environment.IsDevelopment())
     using (IServiceScope scope = app.Services.CreateScope())
     {
         TunNetComAionTimeTimeLogServiceDataBaseContext dbContext = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
-        dbContext.Database.EnsureCreated();
+        _ = dbContext.Database.EnsureCreated();
     }
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    _ = app.UseSwagger();
+    _ = app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseExceptionHandler();
-app.UseAuthorization();
+_ = app.UseHttpsRedirection();
+_ = app.UseExceptionHandler();
+_ = app.UseAuthorization();
 
-app.MapControllers();
+_ = app.MapControllers();
 
 app.Run();

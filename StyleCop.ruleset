@@ -90,7 +90,6 @@
     <Rule Id="CA1502" Action="Error" />
     <Rule Id="CA1504" Action="Error" />
     <Rule Id="CA1505" Action="Error" />
-    <Rule Id="CA1506" Action="Warning" />
     <Rule Id="CA1600" Action="Error" />
     <Rule Id="CA1601" Action="Error" />
     <Rule Id="CA1700" Action="Error" />
@@ -444,7 +443,7 @@
     <Rule Id="CS8009" Action="Error" />
     <Rule Id="CS8012" Action="Error" />
     <Rule Id="CS8018" Action="Error" />
-    <Rule Id="CS8019" Action="Warning" />
+    <Rule Id="CS8019" Action="None" />
     <Rule Id="CS8020" Action="Error" />
     <Rule Id="CS8021" Action="Error" />
     <Rule Id="CS8029" Action="Error" />
@@ -551,7 +550,7 @@
     <Rule Id="CS8898" Action="Error" />
     <Rule Id="CS8907" Action="Error" />
     <Rule Id="CS8909" Action="Error" />
-    <Rule Id="CS8933" Action="Warning" />
+    <Rule Id="CS8933" Action="None" />
     <Rule Id="CS8947" Action="Error" />
     <Rule Id="CS8960" Action="Error" />
     <Rule Id="CS8961" Action="Error" />
@@ -770,6 +769,10 @@
     <Rule Id="CA2231" Action="Error" />
     <Rule Id="CA2241" Action="Error" />
     <Rule Id="CA2242" Action="Error" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.EntityFrameworkCore.Analyzers" RuleNamespace="Microsoft.EntityFrameworkCore.Analyzers">
+    <Rule Id="EF1001" Action="Error" />
+    <Rule Id="EF1002" Action="Error" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
     <Rule Id="SA0002" Action="Error" />

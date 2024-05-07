@@ -2,14 +2,20 @@
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)StyleCop.ruleset</CodeAnalysisRuleSet>
+<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+  <NoWarn>$(NoWarn),1573,1591,1712</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)StyleCop.ruleset</CodeAnalysisRuleSet>
+<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+  <NoWarn>$(NoWarn),1573,1591,1712</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='FullDebug|AnyCPU'">
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)StyleCop.ruleset</CodeAnalysisRuleSet>
+<DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
+  <NoWarn>$(NoWarn),1573,1591,1712</NoWarn>
   </PropertyGroup>
   
   <ItemGroup>
