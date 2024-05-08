@@ -4,11 +4,11 @@
     {
         public MappingProfile()
         {
-            CreateMap<OrganizationRequest, Organization>().ReverseMap();
-            CreateMap<WorkItemRequest, WorkItem>();
-            CreateMap<WorkItemHistoryRequest, WorkItemHistory>();
-            CreateMap<WorkItemTimeLogRequest, WorkItemTimeLog>();
-            CreateMap<ProjectRequest, Project>();
+            _ = CreateMap<OrganizationRequest, Organization>().ReverseMap();
+            _ = CreateMap<WorkItemRequest, WorkItem>();
+            _ = CreateMap<WorkItemHistoryRequest, WorkItemHistory>();
+            _ = CreateMap<WorkItemTimeLogRequest, WorkItemTimeLog>();
+            _ = CreateMap<ProjectRequest, Project>();
         }
     }
 }

@@ -2,10 +2,10 @@
 {
     public static class ApplicationServiceRegistration
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            _ = services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
     }

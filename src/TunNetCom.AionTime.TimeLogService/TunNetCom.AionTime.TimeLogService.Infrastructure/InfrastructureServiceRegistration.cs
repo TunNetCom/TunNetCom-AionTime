@@ -1,9 +1,9 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Infrastructure;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
 using TunNetCom.AionTime.TimeLogService.Infrastructure.Repositories;
+
+namespace TunNetCom.AionTime.TimeLogService.Infrastructure;
 
 public static class InfrastructureServiceRegistration
 {
@@ -11,16 +11,17 @@ public static class InfrastructureServiceRegistration
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddDbContext<TunNetComAionTimeTimeLogServiceDataBaseContext>(options =>
+        _ = services.AddDbContext<TunNetComAionTimeTimeLogServiceDataBaseContext>(options =>
         {
-            options.UseSqlServer(
+            _ = options.UseSqlServer(
                 configuration.GetConnectionString("TimeLogContext"),
                 sqlServerOptionsAction: sqlOptions =>
                 {
-                    sqlOptions.EnableRetryOnFailure();
+                    _ = sqlOptions.EnableRetryOnFailure();
                 });
         });
-        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
         return services;
     }
 }

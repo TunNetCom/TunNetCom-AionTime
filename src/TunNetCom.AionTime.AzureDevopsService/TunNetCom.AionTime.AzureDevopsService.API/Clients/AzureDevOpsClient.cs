@@ -1,15 +1,9 @@
 ﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
 
-public partial class AzureDevOpsClient : IAzureDevOpsClient
+public partial class AzureDevOpsClient(
+    HttpClient httpClient,
+    ILogger<AzureDevOpsClient> logger) : IAzureDevOpsClient
 {
-    private readonly HttpClient _httpClient;
-    private readonly ILogger<AzureDevOpsClient> _logger;
-
-    public AzureDevOpsClient(
-        HttpClient httpClient,
-        ILogger<AzureDevOpsClient> logger)
-    {
-        _httpClient = httpClient;
-        _logger = logger;
-    }
+    private readonly HttpClient _httpClient = httpClient;
+    private readonly ILogger<AzureDevOpsClient> _logger = logger;
 }

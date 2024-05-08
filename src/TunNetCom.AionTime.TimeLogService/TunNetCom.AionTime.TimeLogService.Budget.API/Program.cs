@@ -5,7 +5,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
 builder.Services.AddControllers();
 builder.Services.AddInfrastructureServiceRegistration(builder.Configuration);
-builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddApplicationServices();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
