@@ -2,11 +2,11 @@
 
 public partial class AzureDevOpsClient
 {
-    public async Task<GetAllProjectsResponse?> GetAll(BaseRequest baseRequest)
+    public async Task<TeamResponse?> GetTeamsByProjectAsync(string organizationName, string projectName)
     {
         HttpResponseMessage response = await _httpClient.GetAsync(
-            new Uri(
-            $"/{baseRequest.Organization}/_apis/projects?api-version={_coreServerSettings.ApiVersion}",
+        new Uri(
+            $"/{organizationName}/_apis/projects/{projectName}/teams?$mine=false&api-version={_coreServerSettings.ApiVersion}",
             UriKind.Relative));
 
         if (response.StatusCode == HttpStatusCode.NotFound)
@@ -16,10 +16,10 @@ public partial class AzureDevOpsClient
 
         if (response.StatusCode == HttpStatusCode.OK)
         {
-            GetAllProjectsResponse? wiqlResponses
-                = await response.Content.ReadFromJsonAsync<GetAllProjectsResponse>();
+            TeamResponse? teamResponse
+                = await response.Content.ReadFromJsonAsync<TeamResponse>();
 
-            return wiqlResponses;
+            return teamResponse;
         }
 
         return null;

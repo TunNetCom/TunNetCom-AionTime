@@ -1,10 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using TunNetCom.AionTime.AzureDevopsService.API.Clients.Settings;
+using TunNetCom.AionTime.AzureDevopsService.API.Data;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
-builder.Services.AddAzureDevOpsClients();
+IConfigurationSection coreServerSettingsSection = builder.Configuration.GetSection(nameof(CoreServerSettings));
+builder.Services.AddAzureDevOpsClients(coreServerSettingsSection);
+builder.Services.AddScoped<IPatResolver, PatResolver>();
+builder.Services.AddDbContext<AzureDevOpsContext>(
+        options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+builder.Services.AddMediatR((conf) => { _ = conf.RegisterServicesFromAssembly(typeof(Program).Assembly); });
 
 WebApplication app = builder.Build();
 
@@ -15,39 +26,10 @@ if (app.Environment.IsDevelopment())
     _ = app.UseSwaggerUI();
 }
 
+app.AddTestEndpoints();
+
+app.UseExceptionHandler();
+
 app.UseHttpsRedirection();
-
-app.MapPost("/wiql", async (IAzureDevOpsClient azureDevOpsClient) =>
-{
-    WiqlRequest wiqlRequest = new()
-    {
-        ApiVersion = "v5",
-        Organization = "TunNetCom",
-        Project = "Aion_Time",
-        Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
-        Query = @"SELECT [System.Id], [System.Title], [System.State], [System.IterationPath] 
-                    FROM workitems WHERE [System.TeamProject] = @project AND [System.WorkItemType] <> '' 
-                    AND EVER [System.AssignedTo] = 'Nieze <nieze.benmansour@outlook.fr>'",
-    };
-
-    OneOf<WiqlResponses?, WiqlBadRequest?> wiqlResponses = await azureDevOpsClient.GetWiqlResponses(wiqlRequest);
-
-    return Results.Ok(wiqlResponses.AsT0);
-});
-
-app.MapPost("/projects", async (IAzureDevOpsClient azureDevOpsClient) =>
-{
-    BaseRequest baseRequest = new()
-    {
-        ApiVersion = "v5",
-        Organization = "TunNetCom",
-        Project = "Aoin_Time",
-        Team = "938eb754-ae25-4088-bf34-c9bf242e966c",
-    };
-
-    GetAllProjectsResponse? getAllProjectsResponse = await azureDevOpsClient.GetAll(baseRequest);
-
-    return Results.Ok(getAllProjectsResponse);
-});
 
 app.Run();

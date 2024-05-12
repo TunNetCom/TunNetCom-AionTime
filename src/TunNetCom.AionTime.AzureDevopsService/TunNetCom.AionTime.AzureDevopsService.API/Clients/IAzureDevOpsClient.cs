@@ -1,5 +1,10 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
+﻿using TunNetCom.AionTime.AzureDevopsService.API.Clients.Teams;
 
-public interface IAzureDevOpsClient : IProjectClient, IWorkItemClient
+namespace TunNetCom.AionTime.AzureDevopsService.API.Clients;
+
+public interface IAzureDevOpsClient :
+    IProjectClient,
+    IWorkItemClient,
+    ITeamsClient
 {
 }

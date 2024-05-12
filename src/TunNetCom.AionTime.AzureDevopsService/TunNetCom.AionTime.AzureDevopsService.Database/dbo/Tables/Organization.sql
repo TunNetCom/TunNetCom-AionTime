@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [dbo].[Organization]
 (
-	[Id] INT  IDENTITY (1, 1) PRIMARY KEY NOT NULL,
-	[Name] Varchar(255) not null
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(255) NOT NULL, 
+    [Pat] NVARCHAR(150) NOT NULL 
 )
 
 GO

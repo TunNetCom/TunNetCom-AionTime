@@ -1,0 +1,49 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "AzureDevOpsContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "Entites",
+   "OutputContextPath": null,
+   "OutputPath": "Data",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "TunNetCom.AionTime.AzureDevopsService.API",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[AzureDevopsHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Organization]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "laptop-ur7s8c4k.AzureDevOpsBd.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": true,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": true,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

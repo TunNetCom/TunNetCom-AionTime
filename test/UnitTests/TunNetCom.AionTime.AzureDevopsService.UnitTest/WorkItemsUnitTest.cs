@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Configuration;
+
 namespace TunNetCom.AionTime.AzureDevopsService.UnitTest;
 
 public class WorkItemsUnitTest
@@ -5,8 +7,8 @@ public class WorkItemsUnitTest
     [Fact]
     public async Task GetWorkItemsTest()
     {
+        // .AddAzureDevOpsClients()
         ServiceProvider serviceProvider = new ServiceCollection()
-            .AddAzureDevOpsClients()
             .BuildServiceProvider();
 
         IAzureDevOpsClient azureDevOpsClient = serviceProvider.GetRequiredService<IAzureDevOpsClient>();
