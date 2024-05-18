@@ -1,34 +1,53 @@
+using Serilog.Events;
 using TunNetCom.AionTime.TimeLogService.API.Middelware;
 using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
-builder.Services.AddControllers();
-builder.Services.AddInfrastructureServiceRegistration(builder.Configuration);
-builder.Services.AddApplicationServices();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-builder.Services.AddProblemDetails();
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-WebApplication app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+try
 {
-    using (IServiceScope scope = app.Services.CreateScope())
+    WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+    _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
+    _ = builder.Services.AddControllers();
+    _ = builder.Services.AddInfrastructureServiceRegistration(builder.Configuration);
+    _ = builder.Services.AddApplicationServices();
+    _ = builder.Services.AddEndpointsApiExplorer();
+    _ = builder.Services.AddSwaggerGen();
+    _ = builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+    _ = builder.Services.AddProblemDetails();
+
+    WebApplication app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
     {
-        TunNetComAionTimeTimeLogServiceDataBaseContext dbContext = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
-        _ = dbContext.Database.EnsureCreated();
+        using (IServiceScope scope = app.Services.CreateScope())
+        {
+            TunNetComAionTimeTimeLogServiceDataBaseContext dbContext = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
+            _ = dbContext.Database.EnsureCreated();
+        }
+
+        _ = app.UseSwagger();
+        _ = app.UseSwaggerUI();
     }
 
-    _ = app.UseSwagger();
-    _ = app.UseSwaggerUI();
+    _ = app.UseHttpsRedirection();
+    _ = app.UseExceptionHandler();
+    _ = app.UseAuthorization();
+
+    _ = app.MapControllers();
+
+    app.Run();
 }
-
-_ = app.UseHttpsRedirection();
-_ = app.UseExceptionHandler();
-_ = app.UseAuthorization();
-
-_ = app.MapControllers();
-
-app.Run();
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
