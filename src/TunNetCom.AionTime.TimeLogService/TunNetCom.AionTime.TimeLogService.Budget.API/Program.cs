@@ -11,7 +11,7 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
+    _ = builder.Services.AddHttpContextAccessor();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddControllers();
     _ = builder.Services.AddInfrastructureServiceRegistration(builder.Configuration);
