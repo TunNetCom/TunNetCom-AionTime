@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
+using TunNetCom.AionTime.TimeLogService.Infrastructure.MultiTenancy;
 using TunNetCom.AionTime.TimeLogService.Infrastructure.Repositories;
 
 namespace TunNetCom.AionTime.TimeLogService.Infrastructure;
@@ -11,6 +12,7 @@ public static class InfrastructureServiceRegistration
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        _ = services.AddScoped<MultiTenancyService>();
         _ = services.AddDbContext<TunNetComAionTimeTimeLogServiceDataBaseContext>(options =>
         {
             _ = options.UseSqlServer(

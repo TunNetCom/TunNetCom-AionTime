@@ -3,6 +3,7 @@ using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllers();
 builder.Services.AddInfrastructureServiceRegistration(builder.Configuration);
 builder.Services.AddApplicationServices();
