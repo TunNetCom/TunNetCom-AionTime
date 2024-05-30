@@ -6,6 +6,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - OTEL_EXPORTER_JAEGER_AGENT_HOST=jaeger
+      - OTEL_EXPORTER_JAEGER_AGENT_PORT=6831
+      - OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ASPNETCORE_HTTP_PORTS=80
     ports:
       - "8080"
       - "8081"
@@ -17,6 +22,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
+      - OTEL_EXPORTER_JAEGER_AGENT_HOST=jaeger
+      - OTEL_EXPORTER_JAEGER_AGENT_PORT=6831
+      - OTEL_EXPORTER_JAEGER_ENDPOINT=http://jaeger:14268/api/traces
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+      - ASPNETCORE_HTTP_PORTS=80
     ports:
       - "8080"
       - "8081"
