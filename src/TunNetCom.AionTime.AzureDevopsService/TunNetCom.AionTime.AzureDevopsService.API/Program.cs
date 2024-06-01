@@ -7,21 +7,9 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-    _ = builder.Logging
-    .AddOpenTelemetry(options =>
-    {
-        options.IncludeFormattedMessage = true;
-        options.IncludeScopes = true;
-
-        ResourceBuilder resBuilder = ResourceBuilder.CreateDefault();
-        _ = resBuilder.AddService(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsService");
-        _ = options.SetResourceBuilder(resBuilder);
-
-        _ = options.AddOtlpExporter();
-    });
-
+    _ = builder.Logging.AddLoggingService();
     Log.Information("Starting web host");
-    _ = builder.Services.AddExtensionService();
+    _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));

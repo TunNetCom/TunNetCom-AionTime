@@ -1,8 +1,8 @@
 ﻿namespace TunNetCom.AionTime.TimeLogService.API;
 
-public static class ExtentionService
+public static class ExtentionServiceRegistration
 {
-    public static IServiceCollection AddExtensionServiceRegistration(
+    public static IServiceCollection AddMonitoringService(
    this IServiceCollection services)
     {
         _ = services.Configure<AspNetCoreTraceInstrumentationOptions>(options =>
@@ -30,5 +30,21 @@ public static class ExtentionService
             .AddPrometheusExporter());
 
         return services;
+    }
+
+    public static ILoggingBuilder AddLoggingService(this ILoggingBuilder logging)
+    {
+        _ = logging.AddOpenTelemetry(options =>
+        {
+            options.IncludeFormattedMessage = true;
+            options.IncludeScopes = true;
+
+            ResourceBuilder resBuilder = ResourceBuilder.CreateDefault();
+            _ = resBuilder.AddService(typeof(Program).Assembly.GetName().Name ?? "TimeLogService");
+            _ = options.SetResourceBuilder(resBuilder);
+
+            _ = options.AddOtlpExporter();
+        });
+        return logging;
     }
 }

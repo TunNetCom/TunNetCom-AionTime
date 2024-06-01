@@ -7,19 +7,8 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-    _ = builder.Logging
-    .AddOpenTelemetry(options =>
-    {
-        options.IncludeFormattedMessage = true;
-        options.IncludeScopes = true;
-
-        ResourceBuilder resBuilder = ResourceBuilder.CreateDefault();
-        _ = resBuilder.AddService(typeof(Program).Assembly.GetName().Name ?? "TimeLogService");
-        _ = options.SetResourceBuilder(resBuilder);
-
-        _ = options.AddOtlpExporter();
-    });
-    _ = builder.Services.AddExtensionServiceRegistration();
+    _ = builder.Logging.AddLoggingService();
+    _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddHttpContextAccessor();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddControllers();
