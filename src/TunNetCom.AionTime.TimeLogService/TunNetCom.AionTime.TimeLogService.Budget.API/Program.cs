@@ -1,12 +1,3 @@
-using OpenTelemetry.Instrumentation.AspNetCore;
-using OpenTelemetry.Logs;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-using Serilog.Events;
-using TunNetCom.AionTime.TimeLogService.API.Middelware;
-using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
-
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()
@@ -28,30 +19,7 @@ try
 
         _ = options.AddOtlpExporter();
     });
-    _ = builder.Services.Configure<AspNetCoreTraceInstrumentationOptions>(options =>
-    {
-        // Filter out instrumentation of the Prometheus scraping endpoint.
-        options.Filter = ctx => ctx.Request.Path != "/metrics";
-    });
-
-    _ = builder.Services.AddOpenTelemetry()
-        .ConfigureResource(b =>
-        {
-            _ = b.AddService(typeof(Program).Assembly.GetName().Name ?? "TimeLogService");
-        })
-        .WithTracing(b => b
-            .AddAspNetCoreInstrumentation()
-            .AddHttpClientInstrumentation()
-            .AddEntityFrameworkCoreInstrumentation()
-            .AddSource(typeof(Program).Assembly.GetName().Name ?? "TimeLogService")
-            .AddOtlpExporter())
-        .WithMetrics(b => b
-            .AddAspNetCoreInstrumentation()
-            .AddHttpClientInstrumentation()
-            .AddRuntimeInstrumentation()
-            .AddProcessInstrumentation()
-            .AddPrometheusExporter());
-
+    _ = builder.Services.AddExtensionServiceRegistration();
     _ = builder.Services.AddHttpContextAccessor();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddControllers();
