@@ -42,6 +42,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FunctionnelTests", "Functio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.UnitTest", "test\UnitTests\TunNetCom.AionTime.AzureDevopsService.UnitTest\TunNetCom.AionTime.AzureDevopsService.UnitTest.csproj", "{A97F9362-A47E-49A7-88DD-BAAABD8B37D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerConfigs", "DockerConfigs", "{B778042F-6DE9-4BCD-9972-41DAEF2DF78D}"
+	ProjectSection(SolutionItems) = preProject
+		dashboard.yml = dashboard.yml
+		datasource.yml = datasource.yml
+		dotnet-otel-dashboard.json = dotnet-otel-dashboard.json
+		grafana.ini = grafana.ini
+		jaeger-ui.json = jaeger-ui.json
+		logs-dashbords.json = logs-dashbords.json
+		loki.yml = loki.yml
+		otel-collector-config.yml = otel-collector-config.yml
+		prometheus.yml = prometheus.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

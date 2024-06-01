@@ -1,39 +1,88 @@
 version: '3.4'
 
 services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.48.1
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "127.0.0.1:9090:9090"
+
+  otel-collector:
+    container_name: otel-collector
+    image: otel/opentelemetry-collector-contrib:0.91.0
+    command: --config /etc/otelcol/otel-collector-config.yml
+    volumes:
+      - ./otel-collector-config.yml:/etc/otelcol/otel-collector-config.yml
+    ports:
+      - "127.0.0.1:4317:4317"
+    depends_on:
+      - jaeger
+
+
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one:1.52
+    command: --query.ui-config=/etc/jaeger/jaeger-ui.json --collector.otlp.enabled=true --prometheus.server-url=http://prometheus:9090 --prometheus.query.support-spanmetrics-connector=true
+    environment:
+      - METRICS_STORAGE_TYPE=prometheus
+      - PROMETHEUS_QUERY_NORMALIZE_CALLS=true
+      - PROMETHEUS_QUERY_NORMALIZE_DURATION=true
+    volumes:
+      - ./jaeger-ui.json:/etc/jaeger/jaeger-ui.json
+    ports:
+      - "127.0.0.1:16686:16686"
+
+
   SqlServerDb:
-        container_name: SqlServerContainer
-        image: mcr.microsoft.com/mssql/server:2019-latest
-        ports:
-            - 8002:1433
-        environment:
-            - ACCEPT_EULA=Y
-            - MSSQL_SA_PASSWORD=TunetCom2024 
+    container_name: SqlServerContainer
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=TunetCom2024 
 
   tunnetcom.aiontime.timelogservice.api:
+    container_name: TimeLogService
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimetimelogserviceapi
     build:
       context: .
       dockerfile: src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API/Dockerfile
     environment:
+        ServiceName : TimeLogService
         loki: http://loki:3100
         ASPNETCORE_ENVIRONMENT: Development
         ASPNETCORE_URLS: https://+:443;http://+:80
+        OTEL_EXPORTER_JAEGER_AGENT_HOST : jaeger
+        OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
+        OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
+        OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
+        ASPNETCORE_HTTP_PORTS : 80
     ports:
         - 8085:80
         - 8086:443
     depends_on: 
         - SqlServerDb
         - loki 
+
   tunnetcom.aiontime.azuredevopsservice.api:
+    container_name: AzureDevopsService
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimeazuredevopsserviceapi
     build:
       context: .
       dockerfile: src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API/Dockerfile
     environment:
+        ServiceName : AzureDevopsService
         loki: http://loki:3100
         ASPNETCORE_ENVIRONMENT: Development
         ASPNETCORE_URLS: https://+:443;http://+:80
+        OTEL_EXPORTER_JAEGER_AGENT_HOST: jaeger
+        OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
+        OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
+        OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
+        ASPNETCORE_HTTP_PORTS : 80
     ports:
         - 8090:80
         - 8091:443
@@ -57,10 +106,19 @@ services:
 
   grafana:
     container_name: grafana
+    volumes:
+      - ./DockerConfigs/grafana.ini:/DockerConfigs/grafana.ini
+      - ./DockerConfigs/datasource.yml:/DockerConfigs/datasource.yaml
+      - ./DockerConfigs/dashboard.yml:/DockerConfigs/dashboard.yml
+      - ./DockerConfigs/dotnet-otel-dashboard.json:/DockerConfigs/dotnet-otel-dashboard.json
+      - ./DockerConfigs/logs-dashboard.json:/DockerConfigs/logs-dashboard.json
     image: grafana/grafana:master
     ports:
       - "3000:3000"
     depends_on:
         loki:
             condition: service_healthy
+
+
+
 

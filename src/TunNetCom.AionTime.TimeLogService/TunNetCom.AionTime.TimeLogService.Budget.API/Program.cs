@@ -1,7 +1,3 @@
-using Serilog.Events;
-using TunNetCom.AionTime.TimeLogService.API.Middelware;
-using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
-
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()
@@ -11,6 +7,8 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+    _ = builder.Logging.AddLoggingService();
+    _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddHttpContextAccessor();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddControllers();
@@ -35,6 +33,7 @@ try
         _ = app.UseSwaggerUI();
     }
 
+    _ = app.MapPrometheusScrapingEndpoint();
     _ = app.UseHttpsRedirection();
     _ = app.UseExceptionHandler();
     _ = app.UseAuthorization();

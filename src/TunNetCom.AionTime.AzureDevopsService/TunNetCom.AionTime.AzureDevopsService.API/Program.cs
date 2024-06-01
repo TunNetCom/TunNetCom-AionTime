@@ -1,11 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Serilog.Events;
-using System.Runtime.CompilerServices;
-using TunNetCom.AionTime.AzureDevopsService.API.Clients.Settings;
-using TunNetCom.AionTime.AzureDevopsService.API.Data;
-
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()
@@ -15,8 +7,9 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
+    _ = builder.Logging.AddLoggingService();
     Log.Information("Starting web host");
+    _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
@@ -37,6 +30,7 @@ try
         _ = app.UseSwaggerUI();
     }
 
+    _ = app.MapPrometheusScrapingEndpoint();
     app.AddTestEndpoints();
 
     _ = app.UseExceptionHandler();
