@@ -5,7 +5,7 @@ services:
     container_name: prometheus
     image: prom/prometheus:v2.48.1
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./DockerConfigs/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "127.0.0.1:9090:9090"
 
@@ -14,7 +14,7 @@ services:
     image: otel/opentelemetry-collector-contrib:0.91.0
     command: --config /etc/otelcol/otel-collector-config.yml
     volumes:
-      - ./otel-collector-config.yml:/etc/otelcol/otel-collector-config.yml
+      - ./DockerConfigs/otel-collector-config.yml:/etc/otelcol/otel-collector-config.yml
     ports:
       - "127.0.0.1:4317:4317"
     depends_on:
@@ -30,7 +30,7 @@ services:
       - PROMETHEUS_QUERY_NORMALIZE_CALLS=true
       - PROMETHEUS_QUERY_NORMALIZE_DURATION=true
     volumes:
-      - ./jaeger-ui.json:/etc/jaeger/jaeger-ui.json
+      - ./DockerConfigs/jaeger-ui.json:/etc/jaeger/jaeger-ui.json
     ports:
       - "127.0.0.1:16686:16686"
 
