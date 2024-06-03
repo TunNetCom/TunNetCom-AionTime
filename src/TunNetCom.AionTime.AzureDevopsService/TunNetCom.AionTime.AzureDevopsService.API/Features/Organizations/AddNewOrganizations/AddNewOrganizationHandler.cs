@@ -1,4 +1,6 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.API.Features.Organizations.AddNewOrganizations;
+﻿using TunNetCom.AionTime.AzureDevopsService.API.Data;
+
+namespace TunNetCom.AionTime.AzureDevopsService.API.Features.Organizations.AddNewOrganizations;
 
 public partial class AddNewOrganizationHandler(
     AzureDevOpsContext azureDevOpsContext,

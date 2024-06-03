@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevopsService.API.Clients.Teams.Contracts;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API;
 
 public static class TestEndpoints
 {

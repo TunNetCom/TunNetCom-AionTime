@@ -27,6 +27,7 @@ public static class ExtensionServiceRegistration
                 .AddRuntimeInstrumentation()
                 .AddProcessInstrumentation()
                 .AddPrometheusExporter());
+
         return services;
     }
 
@@ -41,6 +42,7 @@ public static class ExtensionServiceRegistration
             _ = options.SetResourceBuilder(resBuilder);
             _ = options.AddOtlpExporter();
         });
+
         return logger;
     }
 }

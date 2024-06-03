@@ -13,8 +13,7 @@ try
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
-    IConfigurationSection coreServerSettingsSection = builder.Configuration.GetSection(nameof(CoreServerSettings));
-    _ = builder.Services.AddAzureDevOpsClients(coreServerSettingsSection);
+    _ = builder.Services.AddAzureDevOpsClients(builder.Configuration.GetSection(nameof(CoreServerSettings)));
     _ = builder.Services.AddScoped<IPatResolver, PatResolver>();
     _ = builder.Services.AddDbContext<AzureDevOpsContext>(
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
@@ -26,6 +25,12 @@ try
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
+        using (IServiceScope scope = app.Services.CreateScope())
+        {
+            AzureDevOpsContext dbContext = scope.ServiceProvider.GetRequiredService<AzureDevOpsContext>();
+            _ = dbContext.Database.EnsureCreated();
+        }
+
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
     }

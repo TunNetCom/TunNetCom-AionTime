@@ -9,4 +9,3 @@ global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Teams.Contracts;
 global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems;
 global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
 global using TunNetCom.AionTime.AzureDevopsService.API.Data;
-global using TunNetCom.AionTime.AzureDevopsService.API.Entites;

@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
-using TunNetCom.AionTime.AzureDevopsService.API.Data;
-using TunNetCom.AionTime.AzureDevopsService.API.Entites;
+﻿using TunNetCom.AionTime.AzureDevopsService.API.Data;
 
 namespace TunNetCom.AionTime.AzureDevopsService.API;
 

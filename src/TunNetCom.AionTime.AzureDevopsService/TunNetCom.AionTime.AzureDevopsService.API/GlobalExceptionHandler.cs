@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace TunNetCom.AionTime.AzureDevopsService.API;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.API;
 
 public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IExceptionHandler
 {
