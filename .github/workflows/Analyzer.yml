@@ -36,11 +36,17 @@ jobs:
     - name: Install NuGet
       uses: NuGet/setup-nuget@v1
 
+    - name: Find solution file
+      id: find-sln
+      run: |
+        SOLUTION_FILE=$(find . -name '*.sln' | head -n 1)
+        echo "SOLUTION_FILE=$SOLUTION_FILE" >> $GITHUB_ENV
+
     - name: Restore dependencies
-      run: nuget restore path/to/your/solution.sln
+      run: nuget restore ${{ env.SOLUTION_FILE }}
 
     - name: Build using MSBuild
-      run: msbuild path/to/your/solution.sln /p:Configuration=Release
+      run: msbuild ${{ env.SOLUTION_FILE }} /p:Configuration=Release
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
