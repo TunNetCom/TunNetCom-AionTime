@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   prometheus:
-    container_name: prometheus
+    container_name: Prometheus_Container
     image: prom/prometheus:v2.48.1
     volumes:
       - ./DockerConfigs/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -10,7 +10,7 @@ services:
       - "127.0.0.1:9090:9090"
 
   otel-collector:
-    container_name: otel-collector
+    container_name: Otel_Collector_Container
     image: otel/opentelemetry-collector-contrib:0.91.0
     command: --config /etc/otelcol/otel-collector-config.yml
     volumes:
@@ -22,7 +22,7 @@ services:
 
 
   jaeger:
-    container_name: jaeger
+    container_name: Jaeger_Container
     image: jaegertracing/all-in-one:1.52
     command: --query.ui-config=/etc/jaeger/jaeger-ui.json --collector.otlp.enabled=true --prometheus.server-url=http://prometheus:9090 --prometheus.query.support-spanmetrics-connector=true
     environment:
@@ -36,7 +36,7 @@ services:
 
 
   SqlServerDb:
-    container_name: SqlServerContainer
+    container_name: Sql_Server_Container
     image: mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - 8002:1433
@@ -45,7 +45,7 @@ services:
       - MSSQL_SA_PASSWORD=TunetCom2024 
   
   azuredevopsidentityservice:
-    container_name: Azure_Devops_Identity_Service
+    container_name: Azure_Devops_Identity_Service_Container
     image: ${DOCKER_REGISTRY-}azuredevopsidentityservice
     build:
       context: .
@@ -64,7 +64,7 @@ services:
         - loki 
 
   azuredevopswebhookservice:
-    container_name: Azure_Devops_Webhook_Service
+    container_name: Azure_Devops_Webhook_Service_Container
     image: ${DOCKER_REGISTRY-}azuredevopswebhookservice
     build:
       context: .
@@ -83,7 +83,7 @@ services:
         - loki 
 
   tunnetcom.aiontime.timelogservice.api:
-    container_name: TimeLog_Service
+    container_name: TimeLog_Service_Container
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimetimelogserviceapi
     build:
       context: .
@@ -106,7 +106,7 @@ services:
         - loki 
 
   tunnetcom.aiontime.azuredevopsservice.api:
-    container_name: Azure_Devops_Service
+    container_name: Azure_Devops_Service_Container
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimeazuredevopsserviceapi
     build:
       context: .
@@ -130,7 +130,7 @@ services:
 
 
   loki:
-    container_name: loki
+    container_name: Loki_Container
     image: grafana/loki:master
     ports:
        - 3100:3100
@@ -143,7 +143,7 @@ services:
         start_period: 10s
 
   grafana:
-    container_name: grafana
+    container_name: Grafana_Container
     volumes:
       - ./DockerConfigs/grafana.ini:/DockerConfigs/grafana.ini
       - ./DockerConfigs/datasource.yml:/DockerConfigs/datasource.yaml
