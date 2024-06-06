@@ -5,7 +5,9 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "tunnetcom.aiontime.timelogservice.api": "StartDebugging",
-        "tunnetcom.aiontime.azuredevopsservice.api": "StartDebugging"
+        "tunnetcom.aiontime.azuredevopsservice.api": "StartDebugging",
+        "azuredevopsidentityservice": "StartDebugging",
+        "azuredevopswebhookservice": "StartDebugging"
       }
     }
   }

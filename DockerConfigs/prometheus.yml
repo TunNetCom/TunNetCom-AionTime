@@ -18,3 +18,5 @@ scrape_configs:
       - targets:
           - TimeLogService:80
           - AzureDevopsService:80
+          - azuredevopswebhookservice:80
+          - azuredevopsidentityservice:80 

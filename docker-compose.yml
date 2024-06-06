@@ -43,9 +43,47 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=TunetCom2024 
+  
+  azuredevopsidentityservice:
+    container_name: Azure_Devops_Identity_Service
+    image: ${DOCKER_REGISTRY-}azuredevopsidentityservice
+    build:
+      context: .
+      dockerfile: src/AzureDevopsIdentityService/AzureDevopsIdentityService/Dockerfile
+    environment:
+        ServiceName : azuredevopsidentityservice
+        loki: http://loki:3100
+        ASPNETCORE_ENVIRONMENT: Development
+        ASPNETCORE_URLS: https://+:443;http://+:80
+        OTEL_EXPORTER_JAEGER_AGENT_HOST : jaeger
+        OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
+        OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
+        OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
+        ASPNETCORE_HTTP_PORTS : 80
+    depends_on: 
+        - loki 
+
+  azuredevopswebhookservice:
+    container_name: Azure_Devops_Webhook_Service
+    image: ${DOCKER_REGISTRY-}azuredevopswebhookservice
+    build:
+      context: .
+      dockerfile: src/AzureDevopsWebhookService/AzureDevopsWebhookService/Dockerfile
+    environment:
+        ServiceName : azuredevopswebhookservice
+        loki: http://loki:3100
+        ASPNETCORE_ENVIRONMENT: Development
+        ASPNETCORE_URLS: https://+:443;http://+:80
+        OTEL_EXPORTER_JAEGER_AGENT_HOST : jaeger
+        OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
+        OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
+        OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
+        ASPNETCORE_HTTP_PORTS : 80
+    depends_on: 
+        - loki 
 
   tunnetcom.aiontime.timelogservice.api:
-    container_name: TimeLogService
+    container_name: TimeLog_Service
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimetimelogserviceapi
     build:
       context: .
@@ -68,7 +106,7 @@ services:
         - loki 
 
   tunnetcom.aiontime.azuredevopsservice.api:
-    container_name: AzureDevopsService
+    container_name: Azure_Devops_Service
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimeazuredevopsserviceapi
     build:
       context: .
@@ -118,7 +156,4 @@ services:
     depends_on:
         loki:
             condition: service_healthy
-
-
-
 
