@@ -16,7 +16,7 @@ scrape_configs:
   - job_name: services
     static_configs:
       - targets:
-          - TimeLogService:80
-          - AzureDevopsService:80
-          - azuredevopswebhookservice:80
-          - azuredevopsidentityservice:80 
+          - TimeLog_Service:80
+          - Azure_Devops_Service:80
+          - Azure_Devops_Webhook_Service:80
+          - Azure_Devops_Identity_Service:80 
