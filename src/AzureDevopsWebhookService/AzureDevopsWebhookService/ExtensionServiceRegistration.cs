@@ -1,55 +1,48 @@
-﻿using OpenTelemetry.Instrumentation.AspNetCore;
-using OpenTelemetry.Logs;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
+﻿namespace AzureDevopsWebhookService.API;
 
-namespace AzureDevopsWebhookService
+public static class ExtensionServiceRegistration
 {
-    public static class ExtensionServiceRegistration
+    public static IServiceCollection AddMonitoringService(this IServiceCollection services)
     {
-        public static IServiceCollection AddMonitoringService(this IServiceCollection services)
+        _ = services.Configure<AspNetCoreTraceInstrumentationOptions>(options =>
         {
-            _ = services.Configure<AspNetCoreTraceInstrumentationOptions>(options =>
+            // Filter out instrumentation of the Prometheus scraping endpoint.
+            options.Filter = ctx => ctx.Request.Path != "/metrics";
+        });
+
+        _ = services.AddOpenTelemetry()
+            .ConfigureResource(b =>
             {
-                // Filter out instrumentation of the Prometheus scraping endpoint.
-                options.Filter = ctx => ctx.Request.Path != "/metrics";
-            });
+                _ = b.AddService(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsWebhookService");
+            })
+            .WithTracing(b => b
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddEntityFrameworkCoreInstrumentation()
+                .AddSource(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsWebhookService")
+                .AddOtlpExporter())
+            .WithMetrics(b => b
+                .AddAspNetCoreInstrumentation()
+                .AddHttpClientInstrumentation()
+                .AddRuntimeInstrumentation()
+                .AddProcessInstrumentation()
+                .AddPrometheusExporter());
 
-            _ = services.AddOpenTelemetry()
-                .ConfigureResource(b =>
-                {
-                    _ = b.AddService(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsWebhookService");
-                })
-                .WithTracing(b => b
-                    .AddAspNetCoreInstrumentation()
-                    .AddHttpClientInstrumentation()
-                    .AddEntityFrameworkCoreInstrumentation()
-                    .AddSource(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsWebhookService")
-                    .AddOtlpExporter())
-                .WithMetrics(b => b
-                    .AddAspNetCoreInstrumentation()
-                    .AddHttpClientInstrumentation()
-                    .AddRuntimeInstrumentation()
-                    .AddProcessInstrumentation()
-                    .AddPrometheusExporter());
+        return services;
+    }
 
-            return services;
-        }
-
-        public static ILoggingBuilder AddLoggingService(this ILoggingBuilder logger)
+    public static ILoggingBuilder AddLoggingService(this ILoggingBuilder logger)
+    {
+        _ = logger.AddOpenTelemetry(options =>
         {
-            _ = logger.AddOpenTelemetry(options =>
-            {
-                options.IncludeFormattedMessage = true;
-                options.IncludeScopes = true;
-                ResourceBuilder resBuilder = ResourceBuilder.CreateDefault();
-                _ = resBuilder.AddService(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsWebhookService");
-                _ = options.SetResourceBuilder(resBuilder);
-                _ = options.AddOtlpExporter();
-            });
+            options.IncludeFormattedMessage = true;
+            options.IncludeScopes = true;
+            ResourceBuilder resBuilder = ResourceBuilder.CreateDefault();
+            _ = resBuilder.AddService(typeof(Program).Assembly.GetName().Name ?? "AzureDevopsWebhookService");
+            _ = options.SetResourceBuilder(resBuilder);
+            _ = options.AddOtlpExporter();
+        });
 
-            return logger;
-        }
+        return logger;
     }
 }

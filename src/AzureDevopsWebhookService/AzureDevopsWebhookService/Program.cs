@@ -1,3 +1,5 @@
+using AzureDevopsWebhookService.API;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)

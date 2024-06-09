@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>AzureDevopsWebhookService.API</name>
+        <name>AzureDevopsWebhookService.Contracts</name>
     </assembly>
     <members>
     </members>
