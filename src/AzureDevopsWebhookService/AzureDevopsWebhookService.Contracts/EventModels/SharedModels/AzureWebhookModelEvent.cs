@@ -2,7 +2,7 @@
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
-public class BaseModelEvent
+public class AzureWebhookModelEvent
 {
     public string? Id { get; set; }
 

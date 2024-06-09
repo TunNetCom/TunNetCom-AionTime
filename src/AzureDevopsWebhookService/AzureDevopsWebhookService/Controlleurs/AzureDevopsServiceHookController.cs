@@ -5,7 +5,7 @@
 public class AzureDevopsServiceHookController : ControllerBase
 {
     [HttpPost("AzureEvents")]
-    public IActionResult AzureEvents(BaseModelEvent webhookSubscription)
+    public IActionResult AzureEvents(AzureWebhookModelEvent webhookSubscription)
     {
         return Ok(value: webhookSubscription);
     }

@@ -17,4 +17,13 @@ public class Project
 
     [JsonProperty("state")]
     public string? State { get; set; }
+
+    [JsonProperty("revision")]
+    public int Revision { get; set; }
+
+    [JsonProperty("visibility")]
+    public string? Visibility { get; set; }
+
+    [JsonProperty("lastUpdateTime")]
+    public string? LastUpdateTime { get; set; }
 }

@@ -83,4 +83,31 @@ public class Resource
 #pragma warning disable CA1056 // URI-like properties should not be strings
     public string? Url { get; set; }
 #pragma warning restore CA1056 // URI-like properties should not be strings
+
+    [JsonProperty("queueTime")]
+    public DateTime? QueueTime { get; set; }
+
+    [JsonProperty("startTime")]
+    public DateTime? StartTime { get; set; }
+
+    [JsonProperty("finishTime")]
+    public DateTime? FinishTime { get; set; }
+
+    [JsonProperty("definition")]
+    public Definition? Definition { get; set; }
+
+    [JsonProperty("buildNumberRevision")]
+    public int? BuildNumberRevision { get; set; }
+
+    [JsonProperty("requestedFor")]
+    public RequestedFor? RequestedFor { get; set; }
+
+    [JsonProperty("requestedBy")]
+    public RequestedBy? RequestedBy { get; set; }
+
+    [JsonProperty("lastChangedBy")]
+    public LastChangedBy? LastChangedBy { get; set; }
+
+    [JsonProperty("logs")]
+    public Logs? Logs { get; set; }
 }
