@@ -50,25 +50,14 @@ public class Resource
     public Commit? LastMergeCommit { get; set; }
 
     [JsonProperty("reviewers")]
-#pragma warning disable CA2227 // Collection properties should be read only
-#pragma warning disable CA1002 // Do not expose generic lists
     public List<Reviewer>? Reviewers { get; set; }
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2227 // Collection properties should be read only
 
     [JsonProperty("commits")]
-#pragma warning disable CA2227 // Collection properties should be read only
-#pragma warning disable CA1002 // Do not expose generic lists
     public List<Commit>? Commits { get; set; }
-#pragma warning restore CA1002 // Do not expose generic lists
-#pragma warning restore CA2227 // Collection properties should be read only
 
     [JsonProperty("refUpdates")]
-#pragma warning disable CA1002 // Do not expose generic lists
-#pragma warning disable CA2227 // Collection properties should be read only
+
     public List<RefUpdate>? RefUpdates { get; set; }
-#pragma warning restore CA2227 // Collection properties should be read only
-#pragma warning restore CA1002 // Do not expose generic lists
 
     [JsonProperty("pushedBy")]
     public PushedBy? PushedBy { get; set; }
@@ -80,9 +69,8 @@ public class Resource
     public DateTime? Date { get; set; }
 
     [JsonProperty("url")]
-#pragma warning disable CA1056 // URI-like properties should not be strings
+
     public string? Url { get; set; }
-#pragma warning restore CA1056 // URI-like properties should not be strings
 
     [JsonProperty("queueTime")]
     public DateTime? QueueTime { get; set; }
