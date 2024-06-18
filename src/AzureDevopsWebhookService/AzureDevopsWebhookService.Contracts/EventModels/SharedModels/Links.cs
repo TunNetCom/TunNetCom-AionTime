@@ -4,6 +4,6 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Links
 {
-    [JsonProperty("avatar")]
+    [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
     public Avatar? Avatar { get; set; }
 }

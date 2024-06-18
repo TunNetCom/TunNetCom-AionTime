@@ -4,12 +4,12 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class PushedBy
 {
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 
-    [JsonProperty("displayName")]
+    [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
     public string? DisplayName { get; set; }
 
-    [JsonProperty("uniqueName")]
+    [JsonProperty("uniqueName", NullValueHandling = NullValueHandling.Ignore)]
     public string? UniqueName { get; set; }
 }

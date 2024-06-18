@@ -4,12 +4,12 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Logs
 {
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public int Id { get; set; }
 
-    [JsonProperty("type")]
+    [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
     public string? Type { get; set; }
 
-    [JsonProperty("url")]
+    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
     public string? Url { get; set; }
 }

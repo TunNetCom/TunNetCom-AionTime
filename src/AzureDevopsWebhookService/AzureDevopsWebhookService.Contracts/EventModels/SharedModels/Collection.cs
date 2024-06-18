@@ -4,6 +4,6 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Collection
 {
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 }

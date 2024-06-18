@@ -93,9 +93,9 @@ public class Resource
     [JsonProperty("requestedBy")]
     public RequestedBy? RequestedBy { get; set; }
 
-    [JsonProperty("lastChangedBy")]
+    [JsonProperty("lastChangedBy", NullValueHandling = NullValueHandling.Ignore)]
     public LastChangedBy? LastChangedBy { get; set; }
 
-    [JsonProperty("logs")]
+    [JsonProperty("logs", NullValueHandling = NullValueHandling.Ignore)]
     public Logs? Logs { get; set; }
 }

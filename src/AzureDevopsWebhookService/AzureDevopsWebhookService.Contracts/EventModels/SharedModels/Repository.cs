@@ -4,21 +4,21 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Repository
 {
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 
-    [JsonProperty("name")]
+    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
     public string? Name { get; set; }
 
-    [JsonProperty("url")]
+    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
     public string? Url { get; set; }
 
-    [JsonProperty("project")]
+    [JsonProperty("project", NullValueHandling = NullValueHandling.Ignore)]
     public Project? Project { get; set; }
 
-    [JsonProperty("defaultBranch")]
+    [JsonProperty("defaultBranch", NullValueHandling = NullValueHandling.Ignore)]
     public string? DefaultBranch { get; set; }
 
-    [JsonProperty("remoteUrl")]
+    [JsonProperty("remoteUrl", NullValueHandling = NullValueHandling.Ignore)]
     public string? RemoteUrl { get; set; }
 }

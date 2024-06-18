@@ -4,27 +4,27 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Reviewer
 {
-    [JsonProperty("reviewerUrl")]
+    [JsonProperty("reviewerUrl", NullValueHandling = NullValueHandling.Ignore)]
     public string? ReviewerUrl { get; set; }
 
-    [JsonProperty("vote")]
+    [JsonProperty("vote", NullValueHandling = NullValueHandling.Ignore)]
     public int Vote { get; set; }
 
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 
-    [JsonProperty("displayName")]
+    [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
     public string? DisplayName { get; set; }
 
-    [JsonProperty("uniqueName")]
+    [JsonProperty("uniqueName", NullValueHandling = NullValueHandling.Ignore)]
     public string? UniqueName { get; set; }
 
-    [JsonProperty("url")]
+    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
     public string? Url { get; set; }
 
-    [JsonProperty("imageUrl")]
+    [JsonProperty("imageUrl", NullValueHandling = NullValueHandling.Ignore)]
     public string? ImageUrl { get; set; }
 
-    [JsonProperty("isContainer")]
+    [JsonProperty("isContainer", NullValueHandling = NullValueHandling.Ignore)]
     public bool IsContainer { get; set; }
 }

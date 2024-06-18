@@ -4,18 +4,18 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class CreatedBy
 {
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 
-    [JsonProperty("displayName")]
+    [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
     public string? DisplayName { get; set; }
 
-    [JsonProperty("uniqueName")]
+    [JsonProperty("uniqueName", NullValueHandling = NullValueHandling.Ignore)]
     public string? UniqueName { get; set; }
 
-    [JsonProperty("url")]
+    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
     public string? Url { get; set; }
 
-    [JsonProperty("imageUrl")]
+    [JsonProperty("imageUrl", NullValueHandling = NullValueHandling.Ignore)]
     public string? ImageUrl { get; set; }
 }

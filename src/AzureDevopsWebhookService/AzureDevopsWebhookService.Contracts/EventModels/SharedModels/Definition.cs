@@ -4,33 +4,33 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Definition
 {
-    [JsonProperty("drafts")]
+    [JsonProperty("drafts", NullValueHandling = NullValueHandling.Ignore)]
     public object[]? Drafts { get; set; }
 
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public int Id { get; set; }
 
-    [JsonProperty("name")]
+    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
     public string? Name { get; set; }
 
-    [JsonProperty("url")]
+    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
     public string? Url { get; set; }
 
-    [JsonProperty("uri")]
+    [JsonProperty("uri", NullValueHandling = NullValueHandling.Ignore)]
     public string? Uri { get; set; }
 
-    [JsonProperty("path")]
+    [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
     public string? Path { get; set; }
 
-    [JsonProperty("type")]
+    [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
     public string? Type { get; set; }
 
-    [JsonProperty("queueStatus")]
+    [JsonProperty("queueStatus", NullValueHandling = NullValueHandling.Ignore)]
     public string? QueueStatus { get; set; }
 
-    [JsonProperty("revision")]
+    [JsonProperty("revision", NullValueHandling = NullValueHandling.Ignore)]
     public int Revision { get; set; }
 
-    [JsonProperty("project")]
+    [JsonProperty("project", NullValueHandling = NullValueHandling.Ignore)]
     public Project? Project { get; set; }
 }

@@ -4,6 +4,6 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Avatar
 {
-    [JsonProperty("href")]
+    [JsonProperty("href", NullValueHandling = NullValueHandling.Ignore)]
     public string? Href { get; set; }
 }

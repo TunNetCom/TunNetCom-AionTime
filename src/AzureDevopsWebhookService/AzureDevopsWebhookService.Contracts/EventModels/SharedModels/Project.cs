@@ -4,24 +4,24 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class Project
 {
-    [JsonProperty("id")]
+    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 
-    [JsonProperty("name")]
+    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
     public string? Name { get; set; }
 
-    [JsonProperty("url")]
+    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
     public string? Url { get; set; }
 
-    [JsonProperty("state")]
+    [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
     public string? State { get; set; }
 
-    [JsonProperty("revision")]
+    [JsonProperty("revision", NullValueHandling = NullValueHandling.Ignore)]
     public int Revision { get; set; }
 
-    [JsonProperty("visibility")]
+    [JsonProperty("visibility", NullValueHandling = NullValueHandling.Ignore)]
     public string? Visibility { get; set; }
 
-    [JsonProperty("lastUpdateTime")]
+    [JsonProperty("lastUpdateTime", NullValueHandling = NullValueHandling.Ignore)]
     public string? LastUpdateTime { get; set; }
 }

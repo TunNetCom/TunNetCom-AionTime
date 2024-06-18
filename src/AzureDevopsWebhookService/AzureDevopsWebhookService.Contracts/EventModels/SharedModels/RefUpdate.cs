@@ -4,12 +4,12 @@ namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public class RefUpdate
 {
-    [JsonProperty("name")]
+    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
     public string? Name { get; set; }
 
-    [JsonProperty("oldObjectId")]
+    [JsonProperty("oldObjectId", NullValueHandling = NullValueHandling.Ignore)]
     public string? OldObjectId { get; set; }
 
-    [JsonProperty("newObjectId")]
+    [JsonProperty("newObjectId", NullValueHandling = NullValueHandling.Ignore)]
     public string? NewObjectId { get; set; }
 }
