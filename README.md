@@ -23,6 +23,8 @@ flowchart LR;
     AzureDevOpsService --> AzureDevOpsAPI;
     AzureDevOpsService <--> AzureDevOpsDatabase;
     TimeLogService <--> TimeLogDatabase;
+    AzureDevops --> AzureDevopsServiceHook;
+    AzureDevopsServiceHook --> TimeLogService
 ```
 
 ## Getting Started
