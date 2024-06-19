@@ -2,14 +2,9 @@
 using AzureDevopsWebhookService.Contracts;
 using AzureDevopsWebhookService.Contracts.EventModels;
 using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels
 {
     public class Link
     {

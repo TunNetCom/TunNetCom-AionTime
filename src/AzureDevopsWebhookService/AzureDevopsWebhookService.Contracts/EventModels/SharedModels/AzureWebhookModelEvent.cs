@@ -1,4 +1,4 @@
-﻿using System.Security.Principal;
+﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 

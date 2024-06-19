@@ -1,15 +1,13 @@
-﻿using System.Security.Principal;
+﻿using AzureDevopsWebhookService;
+using AzureDevopsWebhookService.Contracts;
+using AzureDevopsWebhookService.Contracts.EventModels;
+using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
+using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Reviewer
+public class CreatedBy
 {
-    [JsonProperty("reviewerUrl", NullValueHandling = NullValueHandling.Ignore)]
-    public string? ReviewerUrl { get; set; }
-
-    [JsonProperty("vote", NullValueHandling = NullValueHandling.Ignore)]
-    public int Vote { get; set; }
-
     [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
     public string? Id { get; set; }
 
@@ -24,7 +22,4 @@ public class Reviewer
 
     [JsonProperty("imageUrl", NullValueHandling = NullValueHandling.Ignore)]
     public string? ImageUrl { get; set; }
-
-    [JsonProperty("isContainer", NullValueHandling = NullValueHandling.Ignore)]
-    public bool IsContainer { get; set; }
 }

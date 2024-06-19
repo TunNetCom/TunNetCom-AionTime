@@ -1,15 +1,16 @@
-﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
-using System.Threading.Channels;
-
-namespace AzureDevopsWebhookService.API.Controlleurs;
+﻿namespace AzureDevopsWebhookService.API.Controlleurs;
 
 [Route("api/[controller]")]
 [ApiController]
 public class AzureDevopsServiceHookController : ControllerBase
 {
+    /// <summary>
+    /// Old endpoint ===> tested
+    /// </summary>
+    /// <param name="webhookSubscription"></param>
+    /// <returns></returns>
     [HttpPost("AzureEvents")]
-    public IActionResult AzureEvents(AzureWebhookModelEvent<WorkItemResource> webhookSubscription)
+    public IActionResult AzureEvents(AzureWebhookModelEvent<Resource> webhookSubscription)
     {
         return Ok(value: webhookSubscription);
     }
@@ -21,7 +22,7 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Work item deleted
     /// Work item created
     /// </summary>
-    /// <param name="webhookSubscription">event</param>
+    /// <param name="webhookSubscription">Not tested</param>
     /// <returns></returns>
     [HttpPost("AzureWorkItemsEvents")]
     public IActionResult AzureWorkItemsEvents(AzureWebhookModelEvent<WorkItemResource> webhookSubscription)
@@ -36,10 +37,10 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Pull request merge commit created
     /// Pull request updated
     /// </summary>
-    /// <param name="webhookSubscription">event</param>
+    /// <param name="webhookSubscription">Not tested</param>
     /// <returns></returns>
-    [HttpPost("AzurePullRequestEvnts")]
-    public IActionResult AzurePullRequestEvnts(AzureWebhookModelEvent<CodeResource> webhookSubscription)
+    [HttpPost("AzureCodeEvnts")]
+    public IActionResult AzureCodeEvnts(AzureWebhookModelEvent<CodeResource> webhookSubscription)
     {
         return Ok(value: webhookSubscription);
     }
@@ -52,7 +53,7 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Run stage approval completed
     /// Run job state changed
     /// </summary>
-    /// <param name="webhookSubscription"></param>
+    /// <param name="webhookSubscription">Not tested</param>
     /// <returns></returns>
     [HttpPost("AzurePipelinesEvnts")]
     public IActionResult AzurePipelinesEvnts(AzureWebhookModelEvent<PipeLinesResource> webhookSubscription)
@@ -69,7 +70,7 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Release deployment completed
     /// Release deployment started
     /// </summary>
-    /// <param name="webhookSubscription"></param>
+    /// <param name="webhookSubscription">Not tested</param>
     /// <returns></returns>
     [HttpPost("BuildAndReleaseEvnts")]
     public IActionResult BuildAndReleaseEvnts(AzureWebhookModelEvent<BuildAndReleaseResource> webhookSubscription)
