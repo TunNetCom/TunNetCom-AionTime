@@ -1,0 +1,57 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 1 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: windows-latest  # Use Windows for MSBuild
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['csharp']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Determine .NET SDK version
+      id: determine-dotnet-version
+      run: |
+        dotnet --list-sdks
+        echo "::set-output name=dotnet-version::$(dotnet --list-sdks | tail -1 | awk '{print $1}')"
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ steps.determine-dotnet-version.outputs.dotnet-version }}
+
+    - name: Install NuGet
+      uses: NuGet/setup-nuget@v1
+
+    - name: Find solution file
+      id: find-sln
+      run: |
+        SOLUTION_FILE=$(find . -name '*.sln' | head -n 1)
+        echo "SOLUTION_FILE=$SOLUTION_FILE" >> $GITHUB_ENV
+
+    - name: Restore dependencies
+      run: nuget restore ${{ env.SOLUTION_FILE }}
+
+    - name: Build using MSBuild
+      run: msbuild ${{ env.SOLUTION_FILE }} /p:Configuration=Release
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
