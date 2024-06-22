@@ -2,32 +2,31 @@
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
-public class AzureWebhookModelEvent<T>
-    where T : class
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
+public record AzureWebhookModelEvent<T>(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id,
 
-    [JsonProperty("eventType", NullValueHandling = NullValueHandling.Ignore)]
-    public string? EventType { get; set; }
+    [property: JsonProperty(PropertyName = "eventType", NullValueHandling = NullValueHandling.Ignore)]
+    string? EventType,
 
-    [JsonProperty("publisherId", NullValueHandling = NullValueHandling.Ignore)]
-    public string? PublisherId { get; set; }
+    [property: JsonProperty(PropertyName = "publisherId", NullValueHandling = NullValueHandling.Ignore)]
+    string? PublisherId,
 
-    [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
-    public Message? Message { get; set; }
+    [property: JsonProperty(PropertyName = "message", NullValueHandling = NullValueHandling.Ignore)]
+    Message? Message,
 
-    [JsonProperty("detailedMessage", NullValueHandling = NullValueHandling.Ignore)]
-    public Message? DetailedMessage { get; set; }
+    [property: JsonProperty(PropertyName = "detailedMessage", NullValueHandling = NullValueHandling.Ignore)]
+    Message? DetailedMessage,
 
-    [JsonProperty("resource", NullValueHandling = NullValueHandling.Ignore)]
-    public T? Resource { get; set; }
+    [property: JsonProperty(PropertyName = "resource", NullValueHandling = NullValueHandling.Ignore)]
+    T? Resource,
 
-    [JsonProperty("resourceVersion", NullValueHandling = NullValueHandling.Ignore)]
-    public string? ResourceVersion { get; set; }
+    [property: JsonProperty(PropertyName = "resourceVersion", NullValueHandling = NullValueHandling.Ignore)]
+    string? ResourceVersion,
 
-    [JsonProperty("resourceContainers", NullValueHandling = NullValueHandling.Ignore)]
-    public ResourceContainers? ResourceContainers { get; set; }
+    [property: JsonProperty(PropertyName = "resourceContainers", NullValueHandling = NullValueHandling.Ignore)]
+    ResourceContainers? ResourceContainers,
 
-    public DateTime CreatedDate { get; set; }
-}
+    [property: JsonProperty(PropertyName = "createdDate", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime CreatedDate)
+    where T : class;

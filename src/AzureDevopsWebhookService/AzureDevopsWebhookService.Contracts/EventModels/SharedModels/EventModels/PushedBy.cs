@@ -6,14 +6,12 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class PushedBy
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
+public record PushedBy(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id,
 
-    [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
-    public string? DisplayName { get; set; }
+    [property: JsonProperty(PropertyName = "displayName", NullValueHandling = NullValueHandling.Ignore)]
+    string? DisplayName,
 
-    [JsonProperty("uniqueName", NullValueHandling = NullValueHandling.Ignore)]
-    public string? UniqueName { get; set; }
-}
+    [property: JsonProperty(PropertyName = "uniqueName", NullValueHandling = NullValueHandling.Ignore)]
+    string? UniqueName);

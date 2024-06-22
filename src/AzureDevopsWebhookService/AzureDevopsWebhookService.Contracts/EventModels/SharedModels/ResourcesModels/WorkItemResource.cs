@@ -1,19 +1,20 @@
 ﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+using System.Text.Json.Serialization;
 
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels
-{
-    public class WorkItemResource
-    {
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-        public int? Id { get; set; }
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
-        [JsonProperty("rev", NullValueHandling = NullValueHandling.Ignore)]
-        public string? Rev { get; set; }
+public record WorkItemResource(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    int? Id,
 
-        [JsonProperty("fields", NullValueHandling = NullValueHandling.Ignore)]
-        public Fileds? Fileds { get; set; }
+    [property: JsonProperty(PropertyName = "rev", NullValueHandling = NullValueHandling.Ignore)]
+    int? Rev,
 
-        [JsonProperty("date", NullValueHandling = NullValueHandling.Ignore)]
-        public Link? Links { get; set; }
-    }
-}
+    [property: JsonProperty(PropertyName = "fields", NullValueHandling = NullValueHandling.Ignore)]
+    Fileds? Fileds,
+
+    [property: JsonProperty(PropertyName = "_links", NullValueHandling = NullValueHandling.Ignore)]
+    Link? Links,
+
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url);

@@ -6,26 +6,24 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class LastChangedBy
-{
-    [JsonProperty("displayName", NullValueHandling = NullValueHandling.Ignore)]
-    public string? DisplayName { get; set; }
+public record LastChangedBy(
+    [property: JsonProperty(PropertyName = "displayName", NullValueHandling = NullValueHandling.Ignore)]
+    string? DisplayName,
 
-    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Url { get; set; }
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url,
 
-    [JsonProperty("_links", NullValueHandling = NullValueHandling.Ignore)]
-    public Links? Links { get; set; }
+    [property: JsonProperty(PropertyName = "_links", NullValueHandling = NullValueHandling.Ignore)]
+    Links? Links,
 
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id,
 
-    [JsonProperty("uniqueName", NullValueHandling = NullValueHandling.Ignore)]
-    public string? UniqueName { get; set; }
+    [property: JsonProperty(PropertyName = "uniqueName", NullValueHandling = NullValueHandling.Ignore)]
+    string? UniqueName,
 
-    [JsonProperty("imageUrl", NullValueHandling = NullValueHandling.Ignore)]
-    public string? ImageUrl { get; set; }
+    [property: JsonProperty(PropertyName = "imageUrl", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? ImageUrl,
 
-    [JsonProperty("descriptor", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Descriptor { get; set; }
-}
+    [property: JsonProperty(PropertyName = "descriptor", NullValueHandling = NullValueHandling.Ignore)]
+    string? Descriptor);

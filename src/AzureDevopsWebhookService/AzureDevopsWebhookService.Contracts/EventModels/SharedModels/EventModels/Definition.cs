@@ -6,35 +6,33 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Definition
-{
-    [JsonProperty("drafts", NullValueHandling = NullValueHandling.Ignore)]
-    public object[]? Drafts { get; set; }
+public record Definition(
+    [property: JsonProperty(PropertyName = "drafts", NullValueHandling = NullValueHandling.Ignore)]
+    IReadOnlyCollection<object>? Drafts,
 
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public int Id { get; set; }
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    int Id,
 
-    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Name { get; set; }
+    [property: JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
+    string? Name,
 
-    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Url { get; set; }
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url,
 
-    [JsonProperty("uri", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Uri { get; set; }
+    [property: JsonProperty(PropertyName = "uri", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Uri,
 
-    [JsonProperty("path", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Path { get; set; }
+    [property: JsonProperty(PropertyName = "path", NullValueHandling = NullValueHandling.Ignore)]
+    string? Path,
 
-    [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Type { get; set; }
+    [property: JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]
+    string? Type,
 
-    [JsonProperty("queueStatus", NullValueHandling = NullValueHandling.Ignore)]
-    public string? QueueStatus { get; set; }
+    [property: JsonProperty(PropertyName = "queueStatus", NullValueHandling = NullValueHandling.Ignore)]
+    string? QueueStatus,
 
-    [JsonProperty("revision", NullValueHandling = NullValueHandling.Ignore)]
-    public int Revision { get; set; }
+    [property: JsonProperty(PropertyName = "revision", NullValueHandling = NullValueHandling.Ignore)]
+    int Revision,
 
-    [JsonProperty("project", NullValueHandling = NullValueHandling.Ignore)]
-    public Project? Project { get; set; }
-}
+    [property: JsonProperty(PropertyName = "project", NullValueHandling = NullValueHandling.Ignore)]
+    Project? Project);

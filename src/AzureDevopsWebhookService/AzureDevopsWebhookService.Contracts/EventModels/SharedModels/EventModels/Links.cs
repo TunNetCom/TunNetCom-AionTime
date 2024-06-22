@@ -6,8 +6,6 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Links
-{
-    [JsonProperty("avatar", NullValueHandling = NullValueHandling.Ignore)]
-    public Avatar? Avatar { get; set; }
-}
+public record Links(
+    [property: JsonProperty(PropertyName = "avatar", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? Avatar);

@@ -6,11 +6,9 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class BaseCommit
-{
-    [JsonProperty("commitId", NullValueHandling = NullValueHandling.Ignore)]
-    public string? CommitId { get; set; }
+public record BaseCommit(
+    [property: JsonProperty(PropertyName = "commitId", NullValueHandling = NullValueHandling.Ignore)]
+    string? CommitId,
 
-    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Url { get; set; }
-}
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url);

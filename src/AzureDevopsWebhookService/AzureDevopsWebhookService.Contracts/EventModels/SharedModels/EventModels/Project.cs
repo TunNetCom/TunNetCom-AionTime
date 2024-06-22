@@ -6,26 +6,24 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Project
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
+public record Project(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id,
 
-    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Name { get; set; }
+    [property: JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
+    string? Name,
 
-    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Url { get; set; }
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url,
 
-    [JsonProperty("state", NullValueHandling = NullValueHandling.Ignore)]
-    public string? State { get; set; }
+    [property: JsonProperty(PropertyName = "state", NullValueHandling = NullValueHandling.Ignore)]
+    string? State,
 
-    [JsonProperty("revision", NullValueHandling = NullValueHandling.Ignore)]
-    public int Revision { get; set; }
+    [property: JsonProperty(PropertyName = "revision", NullValueHandling = NullValueHandling.Ignore)]
+    int Revision,
 
-    [JsonProperty("visibility", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Visibility { get; set; }
+    [property: JsonProperty(PropertyName = "visibility", NullValueHandling = NullValueHandling.Ignore)]
+    string? Visibility,
 
-    [JsonProperty("lastUpdateTime", NullValueHandling = NullValueHandling.Ignore)]
-    public string? LastUpdateTime { get; set; }
-}
+    [property: JsonProperty(PropertyName = "lastUpdateTime", NullValueHandling = NullValueHandling.Ignore)]
+    string? LastUpdateTime);

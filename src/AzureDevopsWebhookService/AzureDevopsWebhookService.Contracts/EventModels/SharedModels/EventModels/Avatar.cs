@@ -7,8 +7,6 @@ using System.Security.Principal;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Avatar
-{
-    [JsonProperty("href", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Href { get; set; }
-}
+public record class Avatar(
+    [property: JsonProperty(PropertyName = "href", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Href);

@@ -6,14 +6,12 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class RefUpdate
-{
-    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Name { get; set; }
+public record RefUpdate(
+    [property: JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
+    string? Name,
 
-    [JsonProperty("oldObjectId", NullValueHandling = NullValueHandling.Ignore)]
-    public string? OldObjectId { get; set; }
+    [property: JsonProperty(PropertyName = "oldObjectId", NullValueHandling = NullValueHandling.Ignore)]
+    string? OldObjectId,
 
-    [JsonProperty("newObjectId", NullValueHandling = NullValueHandling.Ignore)]
-    public string? NewObjectId { get; set; }
-}
+    [property: JsonProperty(PropertyName = "newObjectId", NullValueHandling = NullValueHandling.Ignore)]
+    string? NewObjectId);

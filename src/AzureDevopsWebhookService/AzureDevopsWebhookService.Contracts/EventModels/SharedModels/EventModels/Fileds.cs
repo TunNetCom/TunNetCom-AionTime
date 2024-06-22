@@ -1,53 +1,46 @@
-﻿using AzureDevopsWebhookService;
-using AzureDevopsWebhookService.Contracts;
-using AzureDevopsWebhookService.Contracts.EventModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿using System.Text.Json.Serialization;
 
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels
-{
-    public class Fileds
-    {
-        [JsonProperty("System.AreaPath", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemAreaPath { get; set; }
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-        [JsonProperty("System.TeamProject", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemTeamProject { get; set; }
+public record Fileds(
+[property: JsonProperty(PropertyName = "System.AreaPath", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemAreaPath,
 
-        [JsonProperty("System.IterationPath", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemIterationPath { get; set; }
+[property: JsonProperty(PropertyName = "System.TeamProject", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemTeamProject,
 
-        [JsonProperty("System.WorkItemType", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemWorkItemType { get; set; }
+[property: JsonProperty(PropertyName = "System.IterationPath", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemIterationPath,
 
-        [JsonProperty("System.State", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemState { get; set; }
+[property: JsonProperty(PropertyName = "System.WorkItemType", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemWorkItemType,
 
-        [JsonProperty("System.Reason", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemReason { get; set; }
+[property: JsonProperty(PropertyName = "System.State", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemState,
 
-        [JsonProperty("System.CreatedDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime SystemCreatedDate { get; set; }
+[property: JsonProperty(PropertyName = "System.Reason", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemReason,
 
-        [JsonProperty("System.CreatedBy", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemCreatedBy { get; set; }
+[property: JsonProperty(PropertyName = "System.CreatedDate", NullValueHandling = NullValueHandling.Ignore)]
+DateTime SystemCreatedDate,
 
-        [JsonProperty("System.ChangedDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime SystemChangedDate { get; set; }
+[property: JsonProperty(PropertyName = "System.CreatedBy", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemCreatedBy,
 
-        [JsonProperty("System.ChangedBy", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemChangedBy { get; set; }
+[property: JsonProperty(PropertyName = "System.ChangedDate", NullValueHandling = NullValueHandling.Ignore)]
+DateTime SystemChangedDate,
 
-        [JsonProperty("System.Title", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemTitle { get; set; }
+[property: JsonProperty(PropertyName = "System.ChangedBy", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemChangedBy,
 
-        [JsonProperty("Microsoft.Azure DevOps Services.Common.Severity", NullValueHandling = NullValueHandling.Ignore)]
-        public required string Severity { get; set; }
+[property: JsonProperty(PropertyName = "System.Title", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemTitle,
 
-        [JsonProperty("WEF_EB329F44FE5F4A94ACB1DA153FDF38BA_Kanban.Column", NullValueHandling = NullValueHandling.Ignore)]
-        public required string KanbanColumn { get; set; }
+[property: JsonProperty(PropertyName = "Microsoft.Azure DevOps Services.Common.Severity", NullValueHandling = NullValueHandling.Ignore)]
+string? Severity,
 
-        [JsonProperty("System.History", NullValueHandling = NullValueHandling.Ignore)]
-        public required string SystemHistory { get; set; }
-    }
-}
+[property: JsonProperty(PropertyName = "WEF_EB329F44FE5F4A94ACB1DA153FDF38BA_Kanban.Column", NullValueHandling = NullValueHandling.Ignore)]
+string? KanbanColumn,
+
+[property: JsonProperty(PropertyName = "System.History", NullValueHandling = NullValueHandling.Ignore)]
+string? SystemHistory);

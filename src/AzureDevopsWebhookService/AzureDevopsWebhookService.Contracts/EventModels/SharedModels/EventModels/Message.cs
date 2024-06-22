@@ -6,14 +6,12 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Message
-{
-    [JsonProperty("text", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Text { get; set; }
+public record Message(
+    [property: JsonProperty(PropertyName = "text", NullValueHandling = NullValueHandling.Ignore)]
+    string? Text,
 
-    [JsonProperty("html", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Html { get; set; }
+    [property: JsonProperty(PropertyName = "html", NullValueHandling = NullValueHandling.Ignore)]
+    string? Html,
 
-    [JsonProperty("markdown", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Markdown { get; set; }
-}
+    [property: JsonProperty(PropertyName = "markdown", NullValueHandling = NullValueHandling.Ignore)]
+    string? Markdown);

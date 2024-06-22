@@ -6,14 +6,12 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Committer
-{
-    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Name { get; set; }
+public record Committer(
+    [property: JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
+    string? Name,
 
-    [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Email { get; set; }
+    [property: JsonProperty(PropertyName = "email", NullValueHandling = NullValueHandling.Ignore)]
+    string? Email,
 
-    [JsonProperty("date", NullValueHandling = NullValueHandling.Ignore)]
-    public DateTime Date { get; set; }
-}
+    [property: JsonProperty(PropertyName = "date", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime Date);

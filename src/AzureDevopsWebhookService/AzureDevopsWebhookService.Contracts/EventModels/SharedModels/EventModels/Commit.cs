@@ -6,14 +6,18 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Commit : BaseCommit
-{
-    [JsonProperty("author", NullValueHandling = NullValueHandling.Ignore)]
-    public Author? Author { get; set; }
+public record Commit(
+    [property: JsonProperty(PropertyName = "commitId", NullValueHandling = NullValueHandling.Ignore)]
+    string? CommitId,
 
-    [JsonProperty("committer", NullValueHandling = NullValueHandling.Ignore)]
-    public Committer? Committer { get; set; }
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url,
 
-    [JsonProperty("comment", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Comment { get; set; }
-}
+    [property: JsonProperty(PropertyName = "author", NullValueHandling = NullValueHandling.Ignore)]
+    Author? Author,
+
+    [property: JsonProperty(PropertyName = "committer", NullValueHandling = NullValueHandling.Ignore)]
+    Committer? Committer,
+
+    [property: JsonProperty(PropertyName = "comment", NullValueHandling = NullValueHandling.Ignore)]
+    string? Comment);

@@ -6,14 +6,12 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Logs
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public int Id { get; set; }
+public record Logs(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    int Id,
 
-    [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Type { get; set; }
+    [property: JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]
+    string? Type,
 
-    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Url { get; set; }
-}
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url);

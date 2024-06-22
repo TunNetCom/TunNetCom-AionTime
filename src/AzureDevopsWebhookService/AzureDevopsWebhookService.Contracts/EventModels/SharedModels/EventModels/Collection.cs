@@ -6,8 +6,8 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Collection
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
-}
+#pragma warning disable CA1711 // Identifiers should not have incorrect suffix
+public record Collection(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id);
+#pragma warning restore CA1711 // Identifiers should not have incorrect suffix

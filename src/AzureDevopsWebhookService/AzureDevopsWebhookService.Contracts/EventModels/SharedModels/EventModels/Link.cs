@@ -4,29 +4,26 @@ using AzureDevopsWebhookService.Contracts.EventModels;
 using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels
-{
-    public class Link
-    {
-        [JsonProperty("self", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? Self { get; set; }
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-        [JsonProperty("workItemUpdates", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? WorkItemUpdates { get; set; }
+public record Link(
+    [property: JsonProperty(PropertyName = "self", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? Self,
 
-        [JsonProperty("workItemRevisions", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? WorkItemRevisions { get; set; }
+    [property: JsonProperty(PropertyName = "workItemUpdates", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? WorkItemUpdates,
 
-        [JsonProperty("workItemType", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? WorkItemType { get; set; }
+    [property: JsonProperty(PropertyName = "workItemRevisions", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? WorkItemRevisions,
 
-        [JsonProperty("fields", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? Fields { get; set; }
+    [property: JsonProperty(PropertyName = "workItemType", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? WorkItemType,
 
-        [JsonProperty("html", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? Html { get; set; }
+    [property: JsonProperty(PropertyName = "fields", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? Fields,
 
-        [JsonProperty("workItemHistory", NullValueHandling = NullValueHandling.Ignore)]
-        public Avatar? WorkItemHistory { get; set; }
-    }
-}
+    [property: JsonProperty(PropertyName = "html", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? Html,
+
+    [property: JsonProperty(PropertyName = "workItemHistory", NullValueHandling = NullValueHandling.Ignore)]
+    Avatar? WorkItemHistory);

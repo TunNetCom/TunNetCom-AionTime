@@ -3,103 +3,100 @@ using AzureDevopsWebhookService.Contracts;
 using AzureDevopsWebhookService.Contracts.EventModels;
 using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+using System.Collections.ObjectModel;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Resource
-{
-    [JsonProperty("repository")]
-    public Repository? Repository { get; set; }
+public record Resource(
+    [property: JsonProperty(PropertyName = "repository", NullValueHandling = NullValueHandling.Ignore)]
+    Repository? Repository,
 
-    [JsonProperty("pullRequestId")]
-    public int PullRequestId { get; set; }
+    [property: JsonProperty(PropertyName = "pullRequestId", NullValueHandling = NullValueHandling.Ignore)]
+    int PullRequestId,
 
-    [JsonProperty("status")]
-    public string? Status { get; set; }
+    [property: JsonProperty(PropertyName = "status", NullValueHandling = NullValueHandling.Ignore)]
+    string? Status,
 
-    [JsonProperty("createdBy")]
-    public CreatedBy? CreatedBy { get; set; }
+    [property: JsonProperty(PropertyName = "createdBy", NullValueHandling = NullValueHandling.Ignore)]
+    CreatedBy? CreatedBy,
 
-    [JsonProperty("creationDate")]
-    public DateTime CreationDate { get; set; }
+    [property: JsonProperty(PropertyName = "creationDate", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime CreationDate,
 
-    [JsonProperty("closedDate")]
-    public DateTime ClosedDate { get; set; }
+    [property: JsonProperty(PropertyName = "closedDate", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime ClosedDate,
 
-    [JsonProperty("title")]
-    public string? Title { get; set; }
+    [property: JsonProperty(PropertyName = "title", NullValueHandling = NullValueHandling.Ignore)]
+    string? Title,
 
-    [JsonProperty("description")]
-    public string? Description { get; set; }
+    [property: JsonProperty(PropertyName = "description", NullValueHandling = NullValueHandling.Ignore)]
+    string? Description,
 
-    [JsonProperty("sourceRefName")]
-    public string? SourceRefName { get; set; }
+    [property: JsonProperty(PropertyName = "sourceRefName", NullValueHandling = NullValueHandling.Ignore)]
+    string? SourceRefName,
 
-    [JsonProperty("targetRefName")]
-    public string? TargetRefName { get; set; }
+    [property: JsonProperty(PropertyName = "targetRefName", NullValueHandling = NullValueHandling.Ignore)]
+    string? TargetRefName,
 
-    [JsonProperty("mergeStatus")]
-    public string? MergeStatus { get; set; }
+    [property: JsonProperty(PropertyName = "mergeStatus", NullValueHandling = NullValueHandling.Ignore)]
+    string? MergeStatus,
 
-    [JsonProperty("mergeId")]
-    public string? MergeId { get; set; }
+    [property: JsonProperty(PropertyName = "mergeId", NullValueHandling = NullValueHandling.Ignore)]
+    string? MergeId,
 
-    [JsonProperty("lastMergeSourceCommit")]
-    public Commit? LastMergeSourceCommit { get; set; }
+    [property: JsonProperty(PropertyName = "lastMergeSourceCommit", NullValueHandling = NullValueHandling.Ignore)]
+    Commit? LastMergeSourceCommit,
 
-    [JsonProperty("lastMergeTargetCommit")]
-    public Commit? LastMergeTargetCommit { get; set; }
+    [property: JsonProperty(PropertyName = "lastMergeTargetCommit", NullValueHandling = NullValueHandling.Ignore)]
+    Commit? LastMergeTargetCommit,
 
-    [JsonProperty("lastMergeCommit")]
-    public Commit? LastMergeCommit { get; set; }
+    [property: JsonProperty(PropertyName = "lastMergeCommit", NullValueHandling = NullValueHandling.Ignore)]
+    Commit? LastMergeCommit,
 
-    [JsonProperty("reviewers")]
-    public List<Reviewer>? Reviewers { get; set; }
+    [property: JsonProperty(PropertyName = "reviewers", NullValueHandling = NullValueHandling.Ignore)]
+    ReadOnlyCollection<Reviewer>? Reviewers,
 
-    [JsonProperty("commits")]
-    public List<Commit>? Commits { get; set; }
+    [property: JsonProperty(PropertyName = "commits", NullValueHandling = NullValueHandling.Ignore)]
+    ReadOnlyCollection<Commit>? Commits,
 
-    [JsonProperty("refUpdates")]
+    [property: JsonProperty(PropertyName = "refUpdates", NullValueHandling = NullValueHandling.Ignore)]
+    ReadOnlyCollection<RefUpdate>? RefUpdates,
 
-    public List<RefUpdate>? RefUpdates { get; set; }
+    [property: JsonProperty(PropertyName = "pushedBy", NullValueHandling = NullValueHandling.Ignore)]
+    PushedBy? PushedBy,
 
-    [JsonProperty("pushedBy")]
-    public PushedBy? PushedBy { get; set; }
+    [property: JsonProperty(PropertyName = "pushId", NullValueHandling = NullValueHandling.Ignore)]
+    int? PushId,
 
-    [JsonProperty("pushId")]
-    public int? PushId { get; set; }
+    [property: JsonProperty(PropertyName = "date", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime? Date,
 
-    [JsonProperty("date")]
-    public DateTime? Date { get; set; }
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url,
 
-    [JsonProperty("url")]
+    [property: JsonProperty(PropertyName = "queueTime", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime? QueueTime,
 
-    public string? Url { get; set; }
+    [property: JsonProperty(PropertyName = "startTime", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime? StartTime,
 
-    [JsonProperty("queueTime")]
-    public DateTime? QueueTime { get; set; }
+    [property: JsonProperty(PropertyName = "finishTime", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime? FinishTime,
 
-    [JsonProperty("startTime")]
-    public DateTime? StartTime { get; set; }
+    [property: JsonProperty(PropertyName = "definition", NullValueHandling = NullValueHandling.Ignore)]
+    Definition? Definition,
 
-    [JsonProperty("finishTime")]
-    public DateTime? FinishTime { get; set; }
+    [property: JsonProperty(PropertyName = "buildNumberRevision", NullValueHandling = NullValueHandling.Ignore)]
+    int? BuildNumberRevision,
 
-    [JsonProperty("definition")]
-    public Definition? Definition { get; set; }
+    [property: JsonProperty(PropertyName = "requestedFor", NullValueHandling = NullValueHandling.Ignore)]
+    RequestedFor? RequestedFor,
 
-    [JsonProperty("buildNumberRevision")]
-    public int? BuildNumberRevision { get; set; }
+    [property: JsonProperty(PropertyName = "requestedBy", NullValueHandling = NullValueHandling.Ignore)]
+    RequestedBy? RequestedBy,
 
-    [JsonProperty("requestedFor")]
-    public RequestedFor? RequestedFor { get; set; }
+    [property: JsonProperty(PropertyName = "lastChangedBy", NullValueHandling = NullValueHandling.Ignore)]
+    LastChangedBy? LastChangedBy,
 
-    [JsonProperty("requestedBy")]
-    public RequestedBy? RequestedBy { get; set; }
-
-    [JsonProperty("lastChangedBy", NullValueHandling = NullValueHandling.Ignore)]
-    public LastChangedBy? LastChangedBy { get; set; }
-
-    [JsonProperty("logs", NullValueHandling = NullValueHandling.Ignore)]
-    public Logs? Logs { get; set; }
-}
+    [property: JsonProperty(PropertyName = "logs", NullValueHandling = NullValueHandling.Ignore)]
+    Logs? Logs);

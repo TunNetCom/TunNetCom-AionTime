@@ -6,14 +6,12 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class ResourceContainers
-{
-    [JsonProperty("collection", NullValueHandling = NullValueHandling.Ignore)]
-    public Collection? Collection { get; set; }
+public record ResourceContainers(
+    [property: JsonProperty(PropertyName = "collection", NullValueHandling = NullValueHandling.Ignore)]
+    Collection? Collection,
 
-    [JsonProperty("account", NullValueHandling = NullValueHandling.Ignore)]
-    public Account? Account { get; set; }
+    [property: JsonProperty(PropertyName = "account", NullValueHandling = NullValueHandling.Ignore)]
+    Account? Account,
 
-    [JsonProperty("project", NullValueHandling = NullValueHandling.Ignore)]
-    public Project? Project { get; set; }
-}
+    [property: JsonProperty(PropertyName = "project", NullValueHandling = NullValueHandling.Ignore)]
+    Project? Project);

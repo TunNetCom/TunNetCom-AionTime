@@ -6,23 +6,21 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Repository
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
+public record Repository(
+    [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id,
 
-    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Name { get; set; }
+    [property: JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
+    string? Name,
 
-    [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Url { get; set; }
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url,
 
-    [JsonProperty("project", NullValueHandling = NullValueHandling.Ignore)]
-    public Project? Project { get; set; }
+    [property: JsonProperty(PropertyName = "project", NullValueHandling = NullValueHandling.Ignore)]
+    Project? Project,
 
-    [JsonProperty("defaultBranch", NullValueHandling = NullValueHandling.Ignore)]
-    public string? DefaultBranch { get; set; }
+    [property: JsonProperty(PropertyName = "defaultBranch", NullValueHandling = NullValueHandling.Ignore)]
+    string? DefaultBranch,
 
-    [JsonProperty("remoteUrl", NullValueHandling = NullValueHandling.Ignore)]
-    public string? RemoteUrl { get; set; }
-}
+    [property: JsonProperty(PropertyName = "remoteUrl", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? RemoteUrl);

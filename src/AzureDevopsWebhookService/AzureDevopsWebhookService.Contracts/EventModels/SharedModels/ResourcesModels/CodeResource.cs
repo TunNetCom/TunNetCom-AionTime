@@ -1,61 +1,61 @@
 ﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels
-{
-    public class CodeResource
-    {
-        [JsonProperty("repository", NullValueHandling = NullValueHandling.Ignore)]
-        public Repository? Repository { get; set; }
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
-        [JsonProperty("pullRequestId", NullValueHandling = NullValueHandling.Ignore)]
-        public int? PullRequestId { get; set; }
+public record CodeResource(
+    [property: JsonProperty(PropertyName = "Commits", NullValueHandling = NullValueHandling.Ignore)]
+    IReadOnlyCollection<Commit>? Commits,
 
-        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
-        public string? Status { get; set; }
+    [property: JsonProperty(PropertyName = "repository", NullValueHandling = NullValueHandling.Ignore)]
+    Repository? Repository,
 
-        [JsonProperty("createdBy", NullValueHandling = NullValueHandling.Ignore)]
-        public CreatedBy? CreatedBy { get; set; }
+    [property: JsonProperty(PropertyName = "pullRequestId", NullValueHandling = NullValueHandling.Ignore)]
+    int? PullRequestId,
 
-        [JsonProperty("creationDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? CreationDate { get; set; }
+    [property: JsonProperty(PropertyName = "status", NullValueHandling = NullValueHandling.Ignore)]
+    string? Status,
 
-        [JsonProperty("closedDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? ClosedDate { get; set; }
+    [property: JsonProperty(PropertyName = "createdBy", NullValueHandling = NullValueHandling.Ignore)]
+    CreatedBy? CreatedBy,
 
-        [JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
-        public string? Title { get; set; }
+    [property: JsonProperty(PropertyName = "creationDate", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime? CreationDate,
 
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
-        public string? Description { get; set; }
+    [property: JsonProperty(PropertyName = "closedDate", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime? ClosedDate,
 
-        [JsonProperty("sourceRefName", NullValueHandling = NullValueHandling.Ignore)]
-        public string? SourceRefName { get; set; }
+    [property: JsonProperty(PropertyName = "title", NullValueHandling = NullValueHandling.Ignore)]
+    string? Title,
 
-        [JsonProperty("targetRefName", NullValueHandling = NullValueHandling.Ignore)]
-        public string? TargetRefName { get; set; }
+    [property: JsonProperty(PropertyName = "description", NullValueHandling = NullValueHandling.Ignore)]
+    string? Description,
 
-        [JsonProperty("mergeStatus", NullValueHandling = NullValueHandling.Ignore)]
-        public string? MergeStatus { get; set; }
+    [property: JsonProperty(PropertyName = "sourceRefName", NullValueHandling = NullValueHandling.Ignore)]
+    string? SourceRefName,
 
-        [JsonProperty("mergeId", NullValueHandling = NullValueHandling.Ignore)]
-        public string? MergeId { get; set; }
+    [property: JsonProperty(PropertyName = "targetRefName", NullValueHandling = NullValueHandling.Ignore)]
+    string? TargetRefName,
 
-        [JsonProperty("lastMergeSourceCommit", NullValueHandling = NullValueHandling.Ignore)]
-        public BaseCommit? LastMergeSourceCommit { get; set; }
+    [property: JsonProperty(PropertyName = "mergeStatus", NullValueHandling = NullValueHandling.Ignore)]
+    string? MergeStatus,
 
-        [JsonProperty("lastMergeTargetCommit", NullValueHandling = NullValueHandling.Ignore)]
-        public BaseCommit? LastMergeTargetCommit { get; set; }
+    [property: JsonProperty(PropertyName = "mergeId", NullValueHandling = NullValueHandling.Ignore)]
+    string? MergeId,
 
-        [JsonProperty("lastMergeCommit", NullValueHandling = NullValueHandling.Ignore)]
-        public BaseCommit? LastMergeCommit { get; set; }
+    [property: JsonProperty(PropertyName = "lastMergeSourceCommit", NullValueHandling = NullValueHandling.Ignore)]
+    BaseCommit? LastMergeSourceCommit,
 
-        [JsonProperty("reviewers", NullValueHandling = NullValueHandling.Ignore)]
-        public Reviewer? Reviewers { get; set; }
+    [property: JsonProperty(PropertyName = "lastMergeTargetCommit", NullValueHandling = NullValueHandling.Ignore)]
+    BaseCommit? LastMergeTargetCommit,
 
-        [JsonProperty("commits", NullValueHandling = NullValueHandling.Ignore)]
-        public BaseCommit? Commits { get; set; }
+    [property: JsonProperty(PropertyName = "lastMergeCommit", NullValueHandling = NullValueHandling.Ignore)]
+    BaseCommit? LastMergeCommit,
 
-        [JsonProperty("url", NullValueHandling = NullValueHandling.Ignore)]
-        public string? Url { get; set; }
-    }
-}
+    [property: JsonProperty(PropertyName = "reviewers", NullValueHandling = NullValueHandling.Ignore)]
+    IReadOnlyCollection<Reviewer>? Reviewers,
+
+    [property: JsonProperty(PropertyName = "commit", NullValueHandling = NullValueHandling.Ignore)]
+    IReadOnlyCollection<BaseCommit>? Commit,
+
+    [property: JsonProperty(PropertyName = "url", NullValueHandling = NullValueHandling.Ignore)]
+    Uri? Url);

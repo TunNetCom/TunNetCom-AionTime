@@ -7,14 +7,9 @@ using System.Security.Principal;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Author
-{
-    [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Name { get; set; }
+public record class Author([property: JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)] string? Name,
+    [property: JsonProperty(PropertyName = "email", NullValueHandling = NullValueHandling.Ignore)]
+    string? Email,
 
-    [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Email { get; set; }
-
-    [JsonProperty("date", NullValueHandling = NullValueHandling.Ignore)]
-    public DateTime Date { get; set; }
-}
+    [property: JsonProperty(PropertyName = "date", NullValueHandling = NullValueHandling.Ignore)]
+    DateTime Date);

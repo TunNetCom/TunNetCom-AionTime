@@ -6,8 +6,6 @@ using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
-public class Account
-{
-    [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-    public string? Id { get; set; }
-}
+public record class Account(
+    [property: JsonProperty(PropertyName = "resource", NullValueHandling = NullValueHandling.Ignore)]
+    string? Id);
