@@ -1,7 +1,4 @@
-﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
-using System.Text.Json.Serialization;
-
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
 public record WorkItemResource(
     [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]

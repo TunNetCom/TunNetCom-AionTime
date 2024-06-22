@@ -1,10 +1,4 @@
-﻿using AzureDevopsWebhookService;
-using AzureDevopsWebhookService.Contracts;
-using AzureDevopsWebhookService.Contracts.EventModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
-
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record Repository(
     [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]

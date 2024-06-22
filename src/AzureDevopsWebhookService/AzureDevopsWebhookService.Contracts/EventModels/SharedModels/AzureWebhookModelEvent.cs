@@ -1,6 +1,4 @@
-﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
-
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
+﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public record AzureWebhookModelEvent<T>(
     [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]

@@ -1,6 +1,4 @@
-﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
-
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
 public record CodeResource(
     [property: JsonProperty(PropertyName = "Commits", NullValueHandling = NullValueHandling.Ignore)]
