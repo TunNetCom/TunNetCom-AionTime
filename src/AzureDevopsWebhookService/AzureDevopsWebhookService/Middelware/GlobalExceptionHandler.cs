@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using Newtonsoft.Json;
-using System.Net;
-
-namespace AzureDevopsWebhookService.API.Middelware;
+﻿namespace AzureDevopsWebhookService.API.Middelware;
 
 internal sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
     : IExceptionHandler
