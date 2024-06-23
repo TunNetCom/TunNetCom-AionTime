@@ -47,13 +47,13 @@ public record Resource(
     Commit? LastMergeCommit,
 
     [property: JsonProperty(PropertyName = "reviewers", NullValueHandling = NullValueHandling.Ignore)]
-    ReadOnlyCollection<Reviewer>? Reviewers,
+    IReadOnlyCollection<Reviewer>? Reviewers,
 
     [property: JsonProperty(PropertyName = "commits", NullValueHandling = NullValueHandling.Ignore)]
-    ReadOnlyCollection<Commit>? Commits,
+    IReadOnlyCollection<Commit>? Commits,
 
     [property: JsonProperty(PropertyName = "refUpdates", NullValueHandling = NullValueHandling.Ignore)]
-    ReadOnlyCollection<RefUpdate>? RefUpdates,
+    IReadOnlyCollection<RefUpdate>? RefUpdates,
 
     [property: JsonProperty(PropertyName = "pushedBy", NullValueHandling = NullValueHandling.Ignore)]
     PushedBy? PushedBy,

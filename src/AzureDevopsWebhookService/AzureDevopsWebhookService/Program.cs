@@ -12,6 +12,7 @@ try
     Log.Information("Starting web host");
     _ = builder.Logging.AddLoggingService();
     _ = builder.Services.AddMonitoringService();
+    _ = builder.Services.AddAzureWebhookServiceRegistration();
     _ = builder.Services.AddControllers();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddEndpointsApiExplorer();

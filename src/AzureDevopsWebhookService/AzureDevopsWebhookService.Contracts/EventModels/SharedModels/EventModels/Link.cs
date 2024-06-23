@@ -2,22 +2,22 @@
 
 public record Link(
     [property: JsonProperty(PropertyName = "self", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? Self,
+    Url? Self,
 
     [property: JsonProperty(PropertyName = "workItemUpdates", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? WorkItemUpdates,
+    Url? WorkItemUpdates,
 
     [property: JsonProperty(PropertyName = "workItemRevisions", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? WorkItemRevisions,
+    Url? WorkItemRevisions,
 
     [property: JsonProperty(PropertyName = "workItemType", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? WorkItemType,
+    Url? WorkItemType,
 
     [property: JsonProperty(PropertyName = "fields", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? Fields,
+    Url? Fields,
 
     [property: JsonProperty(PropertyName = "html", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? Html,
+    Url? Html,
 
     [property: JsonProperty(PropertyName = "workItemHistory", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? WorkItemHistory);
+    Url? WorkItemHistory);

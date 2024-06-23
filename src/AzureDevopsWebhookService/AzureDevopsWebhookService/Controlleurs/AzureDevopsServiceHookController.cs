@@ -2,8 +2,10 @@
 
 [Route("api/[controller]")]
 [ApiController]
-public class AzureDevopsServiceHookController : ControllerBase
+public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBase
 {
+    private readonly IMediator _mediator = mediator;
+
     /// <summary>
     /// Old endpoint ===> tested
     /// </summary>
@@ -12,7 +14,7 @@ public class AzureDevopsServiceHookController : ControllerBase
     [HttpPost("AzureEvents")]
     public IActionResult AzureEvents(AzureWebhookModelEvent<Resource> webhookSubscription)
     {
-        return Ok(value: webhookSubscription);
+        return Ok(webhookSubscription);
     }
 
     /// <summary>
@@ -22,12 +24,12 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Work item deleted
     /// Work item created
     /// </summary>
-    /// <param name="webhookSubscription">Not tested</param>
+    /// <param name="workItemEvent">Not tested</param>
     /// <returns></returns>
-    [HttpPost("AzureWorkItemsEvents")]
-    public IActionResult AzureWorkItemsEvents(AzureWebhookModelEvent<WorkItemResource> webhookSubscription)
+    [HttpPost($"{WebhookEndPoint.AzureWorkItemsEvents}")]
+    public async Task<IActionResult> AzureWorkItemsEventsAsync(AzureWebhookModelEvent<WorkItemResource> workItemEvent)
     {
-        return Ok(value: webhookSubscription);
+        return Ok(await _mediator.Send(workItemEvent));
     }
 
     /// <summary>
@@ -37,12 +39,12 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Pull request merge commit created
     /// Pull request updated
     /// </summary>
-    /// <param name="webhookSubscription">Not tested</param>
+    /// <param name="codeEvent">Not tested</param>
     /// <returns></returns>
-    [HttpPost("AzureCodeEvnts")]
-    public IActionResult AzureCodeEvnts(AzureWebhookModelEvent<CodeResource> webhookSubscription)
+    [HttpPost($"{WebhookEndPoint.AzureCodeEvents}")]
+    public async Task<IActionResult> AzureCodeEvntsAsync(AzureWebhookModelEvent<CodeResource> codeEvent)
     {
-        return Ok(value: webhookSubscription);
+        return Ok(await _mediator.Send(codeEvent));
     }
 
     /// <summary>
@@ -53,12 +55,12 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Run stage approval completed
     /// Run job state changed
     /// </summary>
-    /// <param name="webhookSubscription">Not tested</param>
+    /// <param name="pipelineEvent">Not tested</param>
     /// <returns></returns>
-    [HttpPost("AzurePipelinesEvnts")]
-    public IActionResult AzurePipelinesEvnts(AzureWebhookModelEvent<PipeLinesResource> webhookSubscription)
+    [HttpPost($"{WebhookEndPoint.AzurePipelineEventEvnts}")]
+    public async Task<IActionResult> AzurePipelineEventEvntsAsync(AzureWebhookModelEvent<PipeLinesResource> pipelineEvent)
     {
-        return Ok(value: webhookSubscription);
+        return Ok(await _mediator.Send(pipelineEvent));
     }
 
     /// <summary>
@@ -70,11 +72,11 @@ public class AzureDevopsServiceHookController : ControllerBase
     /// Release deployment completed
     /// Release deployment started
     /// </summary>
-    /// <param name="webhookSubscription">Not tested</param>
+    /// <param name="buildAndReleaseEvnts">Not tested</param>
     /// <returns></returns>
-    [HttpPost("BuildAndReleaseEvnts")]
-    public IActionResult BuildAndReleaseEvnts(AzureWebhookModelEvent<BuildAndReleaseResource> webhookSubscription)
+    [HttpPost($"{WebhookEndPoint.BuildAndReleaseEvents}")]
+    public async Task<IActionResult> BuildAndReleaseEvntsAsync(AzureWebhookModelEvent<BuildAndReleaseResource> buildAndReleaseEvnts)
     {
-        return Ok(value: webhookSubscription);
+        return Ok(await _mediator.Send(buildAndReleaseEvnts));
     }
 }

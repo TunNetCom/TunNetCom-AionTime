@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.2.4-develop.1856" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.4-develop.1856" />
+    <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AzureDevopsWebhookService.Contracts\AzureDevopsWebhookService.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

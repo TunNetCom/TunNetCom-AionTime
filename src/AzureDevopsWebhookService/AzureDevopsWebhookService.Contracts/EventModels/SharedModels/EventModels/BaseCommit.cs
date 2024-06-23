@@ -1,5 +1,4 @@
-﻿using AzureDevopsWebhookService;
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record BaseCommit(
     [property: JsonProperty(PropertyName = "commitId", NullValueHandling = NullValueHandling.Ignore)]

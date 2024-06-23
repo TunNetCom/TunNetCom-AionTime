@@ -2,4 +2,4 @@
 
 public record Links(
     [property: JsonProperty(PropertyName = "avatar", NullValueHandling = NullValueHandling.Ignore)]
-    Avatar? Avatar);
+    Url? Avatar);

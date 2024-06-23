@@ -1,6 +1,4 @@
-﻿using AzureDevopsWebhookService;
-using AzureDevopsWebhookService.Contracts;
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record RequestedBy(
     [property: JsonProperty(PropertyName = "displayName", NullValueHandling = NullValueHandling.Ignore)]

@@ -1,4 +1,7 @@
-﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
+﻿using MediatR;
+using System.Net;
+
+namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
 
 public record AzureWebhookModelEvent<T>(
     [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
@@ -26,5 +29,5 @@ public record AzureWebhookModelEvent<T>(
     ResourceContainers? ResourceContainers,
 
     [property: JsonProperty(PropertyName = "createdDate", NullValueHandling = NullValueHandling.Ignore)]
-    DateTime CreatedDate)
+    DateTime CreatedDate) : IRequest<HttpStatusCode>
     where T : class;

@@ -11,7 +11,7 @@
             <param name="webhookSubscription"></param>
             <returns></returns>
         </member>
-        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEvents(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource})">
+        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource})">
             <summary>
             Work item commented on
             Work item updated
@@ -19,10 +19,10 @@
             Work item deleted
             Work item created
             </summary>
-            <param name="webhookSubscription">Not tested</param>
+            <param name="workItemEvent">Not tested</param>
             <returns></returns>
         </member>
-        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureCodeEvnts(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.CodeResource})">
+        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureCodeEvntsAsync(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.CodeResource})">
             <summary>
             Code checked in
             Code pushed
@@ -30,10 +30,10 @@
             Pull request merge commit created
             Pull request updated
             </summary>
-            <param name="webhookSubscription">Not tested</param>
+            <param name="codeEvent">Not tested</param>
             <returns></returns>
         </member>
-        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzurePipelinesEvnts(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.PipeLinesResource})">
+        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzurePipelineEventEvntsAsync(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.PipeLinesResource})">
             <summary>
             Job state changed
             Run state changed
@@ -42,10 +42,10 @@
             Run stage approval completed
             Run job state changed
             </summary>
-            <param name="webhookSubscription">Not tested</param>
+            <param name="pipelineEvent">Not tested</param>
             <returns></returns>
         </member>
-        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.BuildAndReleaseEvnts(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.BuildAndReleaseResource})">
+        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.BuildAndReleaseEvntsAsync(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.BuildAndReleaseResource})">
             <summary>
             Build completed
             Release created
@@ -55,7 +55,7 @@
             Release deployment completed
             Release deployment started
             </summary>
-            <param name="webhookSubscription">Not tested</param>
+            <param name="buildAndReleaseEvnts">Not tested</param>
             <returns></returns>
         </member>
     </members>
