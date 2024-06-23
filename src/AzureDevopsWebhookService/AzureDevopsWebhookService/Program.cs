@@ -1,5 +1,3 @@
-using AzureDevopsWebhookService.API;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -17,6 +15,7 @@ try
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
+    _ = builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
     WebApplication app = builder.Build();
 

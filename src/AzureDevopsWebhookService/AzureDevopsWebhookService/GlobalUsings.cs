@@ -1,5 +1,6 @@
 ﻿global using AzureDevopsWebhookService;
 global using AzureDevopsWebhookService.API;
+global using AzureDevopsWebhookService.API.Middelware;
 global using AzureDevopsWebhookService.Application;
 global using AzureDevopsWebhookService.Contracts.Constant;
 global using AzureDevopsWebhookService.Contracts.EventModels;
