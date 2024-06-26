@@ -1,16 +1,14 @@
 ﻿namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
 
 public class SendAzureBuildAndReleaseEventsCommandHandler(IPublishEndpoint publishEndpoint)
-    : IRequestHandler<AzureWebhookModelEvent<BuildAndReleaseResource>,
-        AzureWebhookModelEvent<BuildAndReleaseResource>>
+    : IRequestHandler<AzureWebhookModelEvent<BuildAndReleaseResource>>
 {
     private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
 
-    public async Task<AzureWebhookModelEvent<BuildAndReleaseResource>> Handle(
+    public async Task Handle(
         AzureWebhookModelEvent<BuildAndReleaseResource> request,
         CancellationToken cancellationToken)
     {
         await _publishEndpoint.Publish(request, cancellationToken);
-        return request;
     }
 }

@@ -26,5 +26,5 @@ public record AzureWebhookModelEvent<T>(
     ResourceContainers? ResourceContainers,
 
     [property: JsonProperty(PropertyName = "createdDate", NullValueHandling = NullValueHandling.Ignore)]
-    DateTime CreatedDate) : IRequest<AzureWebhookModelEvent<T>>
+    DateTime CreatedDate) : IRequest
     where T : class;

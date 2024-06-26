@@ -29,7 +29,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     [HttpPost($"{WebhookEndPoint.AzureWorkItemsEvents}")]
     public async Task<IActionResult> AzureWorkItemsEventsAsync(AzureWebhookModelEvent<WorkItemResource> workItemEvent)
     {
-        _ = await _mediator.Send(workItemEvent);
+        await _mediator.Send(workItemEvent);
         return Ok();
     }
 
@@ -45,7 +45,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     [HttpPost($"{WebhookEndPoint.AzureCodeEvents}")]
     public async Task<IActionResult> AzureCodeEvntsAsync(AzureWebhookModelEvent<CodeResource> codeEvent)
     {
-        _ = await _mediator.Send(codeEvent);
+        await _mediator.Send(codeEvent);
         return Ok();
     }
 
@@ -62,7 +62,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     [HttpPost($"{WebhookEndPoint.AzurePipelineEvents}")]
     public async Task<IActionResult> AzurePipelineEventEvntsAsync(AzureWebhookModelEvent<PipeLinesResource> pipelineEvent)
     {
-        _ = await _mediator.Send(pipelineEvent);
+        await _mediator.Send(pipelineEvent);
         return Ok(pipelineEvent);
     }
 
@@ -80,7 +80,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     [HttpPost($"{WebhookEndPoint.BuildAndReleaseEvents}")]
     public async Task<IActionResult> BuildAndReleaseEvntsAsync(AzureWebhookModelEvent<BuildAndReleaseResource> buildAndReleaseEvnts)
     {
-        _ = await _mediator.Send(buildAndReleaseEvnts);
+        await _mediator.Send(buildAndReleaseEvnts);
         return Ok();
     }
 }
