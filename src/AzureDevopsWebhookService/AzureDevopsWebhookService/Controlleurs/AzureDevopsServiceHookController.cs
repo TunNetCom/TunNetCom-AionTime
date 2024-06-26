@@ -59,11 +59,11 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     /// </summary>
     /// <param name="pipelineEvent">Not tested</param>
     /// <returns></returns>
-    [HttpPost($"{WebhookEndPoint.AzurePipelineEventEvnts}")]
+    [HttpPost($"{WebhookEndPoint.AzurePipelineEvents}")]
     public async Task<IActionResult> AzurePipelineEventEvntsAsync(AzureWebhookModelEvent<PipeLinesResource> pipelineEvent)
     {
         _ = await _mediator.Send(pipelineEvent);
-        return Ok();
+        return Ok(pipelineEvent);
     }
 
     /// <summary>

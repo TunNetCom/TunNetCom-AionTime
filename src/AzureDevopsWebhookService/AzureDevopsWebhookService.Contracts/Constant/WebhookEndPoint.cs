@@ -10,6 +10,6 @@ public static class WebhookEndPoint
 {
     public const string AzureWorkItemsEvents = "AzureWorkItemsEvents";
     public const string AzureCodeEvents = "AzureCodeEvents";
-    public const string AzurePipelineEventEvnts = "AzurePipelineEventEvents";
+    public const string AzurePipelineEvents = "AzurePipelineEvents";
     public const string BuildAndReleaseEvents = "BuildAndReleaseEvents";
 }
