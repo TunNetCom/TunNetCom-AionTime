@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AzureDevopsWebhookService.Contracts.Settings;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using static MassTransit.Logging.DiagnosticHeaders.Messaging;
 
 namespace AzureDevopsWebhookService.Application;
@@ -6,17 +8,18 @@ namespace AzureDevopsWebhookService.Application;
 public static class AzureWebhookServiceRegistration
 {
     public static IServiceCollection AddAzureWebhookServiceRegistration(
-        this IServiceCollection services,
-        IConfiguration configuration)
+        this IServiceCollection services)
     {
         _ = services.AddMassTransit(x =>
         {
             x.UsingRabbitMq((context, cfg) =>
             {
-                cfg.Host(configuration.GetSection("RabbitMqSettings")["ServiceName"], "/", h =>
+                RabbitMqSettings rabbitMqSettings = context.GetRequiredService<IOptions<RabbitMqSettings>>().Value;
+
+                cfg.Host(rabbitMqSettings.ServiceName, "/", h =>
                 {
-                    h.Username(configuration.GetSection("RabbitMqSettings")["UserName"]!);
-                    h.Password(configuration.GetSection("RabbitMqSettings")["PassWord"]!);
+                    h.Username(rabbitMqSettings.UserName);
+                    h.Password(rabbitMqSettings.ServiceName);
                 });
                 cfg.ConfigureEndpoints(context);
             });

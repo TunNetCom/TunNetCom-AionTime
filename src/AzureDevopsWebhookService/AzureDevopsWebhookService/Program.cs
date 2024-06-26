@@ -1,3 +1,7 @@
+using AzureDevopsWebhookService.Contracts.Settings;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -9,8 +13,9 @@ try
 {
     Log.Information("Starting web host");
     _ = builder.Logging.AddLoggingService();
+    _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Services.AddMonitoringService();
-    _ = builder.Services.AddAzureWebhookServiceRegistration(builder.Configuration);
+    _ = builder.Services.AddAzureWebhookServiceRegistration();
     _ = builder.Services.AddControllers();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
     _ = builder.Services.AddEndpointsApiExplorer();
