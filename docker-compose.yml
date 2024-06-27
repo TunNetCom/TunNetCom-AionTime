@@ -1,6 +1,17 @@
 version: '3.4'
 
 services:
+
+  rabbitmq:
+    container_name: RabbitMq
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
   prometheus:
     container_name: Prometheus_Container
     image: prom/prometheus:v2.48.1
@@ -59,7 +70,11 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-        ASPNETCORE_HTTP_PORTS : 80
+         -ASPNETCORE_HTTP_PORTS=50975
+         -ASPNETCORE_HTTPS_PORTS=50974
+    ports:
+        - 50975:80
+        - 50974:443
     depends_on: 
         - loki 
 
@@ -78,9 +93,14 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-        ASPNETCORE_HTTP_PORTS : 80
+         - ASPNETCORE_HTTP_PORTS=52543
+         - ASPNETCORE_HTTPS_PORTS=52544
+    ports:
+        - 52543:80
+        - 52544:443
     depends_on: 
-        - loki 
+        - loki
+        - rabbitmq
 
   tunnetcom.aiontime.timelogservice.api:
     container_name: TimeLog_Service_Container
@@ -97,7 +117,8 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-        ASPNETCORE_HTTP_PORTS : 80
+         - ASPNETCORE_HTTP_PORTS=8085
+         - ASPNETCORE_HTTPS_PORTS=8086
     ports:
         - 8085:80
         - 8086:443
@@ -120,7 +141,8 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-        ASPNETCORE_HTTP_PORTS : 80
+         - ASPNETCORE_HTTP_PORTS=8090
+         - ASPNETCORE_HTTPS_PORTS=8091
     ports:
         - 8090:80
         - 8091:443

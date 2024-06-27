@@ -57,11 +57,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerConfigs", "DockerConf
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsIdentityService", "AzureDevopsIdentityService", "{9E366E19-579D-44C0-99A4-41A663FB073C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsIdentityService", "src\AzureDevopsIdentityService\AzureDevopsIdentityService\AzureDevopsIdentityService.csproj", "{F6CF7704-A01E-4FDA-87F0-F9F2803921E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsIdentityService", "src\AzureDevopsIdentityService\AzureDevopsIdentityService\AzureDevopsIdentityService.csproj", "{F6CF7704-A01E-4FDA-87F0-F9F2803921E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsWebhookService", "AzureDevopsWebhookService", "{CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsWebhookService", "src\AzureDevopsWebhookService\AzureDevopsWebhookService\AzureDevopsWebhookService.csproj", "{D16698A3-5BCC-46D0-AEAF-34F73DF41513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.API", "src\AzureDevopsWebhookService\AzureDevopsWebhookService\AzureDevopsWebhookService.API.csproj", "{D16698A3-5BCC-46D0-AEAF-34F73DF41513}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsWebhookService.Contracts", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Contracts\AzureDevopsWebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsWebhookService.Application", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Application\AzureDevopsWebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +125,14 @@ Global
 		{D16698A3-5BCC-46D0-AEAF-34F73DF41513}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16698A3-5BCC-46D0-AEAF-34F73DF41513}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D16698A3-5BCC-46D0-AEAF-34F73DF41513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67889F83-8AA5-4F2E-9D79-75B316845A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67889F83-8AA5-4F2E-9D79-75B316845A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67889F83-8AA5-4F2E-9D79-75B316845A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67889F83-8AA5-4F2E-9D79-75B316845A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,6 +156,8 @@ Global
 		{F6CF7704-A01E-4FDA-87F0-F9F2803921E7} = {9E366E19-579D-44C0-99A4-41A663FB073C}
 		{CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A} = {97CACF4A-AA5F-4755-AB9D-C164B81B497E}
 		{D16698A3-5BCC-46D0-AEAF-34F73DF41513} = {CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}
+		{67889F83-8AA5-4F2E-9D79-75B316845A33} = {CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}
+		{943FD55F-91A9-4361-89AE-55CE7C1C4714} = {CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9A31BB7-D618-49AB-A06A-907C5BA16305}

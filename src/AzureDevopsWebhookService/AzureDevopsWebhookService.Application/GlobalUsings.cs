@@ -1,0 +1,14 @@
+﻿global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
+global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+global using MassTransit;
+global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
+global using RabbitMQ.Client;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Net;
+global using System.Reflection;
+global using System.Text;
+global using System.Threading.Tasks;
