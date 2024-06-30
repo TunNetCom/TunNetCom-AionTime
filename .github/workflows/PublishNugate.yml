@@ -64,7 +64,6 @@ jobs:
 
   validate_nuget:
     runs-on: ubuntu-latest
-    needs: [ create_nuget ]
     steps:
       # Install the .NET SDK indicated in the global.json file
       - name: Setup .NET
@@ -76,8 +75,9 @@ jobs:
           name: nuget
           path: ${{ env.NuGetDirectory }}
 
+      # Manually install the tool if it cannot be found
       - name: Install nuget validator
-        run: dotnet tool update TunetCom.NuGetPackageValidation.Tool --global
+        run: dotnet tool install TunetCom.NuGetPackageValidation.Tool --global --version <VERSION_NUMBER>
 
       # Validate metadata and content of the NuGet package
       - name: Validate package
