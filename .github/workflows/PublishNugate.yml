@@ -20,7 +20,7 @@ env:
 
 defaults:
   run:
-    shell: pwsh
+    shell: bash
 
 jobs:
   create_nuget:
@@ -39,21 +39,21 @@ jobs:
 
     - name: Find project path
       id: find-path
-      shell: bash
       run: |
         # Search for the specific project file by name
         PROJECT_PATH=$(find . -name "${{ env.PROJECT_NAME }}.csproj")
         echo "Project path found: $PROJECT_PATH"
         
         # Save the project path as an output variable
-        echo "::set-output name=project_path::$PROJECT_PATH"
+        echo "project_path=$PROJECT_PATH" >> $GITHUB_ENV
 
     - name: Set NuGet directory
       run: echo "NuGetDirectory=$HOME/.nuget/packages" >> $GITHUB_ENV
 
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
     - name: Pack project
-      run: dotnet pack ${{ steps.find-path.outputs.project_path }} --configuration Release --output ${{ env.NuGetDirectory }}
+      run: dotnet pack $PROJECT_PATH --configuration Release --output ${{ env.NuGetDirectory }}
+
     # Publish the NuGet package as an artifact, so they can be used in the following jobs
     - uses: actions/upload-artifact@v3
       with:
@@ -80,11 +80,8 @@ jobs:
         run: dotnet tool update TunetCom.NuGetPackageValidation.Tool --global
 
       # Validate metadata and content of the NuGet package
-      # https://www.nuget.org/packages/Meziantou.Framework.NuGetPackageValidation.Tool#readme-body-tab
-      # If some rules are not applicable, you can disable them
-      # using the --excluded-rules or --excluded-rule-ids option
       - name: Validate package
-        run: meziantou.validate-nuget-package (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
+        run: meziantou.validate-nuget-package $(find ${{ env.NuGetDirectory }} -name "*.nupkg")
 
   run_test:
     runs-on: ubuntu-latest
@@ -97,9 +94,7 @@ jobs:
 
   deploy:
     # Publish only when creating a GitHub Release
-    # https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
-    # You can update this logic if you want to manage releases differently
-    if: github.event_name == 'push'
+    if: github.event_name == 'release' && github.event.action == 'published'
     runs-on: ubuntu-latest
     needs: [ validate_nuget, run_test ]
     steps:
@@ -114,10 +109,8 @@ jobs:
         uses: actions/setup-dotnet@v4
 
       # Publish all NuGet packages to NuGet.org
-      # Use --skip-duplicate to prevent errors if a package with the same version already exists.
-      # If you retry a failed workflow, already published packages will be skipped without error.
       - name: Publish NuGet package
         run: |
-          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-              dotnet nuget push $file --api-key "${{ secrets.NUGET_SECRET_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
-          }
+          for file in ${{ env.NuGetDirectory }}/*.nupkg; do
+            dotnet nuget push "$file" --api-key "${{ secrets.NUGET_SECRET_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          done
