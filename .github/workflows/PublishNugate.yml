@@ -34,11 +34,15 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
 
+    - name: Set Project Name
+      run: echo "PROJECT_NAME=AzureDevopsWebhookService.Contracts" >> $GITHUB_ENV
+
     - name: Find project path
       id: find-path
+      shell: bash
       run: |
-        # Search for a specific project file (e.g., *.csproj for a C# project)
-        PROJECT_PATH=$(find . -name "*AzureDevopsWebhookService.Contracts.csproj")
+        # Search for the specific project file by name
+        PROJECT_PATH=$(find . -name "${{ env.PROJECT_NAME }}.csproj")
         echo "Project path found: $PROJECT_PATH"
         
         # Save the project path as an output variable
