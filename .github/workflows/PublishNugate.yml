@@ -72,12 +72,6 @@ jobs:
           name: nuget
           path: ${{ env.NuGetDirectory }}
 
-      #- name: Install nuget validator
-       # run: dotnet tool update Meziantou.Framework.NuGetPackageValidation.Tool --global
-
-      #- name: Validate package
-       # run: meziantou.validate-nuget-package $(find ${{ env.NuGetDirectory }} -name "*.nupkg")
-
   run_test:
     runs-on: ubuntu-latest
     needs: validate_nuget
