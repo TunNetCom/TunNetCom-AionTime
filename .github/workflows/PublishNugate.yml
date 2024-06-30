@@ -73,7 +73,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: nuget
-          path: ${{ env.NuGetDirectory }}
+          path: ${{ env.NuGetDirectory }}/*.nupgk
 
       # Manually install the tool if it cannot be found
       - name: Install nuget validator
