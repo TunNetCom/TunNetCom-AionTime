@@ -16,6 +16,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	</PackageReference>
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
