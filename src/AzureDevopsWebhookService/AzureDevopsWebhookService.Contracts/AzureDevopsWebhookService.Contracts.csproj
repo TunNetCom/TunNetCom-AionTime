@@ -8,12 +8,7 @@
 		<Description>Azure event classes</Description>
 		<PackageTags>sample, library</PackageTags>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<PackageProjectUrl>https://www.meziantou.net</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/yourusername/your-repo</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/yourusername/your-repo</PackageProjectUrl>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EnablePackageValidation>true</EnablePackageValidation>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<owners>TUNETCOM</owners>
 	</PropertyGroup>
 
