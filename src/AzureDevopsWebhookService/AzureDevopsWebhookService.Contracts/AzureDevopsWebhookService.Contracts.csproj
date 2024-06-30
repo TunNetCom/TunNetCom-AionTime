@@ -8,6 +8,11 @@
 	<Authors>Marwen</Authors>
 	<PackageId>AzureEvents</PackageId>
 	<Description>Azure event classes</Description>
+	<PackageProjectUrl>https://www.meziantou.net</PackageProjectUrl>
+	<PackageTags>sample, library</PackageTags>
+	<EnablePackageValidation>true</EnablePackageValidation>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
