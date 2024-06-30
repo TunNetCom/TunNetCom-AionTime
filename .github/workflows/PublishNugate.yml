@@ -73,7 +73,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: nuget
-          path: ${{ env.NuGetDirectory }}/*.nupgk
+          path: "/home/runner/.nuget/packages/AzureDevopsWebhookService.Contracts.1.0.0.nupkg"
 
       # Manually install the tool if it cannot be found
       - name: Install nuget validator
