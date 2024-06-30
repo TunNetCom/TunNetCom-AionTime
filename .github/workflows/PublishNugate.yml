@@ -72,8 +72,8 @@ jobs:
           name: nuget
           path: ${{ env.NuGetDirectory }}
 
-      - name: Install nuget validator
-        run: dotnet tool install ${{ env.NuGetDirectory }} --global --version <VERSION_NUMBER>
+      #- name: Install nuget validator
+       # run: dotnet tool install AzureDevopsWebhookService.Contracts --global --version <VERSION_NUMBER>
 
       - name: Validate package
         run: meziantou.validate-nuget-package $(find ${{ env.NuGetDirectory }} -name "*.nupkg")
