@@ -45,7 +45,6 @@ services:
     ports:
       - "127.0.0.1:16686:16686"
 
-
   SqlServerDb:
     container_name: Sql_Server_Container
     image: mcr.microsoft.com/mssql/server:2019-latest
@@ -70,11 +69,11 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-         -ASPNETCORE_HTTP_PORTS=50975
-         -ASPNETCORE_HTTPS_PORTS=50974
+         -ASPNETCORE_HTTP_PORTS=52541
+         -ASPNETCORE_HTTPS_PORTS=52542
     ports:
-        - 50975:80
-        - 50974:443
+        - 52541:80
+        - 52542:443
     depends_on: 
         - loki 
 
@@ -117,11 +116,11 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-         - ASPNETCORE_HTTP_PORTS=8085
-         - ASPNETCORE_HTTPS_PORTS=8086
+         - ASPNETCORE_HTTP_PORTS=52545
+         - ASPNETCORE_HTTPS_PORTS=52546
     ports:
-        - 8085:80
-        - 8086:443
+        - 52545:80
+        - 52546:443
     depends_on: 
         - SqlServerDb
         - loki 
@@ -141,11 +140,11 @@ services:
         OTEL_EXPORTER_JAEGER_AGENT_PORT : 6831
         OTEL_EXPORTER_JAEGER_ENDPOINT : http://jaeger:14268/api/traces
         OTEL_EXPORTER_OTLP_ENDPOINT : http://otel-collector:4317
-         - ASPNETCORE_HTTP_PORTS=8090
-         - ASPNETCORE_HTTPS_PORTS=8091
+         - ASPNETCORE_HTTP_PORTS=52547
+         - ASPNETCORE_HTTPS_PORTS=52548
     ports:
-        - 8090:80
-        - 8091:443
+        - 52547:80
+        - 52548:443
     depends_on: 
             loki : 
              condition: service_healthy
