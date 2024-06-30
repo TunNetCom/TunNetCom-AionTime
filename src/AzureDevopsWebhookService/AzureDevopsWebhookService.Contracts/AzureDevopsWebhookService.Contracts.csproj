@@ -10,7 +10,6 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageProjectUrl>https://www.meziantou.net</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/yourusername/your-repo</RepositoryUrl>
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<PackageProjectUrl>https://github.com/yourusername/your-repo</PackageProjectUrl>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<EnablePackageValidation>true</EnablePackageValidation>
