@@ -44,7 +44,7 @@ jobs:
         PROJECT_PATH=$(find . -name "${{ env.PROJECT_NAME }}.csproj")
         echo "Project path found: $PROJECT_PATH"
         
-        # Save the project path as an output variable
+        # Save the project path as an environment variable
         echo "project_path=$PROJECT_PATH" >> $GITHUB_ENV
 
     - name: Set NuGet directory
@@ -52,7 +52,7 @@ jobs:
 
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
     - name: Pack project
-      run: dotnet pack $PROJECT_PATH --configuration Release --output ${{ env.NuGetDirectory }}
+      run: dotnet pack ${{ env.project_path }} --configuration Release --output ${{ env.NuGetDirectory }}
 
     # Publish the NuGet package as an artifact, so they can be used in the following jobs
     - uses: actions/upload-artifact@v3
