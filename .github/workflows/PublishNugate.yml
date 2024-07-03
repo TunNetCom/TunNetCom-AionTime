@@ -87,6 +87,7 @@ jobs:
 
       - name: Publish NuGet packages
         run: |
+          echo "NuGet Secret Key: ${{ secrets.NUGET_SECRET_KEY }}"
           for file in ${{ env.NuGetDirectory }}/*.nupkg; do
             dotnet nuget push "$file" --api-key "${{ secrets.NUGET_SECRET_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           done
