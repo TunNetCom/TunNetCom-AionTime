@@ -86,8 +86,11 @@ jobs:
         uses: actions/setup-dotnet@v4
 
       - name: Publish NuGet packages
+        env:
+         SUPER_SECRET: ${{ secrets.SuperSecret }}
         run: |
           echo "Length of NuGet Secret Key: ${#${{ secrets.NUGET_SECRET_KEY }}}"
+          echo "Length of NuGet Secret Key: ${#${{ env.SUPER_SECRET }}}"
           for file in ${{ env.NuGetDirectory }}/*.nupkg; do
-            dotnet nuget push "$file" --api-key "${{ secrets.NUGET_SECRET_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+            dotnet nuget push "$file" --api-key "${{ env.SUPER_SECRET }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           done
