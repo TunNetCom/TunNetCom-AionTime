@@ -1,14 +1,17 @@
-﻿namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+﻿using MassTransit;
 
-public class SendAzureBuildAndReleaseEventsCommandHandler(IPublishEndpoint publishEndpoint)
+namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+
+public class SendAzureBuildAndReleaseEventsCommandHandler(ISendEndpointProvider sendEndpointProvider)
     : IRequestHandler<AzureWebhookModelEvent<BuildAndReleaseResource>>
 {
-    private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
+    private readonly ISendEndpointProvider _sendEndpointProvider = sendEndpointProvider;
 
     public async Task Handle(
         AzureWebhookModelEvent<BuildAndReleaseResource> request,
         CancellationToken cancellationToken)
     {
-        await _publishEndpoint.Publish(request, cancellationToken);
+        ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/BuildAndReleaseEvents"));
+        await endpoint.Send(request, cancellationToken);
     }
 }

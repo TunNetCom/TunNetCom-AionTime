@@ -63,9 +63,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsWebhookService",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.API", "src\AzureDevopsWebhookService\AzureDevopsWebhookService\AzureDevopsWebhookService.API.csproj", "{D16698A3-5BCC-46D0-AEAF-34F73DF41513}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsWebhookService.Contracts", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Contracts\AzureDevopsWebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.Contracts", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Contracts\AzureDevopsWebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsWebhookService.Application", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Application\AzureDevopsWebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.Application", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Application\AzureDevopsWebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureWebhookSharedModels", "..\SharedModels\AzureWebhookSharedModels.csproj", "{B3AF7BCC-1E55-405A-BAA6-7690126E9607}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,6 +135,10 @@ Global
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AF7BCC-1E55-405A-BAA6-7690126E9607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AF7BCC-1E55-405A-BAA6-7690126E9607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AF7BCC-1E55-405A-BAA6-7690126E9607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AF7BCC-1E55-405A-BAA6-7690126E9607}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
