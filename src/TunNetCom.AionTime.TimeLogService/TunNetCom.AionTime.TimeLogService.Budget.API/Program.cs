@@ -1,3 +1,7 @@
+using MassTransit;
+using TunNetCom.AionTime.TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
+using TunNetCom.AionTime.TimeLogService.Contracts.Settings;
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()
@@ -7,6 +11,7 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+    _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Logging.AddLoggingService();
     _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddHttpContextAccessor();

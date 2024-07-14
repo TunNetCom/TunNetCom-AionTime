@@ -4,13 +4,6 @@
         <name>AzureDevopsWebhookService.API</name>
     </assembly>
     <members>
-        <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureEvents(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{OpenTelemetry.Resources.Resource})">
-            <summary>
-            Old endpoint ===> tested
-            </summary>
-            <param name="webhookSubscription"></param>
-            <returns></returns>
-        </member>
         <member name="M:AzureDevopsWebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(AzureDevopsWebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource})">
             <summary>
             Work item commented on

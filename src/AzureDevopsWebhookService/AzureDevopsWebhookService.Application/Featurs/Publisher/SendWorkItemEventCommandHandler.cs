@@ -1,14 +1,18 @@
-﻿namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+﻿using MassTransit.Transports;
+using Newtonsoft.Json;
 
-public class SendWorkItemEventCommandHandler(IPublishEndpoint publishEndpoint)
+namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+
+public class SendWorkItemEventCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<WorkItemResource>>
 {
-    private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
+    private readonly ISendEndpointProvider _sendEndpointProvider = sendEndpointProvider;
 
     public async Task Handle(
         AzureWebhookModelEvent<WorkItemResource> request,
         CancellationToken cancellationToken)
     {
-        await _publishEndpoint.Publish(request, cancellationToken);
+        ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/WorkItemEvent"));
+        await endpoint.Send(request, cancellationToken);
     }
 }

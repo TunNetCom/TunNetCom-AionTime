@@ -12,6 +12,7 @@ public static class AzureWebhookServiceRegistration
     {
         _ = services.AddMassTransit(x =>
         {
+            x.SetDefaultEndpointNameFormatter();
             x.UsingRabbitMq((context, cfg) =>
             {
                 RabbitMqSettings rabbitMqSettings = context.GetRequiredService<IOptions<RabbitMqSettings>>().Value;
@@ -19,9 +20,9 @@ public static class AzureWebhookServiceRegistration
                 cfg.Host(rabbitMqSettings.ServiceName, "/", h =>
                 {
                     h.Username(rabbitMqSettings.UserName);
-                    h.Password(rabbitMqSettings.ServiceName);
+                    h.Password(rabbitMqSettings.Password);
                 });
-                cfg.ConfigureEndpoints(context);
+                cfg.ConfigureEndpoints(context, new DefaultEndpointNameFormatter("dev", false));
             });
         });
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));

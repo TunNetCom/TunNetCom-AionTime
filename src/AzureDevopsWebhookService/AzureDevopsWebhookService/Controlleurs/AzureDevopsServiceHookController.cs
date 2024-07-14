@@ -7,17 +7,6 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     private readonly IMediator _mediator = mediator;
 
     /// <summary>
-    /// Old endpoint ===> tested
-    /// </summary>
-    /// <param name="webhookSubscription"></param>
-    /// <returns></returns>
-    [HttpPost("AzureEvents")]
-    public IActionResult AzureEvents(AzureWebhookModelEvent<Resource> webhookSubscription)
-    {
-        return Ok(webhookSubscription);
-    }
-
-    /// <summary>
     /// Work item commented on
     /// Work item updated
     /// Work item restored

@@ -1,14 +1,17 @@
-﻿namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+﻿using MassTransit;
+using MassTransit.Transports;
 
-public class SendAzureCodeEventsCommandHandler(IPublishEndpoint publishEndpoint)
+namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+
+public class SendAzureCodeEventsCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<CodeResource>>
 {
-    private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
-
+    private readonly ISendEndpointProvider _sendEndpointProvider = sendEndpointProvider;
     public async Task Handle(
         AzureWebhookModelEvent<CodeResource> request,
         CancellationToken cancellationToken)
     {
-        await _publishEndpoint.Publish(request, cancellationToken);
+        ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/CodeEvents"));
+        await endpoint.Send(request, cancellationToken);
     }
 }
