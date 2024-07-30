@@ -1,6 +1,4 @@
-﻿using AzureWebhookSharedModels.EventModels.SharedModels;
-using AzureWebhookSharedModels.EventModels.SharedModels.ResourcesModels;
-using MassTransit;
+﻿using MassTransit;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

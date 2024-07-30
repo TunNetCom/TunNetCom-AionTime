@@ -1,5 +1,4 @@
-﻿using AzureDevopsWebhookService.Contracts.Settings;
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.Extensions.Options;
 using TunNetCom.AionTime.TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
 using TunNetCom.AionTime.TimeLogService.Contracts.Settings;

@@ -1,7 +1,4 @@
-﻿using MassTransit;
-using MassTransit.Transports;
-
-namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+﻿namespace AzureDevopsWebhookService.Application.Featurs.Producer;
 
 public class SendAzureCodeEventsCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<CodeResource>>

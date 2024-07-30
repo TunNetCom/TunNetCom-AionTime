@@ -1,7 +1,12 @@
 ﻿global using AutoMapper;
+global using AzureDevopsWebhookService.Contracts;
+global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
+global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+global using MassTransit;
 global using MediatR;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
+global using Newtonsoft.Json;
 global using System.Reflection;
 global using TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Request;
 global using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
