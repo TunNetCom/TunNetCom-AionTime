@@ -18,7 +18,6 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
   NuGetDirectory: ${{ github.workspace }}/nuget
-  NUGET_SECRET_KEY: oy2gybbgbikaypvqy7caqknsylauhdvenfd4ndfymy4l7e
 
 defaults:
   run:
@@ -91,8 +90,9 @@ jobs:
          SUPER_SECRET: ${{ secrets.NUGET_SECRET_KEY }}
         run: |
           echo "Length of NuGet Secret Key from secret: ${{ secrets.NUGET_SECRET_KEY }}"
-          echo "Length of NuGet Secret Key from env: ${#${{env.NUGET_SECRET_KEY}}}"
-          echo "Length of NuGet Secret Key from env : $NUGET_SECRET_KEY!"
           for file in ${{ env.NuGetDirectory }}/*.nupkg; do
-            dotnet nuget push "$file" --api-key "${{ secrets.NUGET_SECRET_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+            dotnet nuget push "$file" --api-key "${{ secrets.NUGET_SECRET_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate || {
+             echo "Failed to push $file"
+             exit 1
+          }
           done
