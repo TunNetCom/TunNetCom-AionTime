@@ -18,6 +18,7 @@ env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
   DOTNET_NOLOGO: true
   NuGetDirectory: ${{ github.workspace }}/nuget
+  NUGET_SECRET_KEY: oy2gybbgbikaypvqy7caqknsylauhdvenfd4ndfymy4l7e
 
 defaults:
   run:
