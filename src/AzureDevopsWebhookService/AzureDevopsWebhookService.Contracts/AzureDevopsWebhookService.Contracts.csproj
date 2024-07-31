@@ -1,23 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Version>1.0.5</Version>
 		<Nullable>enable</Nullable>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<Authors>Marwen</Authors>
-		<Description>Azure event classes</Description>
-		<PackageTags>sample, library</PackageTags>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<PackageReleaseNotes>Ajout de nouveaux champ Docaposte settings</PackageReleaseNotes>
 	</PropertyGroup>
 
   <ItemGroup>
-	  <None Include="../AzureDevopsWebhookService.Contracts/README.md" Pack="true" PackagePath="\"/>
-	<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-	</PackageReference>
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
