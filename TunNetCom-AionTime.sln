@@ -63,7 +63,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsWebhookService",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.API", "src\AzureDevopsWebhookService\AzureDevopsWebhookService\AzureDevopsWebhookService.API.csproj", "{D16698A3-5BCC-46D0-AEAF-34F73DF41513}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.Contracts", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Contracts\AzureDevopsWebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevops.WebhookService.Contracts", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Contracts\TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsWebhookService.Application", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Application\AzureDevopsWebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
 EndProject

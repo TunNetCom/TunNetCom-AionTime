@@ -42,7 +42,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AzureDevopsWebhookService.Application\AzureDevopsWebhookService.Application.csproj" />
-    <ProjectReference Include="..\AzureDevopsWebhookService.Contracts\AzureDevopsWebhookService.Contracts.csproj" />
+    <ProjectReference Include="..\AzureDevopsWebhookService.Contracts\TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
