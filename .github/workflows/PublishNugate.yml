@@ -20,7 +20,7 @@ jobs:
 
     - name: Find .Contracts Project
       id: find_contracts_project
-      run: echo "::set-output name=project_path::$(find . -name '*.Contracts.csproj')"
+      run: echo "::set-output name=project_path::$(find . -name '*AzureDevopsWebhookService.Contracts.csproj')"
 
     - name: Pack .Contracts Project
       run: dotnet pack ${{ steps.find_contracts_project.outputs.project_path }} --configuration Release --output ./artifacts
