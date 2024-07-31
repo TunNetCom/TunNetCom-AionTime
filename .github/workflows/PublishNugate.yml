@@ -28,4 +28,4 @@ jobs:
       run: dotnet pack src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj --configuration Release --output ./artifacts
 
     - name: Publish NuGet Package
-      run: dotnet nuget push "./artifacts/*.nupkg" --api-key oy2ek6igpprxblmhvvqarrhllq2t7l7e3akj4pg72abkba --source "https://api.nuget.org/v3/index.json"
+      run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} --source "https://api.nuget.org/v3/index.json"
