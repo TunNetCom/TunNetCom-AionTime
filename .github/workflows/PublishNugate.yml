@@ -19,13 +19,13 @@ jobs:
         dotnet-version: '8.x'
 
     - name: Restore dependencies
-      run: dotnet restore src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj
+      run: dotnet restore src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj
 
     - name: Build Project
-      run: dotnet build src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj --configuration Release --no-restore
+      run: dotnet build src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj --configuration Release --no-restore
 
     - name: Pack NuGet Package
-      run: dotnet pack src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj --configuration Release --output ./artifacts
+      run: dotnet pack src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj --configuration Release --output ./artifacts
 
     - name: Publish NuGet Package
       run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} --source "https://api.nuget.org/v3/index.json"
