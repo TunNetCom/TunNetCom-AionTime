@@ -26,4 +26,5 @@ jobs:
       run: dotnet pack ${{ steps.find_contracts_project.outputs.project_path }} --configuration Release --output ./artifacts
 
     - name: Publish .Contracts Package
-      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} --source "https://api.nuget.org/v3/index.json"
+
