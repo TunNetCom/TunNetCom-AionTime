@@ -1,0 +1,29 @@
+name: Publish NuGet Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
+
+    - name: Find .Contracts Project
+      id: find_contracts_project
+      run: echo "::set-output name=project_path::$(find . -name '*.Contracts.csproj')"
+
+    - name: Pack .Contracts Project
+      run: dotnet pack ${{ steps.find_contracts_project.outputs.project_path }} --configuration Release --output ./artifacts
+
+    - name: Publish .Contracts Package
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
