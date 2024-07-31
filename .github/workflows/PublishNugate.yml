@@ -2,8 +2,8 @@ name: Publish NuGet Package
 
 on:
   push:
-    tags:
-      - 'v*.*.*'  # Triggers on version tags like v1.0.0
+    branches:
+      - master
 
 jobs:
   build:
