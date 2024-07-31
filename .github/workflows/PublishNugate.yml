@@ -1,98 +1,29 @@
-# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
-
-name: publish
+name: Publish NuGet Package
 
 on:
-  workflow_dispatch:  # Allow running the workflow manually from the GitHub UI
   push:
     branches:
-      - 'main'         # Run the workflow when pushing to the main branch
-  pull_request:
-    branches:
-      - '*'            # Run the workflow for all pull requests
-  release:
-    types:
-      - published      # Run the workflow when a new GitHub release is published
-
-env:
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
-  DOTNET_NOLOGO: true
-  NuGetDirectory: ${{ github.workspace }}/nuget
-
-defaults:
-  run:
-    shell: bash
+      - main
 
 jobs:
-  create_nuget:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Get all history to allow automatic versioning using MinVer
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.x'
 
-      - name: Set Project Name
-        run: echo "PROJECT_NAME=AzureDevopsWebhookService.Contracts" >> $GITHUB_ENV
+    - name: Find .Contracts Project
+      id: find_contracts_project
+      run: echo "::set-output name=project_path::$(find . -name '*.Contracts.csproj')"
 
-      - name: Find project path
-        id: find-path
-        run: |
-          PROJECT_PATH=$(find . -name "${{ env.PROJECT_NAME }}.csproj")
-          echo "Project path found: $PROJECT_PATH"
-          echo "project_path=$PROJECT_PATH" >> $GITHUB_ENV
+    - name: Pack .Contracts Project
+      run: dotnet pack ${{ steps.find_contracts_project.outputs.project_path }} --configuration Release --output ./artifacts
 
-      - name: Set NuGet directory
-        run: echo "NuGetDirectory=$HOME/.nuget/packages" >> $GITHUB_ENV
-
-      - name: Pack project
-        run: dotnet pack ${{ env.project_path }} --configuration Release --output ${{ env.NuGetDirectory }}
-
-      - name: Upload NuGet artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: nuget
-          if-no-files-found: error
-          retention-days: 7
-          path: ${{ env.NuGetDirectory }}/*.nupkg
-
-  validate_nuget:
-    runs-on: ubuntu-latest
-    needs: create_nuget
-    steps:
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
-
-      - name: Download NuGet artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: nuget
-          path: ${{ env.NuGetDirectory }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: validate_nuget
-    steps:
-      - name: Download NuGet artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: nuget
-          path: ${{ env.NuGetDirectory }}
-
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v4
-
-      - name: Publish NuGet packages
-        env:
-         SUPER_SECRET: ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }}
-        run: |
-          echo "Length of NuGet Secret Key from secret: ${#SUPER_SECRET}"
-          for file in ${{ env.NuGetDirectory }}/*.nupkg; do
-            dotnet nuget push "$file" --api-key "$SUPER_SECRET" --source https://api.nuget.org/v3/index.json --skip-duplicate || {
-              echo "Failed to push $file"
-              exit 1
-            }
-          done
+    - name: Publish .Contracts Package
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
