@@ -87,7 +87,7 @@ jobs:
 
       - name: Publish NuGet packages
         env:
-         SUPER_SECRET: ${{ secrets.NUGET_SECRET_KEY }}
+         SUPER_SECRET: ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }}
         run: |
           echo "Length of NuGet Secret Key from secret: ${#SUPER_SECRET}"
           for file in ${{ env.NuGetDirectory }}/*.nupkg; do
