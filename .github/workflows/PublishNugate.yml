@@ -2,8 +2,8 @@ name: Publish NuGet Package
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0
 
 jobs:
   build:
@@ -18,13 +18,14 @@ jobs:
       with:
         dotnet-version: '8.x'
 
-    - name: Find .Contracts Project
-      id: find_contracts_project
-      run: project_path=$(find . -name "*AzureDevopsWebhookService.Contracts.csproj") 
+    - name: Restore dependencies
+      run: dotnet restore src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj
 
-    - name: Pack .Contracts Project
-      run: dotnet pack ${{ steps.find_contracts_project.outputs.project_path }} --configuration Release --output ./artifacts
+    - name: Build Project
+      run: dotnet build src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj --configuration Release --no-restore
 
-    - name: Publish .Contracts Package
+    - name: Pack NuGet Package
+      run: dotnet pack src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/AzureDevopsWebhookService.Contracts.csproj --configuration Release --output ./artifacts
+
+    - name: Publish NuGet Package
       run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} --source "https://api.nuget.org/v3/index.json"
-
