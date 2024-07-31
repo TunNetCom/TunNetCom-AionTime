@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>AzureDevopsWebhookService.Contracts</name>
+        <name>TunNetCom.AionTime.AzureDevops.WebhookService.Contracts</name>
     </assembly>
     <members>
     </members>
