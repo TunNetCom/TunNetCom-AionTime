@@ -1,4 +1,7 @@
-﻿namespace AzureDevopsWebhookService.Application.Featurs.Producer;
+﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
+using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+
+namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application.Featurs.Producer;
 
 public class SendWorkItemEventCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<WorkItemResource>>

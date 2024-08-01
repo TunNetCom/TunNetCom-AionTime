@@ -1,6 +1,7 @@
-﻿using MassTransit.Transports;
+﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
+using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
-namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application.Featurs.Publisher;
 
 public class SendAzurePipelineEventCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<PipeLinesResource>>

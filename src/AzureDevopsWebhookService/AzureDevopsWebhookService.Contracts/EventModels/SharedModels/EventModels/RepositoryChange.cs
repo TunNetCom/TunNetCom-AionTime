@@ -1,11 +1,4 @@
-﻿using AzureDevopsWebhookService;
-using AzureDevopsWebhookService.Contracts;
-using AzureDevopsWebhookService.Contracts.EventModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
-using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
-
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record RepositoryChange(
     [property: JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]

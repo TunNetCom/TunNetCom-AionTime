@@ -1,9 +1,6 @@
-﻿using AzureDevopsWebhookService.Contracts.Settings;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using static MassTransit.Logging.DiagnosticHeaders.Messaging;
+﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.Settings;
 
-namespace AzureDevopsWebhookService.Application;
+namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application;
 
 public static class AzureWebhookServiceRegistration
 {

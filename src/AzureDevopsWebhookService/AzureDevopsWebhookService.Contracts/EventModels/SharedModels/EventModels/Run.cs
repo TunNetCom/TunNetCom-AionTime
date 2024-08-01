@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record class Run(
     [property: JsonProperty(PropertyName = "pipeline", NullValueHandling = NullValueHandling.Ignore)]

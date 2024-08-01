@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsWebhookService.API;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.API;
 
 public static class ExtensionServiceRegistration
 {

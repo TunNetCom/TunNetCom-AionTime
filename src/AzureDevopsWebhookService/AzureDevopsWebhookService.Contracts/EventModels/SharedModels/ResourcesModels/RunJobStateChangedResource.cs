@@ -1,6 +1,4 @@
-﻿using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
-
-namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
 public record class RunJobStateChangedResource(
     [property: JsonProperty(PropertyName = "job", NullValueHandling = NullValueHandling.Ignore)]

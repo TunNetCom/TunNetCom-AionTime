@@ -1,7 +1,7 @@
-﻿using MassTransit.Transports;
-using Newtonsoft.Json;
+﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
+using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
-namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application.Featurs.Publisher;
 
 public class SendWorkItemEventCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<WorkItemResource>>
