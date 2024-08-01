@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record Commit(
     [property: JsonProperty(PropertyName = "commitId", NullValueHandling = NullValueHandling.Ignore)]

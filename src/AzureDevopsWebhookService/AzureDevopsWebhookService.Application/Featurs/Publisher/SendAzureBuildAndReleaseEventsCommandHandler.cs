@@ -1,6 +1,7 @@
-﻿using MassTransit;
+﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
+using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
-namespace AzureDevopsWebhookService.Application.Featurs.Publisher;
+namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application.Featurs.Publisher;
 
 public class SendAzureBuildAndReleaseEventsCommandHandler(ISendEndpointProvider sendEndpointProvider)
     : IRequestHandler<AzureWebhookModelEvent<BuildAndReleaseResource>>

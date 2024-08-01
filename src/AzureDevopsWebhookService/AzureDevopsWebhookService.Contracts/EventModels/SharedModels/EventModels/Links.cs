@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record Links(
     [property: JsonProperty(PropertyName = "avatar", NullValueHandling = NullValueHandling.Ignore)]

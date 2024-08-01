@@ -1,12 +1,4 @@
-﻿global using AzureDevopsWebhookService;
-global using AzureDevopsWebhookService.API;
-global using AzureDevopsWebhookService.API.Middelware;
-global using AzureDevopsWebhookService.Application;
-global using AzureDevopsWebhookService.Contracts.Constant;
-global using AzureDevopsWebhookService.Contracts.EventModels;
-global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels;
-global using AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
-global using MassTransit;
+﻿global using MassTransit;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Http;

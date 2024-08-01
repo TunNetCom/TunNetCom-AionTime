@@ -1,4 +1,6 @@
-﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
+
+namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
 public record CodeResource(
     [property: JsonProperty(PropertyName = "Commits", NullValueHandling = NullValueHandling.Ignore)]

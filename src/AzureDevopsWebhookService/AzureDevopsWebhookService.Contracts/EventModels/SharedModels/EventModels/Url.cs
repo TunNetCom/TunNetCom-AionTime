@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsWebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record class Url(
     [property: JsonProperty(PropertyName = "href", NullValueHandling = NullValueHandling.Ignore)]

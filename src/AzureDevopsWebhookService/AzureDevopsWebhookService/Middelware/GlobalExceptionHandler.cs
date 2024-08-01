@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsWebhookService.API.Middelware;
+﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.API.Middelware;
 
 internal sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
     : IExceptionHandler
