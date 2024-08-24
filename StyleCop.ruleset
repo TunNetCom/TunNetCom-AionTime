@@ -211,7 +211,7 @@
     <Rule Id="CA2231" Action="Error" />
     <Rule Id="CA2232" Action="Error" />
     <Rule Id="CA2233" Action="Error" />
-    <Rule Id="CA2234" Action="Error" />
+    <Rule Id="CA2234" Action="Warning" />
     <Rule Id="CA2235" Action="Error" />
     <Rule Id="CA2236" Action="Error" />
     <Rule Id="CA2237" Action="Error" />
@@ -727,6 +727,7 @@
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.NetAnalyzers">
     <Rule Id="CA1309" Action="Error" />
     <Rule Id="CA1824" Action="Error" />
+    <Rule Id="CA2234" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers">
     <Rule Id="CA1000" Action="Error" />

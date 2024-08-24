@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\TunNetCom.AionTime.AzureDevopsService.Application\TunNetCom.AionTime.AzureDevopsService.Application.csproj" />
   </ItemGroup>
 
 </Project>
