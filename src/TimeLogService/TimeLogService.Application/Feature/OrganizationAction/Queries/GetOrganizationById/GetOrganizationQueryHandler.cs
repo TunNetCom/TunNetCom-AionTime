@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+﻿namespace TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
 
 public class GetOrganizationQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<GetOrganizationByIdQuery, OrganizationRequest>

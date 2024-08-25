@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.Settings;
+﻿namespace WebhookService.Contracts.Settings;
 
 public class RabbitMqSettings
 {

@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 #pragma warning disable CA1711 // Identifiers should not have incorrect suffix
 public record Collection(

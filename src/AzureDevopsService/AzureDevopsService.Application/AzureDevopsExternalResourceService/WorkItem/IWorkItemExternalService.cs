@@ -1,9 +1,6 @@
-﻿using AzureDevopsService.Contracts.AzureResponceModel;
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
 
-namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem
+public interface IWorkItemExternalService
 {
-    public interface IWorkItemExternalService
-    {
-        Task<OneOf<WiqlResponses?, WiqlBadRequestResponce?>> GetWorkItemByUser(WorkItemRequest resource);
-    }
+    Task<OneOf<WiqlResponses?, WiqlBadRequestResponce?>> GetWorkItemByUser(WorkItemRequest resource);
 }

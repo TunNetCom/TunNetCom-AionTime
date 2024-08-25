@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
 
 public interface IProjectService
 {

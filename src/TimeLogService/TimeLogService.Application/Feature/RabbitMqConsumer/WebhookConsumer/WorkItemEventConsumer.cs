@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
+﻿namespace TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
 
 public class WorkItemEventConsumer : IConsumer<AzureWebhookModelEvent<WorkItemResource>>
 {

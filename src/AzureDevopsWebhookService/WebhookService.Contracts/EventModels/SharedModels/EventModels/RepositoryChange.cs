@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record RepositoryChange(
     [property: JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]

@@ -1,4 +1,14 @@
-﻿global using Microsoft.EntityFrameworkCore;
+﻿global using Microsoft.AspNetCore.Http;
+global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
-global using TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
-global using TunNetCom.AionTime.TimeLogService.Infrastructure.AionTimeContext;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using System;
+global using System.Collections.Generic;
+global using TimeLogService;
+global using TimeLogService.Domain.Interfaces.Repositories;
+global using TimeLogService.Domain.Models.Dbo;
+global using TimeLogService.Infrastructure;
+global using TimeLogService.Infrastructure.AionTimeContext;
+global using TimeLogService.Infrastructure.MultiTenancy;
+global using TimeLogService.Infrastructure.Repositories;

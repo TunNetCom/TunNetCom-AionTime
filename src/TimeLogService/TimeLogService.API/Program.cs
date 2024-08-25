@@ -1,6 +1,10 @@
 using MassTransit;
-using TunNetCom.AionTime.TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
-using TunNetCom.AionTime.TimeLogService.Contracts.Settings;
+using TimeLogService.API;
+using TimeLogService.API.Middelware;
+using TimeLogService.Application;
+using TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
+using TimeLogService.Contracts.Settings;
+using TimeLogService.Infrastructure;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)

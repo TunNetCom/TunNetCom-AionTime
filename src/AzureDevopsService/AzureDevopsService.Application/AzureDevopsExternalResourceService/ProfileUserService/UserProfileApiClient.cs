@@ -1,7 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.Constant;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
 
 public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiClient> logger) : IUserProfileApiClient
 {

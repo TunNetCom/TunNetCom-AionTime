@@ -1,3 +1,5 @@
+using IdentityService.API;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()

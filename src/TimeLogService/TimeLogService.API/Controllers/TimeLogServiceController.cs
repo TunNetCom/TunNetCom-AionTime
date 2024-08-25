@@ -1,10 +1,16 @@
-using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
-using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
-using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
-using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
-using TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+using TimeLogService;
+using TimeLogService.API;
+using TimeLogService.API.Controllers;
+using TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
+using TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
+using TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
+using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
+using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+using TimeLogService.Contracts.DTOs.Request;
+using TunNetCom;
+using TunNetCom.AionTime;
 
-namespace TunNetCom.AionTime.TimeLogService.API.Controllers;
+namespace TimeLogService.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,7 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureResponceModel;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Contracts.AzureRequestResourceModel
+﻿namespace AzureDevopsService.Contracts.AzureRequestResourceModel
 {
     public class WorkItemRequest : BaseRequest
     {

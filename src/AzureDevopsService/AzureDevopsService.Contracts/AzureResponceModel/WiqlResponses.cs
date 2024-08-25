@@ -1,13 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureRequestResourceModel;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Contracts.AzureResponceModel;
+﻿namespace AzureDevopsService.Contracts.AzureResponceModel;
 
 public class WiqlResponses : BaseRequest
 {

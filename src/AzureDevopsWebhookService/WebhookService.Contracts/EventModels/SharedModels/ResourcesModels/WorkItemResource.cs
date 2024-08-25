@@ -1,4 +1,6 @@
-﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
+﻿using WebhookService.Contracts.EventModels.SharedModels.EventModels;
+
+namespace WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 
 public record WorkItemResource(
     [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]

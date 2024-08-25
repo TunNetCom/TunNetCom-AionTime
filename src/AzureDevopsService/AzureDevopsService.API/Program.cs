@@ -1,4 +1,5 @@
 using AzureDevopsService.API;
+using AzureDevopsService.Application;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)

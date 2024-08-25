@@ -1,10 +1,11 @@
-﻿using OpenTelemetry.Instrumentation.AspNetCore;
+﻿using IdentityService.API;
+using OpenTelemetry.Instrumentation.AspNetCore;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-namespace AzureDevopsIdentityService
+namespace IdentityService.API
 {
     public static class ExtensionServiceRegistration
     {

@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Request;
+﻿namespace TimeLogService.Contracts.DTOs.Request;
 
 public class OrganizationRequest
 {

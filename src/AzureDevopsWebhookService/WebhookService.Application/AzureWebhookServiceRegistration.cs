@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.Settings;
-
-namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application;
+﻿namespace WebhookService.Application;
 
 public static class AzureWebhookServiceRegistration
 {

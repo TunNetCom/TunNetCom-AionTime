@@ -1,12 +1,4 @@
-﻿using MassTransit;
-using Microsoft.Extensions.Options;
-using TunNetCom.AionTime.TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
-using TunNetCom.AionTime.TimeLogService.Contracts.Settings;
-using static MassTransit.Logging.OperationName;
-using static Org.BouncyCastle.Math.EC.ECCurve;
-using RabbitMqSettings = TunNetCom.AionTime.TimeLogService.Contracts.Settings.RabbitMqSettings;
-
-namespace TunNetCom.AionTime.TimeLogService.Application
+﻿namespace TimeLogService.Application
 {
     public static class ApplicationServiceRegistration
     {

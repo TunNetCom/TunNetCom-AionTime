@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.Contracts.AzureResponceModel;
+﻿namespace AzureDevopsService.Contracts.AzureResponceModel;
 
 public class WorkItem
 {

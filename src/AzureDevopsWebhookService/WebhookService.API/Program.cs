@@ -1,10 +1,3 @@
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using TunNetCom.AionTime.AzureDevops.WebhookService.API;
-using TunNetCom.AionTime.AzureDevops.WebhookService.API.Middelware;
-using TunNetCom.AionTime.AzureDevops.WebhookService.Application;
-using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.Settings;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)

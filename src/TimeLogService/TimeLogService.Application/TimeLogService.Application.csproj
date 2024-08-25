@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AzureDevopsWebhookService\WebhookService.Contracts\WebhookService.Contracts.csproj" />
     <ProjectReference Include="..\TimeLogService.Contracts\TimeLogService.Contracts.csproj" />
     <ProjectReference Include="..\TimeLogService.Domain\TimeLogService.Domain.csproj" />
     <ProjectReference Include="..\TimeLogService.Infrastructure\TimeLogService.Infrastructure.csproj" />

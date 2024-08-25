@@ -1,7 +1,4 @@
-﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
-using TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
-
-namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
+﻿namespace TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
 
 public class GetOrganizationsQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<GetOrganizationsQuery, IReadOnlyList<OrganizationRequest>>

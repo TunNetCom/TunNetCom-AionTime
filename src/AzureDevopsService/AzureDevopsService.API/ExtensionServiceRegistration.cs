@@ -1,4 +1,6 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.API;
+﻿using AzureDevopsService.API;
+
+namespace AzureDevopsService.API;
 
 public static class ExtensionServiceRegistration
 {

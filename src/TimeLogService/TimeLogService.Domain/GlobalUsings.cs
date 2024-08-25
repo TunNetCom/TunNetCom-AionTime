@@ -1,2 +1,3 @@
-﻿global using System.ComponentModel.DataAnnotations;
-global using TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
+﻿global using MediatR;
+global using System.ComponentModel.DataAnnotations;
+global using TimeLogService.Domain.Models.Dbo;

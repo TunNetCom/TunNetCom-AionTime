@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
+﻿namespace TimeLogService.Domain.Interfaces.Repositories;
 
 public interface IRepository<T>
     where T : BaseEntity
