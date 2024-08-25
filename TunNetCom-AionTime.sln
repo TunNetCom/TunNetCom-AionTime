@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogS
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.TimeLogService.Database", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.DataBase\TunNetCom.AionTime.TimeLogService.Database.sqlproj", "{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.AzureDevopsService.Database", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Database\TunNetCom.AionTime.AzureDevopsService.Database.sqlproj", "{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeLogService", "TimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsService", "AzureDevopsService", "{B75B5856-BD77-4339-8247-0FA02F8AAF4D}"
@@ -67,6 +65,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDev
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevops.WebhookService.Application", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Application\TunNetCom.AionTime.AzureDevops.WebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.Application", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Application\TunNetCom.AionTime.AzureDevopsService.Application.csproj", "{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.Contracts", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Contracts\TunNetCom.AionTime.AzureDevopsService.Contracts.csproj", "{B3B12B56-F01E-452B-9B60-48029F07F453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,12 +89,6 @@ Global
 		{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{473BA510-4088-4A23-9A9E-133273A5CC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{473BA510-4088-4A23-9A9E-133273A5CC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{473BA510-4088-4A23-9A9E-133273A5CC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -133,6 +129,14 @@ Global
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B12B56-F01E-452B-9B60-48029F07F453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B12B56-F01E-452B-9B60-48029F07F453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B12B56-F01E-452B-9B60-48029F07F453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B12B56-F01E-452B-9B60-48029F07F453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,7 +145,6 @@ Global
 		{675B95E6-2277-44E4-9D29-C8BA92C55B8F} = {4A46A43C-6D79-455A-8039-355120211320}
 		{93A58C27-047A-4C95-9A4D-BB10B1BF4512} = {4A46A43C-6D79-455A-8039-355120211320}
 		{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1} = {4A46A43C-6D79-455A-8039-355120211320}
-		{7F6C83BB-8A56-43CF-82C0-B6D6DF8F8B3A} = {B75B5856-BD77-4339-8247-0FA02F8AAF4D}
 		{4A46A43C-6D79-455A-8039-355120211320} = {97CACF4A-AA5F-4755-AB9D-C164B81B497E}
 		{B75B5856-BD77-4339-8247-0FA02F8AAF4D} = {97CACF4A-AA5F-4755-AB9D-C164B81B497E}
 		{473BA510-4088-4A23-9A9E-133273A5CC93} = {4A46A43C-6D79-455A-8039-355120211320}
@@ -158,6 +161,8 @@ Global
 		{D16698A3-5BCC-46D0-AEAF-34F73DF41513} = {CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}
 		{67889F83-8AA5-4F2E-9D79-75B316845A33} = {CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}
 		{943FD55F-91A9-4361-89AE-55CE7C1C4714} = {CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}
+		{EC43FE0E-C797-47BB-94EB-5B242B10E6D4} = {B75B5856-BD77-4339-8247-0FA02F8AAF4D}
+		{B3B12B56-F01E-452B-9B60-48029F07F453} = {B75B5856-BD77-4339-8247-0FA02F8AAF4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9A31BB7-D618-49AB-A06A-907C5BA16305}

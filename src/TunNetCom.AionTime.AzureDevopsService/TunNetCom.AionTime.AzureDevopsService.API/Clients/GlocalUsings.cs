@@ -1,11 +1,1 @@
 ﻿global using TunNetCom.AionTime.AzureDevopsService.API;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.HttpHandlers.Exceptions;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Projects.Contracts;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Settings;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.Teams.Contracts;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems;
-global using TunNetCom.AionTime.AzureDevopsService.API.Clients.WorkItems.Contracts;
-global using TunNetCom.AionTime.AzureDevopsService.API.Data;

@@ -10,13 +10,10 @@ try
     _ = builder.Logging.AddLoggingService();
     Log.Information("Starting web host");
     _ = builder.Services.AddMonitoringService();
+    _ = builder.Services.AddApplicationService();
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
-    _ = builder.Services.AddAzureDevOpsClients(builder.Configuration.GetSection(nameof(CoreServerSettings)));
-    _ = builder.Services.AddScoped<IPatResolver, PatResolver>();
-    _ = builder.Services.AddDbContext<AzureDevOpsContext>(
-            options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
     _ = builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
     _ = builder.Services.AddProblemDetails();
     _ = builder.Services.AddMediatR((conf) => { _ = conf.RegisterServicesFromAssembly(typeof(Program).Assembly); });
@@ -25,18 +22,12 @@ try
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
-        using (IServiceScope scope = app.Services.CreateScope())
-        {
-            AzureDevOpsContext dbContext = scope.ServiceProvider.GetRequiredService<AzureDevOpsContext>();
-            _ = dbContext.Database.EnsureCreated();
-        }
-
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
     }
 
     _ = app.MapPrometheusScrapingEndpoint();
-    app.AddTestEndpoints();
+    app.AddEndpoints();
 
     _ = app.UseExceptionHandler();
 
