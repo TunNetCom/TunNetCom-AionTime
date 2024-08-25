@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34526.213
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Domain", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Domain\TunNetCom.AionTime.TimeLogService.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Domain", "src\TimeLogService\TimeLogService.Domain\TimeLogService.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{97CACF4A-AA5F-4755-AB9D-C164B81B497E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{641ADFEA-5755-4724-9A95-237298626BDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.API", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Budget.API\TunNetCom.AionTime.TimeLogService.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.API", "src\TimeLogService\TimeLogService.API\TimeLogService.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TunNetCom.AionTime.TimeLogService.Database", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.DataBase\TunNetCom.AionTime.TimeLogService.Database.sqlproj", "{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TimeLogService.Database", "src\TimeLogService\TimeLogService.DataBase\TimeLogService.Database.sqlproj", "{A32F3C43-2A64-46CE-9B84-7EA07A7E08E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeLogService", "TimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsService", "AzureDevopsService", "{B75B5856-BD77-4339-8247-0FA02F8AAF4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Infrastructure", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Infrastructure\TunNetCom.AionTime.TimeLogService.Infrastructure.csproj", "{473BA510-4088-4A23-9A9E-133273A5CC93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Infrastructure", "src\TimeLogService\TimeLogService.Infrastructure\TimeLogService.Infrastructure.csproj", "{473BA510-4088-4A23-9A9E-133273A5CC93}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Application", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Application\TunNetCom.AionTime.TimeLogService.Application.csproj", "{8AB1FCC4-64E4-4302-9029-A44E4447D188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Application", "src\TimeLogService\TimeLogService.Application\TimeLogService.Application.csproj", "{8AB1FCC4-64E4-4302-9029-A44E4447D188}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.TimeLogService.Contracts", "src\TunNetCom.AionTime.TimeLogService\TunNetCom.AionTime.TimeLogService.Contracts\TunNetCom.AionTime.TimeLogService.Contracts.csproj", "{C94CD26C-7C15-45F6-918A-03C2DEFF2E59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Contracts", "src\TimeLogService\TimeLogService.Contracts\TimeLogService.Contracts.csproj", "{C94CD26C-7C15-45F6-918A-03C2DEFF2E59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B0897E97-4679-4ED2-B3D7-2C7A704576A1}"
 	ProjectSection(SolutionItems) = preProject
@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{17EBABCA-4F24-4EF0-B596-EAC210C06F77}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.API", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.API\TunNetCom.AionTime.AzureDevopsService.API.csproj", "{8B651696-5225-4DDB-8615-FD0375602D6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsService.API", "src\AzureDevopsService\AzureDevopsService.API\AzureDevopsService.API.csproj", "{8B651696-5225-4DDB-8615-FD0375602D6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{3C842555-EA0B-4A1A-8AA1-589296C4C7C1}"
 EndProject
@@ -53,21 +53,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DockerConfigs", "DockerConf
 		prometheus.yml = prometheus.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsIdentityService", "AzureDevopsIdentityService", "{9E366E19-579D-44C0-99A4-41A663FB073C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeLogIdentityService", "TimeLogIdentityService", "{9E366E19-579D-44C0-99A4-41A663FB073C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsIdentityService", "src\AzureDevopsIdentityService\AzureDevopsIdentityService\AzureDevopsIdentityService.csproj", "{F6CF7704-A01E-4FDA-87F0-F9F2803921E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogIdentityService", "src\TimeLogIdentityService\IdentityService.API\IdentityService.API.csproj", "{F6CF7704-A01E-4FDA-87F0-F9F2803921E7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsWebhookService", "AzureDevopsWebhookService", "{CC5F5F89-EFAE-4139-9A59-A3DD6C97FC0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevops.WebhookService.API", "src\AzureDevopsWebhookService\AzureDevopsWebhookService\TunNetCom.AionTime.AzureDevops.WebhookService.API.csproj", "{D16698A3-5BCC-46D0-AEAF-34F73DF41513}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookService.API", "src\AzureDevopsWebhookService\WebhookService.API\WebhookService.API.csproj", "{D16698A3-5BCC-46D0-AEAF-34F73DF41513}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevops.WebhookService.Contracts", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Contracts\TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookService.Contracts", "src\AzureDevopsWebhookService\WebhookService.Contracts\WebhookService.Contracts.csproj", "{67889F83-8AA5-4F2E-9D79-75B316845A33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevops.WebhookService.Application", "src\AzureDevopsWebhookService\AzureDevopsWebhookService.Application\TunNetCom.AionTime.AzureDevops.WebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookService.Application", "src\AzureDevopsWebhookService\WebhookService.Application\WebhookService.Application.csproj", "{943FD55F-91A9-4361-89AE-55CE7C1C4714}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.Application", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Application\TunNetCom.AionTime.AzureDevopsService.Application.csproj", "{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsService.Application", "src\AzureDevopsService\AzureDevopsService.Application\AzureDevopsService.Application.csproj", "{EC43FE0E-C797-47BB-94EB-5B242B10E6D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AionTime.AzureDevopsService.Contracts", "src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.Contracts\TunNetCom.AionTime.AzureDevopsService.Contracts.csproj", "{B3B12B56-F01E-452B-9B60-48029F07F453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureDevopsService.Contracts", "src\AzureDevopsService\AzureDevopsService.Contracts\AzureDevopsService.Contracts.csproj", "{B3B12B56-F01E-452B-9B60-48029F07F453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
