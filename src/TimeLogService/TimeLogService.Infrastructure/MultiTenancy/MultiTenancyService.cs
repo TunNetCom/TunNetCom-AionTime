@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-
-namespace TunNetCom.AionTime.TimeLogService.Infrastructure.MultiTenancy
+﻿namespace TimeLogService.Infrastructure.MultiTenancy
 {
     public sealed class MultiTenancyService(IHttpContextAccessor httpContextAccessor)
     {

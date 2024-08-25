@@ -1,18 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TunNetCom;
-using TunNetCom.AionTime;
-using TunNetCom.AionTime.AzureDevopsService;
-using TunNetCom.AionTime.AzureDevopsService.Contracts;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureRequestResourceModel;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureResponceModel;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Contracts.AzureResponceModel
+﻿namespace AzureDevopsService.Contracts.AzureResponceModel
 {
     public class UserAccount : BaseRequest
     {

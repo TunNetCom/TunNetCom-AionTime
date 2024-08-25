@@ -1,4 +1,10 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.API;
+﻿using TimeLogService;
+using TimeLogService.API;
+using TimeLogService.API;
+using TunNetCom;
+using TunNetCom.AionTime;
+
+namespace TimeLogService.API;
 
 public static class ExtentionServiceRegistration
 {

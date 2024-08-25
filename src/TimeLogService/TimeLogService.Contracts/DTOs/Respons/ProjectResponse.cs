@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Contracts.DTOs.Respons;
+﻿namespace TimeLogService.Contracts.DTOs.Respons;
 
 public class ProjectResponse
 {

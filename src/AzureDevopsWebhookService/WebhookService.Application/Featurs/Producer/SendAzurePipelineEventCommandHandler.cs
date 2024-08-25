@@ -1,7 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
-using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
-
-namespace TunNetCom.AionTime.AzureDevops.WebhookService.Application.Featurs.Producer;
+﻿namespace WebhookService.Application.Featurs.Producer;
 
 public class SendAzurePipelineEventCommandHandler(ISendEndpointProvider sendEndpointProvider)
 : IRequestHandler<AzureWebhookModelEvent<PipeLinesResource>>

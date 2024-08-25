@@ -5,5 +5,3 @@ global using System.Collections.Generic;
 global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
-global using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
-global using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;

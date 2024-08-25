@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Contracts.Settings;
+﻿namespace TimeLogService.Contracts.Settings;
 
 public class RabbitMqSettings
 {

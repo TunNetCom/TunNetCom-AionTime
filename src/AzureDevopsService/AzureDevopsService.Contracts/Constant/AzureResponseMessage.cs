@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.Contracts.Constant;
+﻿namespace AzureDevopsService.Contracts.Constant;
 
 public static class AzureResponseMessage
 {

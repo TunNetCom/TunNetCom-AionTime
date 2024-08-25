@@ -1,4 +1,7 @@
-﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
+﻿using WebhookService.Contracts.EventModels.SharedModels;
+using WebhookService.Contracts.EventModels.SharedModels.EventModels;
+
+namespace WebhookService.Contracts.EventModels.SharedModels;
 
 public record AzureWebhookModelEvent<T>(
     [property: JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]

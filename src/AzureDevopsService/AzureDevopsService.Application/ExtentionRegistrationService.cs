@@ -1,7 +1,4 @@
-﻿using AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
-using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Application;
+﻿namespace AzureDevopsService.Application;
 
 public static class ExtentionRegistrationService
 {

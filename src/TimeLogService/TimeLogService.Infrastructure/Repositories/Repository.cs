@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
-
-namespace TunNetCom.AionTime.TimeLogService.Infrastructure.Repositories;
+﻿namespace TimeLogService.Infrastructure.Repositories;
 
 public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext context)
     : IRepository<T>

@@ -1,6 +1,4 @@
 using Microsoft.Extensions.Configuration;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureRequestResourceModel;
-using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureResponceModel;
 
 namespace TunNetCom.AionTime.AzureDevopsService.UnitTest;
 

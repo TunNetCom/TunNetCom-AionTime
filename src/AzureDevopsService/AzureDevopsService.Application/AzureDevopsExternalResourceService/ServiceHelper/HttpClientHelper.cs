@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper;
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper;
 
 public static class HttpClientHelper
 {

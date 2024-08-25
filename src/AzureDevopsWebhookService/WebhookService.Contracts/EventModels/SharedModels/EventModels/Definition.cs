@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿namespace WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 public record Definition(
     [property: JsonProperty(PropertyName = "drafts", NullValueHandling = NullValueHandling.Ignore)]

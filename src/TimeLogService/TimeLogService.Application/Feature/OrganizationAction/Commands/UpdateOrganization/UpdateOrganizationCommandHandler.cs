@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
+﻿namespace TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
 
 public class UpdateOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<UpdateOrganizationCommand, int>

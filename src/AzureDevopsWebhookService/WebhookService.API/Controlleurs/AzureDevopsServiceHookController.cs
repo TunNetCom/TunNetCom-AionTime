@@ -1,7 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels;
-using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
-
-namespace TunNetCom.AionTime.AzureDevops.WebhookService.API.Controlleurs;
+﻿namespace WebhookService.API.Controlleurs;
 
 [Route("api/[controller]")]
 [ApiController]

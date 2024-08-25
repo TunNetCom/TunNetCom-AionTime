@@ -1,7 +1,4 @@
-﻿using TunNetCom.AionTime.TimeLogService.Domain.Interfaces.Repositories;
-using TunNetCom.AionTime.TimeLogService.Domain.Models.Dbo;
-
-namespace TunNetCom.AionTime.TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
+﻿namespace TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
 
 public class AddOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<AddOrganizationCommand, int>

@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService
 {
     public interface IUserProfileApiClient
     {

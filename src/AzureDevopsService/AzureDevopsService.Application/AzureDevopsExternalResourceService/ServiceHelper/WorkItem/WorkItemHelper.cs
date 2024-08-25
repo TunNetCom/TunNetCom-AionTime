@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
 
 public static class WorkItemHelper
 {

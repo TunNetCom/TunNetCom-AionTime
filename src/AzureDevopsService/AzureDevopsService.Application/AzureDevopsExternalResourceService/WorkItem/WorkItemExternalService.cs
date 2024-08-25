@@ -1,8 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using AzureDevopsService.Contracts.AzureResponceModel;
-using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
-
-namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
+﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
 
 public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExternalService> logger) : IWorkItemExternalService
 {

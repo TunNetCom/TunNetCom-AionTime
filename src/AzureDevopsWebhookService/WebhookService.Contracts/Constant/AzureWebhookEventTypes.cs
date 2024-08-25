@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.Constant;
-
-namespace TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.Constant;
+﻿namespace WebhookService.Contracts.Constant;
 
 public static class AzureWebhookEventTypes
 {
