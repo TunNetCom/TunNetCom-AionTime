@@ -9,15 +9,15 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/AzureDevopsWebhookService/AzureDevopsWebhookService/AzureDevopsWebhookService.csproj", "src/AzureDevopsWebhookService/AzureDevopsWebhookService/"]
-RUN dotnet restore "./src/AzureDevopsWebhookService/AzureDevopsWebhookService/AzureDevopsWebhookService.csproj"
+COPY ["src/AzureDevopsWebhookService/WebhookService/WebhookService.csproj", "src/AzureDevopsWebhookService/WebhookService/"]
+RUN dotnet restore "./src/AzureDevopsWebhookService/WebhookService/WebhookService.csproj"
 COPY . .
-WORKDIR "/src/src/AzureDevopsWebhookService/AzureDevopsWebhookService"
+WORKDIR "/src/src/AzureDevopsWebhookService/WebhookService"
 RUN dotnet build "./AzureDevopsWebhookService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./AzureDevopsWebhookService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./WebhookService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

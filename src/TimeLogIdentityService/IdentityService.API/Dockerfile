@@ -9,15 +9,15 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/AzureDevopsIdentityService/AzureDevopsIdentityService/AzureDevopsIdentityService.csproj", "src/AzureDevopsIdentityService/AzureDevopsIdentityService/"]
-RUN dotnet restore "./src/AzureDevopsIdentityService/AzureDevopsIdentityService/AzureDevopsIdentityService.csproj"
+COPY ["src/TimeLogIdentityService/IdentityService.API/IdentityService.API.csproj", "src/TimeLogIdentityService/IdentityService/"]
+RUN dotnet restore "./src/TimeLogIdentityService/IdentityService.API/IdentityService.API.csproj"
 COPY . .
 WORKDIR "/src/src/AzureDevopsIdentityService/AzureDevopsIdentityService"
 RUN dotnet build "./AzureDevopsIdentityService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./AzureDevopsIdentityService.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./IdentityService.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

@@ -9,16 +9,16 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API/TunNetCom.AionTime.TimeLogService.API.csproj", "src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API/"]
+COPY ["src/TimeLogService/TimeLogService.API/TimeLogService.API.csproj", "src/TimeLogService/TimeLogService.API/"]
 COPY ["test/TunNetCom_Aion_Test/TunNetCom.AionTime.Test.csproj", "test/TunNetCom_Aion_Test/"]
-COPY ["src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Application/TunNetCom.AionTime.TimeLogService.Application.csproj", "src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Application/"]
-COPY ["src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Contracts/TunNetCom.AionTime.TimeLogService.Contracts.csproj", "src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Contracts/"]
-COPY ["src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Domain/TunNetCom.AionTime.TimeLogService.Domain.csproj", "src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Domain/"]
-COPY ["src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Infrastructure/TunNetCom.AionTime.TimeLogService.Infrastructure.csproj", "src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Infrastructure/"]
-RUN dotnet restore "./src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API/TunNetCom.AionTime.TimeLogService.API.csproj"
+COPY ["src/TimeLogService/TimeLogService.Application/TimeLogService.Application.csproj", "src/TimeLogService/TimeLogService.Application/"]
+COPY ["src/TimeLogService/TimeLogService.Contracts/TimeLogService.Contracts.csproj", "src/TimeLogService/TimeLogService.Contracts/"]
+COPY ["src/TimeLogService/TimeLogService.Domain/TimeLogService.Domain.csproj", "src/TimeLogService/TimeLogService.Domain/"]
+COPY ["src/TimeLogService/TimeLogService.Infrastructure/TimeLogService.Infrastructure.csproj", "src/TimeLogService/TimeLogService.Infrastructure/"]
+RUN dotnet restore "./src/TimeLogService/TimeLogService.API/TimeLogService.API.csproj"
 COPY . .
-WORKDIR "/src/src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API"
-RUN dotnet build "./TunNetCom.AionTime.TimeLogService.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/src/TimeLogService/TimeLogService.API"
+RUN dotnet build "./TimeLogService.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Copy the SSL certificate file
 COPY server.crt /usr/local/share/ca-certificates/
@@ -28,9 +28,9 @@ RUN update-ca-certificates
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./TunNetCom.AionTime.TimeLogService.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./TimeLogService.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "TunNetCom.AionTime.TimeLogService.API.dll"]
+ENTRYPOINT ["dotnet", "TimeLogService.API.dll"]
