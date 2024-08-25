@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API/TunNetCom.AionTime.AzureDevopsService.API.csproj", "src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API/"]
-RUN dotnet restore "./src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API/TunNetCom.AionTime.AzureDevopsService.API.csproj"
+COPY ["src/AzureDevopsService/AzureDevopsService.API/AzureDevopsService.API.csproj", "src/AzureDevopsService/AzureDevopsService.API/"]
+RUN dotnet restore "./src/AzureDevopsService/AzureDevopsService.API/AzureDevopsService.API.csproj"
 COPY . .
-WORKDIR "/src/src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API"
-RUN dotnet build "./TunNetCom.AionTime.AzureDevopsService.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/AzureDevopsService/AzureDevopsService.API"
+RUN dotnet build "./AzureDevopsService.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./TunNetCom.AionTime.AzureDevopsService.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./AzureDevopsService.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "TunNetCom.AionTime.AzureDevopsService.API.dll"]
+ENTRYPOINT ["dotnet", "AzureDevopsService.API.dll"]

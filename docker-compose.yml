@@ -59,7 +59,7 @@ services:
     image: ${DOCKER_REGISTRY-}azuredevopsidentityservice
     build:
       context: .
-      dockerfile: src/AzureDevopsIdentityService/AzureDevopsIdentityService/Dockerfile
+      dockerfile: src/TimeLogIdentityService/IdentityService.API/Dockerfile
     environment:
         ServiceName : Azure_Devops_Identity_Service
         loki: http://loki:3100
@@ -82,7 +82,7 @@ services:
     image: ${DOCKER_REGISTRY-}azuredevopswebhookservice
     build:
       context: .
-      dockerfile: src/AzureDevopsWebhookService/AzureDevopsWebhookService/Dockerfile
+      dockerfile: src/AzureDevopsWebhookService/WebhookService.API/Dockerfile
     environment:
         ServiceName : Azure_Devops_Webhook_Service
         loki: http://loki:3100
@@ -106,7 +106,7 @@ services:
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimetimelogserviceapi
     build:
       context: .
-      dockerfile: src/TunNetCom.AionTime.TimeLogService/TunNetCom.AionTime.TimeLogService.Budget.API/Dockerfile
+      dockerfile: src/TimeLogService/TimeLogService.API/Dockerfile
     environment:
         ServiceName : TimeLog_Service
         loki: http://loki:3100
@@ -130,7 +130,7 @@ services:
     image: ${DOCKER_REGISTRY-}tunnetcomaiontimeazuredevopsserviceapi
     build:
       context: .
-      dockerfile: src/TunNetCom.AionTime.AzureDevopsService/TunNetCom.AionTime.AzureDevopsService.API/Dockerfile
+      dockerfile: src/AzureDevopsService/AzureDevopsService.API/Dockerfile
     environment:
         ServiceName : Azure_Devops_Service
         loki: http://loki:3100
