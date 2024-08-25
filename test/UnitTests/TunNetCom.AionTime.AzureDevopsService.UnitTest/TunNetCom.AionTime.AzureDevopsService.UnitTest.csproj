@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\TunNetCom.AionTime.AzureDevopsService\TunNetCom.AionTime.AzureDevopsService.API\TunNetCom.AionTime.AzureDevopsService.API.csproj" />
+    <ProjectReference Include="..\..\..\src\AzureDevopsService\AzureDevopsService.API\AzureDevopsService.API.csproj" />
   </ItemGroup>
 
 </Project>

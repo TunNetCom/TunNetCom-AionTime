@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebhookService.API</name>
+    </assembly>
+    <members>
+        <member name="M:TunNetCom.AionTime.AzureDevops.WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource})">
+            <summary>
+            Work item commented on
+            Work item updated
+            Work item restored
+            Work item deleted
+            Work item created
+            </summary>
+            <param name="workItemEvent">Not tested</param>
+            <returns></returns>
+        </member>
+        <member name="M:TunNetCom.AionTime.AzureDevops.WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureCodeEvntsAsync(TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.CodeResource})">
+            <summary>
+            Code checked in
+            Code pushed
+            Pull request created
+            Pull request merge commit created
+            Pull request updated
+            </summary>
+            <param name="codeEvent">Not tested</param>
+            <returns></returns>
+        </member>
+        <member name="M:TunNetCom.AionTime.AzureDevops.WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzurePipelineEventEvntsAsync(TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.PipeLinesResource})">
+            <summary>
+            Job state changed
+            Run state changed
+            Run stage state changed
+            Run stage waiting for approval
+            Run stage approval completed
+            Run job state changed
+            </summary>
+            <param name="pipelineEvent">Not tested</param>
+            <returns></returns>
+        </member>
+        <member name="M:TunNetCom.AionTime.AzureDevops.WebhookService.API.Controlleurs.AzureDevopsServiceHookController.BuildAndReleaseEvntsAsync(TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.BuildAndReleaseResource})">
+            <summary>
+            Build completed
+            Release created
+            Release abandoned
+            Release deployment approval completed
+            Release deployment approval pending
+            Release deployment completed
+            Release deployment started
+            </summary>
+            <param name="buildAndReleaseEvnts">Not tested</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
