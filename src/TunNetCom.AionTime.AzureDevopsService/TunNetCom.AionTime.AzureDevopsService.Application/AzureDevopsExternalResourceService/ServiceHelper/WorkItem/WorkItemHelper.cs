@@ -1,4 +1,4 @@
-﻿namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItemHelper;
+﻿namespace TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
 
 public static class WorkItemHelper
 {

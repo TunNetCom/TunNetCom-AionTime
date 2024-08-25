@@ -33,6 +33,7 @@ global using System.Threading;
 global using System.Threading.Tasks;
 global using TunNetCom.AionTime.AzureDevopsService.Application;
 global using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService;
+global using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
 global using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
 global using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
 global using TunNetCom.AionTime.AzureDevopsService.Contracts.AzureRequestResourceModel;

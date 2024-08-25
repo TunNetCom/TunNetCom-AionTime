@@ -1,4 +1,4 @@
-﻿using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.ProjectService;
+﻿using TunNetCom.AionTime.AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
 
 namespace TunNetCom.AionTime.AzureDevopsService.Application;
 
@@ -6,9 +6,10 @@ public static class ExtentionRegistrationService
 {
     public static IServiceCollection AddApplicationService(this IServiceCollection services)
     {
+        // TODO move base adress to settings area
         _ = services.AddHttpClient();
 
-        _ = services.AddHttpClient<IProfileUser, ProfileUser>(x =>
+        _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>(x =>
         {
             x.BaseAddress = new Uri("https://app.vssps.visualstudio.com");
         });
