@@ -6,11 +6,16 @@ public static class InfrastructureServiceRegistration
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        bool isDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
+        string? connectionString = isDocker
+           ? configuration.GetConnectionString("TimeLogContextDocker")
+           : configuration.GetConnectionString("TimeLogContext");
+
         _ = services.AddScoped<MultiTenancyService>();
         _ = services.AddDbContext<TunNetComAionTimeTimeLogServiceDataBaseContext>(options =>
         {
             _ = options.UseSqlServer(
-                configuration.GetConnectionString("TimeLogContext"),
+                connectionString,
                 sqlServerOptionsAction: sqlOptions =>
                 {
                     _ = sqlOptions.EnableRetryOnFailure();

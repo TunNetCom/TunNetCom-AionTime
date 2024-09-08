@@ -1,5 +1,4 @@
-using AzureDevopsService.API;
-using AzureDevopsService.Application;
+using AzureDevopsService.Contracts.Settings;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -12,6 +11,7 @@ try
     WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
     _ = builder.Logging.AddLoggingService();
     Log.Information("Starting web host");
+    _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddApplicationService();
     _ = builder.Services.AddEndpointsApiExplorer();
