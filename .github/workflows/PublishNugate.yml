@@ -18,14 +18,32 @@ jobs:
       with:
         dotnet-version: '8.x'
 
+    - name: Find Project Paths
+      id: find-projects
+      run: |
+        echo "##[group]Finding .csproj paths"
+        PROJECT_PATHS=$(find . -name "WebhookService.Contracts.csproj" -o -name "AzureDevopsService.Contracts.csproj")
+        echo "Found projects: $PROJECT_PATHS"
+        echo "##[endgroup]"
+        echo "PROJECT_PATHS=$PROJECT_PATHS" >> $GITHUB_ENV
+
     - name: Restore dependencies
-      run: dotnet restore src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj
+      run: |
+        for project in ${{ env.PROJECT_PATHS }}; do
+          dotnet restore $project
+        done
 
-    - name: Build Project
-      run: dotnet build src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj --configuration Release --no-restore
+    - name: Build Projects
+      run: |
+        for project in ${{ env.PROJECT_PATHS }}; do
+          dotnet build $project --configuration Release --no-restore
+        done
 
-    - name: Pack NuGet Package
-      run: dotnet pack src/AzureDevopsWebhookService/AzureDevopsWebhookService.Contracts/TunNetCom.AionTime.AzureDevops.WebhookService.Contracts.csproj --configuration Release --output ./artifacts
+    - name: Pack NuGet Packages
+      run: |
+        for project in ${{ env.PROJECT_PATHS }}; do
+          dotnet pack $project --configuration Release --output ./artifacts
+        done
 
-    - name: Publish NuGet Package
+    - name: Publish NuGet Packages
       run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} --source "https://api.nuget.org/v3/index.json" --skip-duplicate
