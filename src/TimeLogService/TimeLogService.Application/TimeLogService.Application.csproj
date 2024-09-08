@@ -11,11 +11,10 @@
     <PackageReference Include="MassTransit" Version="8.2.4-develop.1856" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.4-develop.1856" />
     <PackageReference Include="MediatR" Version="12.3.0" />
-    <PackageReference Include="TunNetCom.AionTime.AzureDevops.WebhookService.Contracts" Version="1.0.1" />
+    <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AzureDevopsWebhookService\WebhookService.Contracts\WebhookService.Contracts.csproj" />
     <ProjectReference Include="..\TimeLogService.Contracts\TimeLogService.Contracts.csproj" />
     <ProjectReference Include="..\TimeLogService.Domain\TimeLogService.Domain.csproj" />
     <ProjectReference Include="..\TimeLogService.Infrastructure\TimeLogService.Infrastructure.csproj" />

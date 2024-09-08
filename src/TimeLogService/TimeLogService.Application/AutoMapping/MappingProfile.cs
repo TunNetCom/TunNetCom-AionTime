@@ -2,8 +2,6 @@
 using TimeLogService.Application.AutoMapping;
 using TimeLogService.Contracts.DTOs.Request;
 using TimeLogService.Domain.Models.Dbo;
-using TunNetCom;
-using TunNetCom.AionTime;
 
 namespace TimeLogService.Application.AutoMapping
 {

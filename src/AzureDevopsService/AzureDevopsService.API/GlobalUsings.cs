@@ -1,6 +1,7 @@
 ﻿global using AzureDevopsService.API;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
+global using AzureDevopsService.Application;
 global using FluentResults;
 global using FluentValidation;
 global using MediatR;
