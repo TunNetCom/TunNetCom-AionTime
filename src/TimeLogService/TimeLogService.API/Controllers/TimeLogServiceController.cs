@@ -1,3 +1,4 @@
+using AzureDevopsService.Contracts.AzureRequestResourceModel;
 using TimeLogService;
 using TimeLogService.API;
 using TimeLogService.API.Controllers;
@@ -6,9 +7,8 @@ using TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrgani
 using TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
 using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
 using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
+using TimeLogService.Application.Feature.RabbitMqConsumer.Producer.ProfileUser;
 using TimeLogService.Contracts.DTOs.Request;
-using TunNetCom;
-using TunNetCom.AionTime;
 
 namespace TimeLogService.API.Controllers;
 
@@ -23,6 +23,14 @@ public class TimeLogServiceController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> CreateOrganization(OrganizationRequest organization)
     {
         return Ok(await _mediator.Send(new AddOrganizationCommand(organization)));
+    }
+
+    [HttpPost]
+    [Route("ProfileUser")]
+    public async Task<IActionResult> CreateOrganization(BaseRequest BaseRequest)
+    {
+        await _mediator.Send(new ProfileUserCommend(BaseRequest));
+        return Ok();
     }
 
     [HttpPost]

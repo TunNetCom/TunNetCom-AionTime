@@ -2,7 +2,6 @@ using MassTransit;
 using TimeLogService.API;
 using TimeLogService.API.Middelware;
 using TimeLogService.Application;
-using TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
 using TimeLogService.Contracts.Settings;
 using TimeLogService.Infrastructure;
 

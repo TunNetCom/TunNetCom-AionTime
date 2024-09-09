@@ -1,4 +1,7 @@
-﻿namespace TimeLogService.Application
+﻿using TimeLogService.Application.Feature.RabbitMqConsumer.Consumer.ProfileUser;
+using TimeLogService.Application.Feature.RabbitMqConsumer.Consumer.WebhookConsumer;
+
+namespace TimeLogService.Application
 {
     public static class ApplicationServiceRegistration
     {
@@ -13,6 +16,7 @@
                 _ = x.AddConsumer<PipelineEventConsumer>();
                 _ = x.AddConsumer<BuildAndReleasEventsConsumer>();
                 _ = x.AddConsumer<CodeEventsConsumer>();
+                _ = x.AddConsumer<ProfileUserConsumer>();
                 x.SetDefaultEndpointNameFormatter();
                 x.UsingRabbitMq((context, config) =>
                  {
@@ -42,6 +46,11 @@
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<CodeEventsConsumer>(context);
+                     });
+                     config.ReceiveEndpoint("ProfileUserResponce", e =>
+                     {
+                         e.SetQueueArgument("x-message-ttl", 60000);
+                         e.ConfigureConsumer<ProfileUserConsumer>(context);
                      });
                  });
             });
