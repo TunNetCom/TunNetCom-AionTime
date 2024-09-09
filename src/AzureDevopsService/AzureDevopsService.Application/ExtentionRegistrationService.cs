@@ -11,6 +11,7 @@ public static class ExtentionRegistrationService
         {
             x.SetDefaultEndpointNameFormatter();
             _ = x.AddConsumer<ProfileUserConsumer>();
+            x.SetDefaultEndpointNameFormatter();
 
             x.UsingRabbitMq((context, cfg) =>
             {
@@ -27,8 +28,6 @@ public static class ExtentionRegistrationService
                     e.SetQueueArgument("x-message-ttl", 60000);
                     e.ConfigureConsumer<ProfileUserConsumer>(context);
                 });
-
-                cfg.ConfigureEndpoints(context, new DefaultEndpointNameFormatter("dev", false));
             });
         });
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));

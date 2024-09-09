@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="AzureDevopsService.Contracts" Version="1.0.1" />
     <PackageReference Include="MassTransit" Version="8.2.4-develop.1856" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.4-develop.1856" />
     <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 

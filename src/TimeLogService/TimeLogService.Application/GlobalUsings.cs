@@ -8,7 +8,7 @@ global using Newtonsoft.Json;
 global using System.Reflection;
 global using TimeLogService;
 global using TimeLogService.Application;
-global using TimeLogService.Application.Feature.RabbitMqConsumer.WebhookConsumer;
+global using TimeLogService.Application.Feature.RabbitMqConsumer.Consumer.WebhookConsumer;
 global using TimeLogService.Contracts.DTOs.Request;
 global using TimeLogService.Contracts.Settings;
 global using TimeLogService.Domain.Interfaces.Repositories;
