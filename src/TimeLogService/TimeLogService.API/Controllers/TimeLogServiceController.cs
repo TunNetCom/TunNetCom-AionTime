@@ -8,6 +8,7 @@ using TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrgan
 using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
 using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
 using TimeLogService.Application.Feature.RabbitMqConsumer.Producer.ProfileUser;
+using TimeLogService.Application.Feature.RabbitMqConsumer.Producer.Project;
 using TimeLogService.Contracts.DTOs.Request;
 
 namespace TimeLogService.API.Controllers;
@@ -26,10 +27,18 @@ public class TimeLogServiceController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
-    [Route("ProfileUser")]
+    [Route("Project")]
     public async Task<IActionResult> CreateOrganization(BaseRequest BaseRequest)
     {
-        await _mediator.Send(new ProfileUserCommend(BaseRequest));
+        await _mediator.Send(new ProfileUserCommand(BaseRequest));
+        return Ok();
+    }
+
+    [HttpPost]
+    [Route("ProfileUser")]
+    public async Task<IActionResult> CreateOrganization(AllProjectUnderOrganizationRequest request)
+    {
+        await _mediator.Send(new ProjectCommand(request));
         return Ok();
     }
 

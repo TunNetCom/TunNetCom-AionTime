@@ -10,7 +10,7 @@ public static class ExtentionRegistrationService
         _ = services.AddMassTransit(x =>
         {
             x.SetDefaultEndpointNameFormatter();
-            _ = x.AddConsumer<ProfileUserConsumer>();
+            _ = x.AddConsumer<AzureDevopsConsumer>();
             x.SetDefaultEndpointNameFormatter();
 
             x.UsingRabbitMq((context, cfg) =>
@@ -22,11 +22,11 @@ public static class ExtentionRegistrationService
                     h.Username(rabbitMqSettings.UserName);
                     h.Password(rabbitMqSettings.Password);
                 });
-
-                cfg.ReceiveEndpoint("ProfileUser", e =>
+                cfg.UseNewtonsoftJsonSerializer();
+                cfg.ReceiveEndpoint("AzureDevops", e =>
                 {
                     e.SetQueueArgument("x-message-ttl", 60000);
-                    e.ConfigureConsumer<ProfileUserConsumer>(context);
+                    e.ConfigureConsumer<AzureDevopsConsumer>(context);
                 });
             });
         });

@@ -3,14 +3,14 @@ using MediatR;
 
 namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
 
-public class ProfileUserCommendHandler(IUserProfileApiClient userProfileApiClient, ISendEndpointProvider sendEndpointProvider) :
-    IRequestHandler<ProfileUserCommend>
+public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClient, ISendEndpointProvider sendEndpointProvider) :
+    IRequestHandler<ProfileUserCommand>
 {
     private readonly IUserProfileApiClient _userProfileApiClient = userProfileApiClient;
 
     private readonly ISendEndpointProvider _sendEndpointProvider = sendEndpointProvider;
 
-    public async Task Handle(ProfileUserCommend request, CancellationToken cancellationToken)
+    public async Task Handle(ProfileUserCommand request, CancellationToken cancellationToken)
     {
         ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/ProfileUserResponce"));
 
@@ -19,7 +19,7 @@ public class ProfileUserCommendHandler(IUserProfileApiClient userProfileApiClien
         {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
 #pragma warning disable CS8601 // Possible null reference assignment.
-            var res = await _userProfileApiClient.GeUserOrganizations(
+            OneOf<UserAccount?, CustomProblemDetailsResponce?> res = await _userProfileApiClient.GeUserOrganizations(
                 new GetUserOrganizationRequest
                 {
                     Email = result.AsT0.Email,
@@ -36,7 +36,6 @@ public class ProfileUserCommendHandler(IUserProfileApiClient userProfileApiClien
         else
         {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-#pragma warning disable CS8601 // Possible null reference assignment.
             await endpoint.Send(
                 new CustomProblemDetailsResponce
                 {
@@ -46,7 +45,6 @@ public class ProfileUserCommendHandler(IUserProfileApiClient userProfileApiClien
                     Status = result.AsT1.Status,
                 },
                 cancellationToken);
-#pragma warning restore CS8601 // Possible null reference assignment.
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
     }

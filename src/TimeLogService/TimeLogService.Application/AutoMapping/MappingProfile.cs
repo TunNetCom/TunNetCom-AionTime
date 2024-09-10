@@ -2,6 +2,9 @@
 using TimeLogService.Application.AutoMapping;
 using TimeLogService.Contracts.DTOs.Request;
 using TimeLogService.Domain.Models.Dbo;
+using Project = TimeLogService.Domain.Models.Dbo.Project;
+using WorkItem = TimeLogService.Domain.Models.Dbo.WorkItem;
+using WorkItemRequest = TimeLogService.Contracts.DTOs.Request.WorkItemRequest;
 
 namespace TimeLogService.Application.AutoMapping
 {

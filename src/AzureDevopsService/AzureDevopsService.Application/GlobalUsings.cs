@@ -9,6 +9,7 @@ global using AzureDevopsService.Contracts.AzureResponceModel;
 global using AzureDevopsService.Contracts.Constant;
 global using AzureDevopsService.Contracts.Settings;
 global using MassTransit;
+global using MediatR;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
