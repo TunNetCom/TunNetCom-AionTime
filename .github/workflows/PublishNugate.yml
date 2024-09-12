@@ -47,7 +47,8 @@ jobs:
         done
 
     - name: Publish NuGet Packages
-      run: dotnet nuget push "./artifacts/*.nupkg" 
-        --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} 
-        --source "https://api.nuget.org/v3/index.json" 
+      run: |
+        dotnet nuget push "./artifacts/*.nupkg" \
+        --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} \
+        --source "https://api.nuget.org/v3/index.json" \
         --skip-duplicate
