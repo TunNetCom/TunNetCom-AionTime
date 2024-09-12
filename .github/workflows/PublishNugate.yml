@@ -22,7 +22,8 @@ jobs:
       id: find-projects
       run: |
         echo "##[group]Finding .csproj paths"
-        PROJECT_PATHS=$(find . -name "WebhookService.Contracts.csproj" -o -name "AzureDevopsService.Contracts.csproj" | tr '\n' ' ')
+        PROJECT_PATHS=$(find . -name "WebhookService.Contracts.csproj" -o 
+        -name "AzureDevopsService.Contracts.csproj" | tr '\n' ' ')
         echo "Found projects: $PROJECT_PATHS"
         echo "##[endgroup]"
         echo "PROJECT_PATHS=$PROJECT_PATHS" >> $GITHUB_ENV
@@ -46,4 +47,7 @@ jobs:
         done
 
     - name: Publish NuGet Packages
-      run: dotnet nuget push "./artifacts/*.nupkg" --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} --source "https://api.nuget.org/v3/index.json" --skip-duplicate
+      run: dotnet nuget push "./artifacts/*.nupkg" 
+        --api-key ${{ secrets.NUGET_SECRET_KEY_TUNNETCOM }} 
+        --source "https://api.nuget.org/v3/index.json" 
+        --skip-duplicate
