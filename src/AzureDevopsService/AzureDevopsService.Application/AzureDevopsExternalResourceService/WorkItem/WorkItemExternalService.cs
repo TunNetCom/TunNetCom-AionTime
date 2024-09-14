@@ -11,13 +11,13 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
 
         HttpClientHelper.SetAuthHeader(_httpClient, resource.Path);
 
-        using HttpResponseMessage response = await _httpClient.PostAsJsonAsync(
+        using HttpResponseMessage workItemResponse = await _httpClient.PostAsJsonAsync(
             @$"/{wiqlRequest.Organization}/{wiqlRequest.Project}/{wiqlRequest.Team}/_apis/wit/wiql?api-version={wiqlRequest.ApiVersion}",
             wiqlRequest);
 
-        if (response.StatusCode == HttpStatusCode.OK)
+        if (workItemResponse.StatusCode == HttpStatusCode.OK)
         {
-            WiqlResponses? wiqlResponses = await response.Content.ReadFromJsonAsync<WiqlResponses>();
+            WiqlResponses? wiqlResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlResponses>();
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             wiqlResponses.Email = wiqlRequest.Email;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
@@ -25,13 +25,25 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
             return wiqlResponses;
         }
 
-        _logger.LogError(await response.Content.ReadAsStringAsync());
+        _logger.LogError(await workItemResponse.Content.ReadAsStringAsync());
 
-        WiqlBadRequestResponce? wiqlBadResponses = await response.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
+        if (workItemResponse.StatusCode == HttpStatusCode.BadRequest)
+        {
+            WiqlBadRequestResponce? wiqlBadResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-        wiqlBadResponses.Path = wiqlRequest.Path;
+            wiqlBadResponses.Path = wiqlRequest.Path;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-        wiqlBadResponses.Email = wiqlRequest.Email;
-        return wiqlBadResponses;
+            wiqlBadResponses.Email = wiqlRequest.Email;
+
+            return wiqlBadResponses;
+        }
+
+        return new WiqlBadRequestResponce()
+        {
+            Email = resource.Email,
+            ErrorCode = (int?)workItemResponse.StatusCode,
+            Message = AzureResponseMessage.WorkItemError,
+            Path = resource.Path,
+        };
     }
 }

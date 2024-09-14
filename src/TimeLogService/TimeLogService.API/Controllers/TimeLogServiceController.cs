@@ -1,15 +1,4 @@
-using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using TimeLogService;
-using TimeLogService.API;
-using TimeLogService.API.Controllers;
-using TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
-using TimeLogService.Application.Feature.OrganizationAction.Commands.DeletOrganization;
-using TimeLogService.Application.Feature.OrganizationAction.Commands.UpdateOrganization;
-using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganization;
-using TimeLogService.Application.Feature.OrganizationAction.Queries.GetOrganizationById;
-using TimeLogService.Application.Feature.RabbitMqConsumer.Producer.ProfileUser;
-using TimeLogService.Application.Feature.RabbitMqConsumer.Producer.Project;
-using TimeLogService.Contracts.DTOs.Request;
+using WorkItemRequest = AzureDevopsService.Contracts.AzureRequestResourceModel.WorkItemRequest;
 
 namespace TimeLogService.API.Controllers;
 
@@ -27,7 +16,7 @@ public class TimeLogServiceController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
-    [Route("Project")]
+    [Route("ProfileUser")]
     public async Task<IActionResult> CreateOrganization(BaseRequest BaseRequest)
     {
         await _mediator.Send(new ProfileUserCommand(BaseRequest));
@@ -35,10 +24,18 @@ public class TimeLogServiceController(IMediator mediator) : ControllerBase
     }
 
     [HttpPost]
-    [Route("ProfileUser")]
+    [Route("Project")]
     public async Task<IActionResult> CreateOrganization(AllProjectUnderOrganizationRequest request)
     {
         await _mediator.Send(new ProjectCommand(request));
+        return Ok();
+    }
+
+    [HttpPost]
+    [Route("WorkItem")]
+    public async Task<IActionResult> CreateOrganization(WorkItemRequest BaseRequest)
+    {
+        await _mediator.Send(new WorkItemCommend(BaseRequest));
         return Ok();
     }
 

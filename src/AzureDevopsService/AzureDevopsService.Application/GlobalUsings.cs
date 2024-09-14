@@ -4,6 +4,10 @@ global using AzureDevopsService.Application.AzureDevopsExternalResourceService.P
 global using AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper;
 global using AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
 global using AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
+global using AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
+global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
+global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProjectResource;
+global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.WorkItemResource;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
 global using AzureDevopsService.Contracts.Constant;

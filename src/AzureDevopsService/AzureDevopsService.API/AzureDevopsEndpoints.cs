@@ -1,10 +1,4 @@
-﻿using AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
-using AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
-using AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
-using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using AzureDevopsService.Contracts.AzureResponceModel;
-
-namespace AzureDevopsService.API;
+﻿namespace AzureDevopsService.API;
 
 public static class AzureDevopsEndpoints
 {

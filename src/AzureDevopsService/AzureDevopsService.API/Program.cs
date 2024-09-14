@@ -1,5 +1,3 @@
-using AzureDevopsService.Contracts.Settings;
-
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()

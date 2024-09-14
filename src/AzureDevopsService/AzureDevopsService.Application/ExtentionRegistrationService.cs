@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
-
-namespace AzureDevopsService.Application;
+﻿namespace AzureDevopsService.Application;
 
 public static class ExtentionRegistrationService
 {
