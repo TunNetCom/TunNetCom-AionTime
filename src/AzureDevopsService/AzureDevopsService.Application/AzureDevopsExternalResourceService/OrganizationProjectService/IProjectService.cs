@@ -2,5 +2,5 @@
 
 public interface IProjectService
 {
-    Task<OneOf<AllProjectResponce?, CustomProblemDetailsResponce?>> AllProjectUnderOrganization(AllProjectUnderOrganizationRequest request);
+    Task<OneOf<AllProjectResponce, CustomProblemDetailsResponce>> AllProjectUnderOrganization(AllProjectUnderOrganizationRequest request);
 }

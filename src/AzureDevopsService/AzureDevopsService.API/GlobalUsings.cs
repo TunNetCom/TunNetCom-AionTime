@@ -1,7 +1,11 @@
 ﻿global using AzureDevopsService.API;
+global using AzureDevopsService.Application;
+global using AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
+global using AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
+global using AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
-global using AzureDevopsService.Application;
+global using AzureDevopsService.Contracts.Settings;
 global using FluentResults;
 global using FluentValidation;
 global using MediatR;

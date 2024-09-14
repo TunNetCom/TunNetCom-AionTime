@@ -5,7 +5,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<UserProfileApiClient> _logger = logger;
 
-    public async Task<OneOf<UserProfile?, CustomProblemDetailsResponce?>> GetAdminInfo(BaseRequest request)
+    public async Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(BaseRequest request)
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 
@@ -13,12 +13,11 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
 
         if (userProfileResult.StatusCode == HttpStatusCode.OK)
         {
-            UserProfile? user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
+            UserProfile user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
 
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             user.Path = request.Path;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             user.Email = request.Email;
+
             return user;
         }
 
@@ -32,7 +31,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
         };
     }
 
-    public async Task<OneOf<UserAccount?, CustomProblemDetailsResponce?>> GeUserOrganizations(GetUserOrganizationRequest request)
+    public async Task<OneOf<UserAccount, CustomProblemDetailsResponce>> GeUserOrganizations(GetUserOrganizationRequest request)
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 
@@ -40,10 +39,8 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
 
         if (userOrganizationResult.StatusCode == HttpStatusCode.OK)
         {
-            UserAccount? responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccount>();
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            UserAccount responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccount>();
             responce.Path = request.Path;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             responce.Email = request.Email;
 
             return responce;

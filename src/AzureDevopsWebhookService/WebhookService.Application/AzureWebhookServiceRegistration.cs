@@ -17,6 +17,9 @@ public static class AzureWebhookServiceRegistration
                     h.Username(rabbitMqSettings.UserName);
                     h.Password(rabbitMqSettings.Password);
                 });
+
+                cfg.UseNewtonsoftJsonSerializer();
+
                 cfg.ConfigureEndpoints(context, new DefaultEndpointNameFormatter("dev", false));
             });
         });

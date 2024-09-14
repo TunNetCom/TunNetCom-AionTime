@@ -20,6 +20,8 @@ public static class InfrastructureServiceRegistration
                 {
                     _ = sqlOptions.EnableRetryOnFailure();
                 });
+
+            _ = options.EnableSensitiveDataLogging();
         });
         _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
