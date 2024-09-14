@@ -11,7 +11,8 @@ namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
         public void Configure(EntityTypeBuilder<Organization> entity)
         {
             entity.HasIndex(c => c.Id);
-            entity.HasQueryFilter(c => c.Id == _multiTenancyService.GetTenantId());
+            // TODO
+            // entity.HasQueryFilter(c => c.Id == _multiTenancyService.GetTenantId());
             entity.ToTable("Organization");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
