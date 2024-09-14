@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.RabbitMqConsumer.Producer.Project;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Producer.Project;
 
 public class ProjectCommandHandler(ISendEndpointProvider sendEndpointProvider) : IRequestHandler<ProjectCommand>
 {

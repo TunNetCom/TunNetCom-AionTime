@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.RabbitMqConsumer.Consumer.WebhookConsumer
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.WebhookConsumer
 {
     public class PipelineEventConsumer(ILogger<PipelineEventConsumer> logger) : IConsumer<AzureWebhookModelEvent<PipeLinesResource>>
     {

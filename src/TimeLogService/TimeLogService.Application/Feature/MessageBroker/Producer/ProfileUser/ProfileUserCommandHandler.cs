@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.RabbitMqConsumer.Producer.ProfileUser;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Producer.ProfileUser;
 
 public class ProfileUserCommandHandler(ISendEndpointProvider sendEndpointProvider) :
 IRequestHandler<ProfileUserCommand>

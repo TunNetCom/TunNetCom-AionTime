@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.RabbitMqConsumer.Consumer.ProfileUser;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.ProfileUser;
 
 public class ProfileUserConsumer(ILogger<ProfileUserConsumer> logger) : IConsumer<UserAccount>, IConsumer<CustomProblemDetailsResponce>
 {

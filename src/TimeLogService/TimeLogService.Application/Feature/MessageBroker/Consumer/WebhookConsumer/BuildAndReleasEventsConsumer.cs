@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.RabbitMqConsumer.Consumer.WebhookConsumer;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.WebhookConsumer;
 
 public class BuildAndReleasEventsConsumer(ILogger<BuildAndReleasEventsConsumer> logger) : IConsumer<AzureWebhookModelEvent<BuildAndReleaseResource>>
 {
