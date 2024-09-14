@@ -9,18 +9,14 @@ public class ProjectCommandHandler(IProjectService projectService, ISendEndpoint
     {
         ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/ProjectResponce"));
 
-        OneOf<AllProjectResponce?, CustomProblemDetailsResponce?> projectsResponse = await _projectService.AllProjectUnderOrganization(request.Request);
+        OneOf<AllProjectResponce, CustomProblemDetailsResponce> projectsResponse = await _projectService.AllProjectUnderOrganization(request.Request);
         if (projectsResponse.IsT0)
         {
-#pragma warning disable CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
-            await endpoint.Send(projectsResponse.AsT0, cancellationToken);
-#pragma warning restore CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
+            await endpoint.Send(projectsResponse!.AsT0, cancellationToken);
         }
         else
         {
-#pragma warning disable CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
-            await endpoint.Send(projectsResponse.AsT1, cancellationToken);
-#pragma warning restore CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
+            await endpoint.Send(projectsResponse!.AsT1, cancellationToken);
         }
     }
 }

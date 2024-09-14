@@ -5,7 +5,7 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ProjectService> _logger = logger;
 
-    public async Task<OneOf<AllProjectResponce?, CustomProblemDetailsResponce?>> AllProjectUnderOrganization(AllProjectUnderOrganizationRequest request)
+    public async Task<OneOf<AllProjectResponce, CustomProblemDetailsResponce>> AllProjectUnderOrganization(AllProjectUnderOrganizationRequest request)
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 
@@ -13,11 +13,10 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
 
         if (projectsResult.StatusCode == HttpStatusCode.OK)
         {
-            AllProjectResponce? projects = await projectsResult.Content.ReadFromJsonAsync<AllProjectResponce>();
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            AllProjectResponce projects = await projectsResult.Content.ReadFromJsonAsync<AllProjectResponce>();
             projects.Path = request.Path;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             projects.Email = request.Email;
+
             return projects;
         }
 

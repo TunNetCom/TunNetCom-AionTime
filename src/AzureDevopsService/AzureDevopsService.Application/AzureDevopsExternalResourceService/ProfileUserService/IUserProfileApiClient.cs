@@ -2,8 +2,8 @@
 {
     public interface IUserProfileApiClient
     {
-        Task<OneOf<UserProfile?, CustomProblemDetailsResponce?>> GetAdminInfo(BaseRequest request);
+        Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(BaseRequest request);
 
-        Task<OneOf<UserAccount?, CustomProblemDetailsResponce?>> GeUserOrganizations(GetUserOrganizationRequest request);
+        Task<OneOf<UserAccount, CustomProblemDetailsResponce>> GeUserOrganizations(GetUserOrganizationRequest request);
     }
 }

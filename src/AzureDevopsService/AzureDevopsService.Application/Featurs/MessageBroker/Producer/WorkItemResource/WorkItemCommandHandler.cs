@@ -9,19 +9,15 @@ public class WorkItemCommandHandler(IWorkItemExternalService workItemExternalSer
     {
         ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/WorkItemResponce"));
 
-        OneOf<WiqlResponses?, WiqlBadRequestResponce?> workItemResponse = await _workItemExternalService.GetWorkItemByUser(request.WorkItemRequest);
+        OneOf<WiqlResponses, WiqlBadRequestResponce> workItemResponse = await _workItemExternalService.GetWorkItemByUser(request.WorkItemRequest);
 
         if (workItemResponse.IsT0)
         {
-#pragma warning disable CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
-            await endpoint.Send(workItemResponse.AsT0, cancellationToken);
-#pragma warning restore CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
+            await endpoint.Send(workItemResponse!.AsT0, cancellationToken);
         }
         else
         {
-#pragma warning disable CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
-            await endpoint.Send(workItemResponse.AsT1, cancellationToken);
+            await endpoint.Send(workItemResponse!.AsT1, cancellationToken);
         }
-#pragma warning restore CS8634 // The type cannot be used as type parameter in the generic type or method. Nullability of type argument doesn't match 'class' constraint.
     }
 }

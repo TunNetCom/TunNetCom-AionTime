@@ -5,7 +5,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<WorkItemExternalService> _logger = logger;
 
-    public async Task<OneOf<WiqlResponses?, WiqlBadRequestResponce?>> GetWorkItemByUser(WorkItemRequest resource)
+    public async Task<OneOf<WiqlResponses, WiqlBadRequestResponce>> GetWorkItemByUser(WorkItemRequest resource)
     {
         WiqlRequest wiqlRequest = WorkItemHelper.FillGetWorkItemByUser(resource);
 
@@ -18,9 +18,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
         if (workItemResponse.StatusCode == HttpStatusCode.OK)
         {
             WiqlResponses? wiqlResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlResponses>();
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             wiqlResponses.Email = wiqlRequest.Email;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             wiqlResponses.Path = wiqlRequest.Path;
             return wiqlResponses;
         }
@@ -29,10 +27,8 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
 
         if (workItemResponse.StatusCode == HttpStatusCode.BadRequest)
         {
-            WiqlBadRequestResponce? wiqlBadResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            WiqlBadRequestResponce wiqlBadResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
             wiqlBadResponses.Path = wiqlRequest.Path;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             wiqlBadResponses.Email = wiqlRequest.Email;
 
             return wiqlBadResponses;

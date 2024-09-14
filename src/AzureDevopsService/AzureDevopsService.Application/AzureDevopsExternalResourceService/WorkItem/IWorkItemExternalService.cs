@@ -2,5 +2,5 @@
 
 public interface IWorkItemExternalService
 {
-    Task<OneOf<WiqlResponses?, WiqlBadRequestResponce?>> GetWorkItemByUser(WorkItemRequest resource);
+    Task<OneOf<WiqlResponses, WiqlBadRequestResponce>> GetWorkItemByUser(WorkItemRequest resource);
 }
