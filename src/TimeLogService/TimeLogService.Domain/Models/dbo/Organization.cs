@@ -8,13 +8,13 @@ public partial class Organization : BaseEntity
 
     public string AccountId { get; set; } = null!;
 
-    public Uri AccountUri { get; set; } = null!;
+    public string AccountUri { get; set; } = null!;
 
     public bool IsAionTimeApproved { get; set; }
 
-    public virtual IReadOnlyCollection<AionTimeSubscription>? AionTimeSubscriptions { get; set; }
+    public virtual ICollection<AionTimeSubscription>?  AionTimeSubscriptions { get; set; } //= new List<AionTimeSubscription>();
 
-    public virtual IReadOnlyCollection<Project>? Projects { get; set; }
+    public virtual ICollection<Project>?  Projects { get; set; } //= new List<Project>();
 
     public virtual User? User { get; set; }
 }

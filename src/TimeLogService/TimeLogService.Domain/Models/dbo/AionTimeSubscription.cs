@@ -8,7 +8,7 @@ public partial class AionTimeSubscription : BaseEntity
 
     public int OrganizationId { get; set; }
 
-    public virtual IReadOnlyCollection<AionTimeSubscriptionHistory>? AionTimeSubscriptionHistories { get; set; } // = new List<AionTimeSubscriptionHistory>();
+    public virtual ICollection<AionTimeSubscriptionHistory>?  AionTimeSubscriptionHistories { get; set; } //= new List<AionTimeSubscriptionHistory>();
 
     public virtual Organization? Organization { get; set; }
 }

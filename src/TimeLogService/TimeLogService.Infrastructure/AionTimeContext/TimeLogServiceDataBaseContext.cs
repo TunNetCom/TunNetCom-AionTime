@@ -1,13 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using TimeLogService.Domain.Models;
-using TimeLogService.Infrastructure.AionTimeContext.Configurations;
+﻿using TimeLogService.Infrastructure.AionTimeContext.Configurations;
 
-namespace TimeLogService.Infrastructure.AionTimeContext;
-
-public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServiceDataBaseContext> options) : DbContext(options)
+public partial class TimeLogServiceDataBaseContext : DbContext
 {
+    public TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServiceDataBaseContext> options)
+        : base(options)
+    {
+    }
+
     public virtual DbSet<AionTimeSubscription> AionTimeSubscriptions { get; set; }
 
     public virtual DbSet<AionTimeSubscriptionHistory> AionTimeSubscriptionHistories { get; set; }
@@ -26,14 +25,14 @@ public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServi
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        _ = modelBuilder.ApplyConfiguration(new AionTimeSubscriptionConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new AionTimeSubscriptionHistoryConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new OrganizationConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new ProjectConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new UserConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new WorkItemConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new WorkItemHistoryConfiguration());
-        _ = modelBuilder.ApplyConfiguration(new WorkItemTimeLogConfiguration());
+        modelBuilder.ApplyConfiguration(new AionTimeSubscriptionConfiguration());
+        modelBuilder.ApplyConfiguration(new AionTimeSubscriptionHistoryConfiguration());
+        modelBuilder.ApplyConfiguration(new OrganizationConfiguration());
+        modelBuilder.ApplyConfiguration(new ProjectConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new WorkItemConfiguration());
+        modelBuilder.ApplyConfiguration(new WorkItemHistoryConfiguration());
+        modelBuilder.ApplyConfiguration(new WorkItemTimeLogConfiguration());
 
         OnModelCreatingPartial(modelBuilder);
     }
