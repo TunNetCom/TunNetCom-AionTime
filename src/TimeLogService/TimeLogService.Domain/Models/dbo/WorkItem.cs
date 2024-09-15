@@ -8,7 +8,7 @@ public partial class WorkItem : BaseEntity
 
     public virtual Project? Project { get; set; }
 
-    public virtual IReadOnlyCollection<WorkItemHistory>? WorkItemHistories { get; set; }
+    public virtual ICollection<WorkItemHistory>?  WorkItemHistories { get; set; } //= new List<WorkItemHistory>();
 
-    public virtual IReadOnlyCollection<WorkItemTimeLog>? WorkItemTimeLogs { get; set; }
+    public virtual ICollection<WorkItemTimeLog>?  WorkItemTimeLogs { get; set; } //= new List<WorkItemTimeLog>();
 }

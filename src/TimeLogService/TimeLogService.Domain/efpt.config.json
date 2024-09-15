@@ -11,11 +11,39 @@
    "ProjectRootNamespace": "TimeLogService.Domain",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 2,
-   "SelectedToBeGenerated": 0,
+   "SelectedToBeGenerated": 2,
    "T4TemplatePath": null,
    "Tables": [
       {
+         "Name": "[dbo].[AionTimeSubscription]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[AionTimeSubscriptionHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Organization]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Project]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WorkItem]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WorkItemHistory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WorkItemTimeLog]",
          "ObjectType": 0
       }
    ],

@@ -8,13 +8,15 @@ public partial class Project : BaseEntity
 
     public string Name { get; set; } = null!;
 
-    public string? State { get; set; }
-
-    public int? Revision { get; set; }
+    public int? State { get; set; }
 
     public string? Visibility { get; set; }
 
     public DateTime? LastUpdateTime { get; set; }
 
     public string Url { get; set; } = null!;
+
+    public virtual Organization? Organization { get; set; }
+
+    public virtual ICollection<WorkItem>?  WorkItems { get; set; } //= new List<WorkItem>();
 }

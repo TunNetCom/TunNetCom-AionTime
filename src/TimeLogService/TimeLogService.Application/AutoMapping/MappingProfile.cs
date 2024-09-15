@@ -17,6 +17,7 @@ namespace TimeLogService.Application.AutoMapping
             _ = CreateMap<WorkItemHistoryRequest, WorkItemHistory>();
             _ = CreateMap<WorkItemTimeLogRequest, WorkItemTimeLog>();
             _ = CreateMap<ProjectRequest, Project>();
+            _ = CreateMap<UserProfile, User>();
         }
     }
 }
