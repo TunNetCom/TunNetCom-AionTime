@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Domain.Models.Dbo;
+﻿namespace TimeLogService.Domain.Models;
 
 public partial class WorkItem : BaseEntity
 {
@@ -8,10 +8,7 @@ public partial class WorkItem : BaseEntity
 
     public virtual Project? Project { get; set; }
 
-#pragma warning disable CA2227 // Collection properties should be read only
-    public virtual ICollection<WorkItemHistory>? WorkItemHistories { get; set; }
+    public virtual IReadOnlyCollection<WorkItemHistory>? WorkItemHistories { get; set; }
 
-    public virtual ICollection<WorkItemTimeLog>? WorkItemTimeLogs { get; set; }
-#pragma warning restore CA2227 // Collection properties should be read only
-
+    public virtual IReadOnlyCollection<WorkItemTimeLog>? WorkItemTimeLogs { get; set; }
 }

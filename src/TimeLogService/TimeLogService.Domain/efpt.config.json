@@ -1,45 +1,29 @@
 ﻿{
    "CodeGenerationMode": 4,
-   "ContextClassName": "TunNetCom.AionTime.TimeLogService.DatabaseContext",
+   "ContextClassName": "TimeLogService.DatabaseContext",
    "ContextNamespace": null,
-   "DefaultDacpacSchema": null,
    "FilterSchemas": false,
    "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": null,
    "OutputPath": "Models",
    "PreserveCasingWithRegex": true,
-   "ProjectRootNamespace": "TunNetCom.AionTime.TimeLogService.Domain",
+   "ProjectRootNamespace": "TimeLogService.Domain",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 2,
-   "SelectedToBeGenerated": 2,
+   "SelectedToBeGenerated": 0,
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "[dbo].[Organization]",
-         "ObjectType": 0
-      },
-      {
          "Name": "[dbo].[Project]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[WorkItem]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[WorkItemHistory]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[WorkItemTimeLog]",
          "ObjectType": 0
       }
    ],
-   "UiHint": "..\\TunNetCom.AionTime.TimeLogService.DataBase\\TunNetCom.AionTime.TimeLogService.Database.sqlproj",
+   "UiHint": null,
    "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
    "UseBoolPropertiesWithoutDefaultSql": false,
-   "UseDatabaseNames": false,
+   "UseDatabaseNames": true,
    "UseDateOnlyTimeOnly": false,
    "UseDbContextSplitting": true,
    "UseDecimalDataAnnotationForSprocResult": true,

@@ -12,3 +12,4 @@ global using TimeLogService.Infrastructure;
 global using TimeLogService.Infrastructure.AionTimeContext;
 global using TimeLogService.Infrastructure.MultiTenancy;
 global using TimeLogService.Infrastructure.Repositories;
+global using TimeLogService.Domain.Models;

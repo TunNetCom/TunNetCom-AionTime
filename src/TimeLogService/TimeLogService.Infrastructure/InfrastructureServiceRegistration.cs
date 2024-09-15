@@ -12,7 +12,7 @@ public static class InfrastructureServiceRegistration
            : configuration.GetConnectionString("TimeLogContext");
 
         _ = services.AddScoped<MultiTenancyService>();
-        _ = services.AddDbContext<TunNetComAionTimeTimeLogServiceDataBaseContext>(options =>
+        _ = services.AddDbContext<TimeLogServiceDataBaseContext>(options =>
         {
             _ = options.UseSqlServer(
                 connectionString,
