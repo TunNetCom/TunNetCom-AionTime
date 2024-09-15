@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Domain.Models.Dbo;
+﻿namespace TimeLogService.Domain.Models;
 
 public partial class WorkItemTimeLog : BaseEntity
 {

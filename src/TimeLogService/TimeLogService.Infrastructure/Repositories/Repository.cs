@@ -1,10 +1,10 @@
 ﻿namespace TimeLogService.Infrastructure.Repositories;
 
-public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext context)
+public class Repository<T>(TimeLogServiceDataBaseContext context)
     : IRepository<T>
     where T : BaseEntity
 {
-    private readonly TunNetComAionTimeTimeLogServiceDataBaseContext _context = context;
+    private readonly TimeLogServiceDataBaseContext _context = context;
 
     public async Task AddRangeAsync(IEnumerable<T> entities)
     {
@@ -29,12 +29,12 @@ public class Repository<T>(TunNetComAionTimeTimeLogServiceDataBaseContext contex
 
     public async Task<IReadOnlyList<T>> GetAsync()
     {
-        return await _context.Set<T>().ToListAsync();
+        return await _context.Set<T>().AsNoTracking().ToListAsync();
     }
 
     public async Task<T?> GetByIdAsync(int id)
     {
-        return await _context.Set<T>().FirstOrDefaultAsync(q => q.Id == id);
+        return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(q => q.Id == id);
     }
 
     public async Task UpdateAsync(T entity)

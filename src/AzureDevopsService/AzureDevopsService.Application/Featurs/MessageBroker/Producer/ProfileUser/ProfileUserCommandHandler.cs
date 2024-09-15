@@ -23,7 +23,8 @@ public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClien
                     Path = adminInfoResponse!.AsT0!.Path,
                 });
 
-            await endpoint.Send(organizationResponce.AsT0, cancellationToken);
+            adminInfoResponse.AsT0.UserAccount = organizationResponce.AsT0;
+            await endpoint.Send(adminInfoResponse.AsT0, cancellationToken);
         }
         else
         {

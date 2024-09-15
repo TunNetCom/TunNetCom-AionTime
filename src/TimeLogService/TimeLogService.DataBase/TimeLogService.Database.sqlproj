@@ -65,8 +65,14 @@
     <Build Include="dbo\Tables\WorkItem.sql" />
     <Build Include="dbo\Tables\WorkItemHistory.sql" />
     <Build Include="dbo\Tables\WorkItemTimeLog.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\AionTimeSubscription.sql" />
+    <Build Include="dbo\Tables\AionTimeSubscriptionHistory.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TunNetCom.AionTime.TimeLogService.DataBase.publish.xml" />
+    <None Include="TimeLogService.Database.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="TimeLogService.Database.refactorlog" />
   </ItemGroup>
 </Project>

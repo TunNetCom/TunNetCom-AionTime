@@ -33,7 +33,7 @@ try
     {
         using (IServiceScope scope = app.Services.CreateScope())
         {
-            TunNetComAionTimeTimeLogServiceDataBaseContext dbContext = scope.ServiceProvider.GetRequiredService<TunNetComAionTimeTimeLogServiceDataBaseContext>();
+            TimeLogServiceDataBaseContext dbContext = scope.ServiceProvider.GetRequiredService<TimeLogServiceDataBaseContext>();
             _ = dbContext.Database.EnsureCreated();
         }
 

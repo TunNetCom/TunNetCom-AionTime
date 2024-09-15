@@ -25,3 +25,4 @@ global using WebhookService.Contracts.EventModels.SharedModels.ResourcesModels;
 global using static MassTransit.Logging.OperationName;
 global using static Org.BouncyCastle.Math.EC.ECCurve;
 global using RabbitMqSettings = TimeLogService.Contracts.Settings.RabbitMqSettings;
+global using TimeLogService.Domain.Models;
