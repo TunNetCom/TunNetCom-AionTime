@@ -9,7 +9,7 @@ namespace TimeLogService.Application.Feature.UserAction.Commands.AddUser
         private readonly IRepository<User> _repository = repository;
         private readonly IMapper _mapper = mapper;
 
-        public async Task<OneOf<True,False>> Handle(AddUserCommand request, CancellationToken cancellationToken)
+        public async Task Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
 
             User user = new()

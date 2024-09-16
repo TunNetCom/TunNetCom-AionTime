@@ -18,5 +18,5 @@ public partial class Project : BaseEntity
 
     public virtual Organization? Organization { get; set; }
 
-    public virtual ICollection<WorkItem>?  WorkItems { get; set; } //= new List<WorkItem>();
+    public virtual ICollection<WorkItem>? WorkItems { get; set; } // = new List<WorkItem>();
 }
