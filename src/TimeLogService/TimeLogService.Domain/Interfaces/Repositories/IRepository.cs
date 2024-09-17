@@ -1,4 +1,6 @@
-﻿namespace TimeLogService.Domain.Interfaces.Repositories;
+﻿using System.Linq.Expressions;
+
+namespace TimeLogService.Domain.Interfaces.Repositories;
 
 public interface IRepository<T>
     where T : BaseEntity
@@ -6,6 +8,10 @@ public interface IRepository<T>
     Task<IReadOnlyList<T>> GetAsync();
 
     Task<T?> GetByIdAsync(int id);
+
+    Task<IReadOnlyList<T>> GetManyAsync(Expression<Func<T, bool>> predicate);
+
+    Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate);
 
     Task AddAsync(T entity);
 

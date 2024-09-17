@@ -14,5 +14,5 @@ public partial class User : BaseEntity
 
     public int Revision { get; set; }
 
-    public virtual ICollection<Organization>?  Organizations { get; set; } //= new List<Organization>();
+    public virtual ICollection<Organization>? Organizations { get; set; } // = new List<Organization>();
 }

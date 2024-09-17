@@ -1,4 +1,7 @@
-﻿namespace TimeLogService.Infrastructure.Repositories;
+﻿using System;
+using System.Linq.Expressions;
+
+namespace TimeLogService.Infrastructure.Repositories;
 
 public class Repository<T>(TimeLogServiceDataBaseContext context)
     : IRepository<T>
@@ -53,5 +56,15 @@ public class Repository<T>(TimeLogServiceDataBaseContext context)
     {
         _context.RemoveRange(entities);
         _ = await _context.SaveChangesAsync();
+    }
+
+    public async Task<IReadOnlyList<T>> GetManyAsync(Expression<Func<T, bool>> predicate)
+    {
+        return await _context.Set<T>().AsNoTracking().Where(predicate).ToListAsync();
+    }
+
+    public async Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate)
+    {
+        return await _context.Set<T>().AsNoTracking().Where(predicate).FirstOrDefaultAsync();
     }
 }
