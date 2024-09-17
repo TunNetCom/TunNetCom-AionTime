@@ -24,5 +24,5 @@ public class UserProfile : BaseRequest
     public int Revision { get; set; }
 
     [JsonProperty("UserAccount")]
-    public UserAccount? UserAccount { get; set; };
+    public UserAccount? UserAccount { get; set; }
 }
