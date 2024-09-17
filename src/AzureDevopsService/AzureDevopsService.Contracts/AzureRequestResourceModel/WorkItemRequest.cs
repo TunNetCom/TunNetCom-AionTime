@@ -1,9 +1,8 @@
-﻿namespace AzureDevopsService.Contracts.AzureRequestResourceModel
-{
-    public class WorkItemRequest : BaseRequest
-    {
-        public required string OrganisationName { get; set; }
+﻿namespace AzureDevopsService.Contracts.AzureRequestResourceModel;
 
-        public required string ProjectName { get; set; }
-    }
+public class WorkItemRequest : BaseRequest
+{
+    public required string OrganisationName { get; set; }
+
+    public required string ProjectName { get; set; }
 }

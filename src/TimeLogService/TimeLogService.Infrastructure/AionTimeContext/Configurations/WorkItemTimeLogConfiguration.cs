@@ -2,20 +2,20 @@
 {
     public partial class WorkItemTimeLogConfiguration : IEntityTypeConfiguration<WorkItemTimeLog>
     {
-        public void Configure(EntityTypeBuilder<WorkItemTimeLog> entity)
+        public void Configure(EntityTypeBuilder<WorkItemTimeLog> builder)
         {
-            entity.ToTable("WorkItemTimeLog");
+            _ = builder.ToTable("WorkItemTimeLog");
 
-            entity.Property(e => e.Description)
+            _ = builder.Property(e => e.Description)
                 .HasMaxLength(200)
                 .IsUnicode(false);
-            entity.Property(e => e.Time).HasColumnType("datetime");
+            _ = builder.Property(e => e.Time).HasColumnType("datetime");
 
-            entity.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemTimeLogs)
+            _ = builder.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemTimeLogs)
                 .HasForeignKey(d => d.WorkItemId)
                 .HasConstraintName("FKProjectTicketLog");
 
-            OnConfigurePartial(entity);
+            OnConfigurePartial(builder);
         }
 
         partial void OnConfigurePartial(EntityTypeBuilder<WorkItemTimeLog> entity);

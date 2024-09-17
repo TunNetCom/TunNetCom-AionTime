@@ -40,7 +40,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
         if (userOrganizationResult.StatusCode == HttpStatusCode.OK)
         {
             UserAccount responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccount>();
-            responce.Path = request.Path;
+            responce!.Path = request.Path;
             responce.Email = request.Email;
 
             return responce;

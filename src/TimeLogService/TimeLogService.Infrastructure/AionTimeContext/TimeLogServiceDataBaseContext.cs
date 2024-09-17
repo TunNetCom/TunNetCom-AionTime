@@ -1,12 +1,7 @@
 ﻿using TimeLogService.Infrastructure.AionTimeContext.Configurations;
 
-public partial class TimeLogServiceDataBaseContext : DbContext
+public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServiceDataBaseContext> options) : DbContext(options)
 {
-    public TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServiceDataBaseContext> options)
-        : base(options)
-    {
-    }
-
     public virtual DbSet<AionTimeSubscription> AionTimeSubscriptions { get; set; }
 
     public virtual DbSet<AionTimeSubscriptionHistory> AionTimeSubscriptionHistories { get; set; }
@@ -25,14 +20,14 @@ public partial class TimeLogServiceDataBaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new AionTimeSubscriptionConfiguration());
-        modelBuilder.ApplyConfiguration(new AionTimeSubscriptionHistoryConfiguration());
-        modelBuilder.ApplyConfiguration(new OrganizationConfiguration());
-        modelBuilder.ApplyConfiguration(new ProjectConfiguration());
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
-        modelBuilder.ApplyConfiguration(new WorkItemConfiguration());
-        modelBuilder.ApplyConfiguration(new WorkItemHistoryConfiguration());
-        modelBuilder.ApplyConfiguration(new WorkItemTimeLogConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new AionTimeSubscriptionConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new AionTimeSubscriptionHistoryConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new OrganizationConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new ProjectConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new UserConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new WorkItemConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new WorkItemHistoryConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new WorkItemTimeLogConfiguration());
 
         OnModelCreatingPartial(modelBuilder);
     }

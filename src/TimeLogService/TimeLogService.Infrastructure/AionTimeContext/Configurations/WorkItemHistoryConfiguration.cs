@@ -4,13 +4,13 @@
     {
         public void Configure(EntityTypeBuilder<WorkItemHistory> entity)
         {
-            entity.ToTable("WorkItemHistory");
+            _ = entity.ToTable("WorkItemHistory");
 
-            entity.Property(e => e.History)
+            _ = entity.Property(e => e.History)
                 .HasMaxLength(1000)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemHistories)
+            _ = entity.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemHistories)
                 .HasForeignKey(d => d.WorkItemId)
                 .HasConstraintName("FKTicketHistory");
 

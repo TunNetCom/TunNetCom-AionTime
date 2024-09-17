@@ -12,11 +12,11 @@ public class ProjectCommandHandler(IProjectService projectService, ISendEndpoint
         OneOf<AllProjectResponce, CustomProblemDetailsResponce> projectsResponse = await _projectService.AllProjectUnderOrganization(request.Request);
         if (projectsResponse.IsT0)
         {
-            await endpoint.Send(projectsResponse!.AsT0, cancellationToken);
+            await endpoint.Send(projectsResponse.AsT0, cancellationToken);
         }
         else
         {
-            await endpoint.Send(projectsResponse!.AsT1, cancellationToken);
+            await endpoint.Send(projectsResponse.AsT1, cancellationToken);
         }
     }
 }

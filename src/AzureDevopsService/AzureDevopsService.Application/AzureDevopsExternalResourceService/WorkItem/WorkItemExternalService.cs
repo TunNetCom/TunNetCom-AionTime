@@ -18,7 +18,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
         if (workItemResponse.StatusCode == HttpStatusCode.OK)
         {
             WiqlResponses? wiqlResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlResponses>();
-            wiqlResponses.Email = wiqlRequest.Email;
+            wiqlResponses!.Email = wiqlRequest.Email;
             wiqlResponses.Path = wiqlRequest.Path;
             return wiqlResponses;
         }
@@ -28,7 +28,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
         if (workItemResponse.StatusCode == HttpStatusCode.BadRequest)
         {
             WiqlBadRequestResponce wiqlBadResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
-            wiqlBadResponses.Path = wiqlRequest.Path;
+            wiqlBadResponses!.Path = wiqlRequest.Path;
             wiqlBadResponses.Email = wiqlRequest.Email;
 
             return wiqlBadResponses;

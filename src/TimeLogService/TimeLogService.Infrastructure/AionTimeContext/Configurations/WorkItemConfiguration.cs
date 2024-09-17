@@ -4,13 +4,13 @@
     {
         public void Configure(EntityTypeBuilder<WorkItem> entity)
         {
-            entity.ToTable("WorkItem");
+            _ = entity.ToTable("WorkItem");
 
-            entity.Property(e => e.Discription)
+            _ = entity.Property(e => e.Discription)
                 .HasMaxLength(1000)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Project).WithMany(p => p.WorkItems)
+            _ = entity.HasOne(d => d.Project).WithMany(p => p.WorkItems)
                 .HasForeignKey(d => d.ProjectId)
                 .HasConstraintName("FKProjectTicket");
 
