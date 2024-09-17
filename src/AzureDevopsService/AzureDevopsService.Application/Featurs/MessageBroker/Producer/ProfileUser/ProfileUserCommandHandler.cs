@@ -18,9 +18,9 @@ public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClien
             OneOf<UserAccount, CustomProblemDetailsResponce> organizationResponce = await _userProfileApiClient.GeUserOrganizations(
                 new GetUserOrganizationRequest
                 {
-                    Email = adminInfoResponse!.AsT0!.Email,
-                    MemberId = adminInfoResponse!.AsT0!.Id,
-                    Path = adminInfoResponse!.AsT0!.Path,
+                    Email = adminInfoResponse.AsT0.Email,
+                    MemberId = adminInfoResponse.AsT0.Id,
+                    Path = adminInfoResponse.AsT0.Path,
                 });
 
             adminInfoResponse.AsT0.UserAccount = organizationResponce.AsT0;
@@ -31,10 +31,10 @@ public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClien
             await endpoint.Send(
                 new CustomProblemDetailsResponce
                 {
-                    Detail = adminInfoResponse!.AsT1!.Detail,
-                    Email = adminInfoResponse!.AsT1!.Email,
-                    Path = adminInfoResponse!.AsT1!.Path,
-                    Status = adminInfoResponse!.AsT1!.Status,
+                    Detail = adminInfoResponse.AsT1.Detail,
+                    Email = adminInfoResponse.AsT1.Email,
+                    Path = adminInfoResponse.AsT1.Path,
+                    Status = adminInfoResponse.AsT1.Status,
                 },
                 cancellationToken);
         }

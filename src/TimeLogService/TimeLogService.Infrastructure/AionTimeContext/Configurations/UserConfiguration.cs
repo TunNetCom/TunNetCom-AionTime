@@ -4,16 +4,16 @@
     {
         public void Configure(EntityTypeBuilder<User> entity)
         {
-            entity.ToTable("User");
+            _ = entity.ToTable("User");
 
-            entity.HasIndex(e => e.UserId, "IX_User_UserId").IsUnique();
+            _ = entity.HasIndex(e => e.UserId, "IX_User_UserId").IsUnique();
 
-            entity.Property(e => e.EmailAddress)
+            _ = entity.Property(e => e.EmailAddress)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.PublicAlias).HasMaxLength(100);
-            entity.Property(e => e.TimeStamp).HasColumnType("datetime");
-            entity.Property(e => e.UserId).HasMaxLength(100);
+            _ = entity.Property(e => e.PublicAlias).HasMaxLength(100);
+            _ = entity.Property(e => e.TimeStamp).HasColumnType("datetime");
+            _ = entity.Property(e => e.UserId).HasMaxLength(100);
 
             OnConfigurePartial(entity);
         }

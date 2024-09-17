@@ -4,12 +4,12 @@
     {
         public void Configure(EntityTypeBuilder<AionTimeSubscriptionHistory> entity)
         {
-            entity.ToTable("AionTimeSubscriptionHistory");
+            _ = entity.ToTable("AionTimeSubscriptionHistory");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.SubscriptionDate).HasColumnType("date");
+            _ = entity.Property(e => e.Id).ValueGeneratedNever();
+            _ = entity.Property(e => e.SubscriptionDate).HasColumnType("date");
 
-            entity.HasOne(d => d.Subscription).WithMany(p => p.AionTimeSubscriptionHistories)
+            _ = entity.HasOne(d => d.Subscription).WithMany(p => p.AionTimeSubscriptionHistories)
                 .HasForeignKey(d => d.SubscriptionId)
                 .HasConstraintName("FKSubscriptionSubscriptionHistory");
 

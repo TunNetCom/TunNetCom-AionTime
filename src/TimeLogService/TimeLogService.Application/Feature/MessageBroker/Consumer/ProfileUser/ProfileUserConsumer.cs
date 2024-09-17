@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganization;
-using TimeLogService.Application.Feature.OrganizationAction.Commands.AddOrganizationList;
-using TimeLogService.Application.Feature.UserAction.Commands.AddUser;
-
-namespace TimeLogService.Application.Feature.MessageBroker.Consumer.ProfileUser;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.ProfileUser;
 
 public class ProfileUserConsumer(ILogger<ProfileUserConsumer> logger, IMediator mediator, IRepository<User> repository, IRepository<Organization> repositoryOrganization) : IConsumer<UserProfile>, IConsumer<CustomProblemDetailsResponce>
 {
@@ -19,36 +14,37 @@ public class ProfileUserConsumer(ILogger<ProfileUserConsumer> logger, IMediator 
         if (user is null)
         {
             await _mediator.Send(new AddUserCommand(context.Message));
+        }
 
-            if (context.Message.UserAccount.Count > 0)
+        if (context.Message.UserAccount is not null and context.Message.UserAccount!.Count > 0)
+        {
+            IReadOnlyList<Organization> organizationList = await _repositoryOrganization.GetManyAsync(x => x.UserId == context.Message!.Id);
+
+            var existingAccountIds = new HashSet<string>(organizationList.Select(x => x.AccountId));
+
+            List<Organization> organizations = new List<Organization>();
+
+            foreach (UserOrganization org in context.Message.UserAccount!.Value)
             {
-                IReadOnlyList<Organization> organizationList = await _repositoryOrganization.GetManyAsync(x => x.UserId == context.Message!.Id);
-
-                var existingAccountIds = new HashSet<string>(organizationList.Select(x => x.AccountId));
-
-                List<Organization> organizations = new List<Organization>();
-
-                foreach (UserOrganization org in context.Message.UserAccount!.Value)
+                if (!existingAccountIds.Contains(org.AccountId))
                 {
-                    if (!existingAccountIds.Contains(org.AccountId))
+                    organizations.Add(new Organization
                     {
-                        organizations.Add(new Organization
-                        {
-                            AccountId = org.AccountId,
-                            AccountUri = org.AccountUri.ToString(),
-                            Name = org.AccountName,
-                            UserId = context.Message.Id,
-                            IsAionTimeApproved = false,
-                        });
-                    }
-                }
-
-                if (organizations.Count > 0)
-                {
-                    await _mediator.Send(new AddOrganizationListCommand(organizations));
+                        AccountId = org.AccountId,
+                        AccountUri = org.AccountUri.ToString(),
+                        Name = org.AccountName,
+                        UserId = context.Message.Id,
+                        IsAionTimeApproved = false,
+                    });
                 }
             }
+
+            if (organizations.Count > 0)
+            {
+                await _mediator.Send(new AddOrganizationListCommand(organizations));
+            }
         }
+
 
         _logger.LogInformation(JsonConvert.SerializeObject(context.Message));
     }

@@ -13,11 +13,11 @@ public class WorkItemCommandHandler(IWorkItemExternalService workItemExternalSer
 
         if (workItemResponse.IsT0)
         {
-            await endpoint.Send(workItemResponse!.AsT0, cancellationToken);
+            await endpoint.Send(workItemResponse.AsT0, cancellationToken);
         }
         else
         {
-            await endpoint.Send(workItemResponse!.AsT1, cancellationToken);
+            await endpoint.Send(workItemResponse.AsT1, cancellationToken);
         }
     }
 }

@@ -3,11 +3,11 @@
 public class UserOrganization
 {
     [JsonProperty("accountId")]
-    public string? AccountId { get; set; }
+    public string AccountId { get; set; } = string.Empty;
 
     [JsonProperty("accountUri")]
-    public Uri? AccountUri { get; set; }
+    public Uri? AccountUri { get; set; };
 
     [JsonProperty("accountName")]
-    public string? AccountName { get; set; }
+    public string AccountName { get; set; } = string.Empty;
 }
