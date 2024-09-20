@@ -68,6 +68,8 @@
     <Build Include="dbo\Tables\User.sql" />
     <Build Include="dbo\Tables\AionTimeSubscription.sql" />
     <Build Include="dbo\Tables\AionTimeSubscriptionHistory.sql" />
+    <Build Include="dbo\Tables\UserPath.sql" />
+    <Build Include="dbo\Tables\UserPathOrganizations.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TimeLogService.Database.publish.xml" />

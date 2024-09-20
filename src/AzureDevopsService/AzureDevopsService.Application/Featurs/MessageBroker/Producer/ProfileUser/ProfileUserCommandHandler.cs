@@ -14,7 +14,6 @@ public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClien
         OneOf<UserProfile, CustomProblemDetailsResponce> adminInfoResponse = await _userProfileApiClient.GetAdminInfo(request.BaseRequest);
         if (adminInfoResponse.IsT0)
         {
-
             OneOf<UserAccount, CustomProblemDetailsResponce> organizationResponce = await _userProfileApiClient.GeUserOrganizations(
                 new GetUserOrganizationRequest
                 {
