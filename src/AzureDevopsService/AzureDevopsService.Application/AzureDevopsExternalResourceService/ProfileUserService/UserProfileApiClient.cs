@@ -15,7 +15,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
         {
             UserProfile user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
 
-            user.Path = request.Path;
+            user!.Path = request.Path;
             user.Email = request.Email;
 
             return user;

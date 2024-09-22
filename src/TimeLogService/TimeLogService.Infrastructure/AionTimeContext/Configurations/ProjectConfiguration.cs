@@ -2,29 +2,29 @@
 {
     public partial class ProjectConfiguration : IEntityTypeConfiguration<Project>
     {
-        public void Configure(EntityTypeBuilder<Project> entity)
+        public void Configure(EntityTypeBuilder<Project> builder)
         {
-            _ = entity.ToTable("Project");
+            _ = builder.ToTable("Project");
 
-            _ = entity.HasIndex(e => e.ProjectId, "IX_Project_ProjectId").IsUnique();
+            _ = builder.HasIndex(e => e.ProjectId, "IX_Project_ProjectId").IsUnique();
 
-            _ = entity.Property(e => e.LastUpdateTime).HasColumnType("datetime");
-            _ = entity.Property(e => e.Name)
+            _ = builder.Property(e => e.LastUpdateTime).HasColumnType("datetime");
+            _ = builder.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            _ = entity.Property(e => e.ProjectId).HasMaxLength(100);
-            _ = entity.Property(e => e.Url)
+            _ = builder.Property(e => e.ProjectId).HasMaxLength(100);
+            _ = builder.Property(e => e.Url)
                 .HasMaxLength(200)
                 .IsUnicode(false);
-            _ = entity.Property(e => e.Visibility)
+            _ = builder.Property(e => e.Visibility)
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            _ = entity.HasOne(d => d.Organization).WithMany(p => p.Projects)
+            _ = builder.HasOne(d => d.Organization).WithMany(p => p.Projects)
                 .HasForeignKey(d => d.OrganizationId)
                 .HasConstraintName("FKOrganisationProject");
 
-            OnConfigurePartial(entity);
+            OnConfigurePartial(builder);
         }
 
         partial void OnConfigurePartial(EntityTypeBuilder<Project> entity);

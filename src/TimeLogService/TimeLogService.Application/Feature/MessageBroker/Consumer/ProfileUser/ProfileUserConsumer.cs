@@ -9,20 +9,20 @@ public class ProfileUserConsumer(ILogger<ProfileUserConsumer> logger, IMediator 
 
     public async Task Consume(ConsumeContext<UserProfile> context)
     {
-        User user = await _repository.GetSingleAsync(x => x.UserId == context.Message.Id);
+        User user = await _repository.GetSingleAsync(x => x.UserId == context.Message!.Id);
 
         if (user is null)
         {
             await _mediator.Send(new AddUserCommand(context.Message));
         }
 
-        if (context.Message.UserAccount is not null and context.Message.UserAccount!.Count > 0)
+        if (context.Message.UserAccount is not null && context.Message.UserAccount!.Count > 0)
         {
             IReadOnlyList<Organization> organizationList = await _repositoryOrganization.GetManyAsync(x => x.UserId == context.Message!.Id);
 
-            var existingAccountIds = new HashSet<string>(organizationList.Select(x => x.AccountId));
+            HashSet<string> existingAccountIds = new(organizationList.Select(x => x.AccountId));
 
-            List<Organization> organizations = new List<Organization>();
+            List<Organization> organizations = [];
 
             foreach (UserOrganization org in context.Message.UserAccount!.Value)
             {
@@ -30,10 +30,10 @@ public class ProfileUserConsumer(ILogger<ProfileUserConsumer> logger, IMediator 
                 {
                     organizations.Add(new Organization
                     {
-                        AccountId = org.AccountId,
-                        AccountUri = org.AccountUri.ToString(),
+                        AccountId = org!.AccountId,
+                        AccountUri = org!.AccountUri!.ToString(),
                         Name = org.AccountName,
-                        UserId = context.Message.Id,
+                        UserId = context.Message!.Id,
                         IsAionTimeApproved = false,
                     });
                 }
@@ -44,7 +44,6 @@ public class ProfileUserConsumer(ILogger<ProfileUserConsumer> logger, IMediator 
                 await _mediator.Send(new AddOrganizationListCommand(organizations));
             }
         }
-
 
         _logger.LogInformation(JsonConvert.SerializeObject(context.Message));
     }

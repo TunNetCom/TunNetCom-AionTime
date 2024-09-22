@@ -2,19 +2,19 @@
 {
     public partial class WorkItemHistoryConfiguration : IEntityTypeConfiguration<WorkItemHistory>
     {
-        public void Configure(EntityTypeBuilder<WorkItemHistory> entity)
+        public void Configure(EntityTypeBuilder<WorkItemHistory> builder)
         {
-            _ = entity.ToTable("WorkItemHistory");
+            _ = builder.ToTable("WorkItemHistory");
 
-            _ = entity.Property(e => e.History)
+            _ = builder.Property(e => e.History)
                 .HasMaxLength(1000)
                 .IsUnicode(false);
 
-            _ = entity.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemHistories)
+            _ = builder.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemHistories)
                 .HasForeignKey(d => d.WorkItemId)
                 .HasConstraintName("FKTicketHistory");
 
-            OnConfigurePartial(entity);
+            OnConfigurePartial(builder);
         }
 
         partial void OnConfigurePartial(EntityTypeBuilder<WorkItemHistory> entity);

@@ -1,21 +1,22 @@
-﻿namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
+﻿
+namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
 {
     public partial class UserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<User> entity)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
-            _ = entity.ToTable("User");
+            _ = builder.ToTable("User");
 
-            _ = entity.HasIndex(e => e.UserId, "IX_User_UserId").IsUnique();
+            _ = builder.HasIndex(e => e.UserId, "IX_User_UserId").IsUnique();
 
-            _ = entity.Property(e => e.EmailAddress)
+            _ = builder.Property(e => e.EmailAddress)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            _ = entity.Property(e => e.PublicAlias).HasMaxLength(100);
-            _ = entity.Property(e => e.TimeStamp).HasColumnType("datetime");
-            _ = entity.Property(e => e.UserId).HasMaxLength(100);
+            _ = builder.Property(e => e.PublicAlias).HasMaxLength(100);
+            _ = builder.Property(e => e.TimeStamp).HasColumnType("datetime");
+            _ = builder.Property(e => e.UserId).HasMaxLength(100);
 
-            OnConfigurePartial(entity);
+            OnConfigurePartial(builder);
         }
 
         partial void OnConfigurePartial(EntityTypeBuilder<User> entity);

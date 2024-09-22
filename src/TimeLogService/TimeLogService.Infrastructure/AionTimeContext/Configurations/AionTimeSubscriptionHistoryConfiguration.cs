@@ -2,18 +2,18 @@
 {
     public partial class AionTimeSubscriptionHistoryConfiguration : IEntityTypeConfiguration<AionTimeSubscriptionHistory>
     {
-        public void Configure(EntityTypeBuilder<AionTimeSubscriptionHistory> entity)
+        public void Configure(EntityTypeBuilder<AionTimeSubscriptionHistory> builder)
         {
-            _ = entity.ToTable("AionTimeSubscriptionHistory");
+            _ = builder.ToTable("AionTimeSubscriptionHistory");
 
-            _ = entity.Property(e => e.Id).ValueGeneratedNever();
-            _ = entity.Property(e => e.SubscriptionDate).HasColumnType("date");
+            _ = builder.Property(e => e.Id).ValueGeneratedNever();
+            _ = builder.Property(e => e.SubscriptionDate).HasColumnType("date");
 
-            _ = entity.HasOne(d => d.Subscription).WithMany(p => p.AionTimeSubscriptionHistories)
+            _ = builder.HasOne(d => d.Subscription).WithMany(p => p.AionTimeSubscriptionHistories)
                 .HasForeignKey(d => d.SubscriptionId)
                 .HasConstraintName("FKSubscriptionSubscriptionHistory");
 
-            OnConfigurePartial(entity);
+            OnConfigurePartial(builder);
         }
 
         partial void OnConfigurePartial(EntityTypeBuilder<AionTimeSubscriptionHistory> entity);

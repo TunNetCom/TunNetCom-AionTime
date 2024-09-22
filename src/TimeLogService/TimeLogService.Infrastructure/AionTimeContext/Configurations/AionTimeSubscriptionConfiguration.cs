@@ -2,18 +2,18 @@
 {
     public partial class AionTimeSubscriptionConfiguration : IEntityTypeConfiguration<AionTimeSubscription>
     {
-        public void Configure(EntityTypeBuilder<AionTimeSubscription> entity)
+        public void Configure(EntityTypeBuilder<AionTimeSubscription> builder)
         {
-            _ = entity.ToTable("AionTimeSubscription");
+            _ = builder.ToTable("AionTimeSubscription");
 
-            _ = entity.Property(e => e.ExpirationDate).HasColumnType("datetime");
-            _ = entity.Property(e => e.SubsecriptionDate).HasColumnType("datetime");
+            _ = builder.Property(e => e.ExpirationDate).HasColumnType("datetime");
+            _ = builder.Property(e => e.SubsecriptionDate).HasColumnType("datetime");
 
-            _ = entity.HasOne(d => d.Organization).WithMany(p => p.AionTimeSubscriptions)
+            _ = builder.HasOne(d => d.Organization).WithMany(p => p.AionTimeSubscriptions)
                 .HasForeignKey(d => d.OrganizationId)
                 .HasConstraintName("FKOrganizationSubscription");
 
-            OnConfigurePartial(entity);
+            OnConfigurePartial(builder);
         }
 
         partial void OnConfigurePartial(EntityTypeBuilder<AionTimeSubscription> entity);

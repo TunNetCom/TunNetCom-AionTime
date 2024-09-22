@@ -1,6 +1,7 @@
 ﻿using NPOI.SS.Formula.Functions;
 using TimeLogService.Domain.Interfaces.Repositories;
 using TimeLogService.Domain.Models;
+using TimeLogService.Domain.Models.Dbo;
 
 namespace TimeLogService.Application.Feature.UserAction.Commands.AddUser
 {
