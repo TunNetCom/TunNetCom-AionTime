@@ -1,4 +1,8 @@
-﻿namespace TimeLogService.Domain.Models;
+﻿using TimeLogService;
+using TimeLogService.Domain;
+using TimeLogService.Domain.Models;
+
+namespace TimeLogService.Domain.Models.Dbo;
 
 public partial class User : BaseEntity
 {
