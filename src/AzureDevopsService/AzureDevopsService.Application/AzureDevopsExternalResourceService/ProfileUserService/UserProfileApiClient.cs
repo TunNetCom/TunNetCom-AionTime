@@ -13,7 +13,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
 
         if (userProfileResult.StatusCode == HttpStatusCode.OK)
         {
-            UserProfile user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
+            UserProfile? user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
 
             user!.Path = request.Path;
             user.Email = request.Email;
@@ -39,7 +39,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
 
         if (userOrganizationResult.StatusCode == HttpStatusCode.OK)
         {
-            UserAccount responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccount>();
+            UserAccount? responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccount>();
             responce!.Path = request.Path;
             responce.Email = request.Email;
 
