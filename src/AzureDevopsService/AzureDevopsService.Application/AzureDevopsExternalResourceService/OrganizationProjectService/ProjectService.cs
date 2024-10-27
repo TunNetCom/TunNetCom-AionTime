@@ -13,7 +13,7 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
 
         if (projectsResult.StatusCode == HttpStatusCode.OK)
         {
-            AllProjectResponce projects = await projectsResult.Content.ReadFromJsonAsync<AllProjectResponce>();
+            AllProjectResponce? projects = await projectsResult.Content.ReadFromJsonAsync<AllProjectResponce>();
             projects!.Path = request.Path;
             projects.Email = request.Email;
 

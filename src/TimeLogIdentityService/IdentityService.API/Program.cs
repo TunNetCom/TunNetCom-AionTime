@@ -1,5 +1,3 @@
-using IdentityService.API;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
@@ -16,14 +14,23 @@ try
     _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddControllers();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));
+    _ = builder.Services.AddApplicationServices();
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
+
+    _ = builder.Services.AddIdentityServicesRegistration(builder.Configuration);
 
     WebApplication app = builder.Build();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
+        using (IServiceScope scope = app.Services.CreateScope())
+        {
+            AuthContext dbContext = scope.ServiceProvider.GetRequiredService<AuthContext>();
+            _ = dbContext.Database.EnsureCreated();
+        }
+
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
     }

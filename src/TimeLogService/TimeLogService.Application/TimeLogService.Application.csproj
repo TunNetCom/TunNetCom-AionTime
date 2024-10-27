@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Feature\UserAction\Commands\DeleteUser\**" />
+    <Compile Remove="Feature\UserAction\Commands\UpdateUser\**" />
+    <Compile Remove="Feature\UserAction\Queries\**" />
+    <EmbeddedResource Remove="Feature\UserAction\Commands\DeleteUser\**" />
+    <EmbeddedResource Remove="Feature\UserAction\Commands\UpdateUser\**" />
+    <EmbeddedResource Remove="Feature\UserAction\Queries\**" />
+    <None Remove="Feature\UserAction\Commands\DeleteUser\**" />
+    <None Remove="Feature\UserAction\Commands\UpdateUser\**" />
+    <None Remove="Feature\UserAction\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="AzureDevopsService.Contracts" Version="1.0.4" />
     <PackageReference Include="MassTransit" Version="8.2.5" />
@@ -24,10 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Feature\UserAction\Commands\DeleteUser\" />
-    <Folder Include="Feature\UserAction\Commands\UpdateUser\" />
-    <Folder Include="Feature\UserAction\Queries\GetUserById\" />
-    <Folder Include="Feature\UserAction\Queries\GetUsers\" />
+    <Folder Include="Feature\ProjectAction\Queries\" />
   </ItemGroup>
 
 </Project>

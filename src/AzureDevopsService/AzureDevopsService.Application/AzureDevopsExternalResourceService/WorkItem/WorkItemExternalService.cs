@@ -27,7 +27,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
 
         if (workItemResponse.StatusCode == HttpStatusCode.BadRequest)
         {
-            WiqlBadRequestResponce wiqlBadResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
+            WiqlBadRequestResponce? wiqlBadResponses = await workItemResponse.Content.ReadFromJsonAsync<WiqlBadRequestResponce>();
             wiqlBadResponses!.Path = wiqlRequest.Path;
             wiqlBadResponses.Email = wiqlRequest.Email;
 
