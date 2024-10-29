@@ -1,3 +1,5 @@
+using IdentityService.Contracts.Constant;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace IdentityService.Application.Features.AttachUserToRole;
 
@@ -18,8 +20,8 @@ public class AttachUserToRoleCommandHandler(UserManager<IdentityUser> userManage
                 Error = new ProblemDetails()
                 {
                     Status = 404,
-                    Title = "NotFound",
-                    Detail = "User not found",
+                    Title = nameof(ErrorDetails.UserNotFound),
+                    Detail = ErrorDetails.UserNotFound,
                 },
             };
         }
@@ -29,16 +31,16 @@ public class AttachUserToRoleCommandHandler(UserManager<IdentityUser> userManage
         {
             return new ApiResponse<UserToRoleResponse>()
             {
-                Success = false,
+                Succeeded = false,
                 Error = new ProblemDetails()
                 {
                     Status = 400,
-                    Title = "RoleAssignmentFailed",
+                    Title = nameof(ErrorDetails.RoleAssignmentFailed),
                     Detail = string.Join(", ", result.Errors.Select(e => e.Description)),
                 },
             };
         }
 
-        return new ApiResponse<UserToRoleResponse>() { Success = true, };
+        return new ApiResponse<UserToRoleResponse>() { Succeeded = true, };
     }
 }
