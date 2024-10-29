@@ -41,6 +41,7 @@ try
     _ = app.UseAuthorization();
 
     _ = app.MapControllers();
+    app.AddEndpoints();
 
     app.Run();
 }

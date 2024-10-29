@@ -2,6 +2,7 @@
 global using IdentityService.Application;
 global using IdentityService.Application.Features.AddRole;
 global using IdentityService.Application.Features.AttachUserToRole;
+global using IdentityService.Application.Features.ChangePassword;
 global using IdentityService.Application.Features.CreateAccount;
 global using IdentityService.Application.Features.Login;
 global using IdentityService.Contracts;

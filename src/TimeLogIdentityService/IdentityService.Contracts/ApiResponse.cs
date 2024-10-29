@@ -4,11 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IdentityService.Contracts;
 
-public class ApiResponse<T>
+public class ApiResponse<T>(T? data = default) : ApiResponse(data)
 {
-    public bool Success { get; set; }
-
-    public T? Data { get; set; }
-
-    public ProblemDetails? Error { get; set; } = new();
+    public new T? Data { get; set; } = data;
 }

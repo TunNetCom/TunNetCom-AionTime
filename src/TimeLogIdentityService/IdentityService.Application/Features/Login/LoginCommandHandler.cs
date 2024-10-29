@@ -1,3 +1,5 @@
+using IdentityService.Contracts.Constant;
+
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace IdentityService.Application.Features.Login;
 
@@ -14,11 +16,11 @@ public class LoginCommandHandler(UserManager<IdentityUser> userManager, IConfigu
         {
             return new ApiResponse<LoginResponse>()
             {
-                Success = false,
+                Succeeded = false,
                 Error = new ProblemDetails()
                 {
-                    Title = "InvalidEmail",
-                    Detail = $"Email {request.Email} is invalid",
+                    Title = nameof(ErrorDetails.InvalidEmail),
+                    Detail = ErrorDetails.InvalidEmail,
                     Status = 400,
                 },
             };
@@ -29,11 +31,11 @@ public class LoginCommandHandler(UserManager<IdentityUser> userManager, IConfigu
         {
             return new ApiResponse<LoginResponse>()
             {
-                Success = false,
+                Succeeded = false,
                 Error = new ProblemDetails()
                 {
-                    Title = "InvalidPassword",
-                    Detail = "Password is invalid",
+                    Title = nameof(ErrorDetails.InvalidPassword),
+                    Detail = ErrorDetails.InvalidPassword,
                     Status = 400,
                 },
             };
@@ -65,7 +67,7 @@ public class LoginCommandHandler(UserManager<IdentityUser> userManager, IConfigu
 
         return new ApiResponse<LoginResponse>()
         {
-            Success = true,
+            Succeeded = true,
             Data = new LoginResponse() { Token = new JwtSecurityTokenHandler().WriteToken(token) },
         };
     }
