@@ -17,6 +17,20 @@ try
     _ = builder.Services.AddApplicationServices();
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
+    _ = builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        });
+
+    _ = builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(
+            "AllowSpecificOrigin",
+            builder => builder.WithOrigins("http://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+    });
 
     _ = builder.Services.AddIdentityServicesRegistration(builder.Configuration);
 
@@ -37,9 +51,8 @@ try
 
     _ = app.MapPrometheusScrapingEndpoint();
     _ = app.UseHttpsRedirection();
-
+    _ = app.UseCors("AllowSpecificOrigin");
     _ = app.UseAuthorization();
-
     _ = app.MapControllers();
     app.AddEndpoints();
 
