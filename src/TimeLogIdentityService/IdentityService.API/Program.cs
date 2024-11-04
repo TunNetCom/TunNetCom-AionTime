@@ -9,6 +9,7 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
+    var allowedOrigins = builder.Configuration.GetSection("AllowedOrigin").Get<string[]>();
     Log.Information("Starting web host");
     _ = builder.Logging.AddLoggingService();
     _ = builder.Services.AddMonitoringService();
@@ -27,7 +28,7 @@ try
     {
         options.AddPolicy(
             "AllowSpecificOrigin",
-            builder => builder.WithOrigins("http://localhost:4200")
+            builder => builder.WithOrigins(allowedOrigins)
                 .AllowAnyHeader()
                 .AllowAnyMethod());
     });
