@@ -44,21 +44,20 @@ public class LoginCommandHandler(UserManager<IdentityUser> userManager, IConfigu
         IList<Claim> claims = await _userManager.GetClaimsAsync(user);
         IList<string> roles = await _userManager.GetRolesAsync(user);
 
-        List<Claim> claim = new[]
+        IEnumerable<Claim> claim = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName!),
                 new Claim(JwtRegisteredClaimNames.AuthTime, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email!), new Claim("uid", user.Id),
+                new Claim("roles", string.Join(',', roles)),
             }
-            .Union(claims)
-            .Union(roles.Select(role => new Claim(ClaimTypes.Role, role)))
-            .ToList();
+            .Union(claims);
 
         SymmetricSecurityKey symmetricSecurityKey =
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]!));
 
-        JwtSecurityToken token = new JwtSecurityToken(
+        JwtSecurityToken token = new(
             issuer: _configuration["JWT:ValidIssuer"],
             audience: _configuration["JWT:ValidAudience"],
             expires: DateTime.Now.AddDays(1),

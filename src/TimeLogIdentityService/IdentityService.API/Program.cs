@@ -9,6 +9,7 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
+    var allowedOrigins = builder.Configuration.GetSection("AllowedOrigin").Get<string[]>();
     Log.Information("Starting web host");
     _ = builder.Logging.AddLoggingService();
     _ = builder.Services.AddMonitoringService();
@@ -17,6 +18,20 @@ try
     _ = builder.Services.AddApplicationServices();
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
+    _ = builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        });
+
+    _ = builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(
+            "AllowSpecificOrigin",
+            builder => builder.WithOrigins(allowedOrigins)
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+    });
 
     _ = builder.Services.AddIdentityServicesRegistration(builder.Configuration);
 
@@ -37,9 +52,8 @@ try
 
     _ = app.MapPrometheusScrapingEndpoint();
     _ = app.UseHttpsRedirection();
-
+    _ = app.UseCors("AllowSpecificOrigin");
     _ = app.UseAuthorization();
-
     _ = app.MapControllers();
     app.AddEndpoints();
 

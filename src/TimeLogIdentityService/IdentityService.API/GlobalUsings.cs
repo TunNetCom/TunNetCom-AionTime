@@ -11,6 +11,7 @@ global using IdentityService.Infrastructure.DbContext;
 global using MediatR;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Mvc;
+global using Newtonsoft.Json;
 global using OpenTelemetry.Instrumentation.AspNetCore;
 global using OpenTelemetry.Logs;
 global using OpenTelemetry.Metrics;
