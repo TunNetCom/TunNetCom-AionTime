@@ -1,17 +1,18 @@
 using IdentityService.Contracts.Constant;
+using IdentityService.Domain.Models.Dbo;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace IdentityService.Application.Features.Login;
 
-public class LoginCommandHandler(UserManager<IdentityUser> userManager, IConfiguration configuration) :
+public class LoginCommandHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration) :
     IRequestHandler<LoginCommand, ApiResponse<LoginResponse>>
 {
-    private readonly UserManager<IdentityUser> _userManager = userManager;
+    private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IConfiguration _configuration = configuration;
 
     public async Task<ApiResponse<LoginResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        IdentityUser? user = await _userManager.FindByEmailAsync(request.Email);
+        ApplicationUser? user = await _userManager.FindByEmailAsync(request.Email);
         if (user is null)
         {
             return new ApiResponse<LoginResponse>()

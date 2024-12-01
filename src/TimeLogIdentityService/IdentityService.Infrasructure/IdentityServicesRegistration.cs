@@ -1,4 +1,6 @@
-﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+﻿using IdentityService.Domain.Models.Dbo;
+
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Infrastructure;
 
@@ -14,14 +16,14 @@ public static class IdentityServicesRegistration
     public static IServiceCollection AddIdentityServicesRegistration(this IServiceCollection services, IConfiguration configuration)
     {
         bool isDocker = Environment.GetEnvironmentVariable(ContainerRunning) == "true";
-        string? connectionString = isDocker
+        string? connection = isDocker
            ? configuration.GetConnectionString(ConnectionStringDocker)
            : configuration.GetConnectionString(ConnectionString);
 
         _ = services.AddDbContext<AuthContext>(options =>
         {
             _ = options.UseSqlServer(
-                connectionString,
+                connection,
                 sqlServerOptionsAction: sqlOptions =>
                 {
                     _ = sqlOptions.EnableRetryOnFailure();
@@ -30,27 +32,27 @@ public static class IdentityServicesRegistration
             _ = options.EnableSensitiveDataLogging();
         });
 
-        _ = services.AddIdentity<IdentityUser, IdentityRole>()
+        _ = services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AuthContext>().AddDefaultTokenProviders();
 
         _ = services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        options.SaveToken = true;
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
-        {
-            options.SaveToken = true;
-            options.RequireHttpsMetadata = false;
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidAudience = configuration[ValidAudience],
-                ValidIssuer = configuration[ValidIssuer],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration[Secret] ?? string.Empty)),
-            };
-        });
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidAudience = configuration[ValidAudience],
+            ValidIssuer = configuration[ValidIssuer],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration[Secret] ?? string.Empty)),
+        };
+    });
         return services;
     }
 }

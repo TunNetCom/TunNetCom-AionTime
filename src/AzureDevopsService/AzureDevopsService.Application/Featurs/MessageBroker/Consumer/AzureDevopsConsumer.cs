@@ -1,11 +1,17 @@
 ﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
 
-public class AzureDevopsConsumer(IMediator mediator) : IConsumer<BaseRequest>, IConsumer<AllProjectUnderOrganizationRequest>, IConsumer<WorkItemRequest>
+public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer> logger) :
+    IConsumer<BaseRequest>,
+    IConsumer<AllProjectUnderOrganizationRequest>,
+    IConsumer<WorkItemRequest>
 {
     private readonly IMediator _mediator = mediator;
+    private readonly ILogger<AzureDevopsConsumer> _logger = logger;
 
     public async Task Consume(ConsumeContext<BaseRequest> context)
     {
+        _logger.LogInformation("ProfileUserCommandHandler triggered with request: {context}", context);
+
         await _mediator.Send(new ProfileUserCommand(context.Message));
     }
 

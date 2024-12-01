@@ -16,5 +16,53 @@
         <member name="M:IdentityService.Infrastructure.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.AddColumn">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.AddColumn.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.AddColumn.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.AddColumn.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.columnsize">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.columnsize.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.columnsize.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.columnsize.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.changeTableName">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.changeTableName.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.changeTableName.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.changeTableName.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.AddInfo">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.AddInfo.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.AddInfo.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.AddInfo.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

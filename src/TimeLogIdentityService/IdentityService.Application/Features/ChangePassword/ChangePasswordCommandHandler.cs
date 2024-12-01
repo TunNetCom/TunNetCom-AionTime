@@ -1,17 +1,18 @@
 using IdentityService.Contracts.Constant;
+using IdentityService.Domain.Models.Dbo;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Application.Features.ChangePassword
 {
-    public class ChangePasswordCommandHandler(UserManager<IdentityUser> userManager) :
+    public class ChangePasswordCommandHandler(UserManager<ApplicationUser> userManager) :
         IRequestHandler<ChangePasswordCommand, ApiResponse>
     {
-        private readonly UserManager<IdentityUser> _userManager = userManager;
+        private readonly UserManager<ApplicationUser> _userManager = userManager;
 
         public async Task<ApiResponse> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
-            IdentityUser? user = await _userManager.FindByEmailAsync(request.Email);
+            ApplicationUser? user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
             {
                 return new ApiResponse()

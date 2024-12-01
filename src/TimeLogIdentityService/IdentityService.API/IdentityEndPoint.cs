@@ -1,5 +1,7 @@
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
+using IdentityService.Application.Features.RedeemRecoveryCode;
+
 namespace IdentityService.API;
 
 public static class IdentityEndPoint
@@ -53,6 +55,17 @@ public static class IdentityEndPoint
         _ = app.MapPost("/ChangePassword", async (IMediator _mediator, [FromBody] ChangePasswordCommand request) =>
         {
             ApiResponse response = await _mediator.Send(request);
+            if (!response.Succeeded)
+            {
+                return Results.BadRequest(response);
+            }
+
+            return Results.Ok(response);
+        });
+
+        _ = app.MapPost("/GeneratePasswordResetToken", async (IMediator _mediator, [FromBody] GeneratePasswordResetTokenCommand request) =>
+        {
+            ApiResponse<PasswordTokenResponse> response = await _mediator.Send(request);
             if (!response.Succeeded)
             {
                 return Results.BadRequest(response);
