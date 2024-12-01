@@ -1,3 +1,6 @@
+#pragma warning disable CS8604 // Possible null reference argument.
+using IdentityService.Contracts.Settings;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
@@ -11,6 +14,7 @@ try
 {
     var allowedOrigins = builder.Configuration.GetSection("AllowedOrigin").Get<string[]>();
     Log.Information("Starting web host");
+    _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Logging.AddLoggingService();
     _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddControllers();

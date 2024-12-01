@@ -16,6 +16,7 @@
                 _ = x.AddConsumer<ProfileUserConsumer>();
                 _ = x.AddConsumer<ProjectConsumer>();
                 _ = x.AddConsumer<WorkItemConsumer>();
+
                 x.SetDefaultEndpointNameFormatter();
                 x.UsingRabbitMq((context, config) =>
                  {
@@ -33,36 +34,43 @@
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<WorkItemEventConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("PipelineEvent", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<PipelineEventConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("BuildAndReleaseEvents", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<BuildAndReleasEventsConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("CodeEvents", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<CodeEventsConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("ProfileUserResponce", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<ProfileUserConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("ProjectResponce", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<ProjectConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("WorkItemResponce", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<WorkItemConsumer>(context);
+                         e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                  });
             });

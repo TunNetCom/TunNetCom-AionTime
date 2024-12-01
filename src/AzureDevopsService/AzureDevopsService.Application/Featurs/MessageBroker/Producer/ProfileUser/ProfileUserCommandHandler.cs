@@ -1,11 +1,14 @@
 ﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
 
-public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClient, ISendEndpointProvider sendEndpointProvider) :
+public class ProfileUserCommandHandler(
+    IUserProfileApiClient userProfileApiClient,
+    ISendEndpointProvider sendEndpointProvider,
+    IPublishEndpoint publishEndpoint) :
     IRequestHandler<ProfileUserCommand>
 {
     private readonly IUserProfileApiClient _userProfileApiClient = userProfileApiClient;
-
     private readonly ISendEndpointProvider _sendEndpointProvider = sendEndpointProvider;
+    private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
 
     public async Task Handle(ProfileUserCommand request, CancellationToken cancellationToken)
     {
@@ -23,19 +26,21 @@ public class ProfileUserCommandHandler(IUserProfileApiClient userProfileApiClien
                 });
 
             adminInfoResponse.AsT0.UserAccount = organizationResponce.AsT0;
-            await endpoint.Send(adminInfoResponse.AsT0, cancellationToken);
+
+            // await endpoint.Send(adminInfoResponse.AsT0, cancellationToken);
+            await _publishEndpoint.Publish(adminInfoResponse.AsT0);
         }
         else
         {
-            await endpoint.Send(
-                new CustomProblemDetailsResponce
-                {
-                    Detail = adminInfoResponse.AsT1.Detail,
-                    Email = adminInfoResponse.AsT1.Email,
-                    Path = adminInfoResponse.AsT1.Path,
-                    Status = adminInfoResponse.AsT1.Status,
-                },
-                cancellationToken);
+            //await endpoint.Send(
+            //    new CustomProblemDetailsResponce
+            //    {
+            //        Detail = adminInfoResponse.AsT1.Detail,
+            //        Email = adminInfoResponse.AsT1.Email,
+            //        Path = adminInfoResponse.AsT1.Path,
+            //        Status = adminInfoResponse.AsT1.Status,
+            //    },
+            //    cancellationToken);
         }
     }
 }

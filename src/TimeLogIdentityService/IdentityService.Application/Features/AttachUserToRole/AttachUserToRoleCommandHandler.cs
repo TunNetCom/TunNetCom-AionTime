@@ -1,18 +1,20 @@
 using IdentityService.Contracts.Constant;
+using IdentityService.Domain.Models.Dbo;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace IdentityService.Application.Features.AttachUserToRole;
 
-public class AttachUserToRoleCommandHandler(UserManager<IdentityUser> userManager) :
+public class AttachUserToRoleCommandHandler(UserManager<ApplicationUser> userManager) :
     IRequestHandler<AttachUserToRoleCommand, ApiResponse<UserToRoleResponse>>
 {
-    private readonly UserManager<IdentityUser> _userManager = userManager;
+    private readonly UserManager<ApplicationUser> _userManager = userManager;
 
     public async Task<ApiResponse<UserToRoleResponse>> Handle(
         AttachUserToRoleCommand request,
         CancellationToken cancellationToken)
     {
-        IdentityUser? user = await _userManager.FindByEmailAsync(request.Email);
+        ApplicationUser? user = await _userManager.FindByEmailAsync(request.Email);
+
         if (user is null)
         {
             return new ApiResponse<UserToRoleResponse>()
