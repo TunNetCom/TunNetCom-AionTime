@@ -19,9 +19,12 @@ public static class IdentityEndPoint
             return Results.Ok(userResponse);
         });
 
-        _ = app.MapPost("/Login", async (IMediator _mediator, [FromBody] LoginCommand request) =>
+        _ = app.MapPost("/Login", async (
+            IMediator mediator,
+            [FromBody] LoginCommand request,
+            CancellationToken cancellationToken) =>
         {
-            ApiResponse<LoginResponse> userResponse = await _mediator.Send(request);
+            ApiResponse<LoginResponse> userResponse = await mediator.Send(request, cancellationToken);
             if (!userResponse.Succeeded)
             {
                 return Results.BadRequest(userResponse);

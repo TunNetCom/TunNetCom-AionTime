@@ -12,7 +12,7 @@ public partial class WorkItem : BaseEntity
 
     public virtual Project? Project { get; set; }
 
-    public virtual ICollection<WorkItemHistory>? WorkItemHistories { get; set; } // = new List<WorkItemHistory>();
+    public virtual ICollection<WorkItemHistory>? WorkItemHistories { get; private set; }
 
-    public virtual ICollection<WorkItemTimeLog>? WorkItemTimeLogs { get; set; } // = new List<WorkItemTimeLog>();
+    public virtual ICollection<WorkItemTimeLog>? WorkItemTimeLogs { get; private set; }
 }

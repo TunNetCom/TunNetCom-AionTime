@@ -14,9 +14,9 @@ public partial class Project : BaseEntity
 
     public DateTime? LastUpdateTime { get; set; }
 
-    public string Url { get; set; } = null!;
+    public required Uri Url { get; set; }
 
     public virtual Organization? Organization { get; set; }
 
-    public virtual ICollection<WorkItem>? WorkItems { get; set; } // = new List<WorkItem>();
+    public virtual ICollection<WorkItem>? WorkItems { get; private set; }
 }
