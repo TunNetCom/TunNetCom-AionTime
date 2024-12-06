@@ -28,7 +28,6 @@ public static class ApplicationServiceRegistration
                 });
 
                 cfg.UseNewtonsoftJsonSerializer();
-                cfg.ConfigureEndpoints(context);
 
                 cfg.ReceiveEndpoint("ProfileUserResponce", e =>
                 {
