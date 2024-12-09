@@ -12,7 +12,7 @@ public class ProfileUserCommandHandler(
     {
         // ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/ProfileUserResponce"));
         OneOf<UserProfile, CustomProblemDetailsResponce> adminInfoResponse =
-            await _userProfileApiClient.GetAdminInfo(request.BaseRequest);
+            await _userProfileApiClient.GetAdminInfo(request.Request);
         if (adminInfoResponse.IsT0)
         {
             OneOf<UserAccount, CustomProblemDetailsResponce> organizationResponce =
@@ -28,6 +28,10 @@ public class ProfileUserCommandHandler(
 
             // await endpoint.Send(adminInfoResponse.AsT0, cancellationToken);
             await _publishEndpoint.Publish(adminInfoResponse.AsT0);
+        }
+        else
+        {
+            await _publishEndpoint.Publish(adminInfoResponse.AsT1);
         }
     }
 }

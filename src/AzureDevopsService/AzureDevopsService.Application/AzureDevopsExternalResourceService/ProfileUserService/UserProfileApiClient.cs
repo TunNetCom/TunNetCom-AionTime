@@ -1,11 +1,13 @@
-﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
+﻿using AzureDevopsService.Contracts.AzureRequestModel;
+
+namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
 
 public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiClient> logger) : IUserProfileApiClient
 {
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<UserProfileApiClient> _logger = logger;
 
-    public async Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(BaseRequest request)
+    public async Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(AzureAdminInfoRequest request)
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 

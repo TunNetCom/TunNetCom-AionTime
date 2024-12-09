@@ -1,10 +1,12 @@
-﻿namespace AzureDevopsService.API;
+﻿using AzureDevopsService.Contracts.AzureRequestModel;
+
+namespace AzureDevopsService.API;
 
 public static class AzureDevopsEndpoints
 {
     public static void AddEndpoints(this IEndpointRouteBuilder app)
     {
-        _ = app.MapPost("/GetAdminProfile", async (IUserProfileApiClient externalResourceService, [FromBody] BaseRequest user) =>
+        _ = app.MapPost("/GetAdminProfile", async (IUserProfileApiClient externalResourceService, [FromBody] AzureAdminInfoRequest user) =>
         {
             OneOf<UserProfile, CustomProblemDetailsResponce> result = await externalResourceService.GetAdminInfo(user);
             if (result.IsT1)
