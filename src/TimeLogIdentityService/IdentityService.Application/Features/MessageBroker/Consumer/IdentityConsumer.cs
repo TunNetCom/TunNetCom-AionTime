@@ -14,13 +14,13 @@ using System.Threading.Tasks;
 
 namespace IdentityService.Application.Features.MessageBroker.Consumer
 {
-    public class AzureDevopsConsumer(UserManager<ApplicationUser> userManager, AuthContext authContext, ILogger<AzureDevopsConsumer> logger) :
+    public class IdentityConsumer(UserManager<ApplicationUser> userManager, AuthContext authContext, ILogger<IdentityConsumer> logger) :
         IConsumer<UserProfile>,
         IConsumer<CustomProblemDetailsResponce>
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
         private readonly AuthContext _authContext = authContext;
-        private readonly ILogger<AzureDevopsConsumer> _logger = logger;
+        private readonly ILogger<IdentityConsumer> _logger = logger;
 
         public async Task Consume(ConsumeContext<UserProfile> context)
         {
