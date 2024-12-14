@@ -26,8 +26,10 @@ public class ProfileUserCommandHandler(
 
             adminInfoResponse.AsT0.UserAccount = organizationResponce.AsT0;
 
-            // await endpoint.Send(adminInfoResponse.AsT0, cancellationToken);
-            await _publishEndpoint.Publish(adminInfoResponse.AsT0);
+            await _publishEndpoint.Publish(adminInfoResponse.AsT0, context =>
+            {
+                context.SetRoutingKey("user.profile.routing.key");
+            });
         }
         else
         {

@@ -1,4 +1,5 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
+﻿using AzureDevopsService.Contracts.AzureRequestModel;
+using AzureDevopsService.Contracts.AzureRequestResourceModel;
 using MassTransit;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ public class ProfileAzureUserCommandHandler(ISendEndpointProvider sendEndpointPr
     {
         ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/AzureDevops"));
 
-        BaseRequest azureRequest = new()
+        AzureAdminInfoRequest azureRequest = new()
         {
             Email = request.Email,
             Path = request.Path,

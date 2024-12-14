@@ -1,5 +1,6 @@
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
+using AzureDevopsService.Contracts.AzureResponceModel;
 using IdentityService.Application.Features.MessageBroker.Consumer;
 using IdentityService.Contracts.Settings;
 using MassTransit;
@@ -14,7 +15,7 @@ public static class ApplicationServiceRegistration
         _ = services.AddMassTransit(x =>
         {
             x.SetDefaultEndpointNameFormatter();
-            _ = x.AddConsumer<AzureDevopsConsumer>();
+            _ = x.AddConsumer<IdentityConsumer>();
             x.SetDefaultEndpointNameFormatter();
 
             x.UsingRabbitMq((context, cfg) =>
@@ -29,10 +30,10 @@ public static class ApplicationServiceRegistration
 
                 cfg.UseNewtonsoftJsonSerializer();
 
-                cfg.ReceiveEndpoint("ProfileUserResponce", e =>
+                cfg.ReceiveEndpoint("identity-service-queue", e =>
                 {
-                    e.SetQueueArgument("x-message-ttl", 60000);
-                    e.ConfigureConsumer<AzureDevopsConsumer>(context);
+                    e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
+                    e.ConfigureConsumer<IdentityConsumer>(context);
                 });
             });
         });

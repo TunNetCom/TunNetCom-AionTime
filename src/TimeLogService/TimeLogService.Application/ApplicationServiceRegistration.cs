@@ -54,9 +54,8 @@
                          e.ConfigureConsumer<CodeEventsConsumer>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
-                     config.ReceiveEndpoint("ProfileUserResponce", e =>
+                     config.ReceiveEndpoint("timelog-service-queue", e =>
                      {
-                         e.SetQueueArgument("x-message-ttl", 60000);
                          e.ConfigureConsumer<ProfileUserConsumer>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
