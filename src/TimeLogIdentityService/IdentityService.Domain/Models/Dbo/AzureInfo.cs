@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.ComponentModel.DataAnnotations;
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Domain.Models.Dbo
 {

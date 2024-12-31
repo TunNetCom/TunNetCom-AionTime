@@ -1,6 +1,4 @@
 #pragma warning disable CS8604 // Possible null reference argument.
-using IdentityService.Contracts.Settings;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()

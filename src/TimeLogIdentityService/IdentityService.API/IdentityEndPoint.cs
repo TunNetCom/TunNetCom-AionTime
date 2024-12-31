@@ -1,7 +1,5 @@
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-using IdentityService.Application.Features.RedeemRecoveryCode;
-
 namespace IdentityService.API;
 
 public static class IdentityEndPoint

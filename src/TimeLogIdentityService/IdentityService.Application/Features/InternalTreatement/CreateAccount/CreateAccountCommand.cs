@@ -1,5 +1,10 @@
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-namespace IdentityService.Application.Features.CreateAccount;
+using IdentityService;
+using IdentityService.Application;
+using IdentityService.Application.Features;
+using IdentityService.Application.Features.InternalTreatement.CreateAccount;
+
+namespace IdentityService.Application.Features.InternalTreatement.CreateAccount;
 
 public record class CreateAccountCommand(
     string Username,

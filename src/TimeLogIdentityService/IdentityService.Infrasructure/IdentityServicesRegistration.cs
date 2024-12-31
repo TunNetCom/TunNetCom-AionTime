@@ -1,6 +1,4 @@
-﻿using IdentityService.Domain.Models.Dbo;
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Infrastructure;
 
@@ -12,14 +10,12 @@ public static class IdentityServicesRegistration
     private const string ConnectionStringDocker = "IdentityContextDocker";
     private const string ConnectionString = "IdentityContext";
     private const string ContainerRunning = "DOTNET_RUNNING_IN_CONTAINER";
-
     public static IServiceCollection AddIdentityServicesRegistration(this IServiceCollection services, IConfiguration configuration)
     {
         bool isDocker = Environment.GetEnvironmentVariable(ContainerRunning) == "true";
         string? connection = isDocker
            ? configuration.GetConnectionString(ConnectionStringDocker)
            : configuration.GetConnectionString(ConnectionString);
-
         _ = services.AddDbContext<AuthContext>(options =>
         {
             _ = options.UseSqlServer(

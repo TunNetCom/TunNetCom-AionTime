@@ -1,6 +1,11 @@
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace IdentityService.Application.Features.AddRole;
+using IdentityService;
+using IdentityService.Application;
+using IdentityService.Application.Features;
+using IdentityService.Application.Features.InternalTreatement.AddRole;
+
+namespace IdentityService.Application.Features.InternalTreatement.AddRole;
 
 public class AddRoleCommandHandler(RoleManager<IdentityRole> roleManager)
     : IRequestHandler<AddRoleCommand, IdentityResult>
