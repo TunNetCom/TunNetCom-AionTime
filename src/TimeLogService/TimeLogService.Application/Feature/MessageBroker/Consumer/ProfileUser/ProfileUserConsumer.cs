@@ -48,7 +48,7 @@ public class ProfileUserConsumer(
 
             if (organizations.Count > 0)
             {
-                await _mediator.Send(new AddOrganizationListCommand(organizations));
+                await _mediator.Send(new AddOrganizationListCommand(organizations.AsReadOnly()));
             }
         }
 
