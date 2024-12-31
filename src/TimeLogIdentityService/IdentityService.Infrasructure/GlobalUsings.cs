@@ -1,4 +1,5 @@
-﻿global using IdentityService.Infrastructure.DbContext;
+﻿global using IdentityService.Domain.Models.Dbo;
+global using IdentityService.Infrastructure.DbContext;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

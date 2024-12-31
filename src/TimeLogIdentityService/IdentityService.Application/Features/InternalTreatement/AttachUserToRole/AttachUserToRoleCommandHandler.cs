@@ -1,8 +1,12 @@
+using IdentityService;
+using IdentityService.Application;
+using IdentityService.Application.Features;
+using IdentityService.Application.Features.InternalTreatement.AttachUserToRole;
 using IdentityService.Contracts.Constant;
 using IdentityService.Domain.Models.Dbo;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-namespace IdentityService.Application.Features.AttachUserToRole;
+namespace IdentityService.Application.Features.InternalTreatement.AttachUserToRole;
 
 public class AttachUserToRoleCommandHandler(UserManager<ApplicationUser> userManager) :
     IRequestHandler<AttachUserToRoleCommand, ApiResponse<UserToRoleResponse>>

@@ -1,8 +1,12 @@
+using IdentityService;
+using IdentityService.Application;
+using IdentityService.Application.Features;
+using IdentityService.Application.Features.InternalTreatement.Login;
 using IdentityService.Contracts.Constant;
 using IdentityService.Domain.Models.Dbo;
-
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-namespace IdentityService.Application.Features.Login;
+
+namespace IdentityService.Application.Features.InternalTreatement.Login;
 
 public class LoginCommandHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration) :
     IRequestHandler<LoginCommand, ApiResponse<LoginResponse>>
@@ -56,7 +60,7 @@ public class LoginCommandHandler(UserManager<ApplicationUser> userManager, IConf
             .Union(claims);
 
         SymmetricSecurityKey symmetricSecurityKey =
-            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]!));
+            new(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]!));
 
         JwtSecurityToken token = new(
             issuer: _configuration["JWT:ValidIssuer"],

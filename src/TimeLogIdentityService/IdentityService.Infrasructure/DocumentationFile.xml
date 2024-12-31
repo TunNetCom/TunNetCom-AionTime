@@ -64,5 +64,17 @@
         <member name="M:IdentityService.Infrastructure.Migrations.AddInfo.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.Onetoone">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.Onetoone.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.Onetoone.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.Onetoone.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

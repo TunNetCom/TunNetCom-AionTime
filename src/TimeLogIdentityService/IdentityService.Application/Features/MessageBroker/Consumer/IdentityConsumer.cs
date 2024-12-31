@@ -1,4 +1,5 @@
 ﻿using AzureDevopsService.Contracts.AzureResponceModel;
+using IdentityService.Application.Features.InternalTreatement.AddAzureInfo;
 using IdentityService.Domain.Models.Dbo;
 using IdentityService.Infrastructure.DbContext;
 using MassTransit;
@@ -14,39 +15,16 @@ using System.Threading.Tasks;
 
 namespace IdentityService.Application.Features.MessageBroker.Consumer
 {
-    public class IdentityConsumer(UserManager<ApplicationUser> userManager, AuthContext authContext, ILogger<IdentityConsumer> logger) :
+    public class IdentityConsumer(IMediator mediator, ILogger<IdentityConsumer> logger) :
         IConsumer<UserProfile>,
         IConsumer<CustomProblemDetailsResponce>
     {
-        private readonly UserManager<ApplicationUser> _userManager = userManager;
-        private readonly AuthContext _authContext = authContext;
+        private readonly IMediator _mediator = mediator;
         private readonly ILogger<IdentityConsumer> _logger = logger;
 
         public async Task Consume(ConsumeContext<UserProfile> context)
         {
-            ApplicationUser? user = await _userManager.FindByEmailAsync(context.Message.EmailAddress);
-
-            if (user == null)
-            {
-                _logger.LogError($"the user {context.Message.Email} not found");
-            }
-
-            AzureInfo azureInfo = new()
-            {
-                IdentityUserId = user!.Id,
-                EmailAddress = context.Message.Email,
-                PublicAlias = context.Message.PublicAlias,
-                PublicKey = context.Message.Path,
-                UserId = context.Message.Id,
-                Revision = context.Message.Revision,
-                PublicKeyExpirationDate = DateTime.Now,
-                CoreRevision = context.Message.CoreRevision,
-                User = user,
-                TimeStamp = context.Message.TimeStamp,
-            };
-
-            _ = await _authContext.AzureInfo.AddAsync(azureInfo);
-            _ = await _authContext.SaveChangesAsync();
+            await _mediator.Send(new AddAzureInfoCommand(context.Message));
         }
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously

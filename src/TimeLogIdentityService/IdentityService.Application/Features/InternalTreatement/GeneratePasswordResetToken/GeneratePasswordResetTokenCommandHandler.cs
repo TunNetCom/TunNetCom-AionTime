@@ -1,7 +1,11 @@
-﻿using IdentityService.Application.Features.RedeemRecoveryCode;
+﻿using IdentityService;
+using IdentityService.Application;
+using IdentityService.Application.Features;
+using IdentityService.Application.Features.InternalTreatement.GeneratePasswordResetToken;
 using IdentityService.Domain.Models.Dbo;
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
-namespace IdentityService.Application.Features.GeneratePasswordResetToken;
+namespace IdentityService.Application.Features.InternalTreatement.GeneratePasswordResetToken;
 
 public class GeneratePasswordResetTokenCommandHandler(UserManager<ApplicationUser> userManager) : IRequestHandler<GeneratePasswordResetTokenCommand, ApiResponse<PasswordTokenResponse>>
 {
