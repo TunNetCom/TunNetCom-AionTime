@@ -4,7 +4,7 @@
         <name>WebhookService.API</name>
     </assembly>
     <members>
-        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource})">
+        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource},System.String)">
             <summary>
             Work item commented on
             Work item updated

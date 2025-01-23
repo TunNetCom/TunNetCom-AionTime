@@ -76,5 +76,17 @@
         <member name="M:IdentityService.Infrastructure.Migrations.Onetoone.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.testMigration">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.testMigration.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.testMigration.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.testMigration.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

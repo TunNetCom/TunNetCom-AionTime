@@ -10,6 +10,7 @@ public static class IdentityServicesRegistration
     private const string ConnectionStringDocker = "IdentityContextDocker";
     private const string ConnectionString = "IdentityContext";
     private const string ContainerRunning = "DOTNET_RUNNING_IN_CONTAINER";
+
     public static IServiceCollection AddIdentityServicesRegistration(this IServiceCollection services, IConfiguration configuration)
     {
         bool isDocker = Environment.GetEnvironmentVariable(ContainerRunning) == "true";

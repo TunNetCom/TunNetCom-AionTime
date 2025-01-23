@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.ProfileUser;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumers.AzureDevopsConsumer;
 
 public class ProfileUserConsumer(
     ILogger<ProfileUserConsumer> logger,
