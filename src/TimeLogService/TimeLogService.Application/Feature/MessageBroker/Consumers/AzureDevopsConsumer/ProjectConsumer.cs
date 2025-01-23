@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.Project;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumers.AzureDevopsConsumer;
 
 public class ProjectConsumer(ILogger<ProjectConsumer> logger) : IConsumer<AllProjectResponce>, IConsumer<CustomProblemDetailsResponce>
 {

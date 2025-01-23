@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.WorkItem;
+﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumers.AzureDevopsConsumer;
 
 internal class WorkItemConsumer(ILogger<WorkItemConsumer> logger) : IConsumer<WiqlResponses>, IConsumer<WiqlBadRequestResponce>
 {
