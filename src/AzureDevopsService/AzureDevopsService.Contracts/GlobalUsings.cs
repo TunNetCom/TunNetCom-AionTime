@@ -1,4 +1,6 @@
 ﻿global using AzureDevopsService.Contracts.AzureRequestResourceModel;
+global using AzureDevopsService.Contracts.InternalModel;
+global using AzureDevopsService.Contracts.SharedModel;
 global using Microsoft.AspNetCore.Mvc;
 global using Newtonsoft.Json;
 global using System;

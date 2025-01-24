@@ -10,8 +10,12 @@ global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.Proje
 global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.WorkItemResource;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
+global using AzureDevopsService.Contracts.AzureResponceModel.BadRequest;
+global using AzureDevopsService.Contracts.AzureResponceModel.SuccessResponce;
 global using AzureDevopsService.Contracts.Constant;
+global using AzureDevopsService.Contracts.ExternalRequestModel;
 global using AzureDevopsService.Contracts.Settings;
+global using AzureDevopsService.Contracts.SharedModel;
 global using MassTransit;
 global using MediatR;
 global using Microsoft.AspNetCore.Mvc;

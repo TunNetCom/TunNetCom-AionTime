@@ -1,4 +1,7 @@
-﻿using AzureDevopsService.Contracts.AzureRequestModel;
+﻿using AzureDevopsService.Application.AzureDevopsExternalResourceService.HooksService;
+using AzureDevopsService.Contracts.AzureRequestModel;
+using AzureDevopsService.Contracts.AzureResponceModel.BadRequest;
+using AzureDevopsService.Contracts.AzureResponceModel.SuccessResponce;
 
 namespace AzureDevopsService.API;
 
@@ -43,6 +46,18 @@ public static class AzureDevopsEndpoints
         _ = app.MapPost("/ProjectByOrganization", async (IProjectService workItemExternalService, AllProjectUnderOrganizationRequest request) =>
         {
             OneOf<AllProjectResponce, CustomProblemDetailsResponce> result = await workItemExternalService.AllProjectUnderOrganization(request);
+
+            if (result.IsT1)
+            {
+                return Results.BadRequest(result.AsT1);
+            }
+
+            return Results.Ok(result.AsT0);
+        });
+
+        _ = app.MapPost("/CreateWebhook", async (IWebhookService webhookService, ServiceHookRequest request) =>
+        {
+            OneOf<WebhookResponce, WebhookBadRequestResponce> result = await webhookService.CreateWebhookSubscription(request);
 
             if (result.IsT1)
             {

@@ -1,4 +1,6 @@
-﻿namespace AzureDevopsService.Application;
+﻿using AzureDevopsService.Application.AzureDevopsExternalResourceService.HooksService;
+
+namespace AzureDevopsService.Application;
 
 public static class ExtentionRegistrationService
 {
@@ -43,6 +45,11 @@ public static class ExtentionRegistrationService
         });
 
         _ = services.AddHttpClient<IProjectService, ProjectService>(x =>
+        {
+            x.BaseAddress = new Uri("https://dev.azure.com");
+        });
+
+        _ = services.AddHttpClient<IWebhookService, WebhookService>(x =>
         {
             x.BaseAddress = new Uri("https://dev.azure.com");
         });
