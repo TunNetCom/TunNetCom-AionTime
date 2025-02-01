@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestModel;
-
-namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
+﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiClient> logger) : IUserProfileApiClient
 {

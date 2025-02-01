@@ -10,7 +10,6 @@ public class ProfileUserCommandHandler(
 
     public async Task Handle(ProfileUserCommand request, CancellationToken cancellationToken)
     {
-        // ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/ProfileUserResponce"));
         OneOf<UserProfile, CustomProblemDetailsResponce> adminInfoResponse =
             await _userProfileApiClient.GetAdminInfo(request.Request);
         if (adminInfoResponse.IsT0)

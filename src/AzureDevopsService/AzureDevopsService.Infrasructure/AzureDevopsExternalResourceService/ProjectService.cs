@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
+﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logger) : IProjectService
 {

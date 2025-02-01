@@ -9,6 +9,9 @@ namespace AzureDevopsService.Contracts.SharedModel
     public class Organization
     {
         public string OrganizationName { get; set; }
+
+        public string OrganizationId { get; set; }
+
         public List<string> ProjectsIds { get; set; }
     }
 }

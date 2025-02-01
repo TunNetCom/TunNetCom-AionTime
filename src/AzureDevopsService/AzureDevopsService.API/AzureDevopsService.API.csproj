@@ -45,6 +45,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AzureDevopsService.Application\AzureDevopsService.Application.csproj" />
+    <ProjectReference Include="..\AzureDevopsService.Infrasructure\AzureDevopsService.Infrasructure.csproj" />
   </ItemGroup>
 
 </Project>

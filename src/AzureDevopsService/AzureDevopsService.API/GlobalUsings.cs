@@ -1,10 +1,13 @@
 ﻿global using AzureDevopsService.API;
 global using AzureDevopsService.Application;
-global using AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
-global using AzureDevopsService.Application.AzureDevopsExternalResourceService.ProfileUserService;
-global using AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
+global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.Webhook;
+global using AzureDevopsService.Contracts.AzureRequestModel;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
+global using AzureDevopsService.Contracts.AzureResponceModel.BadRequest;
+global using AzureDevopsService.Contracts.AzureResponceModel.SuccessResponce;
+global using AzureDevopsService.Contracts.ExternalRequestModel;
+global using AzureDevopsService.Contracts.Internal.Interface;
 global using AzureDevopsService.Contracts.Settings;
 global using FluentResults;
 global using FluentValidation;

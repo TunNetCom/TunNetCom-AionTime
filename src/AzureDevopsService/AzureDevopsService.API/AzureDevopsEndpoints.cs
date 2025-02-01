@@ -1,9 +1,4 @@
-﻿using AzureDevopsService.Application.AzureDevopsExternalResourceService.HooksService;
-using AzureDevopsService.Contracts.AzureRequestModel;
-using AzureDevopsService.Contracts.AzureResponceModel.BadRequest;
-using AzureDevopsService.Contracts.AzureResponceModel.SuccessResponce;
-
-namespace AzureDevopsService.API;
+﻿namespace AzureDevopsService.API;
 
 public static class AzureDevopsEndpoints
 {
@@ -55,16 +50,11 @@ public static class AzureDevopsEndpoints
             return Results.Ok(result.AsT0);
         });
 
-        _ = app.MapPost("/CreateWebhook", async (IWebhookService webhookService, ServiceHookRequest request) =>
+        _ = app.MapPost("/CreateWebhook", async (IMediator _mediator, CreateWebhookRequest request) =>
         {
-            OneOf<WebhookResponce, WebhookBadRequestResponce> result = await webhookService.CreateWebhookSubscription(request);
+            Contracts.ExternalResponseModel.WebhookCreatedResponse response = await _mediator.Send(new CreateWebhookCommand(request));
 
-            if (result.IsT1)
-            {
-                return Results.BadRequest(result.AsT1);
-            }
-
-            return Results.Ok(result.AsT0);
+            return Results.Ok(response);
         });
     }
 }

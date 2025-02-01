@@ -1,6 +1,6 @@
 ﻿namespace AzureDevopsService.Contracts.AzureRequestResourceModel;
 
-public class ServiceHookRequest : InternalBaseRequest
+public class ServiceHookReques : InternalBaseRequest
 {
     [JsonProperty("publisherId")]
     public string PublisherId { get; set; }

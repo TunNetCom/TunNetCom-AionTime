@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
+﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService.ServiceHelper.WorkItem;
 
 public static class WorkItemHelper
 {

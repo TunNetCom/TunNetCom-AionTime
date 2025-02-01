@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
+	
+	<ItemGroup>
     <PackageReference Include="MassTransit" Version="8.2.5" />
     <PackageReference Include="MassTransit.Newtonsoft" Version="8.2.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
@@ -18,10 +18,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="19.225.1" />
     <PackageReference Include="OneOf" Version="3.0.263" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AzureDevopsService.Contracts\AzureDevopsService.Contracts.csproj" />
   </ItemGroup>
 
