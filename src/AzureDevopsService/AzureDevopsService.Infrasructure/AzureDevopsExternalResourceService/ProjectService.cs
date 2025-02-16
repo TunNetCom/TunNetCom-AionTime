@@ -9,7 +9,7 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 
-        HttpResponseMessage projectsResult = await _httpClient.GetAsync("_apis/profile/profiles/me?api-version=7.0");
+        HttpResponseMessage projectsResult = await _httpClient.GetAsync($"{request.OrganizationName}{AzureUrlsEndPoint.Projects}");
 
         if (projectsResult.StatusCode == HttpStatusCode.OK)
         {

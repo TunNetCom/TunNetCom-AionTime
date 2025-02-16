@@ -1,4 +1,5 @@
-﻿using Organization = AzureDevopsService.Contracts.SharedModel.Organization;
+﻿using WebhookService.Contracts.EventModels.SharedModels.EventModels;
+using Organization = AzureDevopsService.Contracts.SharedModel.Organization;
 
 namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.Helper;
 
@@ -27,18 +28,18 @@ public static class EventCreationHelper
                 {
                     ServiceHookReques requestContent = new()
                     {
-                        ConsumerActionId = "httpRequest",
-                        ConsumerId = "webHooks",
+                        ConsumerActionId = WebhookSettings.ConsumerActionId,
+                        ConsumerId = WebhookSettings.ConsumerId,
                         ConsumerInputs = new()
                         {
-                            HttpHeaders = "{\"Content-Type\": \"application/json\"}",
-                            ResourceDetailsToSend = "all",
-                            Url = $"https://your-public-api.com/AzureWorkItemsEvents?organizationId={organization.OrganizationId}",
+                            HttpHeaders = WebhookSettings.HttpHeaders,
+                            ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.AzureWorkItemsEvents, organization.OrganizationId),
                         },
                         EventType = eventType,
                         OrganizationName = organization.OrganizationName,
                         Path = request.Path,
-                        PublisherId = "tfs",
+                        PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
                             ProjectId = projectId,
@@ -64,18 +65,18 @@ public static class EventCreationHelper
                 {
                     ServiceHookReques requestContent = new()
                     {
-                        ConsumerActionId = "httpRequest",
-                        ConsumerId = "webHooks",
+                        ConsumerActionId = WebhookSettings.ConsumerActionId,
+                        ConsumerId = WebhookSettings.ConsumerId,
                         ConsumerInputs = new()
                         {
-                            HttpHeaders = "{\"Content-Type\": \"application/json\"}",
-                            ResourceDetailsToSend = "all",
-                            Url = $"https://your-public-api.com/BuildAndReleaseEvents?organizationId={organization.OrganizationId}",
+                            HttpHeaders = WebhookSettings.HttpHeaders,
+                            ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.BuildAndReleaseEvents, organization.OrganizationId),
                         },
                         EventType = eventType,
                         OrganizationName = organization.OrganizationName,
                         Path = request.Path,
-                        PublisherId = "tfs",
+                        PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
                             ProjectId = projectId,
@@ -101,18 +102,18 @@ public static class EventCreationHelper
                 {
                     ServiceHookReques requestContent = new()
                     {
-                        ConsumerActionId = "httpRequest",
-                        ConsumerId = "webHooks",
+                        ConsumerActionId = WebhookSettings.ConsumerActionId,
+                        ConsumerId = WebhookSettings.ConsumerId,
                         ConsumerInputs = new()
                         {
-                            HttpHeaders = "{\"Content-Type\": \"application/json\"}",
-                            ResourceDetailsToSend = "all",
-                            Url = $"https://your-public-api.com/BuildAndReleaseEvents?organizationId={organization.OrganizationId}",
+                            HttpHeaders = WebhookSettings.HttpHeaders,
+                            ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.BuildAndReleaseEvents, organization.OrganizationId),
                         },
                         EventType = eventType,
                         OrganizationName = organization.OrganizationName,
                         Path = request.Path,
-                        PublisherId = "tfs",
+                        PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
                             ProjectId = projectId,
@@ -138,18 +139,18 @@ public static class EventCreationHelper
                 {
                     ServiceHookReques requestContent = new()
                     {
-                        ConsumerActionId = "httpRequest",
-                        ConsumerId = "webHooks",
+                        ConsumerActionId = WebhookSettings.ConsumerActionId,
+                        ConsumerId = WebhookSettings.ConsumerId,
                         ConsumerInputs = new()
                         {
-                            HttpHeaders = "{\"Content-Type\": \"application/json\"}",
-                            ResourceDetailsToSend = "all",
-                            Url = $"https://your-public-api.com/AzureCodeEvents?organizationId={organization.OrganizationId}",
+                            HttpHeaders = WebhookSettings.HttpHeaders,
+                            ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.AzureCodeEvents, organization.OrganizationId),
                         },
                         EventType = eventType,
                         OrganizationName = organization.OrganizationName,
                         Path = request.Path,
-                        PublisherId = "tfs",
+                        PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
                             ProjectId = projectId,

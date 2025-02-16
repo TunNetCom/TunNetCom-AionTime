@@ -9,7 +9,7 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 
-        HttpResponseMessage userProfileResult = await _httpClient.GetAsync("_apis/profile/profiles/me?api-version=7.0");
+        HttpResponseMessage userProfileResult = await _httpClient.GetAsync(AzureUrlsEndPoint.Profiles);
 
         if (userProfileResult.StatusCode == HttpStatusCode.OK)
         {

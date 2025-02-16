@@ -14,7 +14,7 @@ try
     _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddApplicationService();
-    _ = builder.Services.AddInfrasructureService();
+    _ = builder.Services.AddInfrasructureService(builder.Configuration);
 
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();

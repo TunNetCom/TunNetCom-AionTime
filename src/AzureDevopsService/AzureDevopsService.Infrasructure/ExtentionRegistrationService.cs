@@ -1,28 +1,42 @@
-﻿namespace AzureDevopsService.Infrasructure
+﻿using AzureDevopsService.Contracts.Settings;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using System;
+using static System.Formats.Asn1.AsnWriter;
+
+namespace AzureDevopsService.Infrasructure
 {
     public static class ExtentionRegistrationService
     {
-        public static IServiceCollection AddInfrasructureService(this IServiceCollection services)
+        public static IServiceCollection AddInfrasructureService(this IServiceCollection services, IConfiguration configuration)
         {
-            _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>(x =>
+            _ = services.Configure<AzureDevopsSettings>(configuration.GetSection("AzureDevopsSettings"));
+
+            _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>((serviceProvider, client) =>
             {
-                x.BaseAddress = new Uri("https://app.vssps.visualstudio.com");
+                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
+                client.BaseAddress = new Uri(settings.BaseUrlVssps);
             });
 
-            _ = services.AddHttpClient<IWorkItemExternalService, WorkItemExternalService>(x =>
+            _ = services.AddHttpClient<IWorkItemExternalService, WorkItemExternalService>((serviceProvider, client) =>
             {
-                x.BaseAddress = new Uri("https://dev.azure.com");
+                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
+                client.BaseAddress = new Uri(settings.BaseUrlAzure);
             });
 
-            _ = services.AddHttpClient<IProjectService, ProjectService>(x =>
+            _ = services.AddHttpClient<IProjectService, ProjectService>((serviceProvider, client) =>
             {
-                x.BaseAddress = new Uri("https://dev.azure.com");
+                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
+                client.BaseAddress = new Uri(settings.BaseUrlAzure);
             });
 
-            _ = services.AddHttpClient<IWebhookService, WebhookService>(x =>
+            _ = services.AddHttpClient<IWebhookService, WebhookService>((serviceProvider, client) =>
             {
-                x.BaseAddress = new Uri("https://dev.azure.com");
+                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
+                client.BaseAddress = new Uri(settings.BaseUrlAzure);
             });
+
             return services;
         }
     }
