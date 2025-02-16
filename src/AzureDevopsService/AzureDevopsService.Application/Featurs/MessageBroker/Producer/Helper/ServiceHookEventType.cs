@@ -2,7 +2,7 @@
 
 public static class ServiceHookEventType
 {
-    public static readonly List<string> WorkItem =
+    public static readonly IReadOnlyList<string> WorkItem =
     [
         "workitem.created",
         "workitem.updated",
@@ -13,14 +13,14 @@ public static class ServiceHookEventType
         "workitem.comment.deleted",
     ];
 
-    public static readonly List<string> Build =
+    public static readonly IReadOnlyList<string> Build =
     [
         "build.complete",
         "build.queued",
         "build.started",
     ];
 
-    public static readonly List<string> Release =
+    public static readonly IReadOnlyList<string> Release =
     [
         "ms.vss-release.release-created-event",
         "ms.vss-release.deployment-approval-completed-event",
@@ -28,7 +28,7 @@ public static class ServiceHookEventType
         "ms.vss-release.release-deploy-phase-changed-event",
     ];
 
-    public static readonly List<string> Code =
+    public static readonly IReadOnlyList<string> Code =
     [
         "git.push",
         "tfvc.checkin",
@@ -37,12 +37,12 @@ public static class ServiceHookEventType
         "git.pullrequest.merged",
     ];
 
-    public static readonly List<string> Security =
+    public static readonly IReadOnlyList<string> Security =
     [
         "ms.vss-admin.security.namespace-modified",
     ];
 
-    public static readonly List<string> ServiceHooks =
+    public static readonly IReadOnlyList<string> ServiceHooks =
     [
         "servicehook.subscription.created",
         "servicehook.subscription.deleted",

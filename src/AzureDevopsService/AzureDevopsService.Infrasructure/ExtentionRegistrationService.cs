@@ -11,30 +11,27 @@ namespace AzureDevopsService.Infrasructure
     {
         public static IServiceCollection AddInfrasructureService(this IServiceCollection services, IConfiguration configuration)
         {
-            _ = services.Configure<AzureDevopsSettings>(configuration.GetSection("AzureDevopsSettings"));
+            var azureDevopsSettings = new AzureDevopsSettings();
+            configuration.GetSection("AzureDevopsSettings").Bind(azureDevopsSettings);
 
             _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>((serviceProvider, client) =>
             {
-                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
-                client.BaseAddress = new Uri(settings.BaseUrlVssps);
+                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlVssps);
             });
 
             _ = services.AddHttpClient<IWorkItemExternalService, WorkItemExternalService>((serviceProvider, client) =>
             {
-                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
-                client.BaseAddress = new Uri(settings.BaseUrlAzure);
+                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlAzure);
             });
 
             _ = services.AddHttpClient<IProjectService, ProjectService>((serviceProvider, client) =>
             {
-                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
-                client.BaseAddress = new Uri(settings.BaseUrlAzure);
+                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlAzure);
             });
 
             _ = services.AddHttpClient<IWebhookService, WebhookService>((serviceProvider, client) =>
             {
-                var settings = serviceProvider.GetRequiredService<IOptions<AzureDevopsSettings>>().Value;
-                client.BaseAddress = new Uri(settings.BaseUrlAzure);
+                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlAzure);
             });
 
             return services;
