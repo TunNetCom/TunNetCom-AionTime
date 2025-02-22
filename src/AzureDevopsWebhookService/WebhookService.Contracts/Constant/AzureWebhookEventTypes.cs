@@ -2,49 +2,70 @@
 
 public static class AzureWebhookEventTypes
 {
-    public const string WorkitemCreated = "workitem.created";
+    public const string WorkItemCreated = "workitem.created";
+    public const string WorkItemUpdated = "workitem.updated";
+    public const string WorkItemDeleted = "workitem.deleted";
+    public const string WorkItemRestored = "workitem.restored";
+    public const string WorkItemCommentAdded = "workitem.comment.added";
+    public const string WorkItemCommentUpdated = "workitem.comment.updated";
+    public const string WorkItemCommentDeleted = "workitem.comment.deleted";
 
-    public const string WorkitemCommented = "workitem.commented";
+    // Build Events
+    public const string BuildComplete = "build.complete";
+    public const string BuildQueued = "build.queued";
+    public const string BuildStarted = "build.started";
 
-    public const string WorkitemUpdated = "workitem.updated";
-
-    public const string WorkitemRestored = "workitem.restored";
-
-    public const string WorkitemDeleted = "workitem.deleted";
-
-    public const string GitPullrequestUpdated = "git.pullrequest.updated";
-
-    public const string GitPullrequestMerged = "git.pullrequest.merged";
-
-    public const string GitPullrequestCreated = "git.pullrequest.created";
-
-    public const string GitPush = "git.push";
-
-    public const string TfvcCheckin = "tfvc.checkin";
-
-    public const string RunJobStateChanged = "ms.vss-pipelines.job-state-changed-event";
-
-    public const string RunStageApprovalCompleted = "ms.vss-pipelinechecks-events.approval-completed";
-
-    public const string RunStageWaitingForApproval = "ms.vss-pipelinechecks-events.approval-pending";
-
-    public const string RunStageStateChanged = "ms.vss-pipelines.stage-state-changed-event";
-
-    public const string RunStateChanged = "ms.vss-pipelines.run-state-changed-event";
-
-    public const string JobStateChanged = "ms.vss-pipelines.job-state-changed-event";
-
-    public const string ReleaseDeploymentStarted = "ms.vss-release.deployment-started-event";
-
-    public const string ReleaseDeploymentCompleted = "ms.vss-release.deployment-completed-event";
-
-    public const string ReleaseDeploymentApprovalPending = "ms.vss-release.deployment-approval-pending-event";
-
-    public const string ReleaseDeploymentApprovalCompleted = "ms.vss-release.deployment-approval-completed-event";
-
+    // Release Events
     public const string ReleaseCreated = "ms.vss-release.release-created-event";
+    public const string DeploymentApprovalCompleted = "ms.vss-release.deployment-approval-completed-event";
+    public const string DeploymentCompleted = "ms.vss-release.deployment-completed-event";
+    public const string ReleaseDeployPhaseChanged = "ms.vss-release.release-deploy-phase-changed-event";
 
-    public const string ReleaseAbandoned = "ms.vss-release.release-abandoned-event";
+    // Git Events
+    public const string GitPush = "git.push";
+    public const string GitPullRequestCreated = "git.pullrequest.created";
+    public const string GitPullRequestUpdated = "git.pullrequest.updated";
+    public const string GitPullRequestMerged = "git.pullrequest.merged";
+    public const string GitPullRequestCommentEvent = "git.pullrequest.comment";
+    public const string GitPullRequestReviewerUpdated = "git.pullrequest.reviewer.updated";
+    public const string GitPullRequestVoteUpdated = "git.pullrequest.vote.updated";
+    public const string GitPullRequestMergeCommitCreated = "git.pullrequest.mergecommit.created";
+    public const string GitPullRequestBranchUpdated = "git.pullrequest.branch.updated";
+    public const string GitRepositoryCreated = "git.repository.created";
+    public const string GitRepositoryDeleted = "git.repository.deleted";
+    public const string GitRepositoryModified = "git.repository.modified";
+    public const string GitBranchCreated = "git.branch.created";
+    public const string GitBranchDeleted = "git.branch.deleted";
+    public const string GitTagCreated = "git.tag.created";
+    public const string GitTagDeleted = "git.tag.deleted";
 
-    public const string BuildCompleted = "build.complete";
+    // TFVC Events
+    public const string TfvcCheckin = "tfvc.checkin";
+    public const string TfvcShelvesetCreated = "tfvc.shelveset.created";
+    public const string TfvcShelvesetUpdated = "tfvc.shelveset.updated";
+    public const string TfvcShelvesetDeleted = "tfvc.shelveset.deleted";
+
+    // Security Events
+    public const string SecurityNamespaceModified = "ms.vss-admin.security.namespace-modified";
+
+    // Service Hook Subscription Events
+    public const string ServiceHookSubscriptionCreated = "servicehook.subscription.created";
+    public const string ServiceHookSubscriptionDeleted = "servicehook.subscription.deleted";
+    public const string ServiceHookSubscriptionUpdated = "servicehook.subscription.updated";
+
+    // Pipeline Events
+    public const string PipelineRunQueued = "pipeline.run.queued";
+    public const string PipelineRunStarted = "pipeline.run.started";
+    public const string PipelineRunCompleted = "pipeline.run.completed";
+    public const string PipelineRunStageStarted = "pipeline.run.stage.started";
+    public const string PipelineRunStageCompleted = "pipeline.run.stage.completed";
+    public const string PipelineRunJobStarted = "pipeline.run.job.started";
+    public const string PipelineRunJobCompleted = "pipeline.run.job.completed";
+    public const string PipelineRunPhaseStarted = "pipeline.run.phase.started";
+    public const string PipelineRunPhaseCompleted = "pipeline.run.phase.completed";
+
+    // Check Events
+    public const string CheckPending = "check.pending";
+    public const string CheckCompleted = "check.completed";
+    public const string CheckUpdated = "check.updated";
 }
