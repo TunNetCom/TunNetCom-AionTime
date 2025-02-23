@@ -1,3 +1,5 @@
+using AzureDevopsService.Infrasructure;
+
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
     .Enrich.FromLogContext()
@@ -12,6 +14,8 @@ try
     _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Services.AddMonitoringService();
     _ = builder.Services.AddApplicationService();
+    _ = builder.Services.AddInfrasructureService(builder.Configuration);
+
     _ = builder.Services.AddEndpointsApiExplorer();
     _ = builder.Services.AddSwaggerGen();
     _ = builder.Host.UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration));

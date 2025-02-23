@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.OrganizationProjectService;
+﻿namespace AzureDevopsService.Contracts.Internal.Interface;
 
 public interface IProjectService
 {

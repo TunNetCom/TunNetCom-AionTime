@@ -30,22 +30,6 @@ public static class ExtentionRegistrationService
         });
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
-        _ = services.AddHttpClient();
-
-        _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>(x =>
-        {
-            x.BaseAddress = new Uri("https://app.vssps.visualstudio.com");
-        });
-
-        _ = services.AddHttpClient<IWorkItemExternalService, WorkItemExternalService>(x =>
-        {
-            x.BaseAddress = new Uri("https://dev.azure.com");
-        });
-
-        _ = services.AddHttpClient<IProjectService, ProjectService>(x =>
-        {
-            x.BaseAddress = new Uri("https://dev.azure.com");
-        });
         return services;
     }
 }

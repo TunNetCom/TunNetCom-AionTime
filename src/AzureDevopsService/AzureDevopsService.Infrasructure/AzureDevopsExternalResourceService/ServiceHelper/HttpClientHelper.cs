@@ -1,4 +1,6 @@
-﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.ServiceHelper;
+﻿using System.Text;
+
+namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService.ServiceHelper;
 
 public static class HttpClientHelper
 {

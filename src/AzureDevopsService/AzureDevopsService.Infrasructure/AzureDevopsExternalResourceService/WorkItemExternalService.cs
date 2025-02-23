@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsService.Application.AzureDevopsExternalResourceService.WorkItem;
+﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExternalService> logger) : IWorkItemExternalService
 {

@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestModel;
-
-namespace AzureDevopsService.API;
+﻿namespace AzureDevopsService.API;
 
 public static class AzureDevopsEndpoints
 {
@@ -50,6 +48,13 @@ public static class AzureDevopsEndpoints
             }
 
             return Results.Ok(result.AsT0);
+        });
+
+        _ = app.MapPost("/CreateWebhook", async (IMediator _mediator, CreateWebhookRequest request) =>
+        {
+            Contracts.ExternalResponseModel.WebhookCreatedResponse response = await _mediator.Send(new CreateWebhookCommand(request));
+
+            return Results.Ok(response);
         });
     }
 }

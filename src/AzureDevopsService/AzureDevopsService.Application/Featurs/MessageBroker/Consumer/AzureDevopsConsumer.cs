@@ -1,11 +1,10 @@
-﻿using AzureDevopsService.Contracts.AzureRequestModel;
-
-namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
+﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
 
 public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer> logger) :
     IConsumer<AzureAdminInfoRequest>,
     IConsumer<AllProjectUnderOrganizationRequest>,
-    IConsumer<WorkItemRequest>
+    IConsumer<WorkItemRequest>,
+    IConsumer<CreateWebhookRequest>
 {
     private readonly IMediator _mediator = mediator;
     private readonly ILogger<AzureDevopsConsumer> _logger = logger;
@@ -25,5 +24,10 @@ public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer
     public async Task Consume(ConsumeContext<WorkItemRequest> context)
     {
         await _mediator.Send(new WorkItemCommand(context.Message));
+    }
+
+    public async Task Consume(ConsumeContext<CreateWebhookRequest> context)
+    {
+        await _mediator.Send(new CreateWebhookCommand(context.Message));
     }
 }
