@@ -1,6 +1,6 @@
 ﻿namespace AzureDevopsService.Contracts.AzureRequestResourceModel;
 
-public class BaseRequest
+public abstract class BaseRequest
 {
     public string Email { get; set; } = string.Empty;
 

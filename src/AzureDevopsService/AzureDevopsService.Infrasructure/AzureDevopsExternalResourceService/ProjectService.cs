@@ -1,11 +1,13 @@
-﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
+﻿using AzureDevopsService.Contracts.ExternalRequestModel;
+
+namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logger) : IProjectService
 {
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ProjectService> _logger = logger;
 
-    public async Task<OneOf<AllProjectResponce, CustomProblemDetailsResponce>> AllProjectUnderOrganization(AllProjectUnderOrganizationRequest request)
+    public async Task<OneOf<OrganizationProjects, CustomProblemDetailsResponce>> AllProjectUnderOrganization(GetOrganizationProjectsRequest request)
     {
         HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
 
@@ -13,9 +15,7 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
 
         if (projectsResult.StatusCode == HttpStatusCode.OK)
         {
-            AllProjectResponce? projects = await projectsResult.Content.ReadFromJsonAsync<AllProjectResponce>();
-            projects!.Path = request.Path;
-            projects.Email = request.Email;
+            OrganizationProjects? projects = await projectsResult.Content.ReadFromJsonAsync<OrganizationProjects>();
 
             return projects;
         }
@@ -23,8 +23,6 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
         _logger.LogError(await projectsResult.Content.ReadAsStringAsync());
         return new CustomProblemDetailsResponce()
         {
-            Path = request.Path,
-            Email = request.Email,
             Status = (int)projectsResult.StatusCode,
             Detail = AzureResponseMessage.VerifyAzureDevOpsKeyOrOrgName,
         };

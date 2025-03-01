@@ -2,7 +2,7 @@
 
 public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer> logger) :
     IConsumer<AzureAdminInfoRequest>,
-    IConsumer<AllProjectUnderOrganizationRequest>,
+    IConsumer<GetOrganizationProjectsRequest>,
     IConsumer<WorkItemRequest>,
     IConsumer<CreateWebhookRequest>
 {
@@ -16,7 +16,7 @@ public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer
         await _mediator.Send(new ProfileUserCommand(context.Message));
     }
 
-    public async Task Consume(ConsumeContext<AllProjectUnderOrganizationRequest> context)
+    public async Task Consume(ConsumeContext<GetOrganizationProjectsRequest> context)
     {
         await _mediator.Send(new ProjectCommand(context.Message));
     }

@@ -38,9 +38,9 @@ public static class AzureDevopsEndpoints
             return Results.Ok(result.AsT0);
         });
 
-        _ = app.MapPost("/ProjectByOrganization", async (IProjectService workItemExternalService, AllProjectUnderOrganizationRequest request) =>
+        _ = app.MapPost("/ProjectByOrganization", async (IProjectService workItemExternalService, GetOrganizationProjectsRequest request) =>
         {
-            OneOf<AllProjectResponce, CustomProblemDetailsResponce> result = await workItemExternalService.AllProjectUnderOrganization(request);
+            OneOf<OrganizationProjects, CustomProblemDetailsResponce> result = await workItemExternalService.AllProjectUnderOrganization(request);
 
             if (result.IsT1)
             {
