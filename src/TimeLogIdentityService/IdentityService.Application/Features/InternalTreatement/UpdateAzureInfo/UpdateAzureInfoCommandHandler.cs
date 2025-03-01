@@ -5,12 +5,9 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Application.Features.InternalTreatement.UpdateAzureInfo;
 
-[SuppressMessage("Performance", "CA1823:Avoid unused private fields", Justification = "<Pending>")]
-[SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:Code analysis suppression should have justification")]
 public class UpdateAzureInfoCommandHandler(
     UserManager<ApplicationUser> userManager,
     AuthContext authContext,

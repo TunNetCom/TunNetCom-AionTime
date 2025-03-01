@@ -7,7 +7,6 @@ using IdentityService.Application.Features.MessageBroker.Producer;
 using IdentityService.Domain.Models.Dbo;
 using MassTransit;
 using MassTransit.Transports;
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Application.Features.InternalTreatement.CreateAccount;
 

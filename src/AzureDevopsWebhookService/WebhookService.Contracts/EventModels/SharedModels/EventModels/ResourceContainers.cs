@@ -2,7 +2,7 @@
 
 public record ResourceContainers(
     [property: JsonProperty(PropertyName = "collection", NullValueHandling = NullValueHandling.Ignore)]
-    Collection? Collection,
+    CollectionAzureBoard? Collection,
 
     [property: JsonProperty(PropertyName = "account", NullValueHandling = NullValueHandling.Ignore)]
     Account? Account,

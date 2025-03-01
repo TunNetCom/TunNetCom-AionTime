@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-
+﻿
 namespace IdentityService.Infrastructure;
 
 public static class IdentityServicesRegistration

@@ -5,8 +5,6 @@ using IdentityService.Application.Features.InternalTreatement.ChangePassword;
 using IdentityService.Contracts.Constant;
 using IdentityService.Domain.Models.Dbo;
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-
 namespace IdentityService.Application.Features.InternalTreatement.ChangePassword
 {
     public class ChangePasswordCommandHandler(UserManager<ApplicationUser> userManager) :

@@ -8,9 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace IdentityService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-#pragma warning disable SA1404
     [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:Element should begin with upper-case letter", Justification = "<Pending>")]
-#pragma warning restore SA1404
     public partial class columnsize : Migration
     {
         /// <inheritdoc />

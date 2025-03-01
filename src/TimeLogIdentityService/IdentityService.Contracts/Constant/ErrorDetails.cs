@@ -1,7 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 namespace IdentityService.Contracts.Constant
 {
     public static class ErrorDetails

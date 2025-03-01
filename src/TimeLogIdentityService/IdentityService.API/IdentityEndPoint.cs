@@ -1,8 +1,7 @@
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.API;
 
-public static class IdentityEndPoint
+public static class IdentityEndpoint
 {
     public static void AddEndpoints(this IEndpointRouteBuilder app)
     {

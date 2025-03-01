@@ -3,7 +3,6 @@ using IdentityService.Domain.Models.Dbo;
 using IdentityService.Infrastructure.DbContext;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
 namespace IdentityService.Application.Features.InternalTreatement.AddAzureInfo;
 
