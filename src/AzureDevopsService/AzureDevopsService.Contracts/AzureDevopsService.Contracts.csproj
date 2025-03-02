@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
 	<Version>1.0.6</Version>
+	<AssemblyName>TunNetCom.AionTime.AzureDevopsService.Contracts</AssemblyName>
+	<RootNamespace>TunNetCom.AionTime.AzureDevopsService.Contracts</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
