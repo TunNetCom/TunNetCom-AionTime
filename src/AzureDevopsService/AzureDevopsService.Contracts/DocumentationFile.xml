@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>AzureDevopsService.Contracts</name>
+        <name>TunNetCom.AionTime.AzureDevopsService.Contracts</name>
     </assembly>
     <members>
     </members>
