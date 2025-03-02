@@ -2,7 +2,7 @@
 
 namespace AzureDevopsService.Contracts.AzureResponceModel;
 
-public class AllProjectResponce : BaseRequest
+public class OrganizationProjects
 {
     [property: JsonProperty(PropertyName = "count", NullValueHandling = NullValueHandling.Ignore)]
     public int Count { get; set; }

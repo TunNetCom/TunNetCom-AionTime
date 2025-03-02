@@ -9,10 +9,18 @@ public class ProjectCommandHandler(IProjectService projectService, ISendEndpoint
     {
         ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/ProjectResponce"));
 
-        OneOf<AllProjectResponce, CustomProblemDetailsResponce> projectsResponse = await _projectService.AllProjectUnderOrganization(request.Request);
+        OneOf<OrganizationProjects, CustomProblemDetailsResponce> projectsResponse = await _projectService.AllProjectUnderOrganization(request.Request);
         if (projectsResponse.IsT0)
         {
-            await endpoint.Send(projectsResponse.AsT0, cancellationToken);
+            GetOrganizationProjectsResponse organizationProjectsResponse = new()
+            {
+                Email = request.Request.Email,
+                Path = request.Request.Path,
+                OrganizationId = request.Request.OrganizationId,
+                OrganizationName = request.Request.OrganizationName,
+                OrganizationProjects = projectsResponse.AsT0,
+            };
+            await endpoint.Send(organizationProjectsResponse, cancellationToken);
         }
         else
         {
