@@ -64,5 +64,17 @@
         <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.TeneantId_v3">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
