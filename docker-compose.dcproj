@@ -7,7 +7,6 @@
     <ProjectGuid>17ebabca-4f24-4ef0-b596-eac210c06f77</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>tunnetcom.aiontime.timelogservice.api</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
