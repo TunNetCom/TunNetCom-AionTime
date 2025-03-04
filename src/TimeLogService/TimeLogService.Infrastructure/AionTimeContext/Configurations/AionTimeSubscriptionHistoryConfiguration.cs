@@ -8,7 +8,7 @@
 
             _ = builder.Property(e => e.Id).ValueGeneratedNever();
             _ = builder.Property(e => e.SubscriptionDate).HasColumnType("date");
-
+            _ = builder.Property(e => e.TenantId).HasMaxLength(100);
             _ = builder.HasOne(d => d.Subscription).WithMany(p => p.AionTimeSubscriptionHistories)
                 .HasForeignKey(d => d.SubscriptionId)
                 .HasConstraintName("FKSubscriptionSubscriptionHistory");

@@ -10,7 +10,7 @@
                 .HasMaxLength(200)
                 .IsUnicode(false);
             _ = builder.Property(e => e.Time).HasColumnType("datetime");
-
+            _ = builder.Property(e => e.TenantId).HasMaxLength(100);
             _ = builder.HasOne(d => d.WorkItem).WithMany(p => p.WorkItemTimeLogs)
                 .HasForeignKey(d => d.WorkItemId)
                 .HasConstraintName("FKProjectTicketLog");

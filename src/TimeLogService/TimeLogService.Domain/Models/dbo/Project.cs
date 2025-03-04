@@ -2,11 +2,11 @@
 
 public partial class Project : BaseEntity
 {
-    public int OrganizationId { get; set; }
+    public required string AccountId { get; set; }
 
-    public string ProjectId { get; set; } = null!;
+    public required string ProjectId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public required string Name { get; set; }
 
     public int? State { get; set; }
 

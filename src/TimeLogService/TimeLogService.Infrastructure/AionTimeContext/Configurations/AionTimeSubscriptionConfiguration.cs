@@ -8,7 +8,7 @@
 
             _ = builder.Property(e => e.ExpirationDate).HasColumnType("datetime");
             _ = builder.Property(e => e.SubsecriptionDate).HasColumnType("datetime");
-
+            _ = builder.Property(e => e.TenantId).HasMaxLength(100);
             _ = builder.HasOne(d => d.Organization).WithMany(p => p.AionTimeSubscriptions)
                 .HasForeignKey(d => d.OrganizationId)
                 .HasConstraintName("FKOrganizationSubscription");

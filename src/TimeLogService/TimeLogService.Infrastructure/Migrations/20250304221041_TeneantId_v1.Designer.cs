@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimeLogService.Infrastructure.AionTimeContext;
 
@@ -11,9 +12,11 @@ using TimeLogService.Infrastructure.AionTimeContext;
 namespace TimeLogService.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeLogServiceDataBaseContext))]
-    partial class TimeLogServiceDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250304221041_TeneantId_v1")]
+    partial class TeneantId_v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,9 +43,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("datetime");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -63,9 +64,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -103,9 +102,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -155,9 +152,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
                         .IsRequired()
@@ -206,9 +201,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("TimeStamp")
                         .HasColumnType("datetime");
@@ -243,9 +236,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -268,9 +259,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("varchar(1000)");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("WorkItemId")
                         .HasColumnType("int");
@@ -296,9 +285,7 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasColumnType("varchar(200)");
 
                     b.Property<string>("TenantId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Time")
                         .HasColumnType("datetime");
