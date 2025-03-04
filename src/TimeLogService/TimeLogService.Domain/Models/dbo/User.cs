@@ -6,11 +6,11 @@ namespace TimeLogService.Domain.Models.Dbo;
 
 public partial class User : BaseEntity
 {
-    public string UserId { get; set; } = null!;
+    public required string UserId { get; set; }
 
-    public string EmailAddress { get; set; } = null!;
+    public required string EmailAddress { get; set; }
 
-    public string PublicAlias { get; set; } = null!;
+    public required string PublicAlias { get; set; }
 
     public int CoreRevision { get; set; }
 

@@ -7,7 +7,7 @@
             _ = builder.ToTable("Project");
 
             _ = builder.HasIndex(e => e.ProjectId, "IX_Project_ProjectId").IsUnique();
-
+            _ = builder.Property(e => e.TenantId).HasMaxLength(100);
             _ = builder.Property(e => e.LastUpdateTime).HasColumnType("datetime");
             _ = builder.Property(e => e.Name)
                 .HasMaxLength(50)
@@ -21,7 +21,8 @@
                 .IsUnicode(false);
 
             _ = builder.HasOne(d => d.Organization).WithMany(p => p.Projects)
-                .HasForeignKey(d => d.OrganizationId)
+                .HasPrincipalKey(p => p.AccountId)
+                .HasForeignKey(d => d.AccountId)
                 .HasConstraintName("FKOrganisationProject");
 
             OnConfigurePartial(builder);

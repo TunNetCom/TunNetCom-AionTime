@@ -4,5 +4,10 @@
         <name>TimeLogService.Domain</name>
     </assembly>
     <members>
+        <member name="P:TimeLogService.Domain.Models.Dbo.BaseEntity.TenantId">
+            <summary>
+            the TenantId is Identity user Id
+            </summary>
+        </member>
     </members>
 </doc>

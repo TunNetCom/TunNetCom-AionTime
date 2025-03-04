@@ -9,7 +9,7 @@ public partial class WorkItemConfiguration : IEntityTypeConfiguration<WorkItem>
         _ = builder.Property(e => e.Discription)
             .HasMaxLength(1000)
             .IsUnicode(false);
-
+        _ = builder.Property(e => e.TenantId).HasMaxLength(100);
         _ = builder.HasOne(d => d.Project).WithMany(p => p.WorkItems)
             .HasForeignKey(d => d.ProjectId)
             .HasConstraintName("FKProjectTicket");

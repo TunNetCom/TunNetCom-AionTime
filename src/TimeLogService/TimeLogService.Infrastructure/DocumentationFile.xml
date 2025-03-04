@@ -4,5 +4,77 @@
         <name>TimeLogService.Infrastructure</name>
     </assembly>
     <members>
+        <member name="T:TimeLogService.Infrastructure.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.ChangeProjectForgenKey">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.ChangeProjectForgenKey.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.ChangeProjectForgenKey.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.ChangeProjectForgenKey.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.TeneantId">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.TeneantId_v1">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.TeneantId_v2">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.TeneantId_v3">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.TeneantId_v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

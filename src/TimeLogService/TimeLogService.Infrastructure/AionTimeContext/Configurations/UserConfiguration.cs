@@ -7,7 +7,7 @@ public partial class UserConfiguration : IEntityTypeConfiguration<User>
         _ = builder.ToTable("User");
 
         _ = builder.HasIndex(e => e.UserId, "IX_User_UserId").IsUnique();
-
+        _ = builder.Property(e => e.TenantId).HasMaxLength(100);
         _ = builder.Property(e => e.EmailAddress)
             .HasMaxLength(50)
             .IsUnicode(false);

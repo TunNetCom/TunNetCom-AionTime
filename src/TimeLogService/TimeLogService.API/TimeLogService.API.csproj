@@ -13,6 +13,10 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.0" />
     <PackageReference Include="OpenTelemetry" Version="1.8.1" />
     <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.8.1" />
@@ -37,7 +41,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TimeLogService.Application\TimeLogService.Application.csproj" />
-    <ProjectReference Include="..\TimeLogService.DataBase\TimeLogService.Database.sqlproj" />
     <ProjectReference Include="..\TimeLogService.Domain\TimeLogService.Domain.csproj" />
     <ProjectReference Include="..\TimeLogService.Infrastructure\TimeLogService.Infrastructure.csproj" />
   </ItemGroup>

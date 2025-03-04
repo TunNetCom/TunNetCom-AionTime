@@ -2,11 +2,11 @@
 
 public partial class Organization : BaseEntity
 {
-    public string UserId { get; set; } = null!;
+    public required string UserId { get; set; }
 
-    public string Name { get; set; } = null!;
+    public required string Name { get; set; }
 
-    public string AccountId { get; set; } = null!;
+    public required string AccountId { get; set; }
 
     public required Uri AccountUri { get; set; }
 

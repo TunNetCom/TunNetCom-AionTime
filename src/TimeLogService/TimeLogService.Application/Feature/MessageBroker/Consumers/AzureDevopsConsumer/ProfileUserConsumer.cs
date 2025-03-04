@@ -38,6 +38,7 @@ public class ProfileUserConsumer(
                     organizations.Add(new Organization
                     {
                         AccountId = org!.AccountId,
+                        TenantId = string.Empty,
                         AccountUri = org.AccountUri,
                         Name = org.AccountName,
                         UserId = context.Message!.Id,
