@@ -34,11 +34,9 @@ public static class EventCreationHelper
                         {
                             HttpHeaders = WebhookSettings.HttpHeaders,
                             ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
-                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.AzureWorkItemsEvents, organization.OrganizationId),
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.AzureWorkItemsEvents, organization.OrganizationId, request.TenantId),
                         },
                         EventType = eventType,
-                        OrganizationName = organization.OrganizationName,
-                        Path = request.Path,
                         PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
@@ -71,11 +69,9 @@ public static class EventCreationHelper
                         {
                             HttpHeaders = WebhookSettings.HttpHeaders,
                             ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
-                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.BuildAndReleaseEvents, organization.OrganizationId),
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.BuildAndReleaseEvents, organization.OrganizationId, request.TenantId),
                         },
                         EventType = eventType,
-                        OrganizationName = organization.OrganizationName,
-                        Path = request.Path,
                         PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
@@ -108,11 +104,9 @@ public static class EventCreationHelper
                         {
                             HttpHeaders = WebhookSettings.HttpHeaders,
                             ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
-                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.BuildAndReleaseEvents, organization.OrganizationId),
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.BuildAndReleaseEvents, organization.OrganizationId, request.TenantId),
                         },
                         EventType = eventType,
-                        OrganizationName = organization.OrganizationName,
-                        Path = request.Path,
                         PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {
@@ -145,11 +139,9 @@ public static class EventCreationHelper
                         {
                             HttpHeaders = WebhookSettings.HttpHeaders,
                             ResourceDetailsToSend = WebhookSettings.ResourceDetailsToSend,
-                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.AzureCodeEvents, organization.OrganizationId),
+                            Url = string.Format(WebhookSettings.BaseUrl, WebhookEndpoint.AzureCodeEvents, organization.OrganizationId, request.TenantId),
                         },
                         EventType = eventType,
-                        OrganizationName = organization.OrganizationName,
-                        Path = request.Path,
                         PublisherId = WebhookSettings.PublisherId,
                         PublisherInputs = new()
                         {

@@ -1,17 +1,15 @@
-﻿using AzureDevopsService.Contracts.ExternalRequestModel;
-
-namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
+﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logger) : IProjectService
 {
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ProjectService> _logger = logger;
 
-    public async Task<OneOf<OrganizationProjects, CustomProblemDetailsResponce>> AllProjectUnderOrganization(GetOrganizationProjectsRequest request)
+    public async Task<OneOf<OrganizationProjects, CustomProblemDetailsResponce>> AllProjectUnderOrganization(string organizationName, string path)
     {
-        HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
+        HttpClientHelper.SetAuthHeader(_httpClient, path);
 
-        HttpResponseMessage projectsResult = await _httpClient.GetAsync($"{request.OrganizationName}{AzureUrlsEndPoint.Projects}");
+        HttpResponseMessage projectsResult = await _httpClient.GetAsync($"{organizationName}{AzureUrlsEndPoint.Projects}");
 
         if (projectsResult.StatusCode == HttpStatusCode.OK)
         {

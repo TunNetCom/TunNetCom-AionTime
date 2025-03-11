@@ -1,3 +1,5 @@
-﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
+﻿using AzureDevopsService.Contracts.ExternalRequestModel;
 
-public record class ProfileUserCommand(AzureAdminInfoRequest Request) : IRequest;
+namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
+
+public record class ProfileUserCommand(GetAzureAdminInfoRequest Request) : IRequest;

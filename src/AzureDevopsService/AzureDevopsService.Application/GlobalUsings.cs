@@ -5,7 +5,6 @@ global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.Profi
 global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProjectResource;
 global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.Webhook;
 global using AzureDevopsService.Application.Featurs.MessageBroker.Producer.WorkItemResource;
-global using AzureDevopsService.Contracts.AzureRequestModel;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel.BadRequest;
