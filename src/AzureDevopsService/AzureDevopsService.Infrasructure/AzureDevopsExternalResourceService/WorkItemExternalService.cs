@@ -37,6 +37,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
         return new WiqlBadRequestResponce()
         {
             Email = resource.Email,
+            TenantId = resource.TenantId,
             ErrorCode = (int)workItemResponse.StatusCode,
             Message = AzureResponseMessage.WorkItemError,
             Path = resource.Path,

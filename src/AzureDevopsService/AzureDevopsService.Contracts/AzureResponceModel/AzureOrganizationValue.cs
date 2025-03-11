@@ -1,6 +1,6 @@
 ﻿namespace AzureDevopsService.Contracts.AzureResponceModel;
 
-public class UserOrganization
+public class AzureOrganizationValue
 {
     [JsonProperty("accountId")]
     public string AccountId { get; set; } = string.Empty;

@@ -1,13 +1,15 @@
-﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
+﻿using AzureDevopsService.Contracts.ExternalRequestModel;
+
+namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiClient> logger) : IUserProfileApiClient
 {
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<UserProfileApiClient> _logger = logger;
 
-    public async Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(AzureAdminInfoRequest request)
+    public async Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(string path)
     {
-        HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
+        HttpClientHelper.SetAuthHeader(_httpClient, path);
 
         HttpResponseMessage userProfileResult = await _httpClient.GetAsync(AzureUrlsEndPoint.Profiles);
 
@@ -15,33 +17,26 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
         {
             UserProfile? user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
 
-            user!.Path = request.Path;
-            user.Email = request.Email;
-
             return user;
         }
 
         _logger.LogError(await userProfileResult.Content.ReadAsStringAsync());
         return new CustomProblemDetailsResponce()
         {
-            Email = request.Email,
-            Path = request.Path,
             Status = (int)userProfileResult.StatusCode,
             Detail = AzureResponseMessage.VerifyAzureDevOpsKey,
         };
     }
 
-    public async Task<OneOf<UserAccount, CustomProblemDetailsResponce>> GeUserOrganizations(GetUserOrganizationRequest request)
+    public async Task<OneOf<UserAccountOrganization, CustomProblemDetailsResponce>> GeUserOrganizations(string memberId, string path)
     {
-        HttpClientHelper.SetAuthHeader(_httpClient, request.Path);
+        HttpClientHelper.SetAuthHeader(_httpClient, path);
 
-        HttpResponseMessage userOrganizationResult = await _httpClient.GetAsync($"_apis/accounts?memberId={request.MemberId}&api-version=7.0");
+        HttpResponseMessage userOrganizationResult = await _httpClient.GetAsync($"_apis/accounts?memberId={memberId}&api-version=7.0");
 
         if (userOrganizationResult.StatusCode == HttpStatusCode.OK)
         {
-            UserAccount? responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccount>();
-            responce!.Path = request.Path;
-            responce.Email = request.Email;
+            UserAccountOrganization? responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccountOrganization>();
 
             return responce;
         }
@@ -50,8 +45,6 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
 
         return new CustomProblemDetailsResponce()
         {
-            Email = request.Email,
-            Path = request.Path,
             Status = (int)userOrganizationResult.StatusCode,
             Detail = AzureResponseMessage.VerifyAzureDevOpsKey,
         };

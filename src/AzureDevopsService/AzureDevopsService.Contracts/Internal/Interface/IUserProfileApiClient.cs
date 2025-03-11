@@ -2,7 +2,7 @@
 
 public interface IUserProfileApiClient
 {
-    Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(AzureAdminInfoRequest request);
+    Task<OneOf<UserProfile, CustomProblemDetailsResponce>> GetAdminInfo(string path);
 
-    Task<OneOf<UserAccount, CustomProblemDetailsResponce>> GeUserOrganizations(GetUserOrganizationRequest request);
+    Task<OneOf<UserAccountOrganization, CustomProblemDetailsResponce>> GeUserOrganizations(string memberId, string path);
 }

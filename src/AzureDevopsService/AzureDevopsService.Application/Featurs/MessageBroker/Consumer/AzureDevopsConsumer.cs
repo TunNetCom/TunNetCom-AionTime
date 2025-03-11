@@ -1,7 +1,9 @@
-﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
+﻿using AzureDevopsService.Contracts.ExternalRequestModel;
+
+namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
 
 public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer> logger) :
-    IConsumer<AzureAdminInfoRequest>,
+    IConsumer<GetAzureAdminInfoRequest>,
     IConsumer<GetOrganizationProjectsRequest>,
     IConsumer<WorkItemRequest>,
     IConsumer<CreateWebhookRequest>
@@ -9,7 +11,7 @@ public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer
     private readonly IMediator _mediator = mediator;
     private readonly ILogger<AzureDevopsConsumer> _logger = logger;
 
-    public async Task Consume(ConsumeContext<AzureAdminInfoRequest> context)
+    public async Task Consume(ConsumeContext<GetAzureAdminInfoRequest> context)
     {
         _logger.LogInformation("ProfileUserCommandHandler triggered with request: {context}", context);
 

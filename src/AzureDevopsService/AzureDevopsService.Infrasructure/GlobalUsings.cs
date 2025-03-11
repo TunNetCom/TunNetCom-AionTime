@@ -1,5 +1,4 @@
-﻿global using AzureDevopsService.Contracts.AzureRequestModel;
-global using AzureDevopsService.Contracts.AzureRequestResourceModel;
+﻿global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel.BadRequest;
 global using AzureDevopsService.Contracts.AzureResponceModel.SuccessResponce;

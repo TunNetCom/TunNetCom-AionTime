@@ -1,6 +1,6 @@
 ﻿namespace AzureDevopsService.Contracts.AzureResponceModel;
 
-public class UserProfile : BaseRequest
+public class UserProfile
 {
     [JsonProperty("displayName")]
     public string DisplayName { get; set; } = string.Empty;
@@ -22,7 +22,4 @@ public class UserProfile : BaseRequest
 
     [JsonProperty("revision")]
     public int Revision { get; set; }
-
-    [JsonProperty("UserAccount")]
-    public UserAccount? UserAccount { get; set; }
 }

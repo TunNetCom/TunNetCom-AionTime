@@ -1,4 +1,6 @@
-﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
+﻿using AzureDevopsService.Contracts.ExternalResponseModel;
+
+namespace AzureDevopsService.Application.Featurs.MessageBroker.Producer.ProfileUser;
 
 public class ProfileUserCommandHandler(
     IUserProfileApiClient userProfileApiClient,
@@ -11,24 +13,25 @@ public class ProfileUserCommandHandler(
     public async Task Handle(ProfileUserCommand request, CancellationToken cancellationToken)
     {
         OneOf<UserProfile, CustomProblemDetailsResponce> adminInfoResponse =
-            await _userProfileApiClient.GetAdminInfo(request.Request);
+            await _userProfileApiClient.GetAdminInfo(request.Request.Path);
         if (adminInfoResponse.IsT0)
         {
-            OneOf<UserAccount, CustomProblemDetailsResponce> organizationResponce =
-                await _userProfileApiClient.GeUserOrganizations(
-                new GetUserOrganizationRequest
+            OneOf<UserAccountOrganization, CustomProblemDetailsResponce> organizationResponce =
+                await _userProfileApiClient.GeUserOrganizations(adminInfoResponse.AsT0.Id, request.Request.Path);
+
+            await _publishEndpoint.Publish(
+                new GetAzureAdminInfoResponse
                 {
-                    Email = adminInfoResponse.AsT0.Email,
-                    MemberId = adminInfoResponse.AsT0.Id,
-                    Path = adminInfoResponse.AsT0.Path,
+                    Email = request.Request.Email,
+                    UserProfile = adminInfoResponse!.AsT0,
+                    TenantId = request.Request.TenantId,
+                    Path = request.Request.Path,
+                    UserOrganization = organizationResponce!.AsT0,
+                },
+                context =>
+                {
+                    context.SetRoutingKey("user.profile.routing.key");
                 });
-
-            adminInfoResponse.AsT0.UserAccount = organizationResponce.AsT0;
-
-            await _publishEndpoint.Publish(adminInfoResponse.AsT0, context =>
-            {
-                context.SetRoutingKey("user.profile.routing.key");
-            });
         }
         else
         {

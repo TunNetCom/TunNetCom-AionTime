@@ -8,7 +8,12 @@ public class CreateWebhookCommanHandler(IWebhookService webhookService, IPublish
     public async Task<WebhookCreatedResponse> Handle(CreateWebhookCommand request, CancellationToken cancellationToken)
     {
         List<ServiceHookReques> allRequest = EventCreationHelper.PrepareAllWbhookEventRequest(request.Request);
-        WebhookCreatedResponse createdWebhook = new() { Email = request.Request.Email, Path = request.Request.Path };
+        WebhookCreatedResponse createdWebhook = new()
+        {
+            Email = request.Request.Email,
+            Path = request.Request.Path,
+            TenantId = request.Request.TenantId,
+        };
         foreach (ServiceHookReques serviecHookRequestMessage in allRequest)
         {
             OneOf<WebhookResponce, WebhookBadRequestResponce> webhookResponse = await _webhookService.CreateWebhookSubscription(serviecHookRequestMessage);
