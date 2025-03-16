@@ -17,7 +17,7 @@ public static class IdentityEndpoint
 
             if (userResponse.IsT0 && !userResponse.AsT0.Succeeded)
             {
-                return Results.Ok(userResponse.AsT0);
+                return Results.BadRequest(userResponse.AsT0);
             }
 
             return Results.Ok(userResponse.AsT0);
