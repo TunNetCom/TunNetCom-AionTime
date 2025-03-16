@@ -1,19 +1,26 @@
 
+using OneOf;
+
 namespace IdentityService.API;
 
 public static class IdentityEndpoint
 {
     public static void AddEndpoints(this IEndpointRouteBuilder app)
     {
-        _ = app.MapPost("/CreateAccount", async (IMediator _mediator, [FromBody] CreateAccountCommand request) =>
+        _ = app.MapPost("/CreateTenantAccount", async (IMediator _mediator, [FromBody] CreateTenantAccountCommand request) =>
         {
-            IdentityResult userResponse = await _mediator.Send(request);
-            if (!userResponse.Succeeded)
+            OneOf<IdentityResult, ProblemDetails> userResponse = await _mediator.Send(request);
+            if (userResponse.IsT1)
             {
-                return Results.BadRequest(userResponse);
+                return Results.BadRequest(userResponse.AsT1);
             }
 
-            return Results.Ok(userResponse);
+            if (userResponse.IsT0 && !userResponse.AsT0.Succeeded)
+            {
+                return Results.Ok(userResponse.AsT0);
+            }
+
+            return Results.Ok(userResponse.AsT0);
         });
 
         _ = app.MapPost("/Login", async (

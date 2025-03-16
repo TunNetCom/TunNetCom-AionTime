@@ -1,29 +1,26 @@
-﻿using AzureDevopsService.Contracts.AzureRequestModel;
-using AzureDevopsService.Contracts.AzureRequestResourceModel;
-using MassTransit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using IdentityService.Application.Features.InternalTreatement.Events.TenatCreated;
 
 namespace IdentityService.Application.Features.MessageBroker.Producer;
 
-public class ProfileAzureUserCommandHandler(ISendEndpointProvider sendEndpointProvider) : IRequestHandler<ProfileAzureUserCommand>
+public class ProfileAzureUserCommandHandler(ISendEndpointProvider sendEndpointProvider) : INotificationHandler<TenantCreatedNotification>
 {
     private readonly ISendEndpointProvider _sendEndpointProvider = sendEndpointProvider;
 
-    public async Task Handle(ProfileAzureUserCommand request, CancellationToken cancellationToken)
+    public async Task Handle(TenantCreatedNotification request, CancellationToken cancellationToken)
     {
         ISendEndpoint endpoint = await _sendEndpointProvider.GetSendEndpoint(new Uri("rabbitmq://rabbitmq/AzureDevops"));
 
-        AzureAdminInfoRequest azureRequest = new()
+        GetAzureAdminInfoRequest azureRequest = new()
         {
-            Email = request.Email,
-            Path = request.Path,
+            TenantId = request.TenantId.ToString(),
+            Email = request.UserEmail,
+            Path = request.AzureDevOpsPath,
         };
 
-        await endpoint.Send(azureRequest, cancellationToken);
+        await endpoint.Send(azureRequest, ctx =>
+        {
+            ctx.Headers.Set("TenantId", request.TenantId.ToString());
+            ctx.Headers.Set("UserEmail", request.UserEmail);
+        }, cancellationToken);
     }
 }

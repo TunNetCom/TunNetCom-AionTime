@@ -1,5 +1,4 @@
-﻿
-namespace IdentityService.Infrastructure;
+﻿namespace IdentityService.Infrastructure;
 
 public static class IdentityServicesRegistration
 {
@@ -16,20 +15,25 @@ public static class IdentityServicesRegistration
         string? connection = isDocker
            ? configuration.GetConnectionString(ConnectionStringDocker)
            : configuration.GetConnectionString(ConnectionString);
+
         _ = services.AddDbContext<AuthContext>(options =>
         {
             _ = options.UseSqlServer(
                 connection,
                 sqlServerOptionsAction: sqlOptions =>
                 {
-                    _ = sqlOptions.EnableRetryOnFailure();
+                    _ = sqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 5,
+                        maxRetryDelay: TimeSpan.FromSeconds(2),
+                        errorNumbersToAdd: null);
                 });
 
             _ = options.EnableSensitiveDataLogging();
         });
 
         _ = services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<AuthContext>().AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<AuthContext>()
+                .AddDefaultTokenProviders();
 
         _ = services.AddAuthentication(options =>
     {

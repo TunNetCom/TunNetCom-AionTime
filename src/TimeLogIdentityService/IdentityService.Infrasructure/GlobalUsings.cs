@@ -1,11 +1,16 @@
 ﻿global using IdentityService.Domain.Models.Dbo;
 global using IdentityService.Infrastructure.DbContext;
+global using IdentityService.Infrastructure.DbContext.Configurations;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.IdentityModel.Tokens;
 global using System;
+global using System.Collections.Generic;
+global using System.Linq;
 global using System.Text;
+global using System.Threading.Tasks;

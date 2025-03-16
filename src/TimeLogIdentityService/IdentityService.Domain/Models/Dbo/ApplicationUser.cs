@@ -1,21 +1,12 @@
+namespace IdentityService.Domain.Models.Dbo;
 
-namespace IdentityService.Domain.Models.Dbo
+public class ApplicationUser : IdentityUser
 {
-    public class ApplicationUser : IdentityUser
-    {
-        [MaxLength(30)]
-        public required string Name { get; set; }
+    public required string Name { get; set; }
 
-        [MaxLength(30)]
-        public required string LastName { get; set; }
+    public required string LastName { get; set; }
 
-        public bool IsPrincipalAccount { get; set; }
+    public required Guid TenantId { get; set; }
 
-        [MaxLength(450)]
-        public string? ParentId { get; set; }
-
-        public AzureInfo? AzureInfo { get; set; }
-
-        public GitHubInfo? GitHubInfo { get; set; }
-    }
+    public Tenant? Tenant { get; }
 }
