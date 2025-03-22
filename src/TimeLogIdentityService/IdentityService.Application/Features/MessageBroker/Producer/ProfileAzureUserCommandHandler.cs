@@ -1,4 +1,5 @@
 ﻿using IdentityService.Application.Features.InternalTreatement.Events.TenatCreated;
+using IdentityService.Contracts.Constant;
 
 namespace IdentityService.Application.Features.MessageBroker.Producer;
 
@@ -19,8 +20,8 @@ public class ProfileAzureUserCommandHandler(ISendEndpointProvider sendEndpointPr
 
         await endpoint.Send(azureRequest, ctx =>
         {
-            ctx.Headers.Set("TenantId", request.TenantId.ToString());
-            ctx.Headers.Set("UserEmail", request.UserEmail);
+            ctx.Headers.Set(MessageQueueHeader.TenantId, request.TenantId.ToString());
+            ctx.Headers.Set(MessageQueueHeader.UserEmail, request.UserEmail);
         }, cancellationToken);
     }
 }

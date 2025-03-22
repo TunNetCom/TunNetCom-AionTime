@@ -1,48 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using OneOf;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿namespace IdentityService.Application.Features.InternalTreatement.AddTenant;
 
-namespace IdentityService.Application.Features.InternalTreatement.AddTenant
+public class AddTenantCommandHandler(AuthContext authContext, ILogger<AddTenantCommandHandler> logger)
+    : IRequestHandler<AddTenantCommand, OneOf<Guid, ProblemDetails>>
 {
-    public class AddTenantCommandHandler(AuthContext authContext, ILogger<AddTenantCommandHandler> logger) : IRequestHandler<AddTenantCommand, OneOf<Guid, ProblemDetails>>
+    private readonly ILogger<AddTenantCommandHandler> _logger = logger;
+    private readonly AuthContext _authContext = authContext;
+
+    public async Task<OneOf<Guid, ProblemDetails>> Handle(AddTenantCommand request, CancellationToken cancellationToken)
     {
-        private readonly ILogger<AddTenantCommandHandler> _logger = logger;
-        private readonly AuthContext _authContext = authContext;
+        Tenant? tenantExist = await _authContext.Tenants.FirstOrDefaultAsync(x => x.Email == request.Email);
 
-        public async Task<OneOf<Guid, ProblemDetails>> Handle(AddTenantCommand request, CancellationToken cancellationToken)
+        if (tenantExist is not null)
         {
-            Tenant? tenantExist = await _authContext.Tenants.FirstOrDefaultAsync(x => x.OrganizationEmail == request.OrganizationEmail);
-
-            if (tenantExist != null)
+            _logger.LogWarning($"Tenant {request.Name} already exist", request.Name);
+            return new ProblemDetails()
             {
-                return new ProblemDetails()
-                {
-                    Status = 400,
-                    Title = "Organization already exist",
-                    Detail = "Organization already exist",
-                };
-            }
-
-            EntityEntry<Tenant> tenant = await _authContext.Tenants.AddAsync(new Tenant()
-            {
-                OrganizationName = request.OrganizationName,
-                OrganizationAddress = request.OrganizationAdress,
-                OrganizationDescription = request.OrganizationDescription,
-                OrganizationEmail = request.OrganizationEmail,
-                OrganizationLandPhone = request.OrganizationLandPhone,
-                OrganizationMobilePhone = request.OrganizationMobilePhone,
-            });
-
-            _ = await _authContext.SaveChangesAsync();
-
-            _logger.LogInformation("Tenant {TenantName} created", request.OrganizationName);
-
-            return tenant.Entity.Id;
+                Status = 400,
+                Title = ErrorDetails.TenantOrganizationExist,
+                Detail = ErrorDetails.TenantOrganizationExist,
+            };
         }
+
+        EntityEntry<Tenant> tenant = await _authContext.Tenants.AddAsync(new Tenant()
+        {
+            Name = request.Name,
+            Address = request.Address,
+            Description = request.Description,
+            Email = request.Email,
+            LandPhone = request.LandPhone,
+            MobilePhone = request.MobilePhone,
+        });
+
+        _ = await _authContext.SaveChangesAsync();
+
+        _logger.LogInformation($"Tenant {request.Name} created", request.Name);
+
+        return tenant.Entity.Id;
     }
 }

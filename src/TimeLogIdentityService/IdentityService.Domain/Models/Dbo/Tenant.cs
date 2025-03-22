@@ -4,17 +4,17 @@ public class Tenant
 {
     public Guid Id { get; set; }
 
-    public required string OrganizationName { get; set; }
+    public required string Name { get; set; }
 
-    public required string OrganizationDescription { get; set; }
+    public required string Description { get; set; }
 
-    public required string OrganizationAddress { get; set; }
+    public required string Address { get; set; }
 
-    public string? OrganizationMobilePhone { get; set; }
+    public string? MobilePhone { get; set; }
 
-    public string? OrganizationLandPhone { get; set; }
+    public string? LandPhone { get; set; }
 
-    public required string OrganizationEmail { get; set; }
+    public required string Email { get; set; }
 
     public bool IsActivated { get; set; } = false;
 

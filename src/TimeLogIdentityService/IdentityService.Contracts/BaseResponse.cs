@@ -1,14 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+namespace IdentityService.Contracts;
 
-namespace IdentityService.Contracts
+public class ApiResponse(object? data = null)
 {
-    public class ApiResponse(object? data = null)
-    {
-        public bool Succeeded { get; set; } = false;
+    public bool Succeeded { get; set; } = false;
 
-        public object? Data { get; set; } = data;
+    public object? Data { get; set; } = data;
 
-        public ProblemDetails? Error { get; set; } = new();
-    }
+    public ProblemDetails? Error { get; set; } = new();
 }

@@ -9,27 +9,27 @@ public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
         _ = builder.Property(t => t.Id)
             .HasDefaultValueSql("NEWID()");
 
-        _ = builder.Property(t => t.OrganizationLandPhone)
+        _ = builder.Property(t => t.LandPhone)
             .HasMaxLength(20);
 
-        _ = builder.Property(t => t.OrganizationMobilePhone)
+        _ = builder.Property(t => t.MobilePhone)
             .HasMaxLength(20);
 
-        _ = builder.Property(t => t.OrganizationEmail)
+        _ = builder.Property(t => t.Email)
             .IsRequired()
             .HasMaxLength(50);
 
-        _ = builder.Property(t => t.OrganizationDescription)
+        _ = builder.Property(t => t.Description)
             .HasMaxLength(200);
 
-        _ = builder.HasIndex(t => t.OrganizationName)
+        _ = builder.HasIndex(t => t.Name)
             .IsUnique();
 
-        _ = builder.Property(t => t.OrganizationName)
+        _ = builder.Property(t => t.Name)
             .IsRequired()
             .HasMaxLength(50);
 
-        _ = builder.HasIndex(t => t.OrganizationEmail)
+        _ = builder.HasIndex(t => t.Email)
             .IsUnique();
 
         _ = builder.Property(t => t.IsActivated)

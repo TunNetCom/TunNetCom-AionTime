@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace IdentityService.Contracts;
+﻿namespace IdentityService.Contracts;
 
 public class LoginResponse
 {
