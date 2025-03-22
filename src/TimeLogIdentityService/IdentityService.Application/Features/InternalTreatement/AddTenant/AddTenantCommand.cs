@@ -6,4 +6,4 @@ public record class AddTenantCommand(
     string Address,
     string LandPhone,
     string MobilePhone,
-    string Description) : IRequest<OneOf<Guid, ProblemDetails>>;
+    string Description) : IRequest<Result<Guid>>;

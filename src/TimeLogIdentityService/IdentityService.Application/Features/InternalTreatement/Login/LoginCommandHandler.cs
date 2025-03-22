@@ -8,41 +8,23 @@ using IdentityService.Domain.Models.Dbo;
 namespace IdentityService.Application.Features.InternalTreatement.Login;
 
 public class LoginCommandHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration) :
-    IRequestHandler<LoginCommand, ApiResponse<LoginResponse>>
+    IRequestHandler<LoginCommand, Result<LoginResponse>>
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
     private readonly IConfiguration _configuration = configuration;
 
-    public async Task<ApiResponse<LoginResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
+    public async Task<Result<LoginResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         ApplicationUser? user = await _userManager.FindByEmailAsync(request.Email);
         if (user is null)
         {
-            return new ApiResponse<LoginResponse>()
-            {
-                Succeeded = false,
-                Error = new ProblemDetails()
-                {
-                    Title = nameof(ErrorDetails.InvalidEmail),
-                    Detail = ErrorDetails.InvalidEmail,
-                    Status = 400,
-                },
-            };
+            return Result.Fail(ErrorDetails.InvalidEmail);
         }
 
         bool hasPassword = await _userManager.CheckPasswordAsync(user, request.Password);
         if (!hasPassword)
         {
-            return new ApiResponse<LoginResponse>()
-            {
-                Succeeded = false,
-                Error = new ProblemDetails()
-                {
-                    Title = nameof(ErrorDetails.InvalidPassword),
-                    Detail = ErrorDetails.InvalidPassword,
-                    Status = 400,
-                },
-            };
+            return Result.Fail(ErrorDetails.InvalidPassword);
         }
 
         IList<Claim> claims = await _userManager.GetClaimsAsync(user);
@@ -68,10 +50,6 @@ public class LoginCommandHandler(UserManager<ApplicationUser> userManager, IConf
             claims: claim,
             signingCredentials: new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256));
 
-        return new ApiResponse<LoginResponse>()
-        {
-            Succeeded = true,
-            Data = new LoginResponse() { Token = new JwtSecurityTokenHandler().WriteToken(token) },
-        };
+        return Result.Ok(new LoginResponse() { Token = new JwtSecurityTokenHandler().WriteToken(token) });
     }
 }

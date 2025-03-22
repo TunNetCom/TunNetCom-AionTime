@@ -1,24 +1,19 @@
 ﻿namespace IdentityService.Application.Features.InternalTreatement.AddTenant;
 
 public class AddTenantCommandHandler(AuthContext authContext, ILogger<AddTenantCommandHandler> logger)
-    : IRequestHandler<AddTenantCommand, OneOf<Guid, ProblemDetails>>
+    : IRequestHandler<AddTenantCommand, Result<Guid>>
 {
     private readonly ILogger<AddTenantCommandHandler> _logger = logger;
     private readonly AuthContext _authContext = authContext;
 
-    public async Task<OneOf<Guid, ProblemDetails>> Handle(AddTenantCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(AddTenantCommand request, CancellationToken cancellationToken)
     {
         Tenant? tenantExist = await _authContext.Tenants.FirstOrDefaultAsync(x => x.Email == request.Email);
 
         if (tenantExist is not null)
         {
             _logger.LogWarning($"Tenant {request.Name} already exist", request.Name);
-            return new ProblemDetails()
-            {
-                Status = 400,
-                Title = ErrorDetails.TenantOrganizationExist,
-                Detail = ErrorDetails.TenantOrganizationExist,
-            };
+            return Result.Fail(ErrorDetails.TenantOrganizationExist);
         }
 
         EntityEntry<Tenant> tenant = await _authContext.Tenants.AddAsync(new Tenant()
@@ -35,6 +30,6 @@ public class AddTenantCommandHandler(AuthContext authContext, ILogger<AddTenantC
 
         _logger.LogInformation($"Tenant {request.Name} created", request.Name);
 
-        return tenant.Entity.Id;
+        return Result.Ok(tenant.Entity.Id);
     }
 }

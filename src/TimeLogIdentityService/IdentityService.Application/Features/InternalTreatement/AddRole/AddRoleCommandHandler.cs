@@ -12,7 +12,7 @@ public class AddRoleCommandHandler(RoleManager<IdentityRole> roleManager)
 
     public async Task<IdentityResult> Handle(AddRoleCommand request, CancellationToken cancellationToken)
     {
-        IdentityRole roleToCreate = new IdentityRole()
+        IdentityRole roleToCreate = new()
         {
             Name = request.RoleName,
         };

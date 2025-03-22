@@ -1,4 +1,4 @@
-
+using FluentResults;
 using OneOf;
 
 namespace IdentityService.API;
@@ -9,18 +9,17 @@ public static class IdentityEndpoint
     {
         _ = app.MapPost("/CreateTenantAccount", async (IMediator _mediator, [FromBody] CreateTenantAccountCommand request) =>
         {
-            OneOf<IdentityResult, ProblemDetails> userResponse = await _mediator.Send(request);
-            if (userResponse.IsT1)
+            Result<IdentityResult> userResponse = await _mediator.Send(request);
+            if (userResponse.IsFailed)
             {
-                return Results.BadRequest(userResponse.AsT1);
+                return Results.BadRequest(new ProblemDetails()
+                {
+                    Status = 400,
+                    Detail = string.Join(", ", userResponse.Errors.Select(x => x.Message).ToList()),
+                });
             }
 
-            if (userResponse.IsT0 && !userResponse.AsT0.Succeeded)
-            {
-                return Results.BadRequest(userResponse.AsT0);
-            }
-
-            return Results.Ok(userResponse.AsT0);
+            return Results.Ok(userResponse.Value);
         });
 
         _ = app.MapPost("/Login", async (
@@ -28,13 +27,17 @@ public static class IdentityEndpoint
             [FromBody] LoginCommand request,
             CancellationToken cancellationToken) =>
         {
-            ApiResponse<LoginResponse> userResponse = await mediator.Send(request, cancellationToken);
-            if (!userResponse.Succeeded)
+            Result<LoginResponse> userResponse = await mediator.Send(request, cancellationToken);
+            if (userResponse.IsFailed)
             {
-                return Results.BadRequest(userResponse);
+                return Results.BadRequest(new ProblemDetails()
+                {
+                    Status = 400,
+                    Detail = string.Join(", ", userResponse.Errors.Select(x => x.Message).ToList()),
+                });
             }
 
-            return Results.Ok(userResponse);
+            return Results.Ok(userResponse.Value);
         });
 
         _ = app.MapPost("/AddRole", async (IMediator _mediator, [FromBody] AddRoleCommand request) =>
@@ -50,35 +53,47 @@ public static class IdentityEndpoint
 
         _ = app.MapPost("/AttachUserToRole", async (IMediator _mediator, [FromBody] AttachUserToRoleCommand request) =>
         {
-            ApiResponse<UserToRoleResponse> response = await _mediator.Send(request);
-            if (!response.Succeeded)
+            Result<IdentityResult> response = await _mediator.Send(request);
+            if (response.IsFailed)
             {
-                return Results.BadRequest(response);
+                return Results.BadRequest(new ProblemDetails()
+                {
+                    Status = 400,
+                    Detail = string.Join(", ", response.Errors.Select(x => x.Message).ToList()),
+                });
             }
 
-            return Results.Ok(response);
+            return Results.Ok(response.Value);
         });
 
         _ = app.MapPost("/ChangePassword", async (IMediator _mediator, [FromBody] ChangePasswordCommand request) =>
         {
-            ApiResponse response = await _mediator.Send(request);
-            if (!response.Succeeded)
+            Result<IdentityResult> response = await _mediator.Send(request);
+            if (response.IsFailed)
             {
-                return Results.BadRequest(response);
+                return Results.BadRequest(new ProblemDetails()
+                {
+                    Status = 400,
+                    Detail = string.Join(", ", response.Errors.Select(x => x.Message).ToList()),
+                });
             }
 
-            return Results.Ok(response);
+            return Results.Ok(response.Value);
         });
 
         _ = app.MapPost("/GeneratePasswordResetToken", async (IMediator _mediator, [FromBody] GeneratePasswordResetTokenCommand request) =>
         {
-            ApiResponse<PasswordTokenResponse> response = await _mediator.Send(request);
-            if (!response.Succeeded)
+            Result<string> response = await _mediator.Send(request);
+            if (response.IsFailed)
             {
-                return Results.BadRequest(response);
+                return Results.BadRequest(new ProblemDetails()
+                {
+                    Status = 400,
+                    Detail = string.Join(", ", response.Errors.Select(x => x.Message).ToList()),
+                });
             }
 
-            return Results.Ok(response);
+            return Results.Ok(response.Value);
         });
     }
 }

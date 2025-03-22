@@ -1,53 +1,20 @@
-using IdentityService;
-using IdentityService.Application;
-using IdentityService.Application.Features;
-using IdentityService.Application.Features.InternalTreatement.ChangePassword;
-using IdentityService.Contracts.Constant;
-using IdentityService.Domain.Models.Dbo;
-
 namespace IdentityService.Application.Features.InternalTreatement.ChangePassword
 {
     public class ChangePasswordCommandHandler(UserManager<ApplicationUser> userManager) :
-        IRequestHandler<ChangePasswordCommand, ApiResponse>
+        IRequestHandler<ChangePasswordCommand, Result<IdentityResult>>
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
 
-        public async Task<ApiResponse> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
+        public async Task<Result<IdentityResult>> Handle(ChangePasswordCommand request, CancellationToken cancellationToken)
         {
             ApplicationUser? user = await _userManager.FindByEmailAsync(request.Email);
-            if (user == null)
+            if (user is null)
             {
-                return new ApiResponse()
-                {
-                    Succeeded = false,
-                    Error = new ProblemDetails()
-                    {
-                        Title = nameof(ErrorDetails.InvalidEmail),
-                        Detail = ErrorDetails.InvalidEmail,
-                        Status = 404,
-                    },
-                };
+                return Result.Fail(ErrorDetails.InvalidEmail);
             }
 
-            if (!await _userManager.CheckPasswordAsync(user, request.OldPassword))
-            {
-                return new ApiResponse()
-                {
-                    Succeeded = false,
-                    Error = new ProblemDetails()
-                    {
-                        Title = nameof(ErrorDetails.InvalidOldPassword),
-                        Detail = ErrorDetails.InvalidOldPassword,
-                        Status = 400,
-                    },
-                };
-            }
-
-            _ = await _userManager.ChangePasswordAsync(user, request.OldPassword, request.NewPassword);
-            return new ApiResponse()
-            {
-                Succeeded = false,
-            };
+            IdentityResult result = await _userManager.ChangePasswordAsync(user, request.OldPassword, request.NewPassword);
+            return Result.Ok(result);
         }
     }
 }

@@ -5,5 +5,5 @@ using IdentityService.Application.Features.InternalTreatement.Login;
 
 namespace IdentityService.Application.Features.InternalTreatement.Login
 {
-    public record LoginCommand(string Email, string Password) : IRequest<ApiResponse<LoginResponse>>;
+    public record LoginCommand(string Email, string Password) : IRequest<Result<LoginResponse>>;
 }

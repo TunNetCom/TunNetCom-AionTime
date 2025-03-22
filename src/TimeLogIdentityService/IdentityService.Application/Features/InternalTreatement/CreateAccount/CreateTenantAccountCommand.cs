@@ -1,9 +1,3 @@
-using IdentityService;
-using IdentityService.Application;
-using IdentityService.Application.Features;
-using IdentityService.Application.Features.InternalTreatement.CreateAccount;
-using OneOf;
-
 namespace IdentityService.Application.Features.InternalTreatement.CreateAccount;
 
 public record class CreateTenantAccountCommand(
@@ -20,4 +14,4 @@ public record class CreateTenantAccountCommand(
     string OrganizationAdress,
     string OrganizationLandPhone,
     string OrganizationMobilePhone,
-    string OrganizationDescription) : IRequest<OneOf<IdentityResult, ProblemDetails>>;
+    string OrganizationDescription) : IRequest<Result<IdentityResult>>;

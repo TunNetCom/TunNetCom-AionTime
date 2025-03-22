@@ -160,5 +160,17 @@
         <member name="M:IdentityService.Infrastructure.Migrations.AddMultyTenancyV5µ.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:IdentityService.Infrastructure.Migrations.ChangeTeanentColumnNames">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.ChangeTeanentColumnNames.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.ChangeTeanentColumnNames.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:IdentityService.Infrastructure.Migrations.ChangeTeanentColumnNames.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

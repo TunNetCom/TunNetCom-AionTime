@@ -1,7 +1,4 @@
-﻿using IdentityService.Application.Features.InternalTreatement.Events.TenatCreated;
-using IdentityService.Contracts.Constant;
-
-namespace IdentityService.Application.Features.MessageBroker.Producer;
+﻿namespace IdentityService.Application.Features.MessageBroker.Producer;
 
 public class ProfileAzureUserCommandHandler(ISendEndpointProvider sendEndpointProvider) : INotificationHandler<TenantCreatedNotification>
 {
