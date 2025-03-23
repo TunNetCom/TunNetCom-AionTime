@@ -5,4 +5,4 @@ using IdentityService.Application.Features.InternalTreatement.GeneratePasswordRe
 
 namespace IdentityService.Application.Features.InternalTreatement.GeneratePasswordResetToken;
 
-public record class GeneratePasswordResetTokenCommand(string Email) : IRequest<ApiResponse<PasswordTokenResponse>>;
+public record class GeneratePasswordResetTokenCommand(string Email) : IRequest<Result<string>>;

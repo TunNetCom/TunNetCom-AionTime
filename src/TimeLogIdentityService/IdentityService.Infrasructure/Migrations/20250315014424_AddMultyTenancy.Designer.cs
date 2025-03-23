@@ -4,6 +4,7 @@ using IdentityService.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IdentityService.Infrastructure.Migrations
 {
     [DbContext(typeof(AuthContext))]
-    partial class AuthContextModelSnapshot : ModelSnapshot
+    [Migration("20250315014424_AddMultyTenancy")]
+    partial class AddMultyTenancy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,9 +80,6 @@ namespace IdentityService.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -97,56 +97,92 @@ namespace IdentityService.Infrastructure.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.ApplicationUserTenant", b =>
+                {
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ApplicationUserId", "TenantId");
+
                     b.HasIndex("TenantId");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("ApplicationUserTenant", (string)null);
+                });
+
+            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.AzureKeyInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CoreRevision")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PublicAlias")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("PublicKey")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PublicKeyExpirationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Revision")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TimeStamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AzureKeyInfo");
                 });
 
             modelBuilder.Entity("IdentityService.Domain.Models.Dbo.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValueSql("NEWID()");
+                        .HasMaxLength(100)
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address")
+                    b.Property<int?>("AzureKeyInfoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TenantName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TenantType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("IsActivated")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("LandPhone")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("MobilePhone")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
+                    b.HasIndex("AzureKeyInfoId");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("TenantName")
                         .IsUnique();
 
                     b.ToTable("Tenants");
@@ -285,15 +321,31 @@ namespace IdentityService.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.ApplicationUser", b =>
+            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.ApplicationUserTenant", b =>
                 {
+                    b.HasOne("IdentityService.Domain.Models.Dbo.ApplicationUser", "ApplicationUser")
+                        .WithMany("ApplicationUserTenants")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("IdentityService.Domain.Models.Dbo.Tenant", "Tenant")
-                        .WithMany("ApplicationUsers")
+                        .WithMany("ApplicationUserTenants")
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("ApplicationUser");
+
                     b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.Tenant", b =>
+                {
+                    b.HasOne("IdentityService.Domain.Models.Dbo.AzureKeyInfo", null)
+                        .WithMany("Tenants")
+                        .HasForeignKey("AzureKeyInfoId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -347,9 +399,19 @@ namespace IdentityService.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.ApplicationUser", b =>
+                {
+                    b.Navigation("ApplicationUserTenants");
+                });
+
+            modelBuilder.Entity("IdentityService.Domain.Models.Dbo.AzureKeyInfo", b =>
+                {
+                    b.Navigation("Tenants");
+                });
+
             modelBuilder.Entity("IdentityService.Domain.Models.Dbo.Tenant", b =>
                 {
-                    b.Navigation("ApplicationUsers");
+                    b.Navigation("ApplicationUserTenants");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,6 @@
 #pragma warning disable CS8604 // Possible null reference argument.
+using IdentityService.API.Middelware;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Log.Logger = new LoggerConfiguration()
@@ -36,6 +38,7 @@ try
     });
 
     _ = builder.Services.AddIdentityServicesRegistration(builder.Configuration);
+    _ = builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
     WebApplication app = builder.Build();
 

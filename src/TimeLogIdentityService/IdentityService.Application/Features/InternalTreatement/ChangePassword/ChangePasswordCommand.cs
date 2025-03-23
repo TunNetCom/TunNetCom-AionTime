@@ -5,5 +5,5 @@ using IdentityService.Application.Features.InternalTreatement.ChangePassword;
 
 namespace IdentityService.Application.Features.InternalTreatement.ChangePassword
 {
-    public record class ChangePasswordCommand(string OldPassword, string NewPassword, string Email) : IRequest<ApiResponse>;
+    public record class ChangePasswordCommand(string OldPassword, string NewPassword, string Email) : IRequest<Result<IdentityResult>>;
 }

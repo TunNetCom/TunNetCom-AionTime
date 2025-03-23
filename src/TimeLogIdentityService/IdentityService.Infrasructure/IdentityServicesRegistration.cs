@@ -1,5 +1,4 @@
-﻿
-namespace IdentityService.Infrastructure;
+﻿namespace IdentityService.Infrastructure;
 
 public static class IdentityServicesRegistration
 {
@@ -16,39 +15,37 @@ public static class IdentityServicesRegistration
         string? connection = isDocker
            ? configuration.GetConnectionString(ConnectionStringDocker)
            : configuration.GetConnectionString(ConnectionString);
+
         _ = services.AddDbContext<AuthContext>(options =>
         {
-            _ = options.UseSqlServer(
-                connection,
-                sqlServerOptionsAction: sqlOptions =>
-                {
-                    _ = sqlOptions.EnableRetryOnFailure();
-                });
+            _ = options.UseSqlServer(connection);
 
             _ = options.EnableSensitiveDataLogging();
         });
 
         _ = services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<AuthContext>().AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<AuthContext>()
+                .AddDefaultTokenProviders();
 
         _ = services.AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-    }).AddJwtBearer(options =>
-    {
-        options.SaveToken = true;
-        options.RequireHttpsMetadata = false;
-        options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidAudience = configuration[ValidAudience],
-            ValidIssuer = configuration[ValidIssuer],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration[Secret] ?? string.Empty)),
-        };
-    });
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.SaveToken = true;
+            options.RequireHttpsMetadata = false;
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidAudience = configuration[ValidAudience],
+                ValidIssuer = configuration[ValidIssuer],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration[Secret] ?? string.Empty)),
+            };
+        });
+
         return services;
     }
 }

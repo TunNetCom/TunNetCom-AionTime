@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AzureDevopsService.Contracts" Version="1.0.5" />
+    <PackageReference Include="FluentResults" Version="3.16.0" />
     <PackageReference Include="MassTransit" Version="8.3.2" />
     <PackageReference Include="MassTransit.Abstractions" Version="8.3.2" />
     <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
@@ -23,6 +24,7 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.10" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.1.2" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
+    <PackageReference Include="TunNetCom.AionTime.AzureDevopsService.Contracts" Version="1.0.7" />
   </ItemGroup>
 
   <ItemGroup>
