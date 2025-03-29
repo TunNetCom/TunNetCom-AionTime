@@ -26,6 +26,7 @@
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="OneOf" Version="3.0.271" />
+    <PackageReference Include="TunNetCom.AionTime.AzureDevopsService.Contracts" Version="1.0.7" />
     <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 

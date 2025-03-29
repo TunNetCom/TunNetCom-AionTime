@@ -25,7 +25,7 @@ public class TimeLogServiceController(IMediator mediator) : ControllerBase
 
     [HttpPost]
     [Route("Project")]
-    public async Task<IActionResult> CreateOrganization(AllProjectUnderOrganizationRequest request)
+    public async Task<IActionResult> CreateOrganization(GetOrganizationProjectsRequest request)
     {
         await _mediator.Send(new ProjectCommand(request));
         return Ok();

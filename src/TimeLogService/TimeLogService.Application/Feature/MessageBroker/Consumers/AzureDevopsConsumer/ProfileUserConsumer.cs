@@ -3,34 +3,25 @@
 public class ProfileUserConsumer(
     ILogger<ProfileUserConsumer> logger,
     IMediator mediator,
-    IRepository<User> repository,
     IRepository<Organization> repositoryOrganization)
-    : IConsumer<UserProfile>, IConsumer<CustomProblemDetailsResponce>
+    : IConsumer<GetAzureAdminInfoResponse>, IConsumer<CustomProblemDetailsResponce>
 {
     private readonly ILogger<ProfileUserConsumer> _logger = logger;
     private readonly IMediator _mediator = mediator;
-    private readonly IRepository<User> _repository = repository;
     private readonly IRepository<Organization> _repositoryOrganization = repositoryOrganization;
 
-    public async Task Consume(ConsumeContext<UserProfile> context)
+    public async Task Consume(ConsumeContext<GetAzureAdminInfoResponse> context)
     {
-        User? user = await _repository.GetSingleAsync(x => x.UserId == context.Message!.Id);
-
-        if (user is null)
-        {
-            await _mediator.Send(new AddUserCommand(context.Message));
-        }
-
-        if (context.Message.UserAccount is not null && context.Message.UserAccount.Count > 0)
+        if (context.Message.UserOrganization is not null && context.Message.UserOrganization.Count > 0)
         {
             IReadOnlyList<Organization> organizationList = await _repositoryOrganization
-                .GetManyAsync(x => x.UserId == context.Message!.Id);
+                .GetManyAsync(x => x.TenantId == context.Message!.TenantId);
 
             HashSet<string> existingAccountIds = [.. organizationList.Select(x => x.AccountId)];
 
             List<Organization> organizations = [];
 
-            foreach (UserOrganization org in context.Message.UserAccount!.Value)
+            foreach (AzureOrganizationValue org in context.Message.UserOrganization!.Value)
             {
                 if (!existingAccountIds.Contains(org.AccountId)
                     && org.AccountUri is not null)
@@ -38,10 +29,9 @@ public class ProfileUserConsumer(
                     organizations.Add(new Organization
                     {
                         AccountId = org!.AccountId,
-                        TenantId = string.Empty,
+                        TenantId = context.Message!.TenantId,
                         AccountUri = org.AccountUri,
                         Name = org.AccountName,
-                        UserId = context.Message!.Id,
                         IsAionTimeApproved = false,
                     });
                 }

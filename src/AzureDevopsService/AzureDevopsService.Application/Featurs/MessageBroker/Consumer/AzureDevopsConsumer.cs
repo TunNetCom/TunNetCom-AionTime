@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.ExternalRequestModel;
-
-namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
+﻿namespace AzureDevopsService.Application.Featurs.MessageBroker.Consumer;
 
 public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer> logger) :
     IConsumer<GetAzureAdminInfoRequest>,
@@ -30,6 +28,6 @@ public class AzureDevopsConsumer(IMediator mediator, ILogger<AzureDevopsConsumer
 
     public async Task Consume(ConsumeContext<CreateWebhookRequest> context)
     {
-        await _mediator.Send(new CreateWebhookCommand(context.Message));
+        _ = await _mediator.Send(new CreateWebhookCommand(context.Message));
     }
 }

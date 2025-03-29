@@ -17,6 +17,4 @@ public partial class User : BaseEntity
     public DateTime TimeStamp { get; set; }
 
     public int Revision { get; set; }
-
-    public virtual ICollection<Organization>? Organizations { get; private set; }
 }
