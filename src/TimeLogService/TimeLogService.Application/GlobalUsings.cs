@@ -1,6 +1,7 @@
 ﻿global using AutoMapper;
 global using AzureDevopsService.Contracts.AzureRequestResourceModel;
 global using AzureDevopsService.Contracts.AzureResponceModel;
+global using AzureDevopsService.Contracts.ExternalResponseModel;
 global using MassTransit;
 global using MediatR;
 global using Microsoft.Extensions.Configuration;

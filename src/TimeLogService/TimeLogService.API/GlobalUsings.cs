@@ -1,4 +1,5 @@
 ﻿global using AzureDevopsService.Contracts.AzureRequestResourceModel;
+global using AzureDevopsService.Contracts.ExternalRequestModel;
 global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Mvc;

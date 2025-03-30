@@ -12,7 +12,7 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
-    var allowedOrigins = builder.Configuration.GetSection("AllowedOrigin").Get<string[]>();
+    string[]? allowedOrigins = builder.Configuration.GetSection("AllowedOrigin").Get<string[]>();
     Log.Information("Starting web host");
     _ = builder.Services.AddOptions<RabbitMqSettings>().Bind(builder.Configuration.GetSection("RabbitMqSettings"));
     _ = builder.Logging.AddLoggingService();

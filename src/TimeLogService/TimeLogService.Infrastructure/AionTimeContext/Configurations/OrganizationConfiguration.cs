@@ -17,12 +17,6 @@
             _ = builder.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
-            _ = builder.Property(e => e.UserId).HasMaxLength(100);
-
-            _ = builder.HasOne(d => d.User).WithMany(p => p.Organizations)
-                .HasPrincipalKey(p => p.UserId)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FKUserOrganization");
 
             OnConfigurePartial(builder);
         }
