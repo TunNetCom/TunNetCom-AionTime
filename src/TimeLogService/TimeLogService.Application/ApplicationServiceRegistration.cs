@@ -1,4 +1,8 @@
-﻿namespace TimeLogService.Application
+﻿using TimeLogService.Application.Events.IntegrationEvents;
+using TimeLogService.Application.Events.IntegrationEvents.IncomingEvents.AzureDevopsIntegrationEvent;
+using TimeLogService.Application.Events.IntegrationEvents.IncomingEvents.WebhookIntegrationEvent;
+
+namespace TimeLogService.Application
 {
     public static class ApplicationServiceRegistration
     {
@@ -9,13 +13,13 @@
 
             _ = services.AddMassTransit(x =>
             {
-                _ = x.AddConsumer<WorkItemEventConsumer>();
-                _ = x.AddConsumer<PipelineEventConsumer>();
-                _ = x.AddConsumer<BuildAndReleasEventsConsumer>();
-                _ = x.AddConsumer<CodeEventsConsumer>();
-                _ = x.AddConsumer<ProfileUserConsumer>();
-                _ = x.AddConsumer<ProjectConsumer>();
-                _ = x.AddConsumer<WorkItemConsumer>();
+                _ = x.AddConsumer<WorkItemEvents>();
+                _ = x.AddConsumer<PipelineEvents>();
+                _ = x.AddConsumer<BuildAndReleasEvents>();
+                _ = x.AddConsumer<CodeEvents>();
+                _ = x.AddConsumer<ProfileUserEvents>();
+                _ = x.AddConsumer<ProjectEvents>();
+                _ = x.AddConsumer<WorkItemEvent>();
 
                 x.SetDefaultEndpointNameFormatter();
                 x.UsingRabbitMq((context, config) =>
@@ -33,42 +37,42 @@
                      config.ReceiveEndpoint("WorkItemEvent", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
-                         e.ConfigureConsumer<WorkItemEventConsumer>(context);
+                         e.ConfigureConsumer<WorkItemEvents>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("PipelineEvent", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
-                         e.ConfigureConsumer<PipelineEventConsumer>(context);
+                         e.ConfigureConsumer<PipelineEvents>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("BuildAndReleaseEvents", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
-                         e.ConfigureConsumer<BuildAndReleasEventsConsumer>(context);
+                         e.ConfigureConsumer<BuildAndReleasEvents>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("CodeEvents", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
-                         e.ConfigureConsumer<CodeEventsConsumer>(context);
+                         e.ConfigureConsumer<CodeEvents>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("timelog-service-queue", e =>
                      {
-                         e.ConfigureConsumer<ProfileUserConsumer>(context);
+                         e.ConfigureConsumer<ProfileUserEvents>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("ProjectResponce", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
-                         e.ConfigureConsumer<ProjectConsumer>(context);
+                         e.ConfigureConsumer<ProjectEvents>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                      config.ReceiveEndpoint("WorkItemResponce", e =>
                      {
                          e.SetQueueArgument("x-message-ttl", 60000);
-                         e.ConfigureConsumer<WorkItemConsumer>(context);
+                         e.ConfigureConsumer<WorkItemEvent>(context);
                          e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
                      });
                  });

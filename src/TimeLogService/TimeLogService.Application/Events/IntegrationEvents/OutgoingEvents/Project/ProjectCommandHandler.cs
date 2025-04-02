@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Producer.Project;
+﻿namespace TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.Project;
 
 public class ProjectCommandHandler(ISendEndpointProvider sendEndpointProvider) : IRequestHandler<ProjectCommand>
 {

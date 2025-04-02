@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Producer.WorkItem;
+﻿namespace TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.WorkItem;
 
 public class WorkItemCommendHandler(ISendEndpointProvider sendEndpointProvider) : IRequestHandler<WorkItemCommend>
 {

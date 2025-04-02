@@ -1,3 +1,6 @@
+using TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.ProfileUser;
+using TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.Project;
+using TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.WorkItem;
 using WorkItemRequest = AzureDevopsService.Contracts.AzureRequestResourceModel.WorkItemRequest;
 
 namespace TimeLogService.API.Controllers;

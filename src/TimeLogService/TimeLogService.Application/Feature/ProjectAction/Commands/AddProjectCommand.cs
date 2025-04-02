@@ -1,3 +1,6 @@
-﻿namespace TimeLogService.Application.Feature.ProjectAction.Commands;
+﻿using System.Collections.ObjectModel;
+using Project = TimeLogService.Domain.Models.Dbo.Project;
 
-public class AddProjectCommand() : IRequest;
+namespace TimeLogService.Application.Feature.ProjectAction.Commands;
+
+public record class AddProjectCommand(ReadOnlyCollection<Project> Projects) : IRequest;
