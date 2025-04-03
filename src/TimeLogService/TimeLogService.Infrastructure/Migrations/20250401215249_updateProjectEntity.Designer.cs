@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimeLogService.Infrastructure.AionTimeContext;
 
@@ -11,9 +12,11 @@ using TimeLogService.Infrastructure.AionTimeContext;
 namespace TimeLogService.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeLogServiceDataBaseContext))]
-    partial class TimeLogServiceDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250401215249_updateProjectEntity")]
+    partial class updateProjectEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

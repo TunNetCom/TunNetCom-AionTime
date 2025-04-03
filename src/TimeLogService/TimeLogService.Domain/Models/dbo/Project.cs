@@ -4,11 +4,11 @@ public partial class Project : BaseEntity
 {
     public required string AccountId { get; set; }
 
-    public required string ProjectId { get; set; }
+    public Guid ProjectId { get; set; }
 
     public required string Name { get; set; }
 
-    public int? State { get; set; }
+    public required string State { get; set; }
 
     public string? Visibility { get; set; }
 

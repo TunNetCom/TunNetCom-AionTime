@@ -1,12 +1,15 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumers.AzureDevopsConsumer;
+﻿using AzureDevopsService.Contracts.ExternalRequestModel;
+using TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.Project;
 
-public class ProfileUserConsumer(
-    ILogger<ProfileUserConsumer> logger,
+namespace TimeLogService.Application.Events.IntegrationEvents.IncomingEvents.AzureDevopsIntegrationEvent;
+
+public class ProfileUserEvents(
+    ILogger<ProfileUserEvents> logger,
     IMediator mediator,
     IRepository<Organization> repositoryOrganization)
-    : IConsumer<GetAzureAdminInfoResponse>, IConsumer<CustomProblemDetailsResponce>
+    : IConsumer<GetAzureAdminInfoResponse>
 {
-    private readonly ILogger<ProfileUserConsumer> _logger = logger;
+    private readonly ILogger<ProfileUserEvents> _logger = logger;
     private readonly IMediator _mediator = mediator;
     private readonly IRepository<Organization> _repositoryOrganization = repositoryOrganization;
 
@@ -40,15 +43,19 @@ public class ProfileUserConsumer(
             if (organizations.Count > 0)
             {
                 await _mediator.Send(new AddOrganizationListCommand(organizations.AsReadOnly()));
+                foreach (Organization organization in organizations)
+                {
+                    await _mediator.Send(new ProjectCommand(new GetOrganizationProjectsRequest
+                    {
+                        TenantId = context.Message!.TenantId,
+                        OrganizationId = organization.AccountId,
+                        OrganizationName = organization.Name,
+                        Path = context.Message.Path,
+                    }));
+                }
             }
         }
 
-        _logger.LogInformation(JsonConvert.SerializeObject(context.Message));
-    }
-
-    public async Task Consume(ConsumeContext<CustomProblemDetailsResponce> context)
-    {
-        await Task.Delay(1);
         _logger.LogInformation(JsonConvert.SerializeObject(context.Message));
     }
 }

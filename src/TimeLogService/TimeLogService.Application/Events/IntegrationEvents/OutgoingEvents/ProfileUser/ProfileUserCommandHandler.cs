@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Producer.ProfileUser;
+﻿namespace TimeLogService.Application.Events.IntegrationEvents.OutgoingEvents.ProfileUser;
 
 public class ProfileUserCommandHandler(ISendEndpointProvider sendEndpointProvider) :
 IRequestHandler<ProfileUserCommand>

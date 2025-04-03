@@ -1,8 +1,8 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumer.WebhookConsumer;
+﻿namespace TimeLogService.Application.Events.IntegrationEvents.IncomingEvents.WebhookIntegrationEvent;
 
-public class WorkItemEventConsumer(ILogger<WorkItemEventConsumer> logger) : IConsumer<AzureWebhookModelEvent<WorkItemResource>>
+public class WorkItemEvents(ILogger<WorkItemEvents> logger) : IConsumer<AzureWebhookModelEvent<WorkItemResource>>
 {
-    private readonly ILogger<WorkItemEventConsumer> _logger = logger;
+    private readonly ILogger<WorkItemEvents> _logger = logger;
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     public async Task Consume(ConsumeContext<AzureWebhookModelEvent<WorkItemResource>> context)

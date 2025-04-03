@@ -88,5 +88,17 @@
         <member name="M:TimeLogService.Infrastructure.Migrations.init11.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:TimeLogService.Infrastructure.Migrations.updateProjectEntity">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.updateProjectEntity.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.updateProjectEntity.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TimeLogService.Infrastructure.Migrations.updateProjectEntity.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

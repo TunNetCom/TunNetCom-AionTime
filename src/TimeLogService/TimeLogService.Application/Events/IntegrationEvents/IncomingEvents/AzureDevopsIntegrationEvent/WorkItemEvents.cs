@@ -1,8 +1,8 @@
-﻿namespace TimeLogService.Application.Feature.MessageBroker.Consumers.AzureDevopsConsumer;
+﻿namespace TimeLogService.Application.Events.IntegrationEvents.IncomingEvents.AzureDevopsIntegrationEvent;
 
-internal class WorkItemConsumer(ILogger<WorkItemConsumer> logger) : IConsumer<WiqlResponses>, IConsumer<WiqlBadRequestResponce>
+internal class WorkItemEvent(ILogger<WorkItemEvent> logger) : IConsumer<WiqlResponses>, IConsumer<WiqlBadRequestResponce>
 {
-    private readonly ILogger<WorkItemConsumer> _logger = logger;
+    private readonly ILogger<WorkItemEvent> _logger = logger;
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     public async Task Consume(ConsumeContext<WiqlResponses> context)

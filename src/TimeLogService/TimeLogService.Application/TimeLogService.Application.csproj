@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Events\DomainEvents\" />
     <Folder Include="Feature\ProjectAction\Queries\" />
   </ItemGroup>
 
