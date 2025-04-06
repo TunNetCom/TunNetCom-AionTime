@@ -6,7 +6,7 @@
     <members>
         <member name="P:TimeLogService.Domain.Models.Dbo.BaseEntity.TenantId">
             <summary>
-            the TenantId is Identity user Id
+            Gets or sets the TenantId is Identity user Id
             </summary>
         </member>
     </members>

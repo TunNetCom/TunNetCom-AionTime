@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MassTransit" Version="8.2.5" />
     <PackageReference Include="MassTransit.Newtonsoft" Version="8.2.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="19.225.1" />
     <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="19.225.1" />
@@ -22,7 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel.csproj" />
     <ProjectReference Include="..\AzureDevopsService.Contracts\AzureDevopsService.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\DomainEvents\" />
   </ItemGroup>
 
 </Project>

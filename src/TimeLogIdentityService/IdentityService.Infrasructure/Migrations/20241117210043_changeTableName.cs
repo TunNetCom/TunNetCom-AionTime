@@ -14,32 +14,32 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            _ = migrationBuilder.DropForeignKey(
                 name: "FK_AzureKeys_AspNetUsers_IdentityUserId",
                 table: "AzureKeys");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "GitHubKeys");
 
-            migrationBuilder.DropPrimaryKey(
+            _ = migrationBuilder.DropPrimaryKey(
                 name: "PK_AzureKeys",
                 table: "AzureKeys");
 
-            migrationBuilder.RenameTable(
+            _ = migrationBuilder.RenameTable(
                 name: "AzureKeys",
                 newName: "AzureInfo");
 
-            migrationBuilder.RenameIndex(
+            _ = migrationBuilder.RenameIndex(
                 name: "IX_AzureKeys_IdentityUserId",
                 table: "AzureInfo",
                 newName: "IX_AzureInfo_IdentityUserId");
 
-            migrationBuilder.AddPrimaryKey(
+            _ = migrationBuilder.AddPrimaryKey(
                 name: "PK_AzureInfo",
                 table: "AzureInfo",
                 column: "Id");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "GitHubInfo",
                 columns: table => new
                 {
@@ -51,8 +51,8 @@ namespace IdentityService.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GitHubInfo", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_GitHubInfo", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_GitHubInfo_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
                         principalTable: "AspNetUsers",
@@ -60,12 +60,12 @@ namespace IdentityService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_GitHubInfo_IdentityUserId",
                 table: "GitHubInfo",
                 column: "IdentityUserId");
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FK_AzureInfo_AspNetUsers_IdentityUserId",
                 table: "AzureInfo",
                 column: "IdentityUserId",
@@ -77,32 +77,32 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            _ = migrationBuilder.DropForeignKey(
                 name: "FK_AzureInfo_AspNetUsers_IdentityUserId",
                 table: "AzureInfo");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "GitHubInfo");
 
-            migrationBuilder.DropPrimaryKey(
+            _ = migrationBuilder.DropPrimaryKey(
                 name: "PK_AzureInfo",
                 table: "AzureInfo");
 
-            migrationBuilder.RenameTable(
+            _ = migrationBuilder.RenameTable(
                 name: "AzureInfo",
                 newName: "AzureKeys");
 
-            migrationBuilder.RenameIndex(
+            _ = migrationBuilder.RenameIndex(
                 name: "IX_AzureInfo_IdentityUserId",
                 table: "AzureKeys",
                 newName: "IX_AzureKeys_IdentityUserId");
 
-            migrationBuilder.AddPrimaryKey(
+            _ = migrationBuilder.AddPrimaryKey(
                 name: "PK_AzureKeys",
                 table: "AzureKeys",
                 column: "Id");
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "GitHubKeys",
                 columns: table => new
                 {
@@ -114,8 +114,8 @@ namespace IdentityService.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GitHubKeys", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_GitHubKeys", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_GitHubKeys_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
                         principalTable: "AspNetUsers",
@@ -123,12 +123,12 @@ namespace IdentityService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_GitHubKeys_IdentityUserId",
                 table: "GitHubKeys",
                 column: "IdentityUserId");
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FK_AzureKeys_AspNetUsers_IdentityUserId",
                 table: "AzureKeys",
                 column: "IdentityUserId",

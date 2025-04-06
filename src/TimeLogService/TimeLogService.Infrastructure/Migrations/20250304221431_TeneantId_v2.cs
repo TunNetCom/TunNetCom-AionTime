@@ -10,7 +10,7 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "WorkItemTimeLog",
                 type: "nvarchar(100)",
@@ -20,7 +20,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "WorkItemHistory",
                 type: "nvarchar(100)",
@@ -30,7 +30,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "WorkItem",
                 type: "nvarchar(100)",
@@ -40,7 +40,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "User",
                 type: "nvarchar(100)",
@@ -50,7 +50,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "Project",
                 type: "nvarchar(100)",
@@ -60,7 +60,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "Organization",
                 type: "nvarchar(100)",
@@ -70,7 +70,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "AionTimeSubscriptionHistory",
                 type: "nvarchar(100)",
@@ -80,7 +80,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "AionTimeSubscription",
                 type: "nvarchar(100)",
@@ -94,7 +94,7 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "WorkItemTimeLog",
                 type: "nvarchar(max)",
@@ -104,7 +104,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "WorkItemHistory",
                 type: "nvarchar(max)",
@@ -114,7 +114,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "WorkItem",
                 type: "nvarchar(max)",
@@ -124,7 +124,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "User",
                 type: "nvarchar(max)",
@@ -134,7 +134,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "Project",
                 type: "nvarchar(max)",
@@ -144,7 +144,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "Organization",
                 type: "nvarchar(max)",
@@ -154,7 +154,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "AionTimeSubscriptionHistory",
                 type: "nvarchar(max)",
@@ -164,7 +164,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldMaxLength: 100,
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "TenantId",
                 table: "AionTimeSubscription",
                 type: "nvarchar(max)",

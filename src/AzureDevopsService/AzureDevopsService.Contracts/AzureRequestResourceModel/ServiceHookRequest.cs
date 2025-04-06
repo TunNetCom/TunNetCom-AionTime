@@ -3,20 +3,20 @@
 public class ServiceHookReques : InternalBaseRequest
 {
     [JsonProperty("publisherId")]
-    public string PublisherId { get; set; }
+    public required string PublisherId { get; set; }
 
     [JsonProperty("eventType")]
-    public string EventType { get; set; }
+    public required string EventType { get; set; }
 
     [JsonProperty("consumerId")]
-    public string ConsumerId { get; set; }
+    public required string ConsumerId { get; set; }
 
     [JsonProperty("consumerActionId")]
-    public string ConsumerActionId { get; set; }
+    public required string ConsumerActionId { get; set; }
 
     [JsonProperty("consumerInputs")]
-    public ConsumerInputs ConsumerInputs { get; set; }
+    public required ConsumerInputs ConsumerInputs { get; set; }
 
     [JsonProperty("publisherInputs")]
-    public PublisherInputs PublisherInputs { get; set; }
+    public required PublisherInputs PublisherInputs { get; set; }
 }

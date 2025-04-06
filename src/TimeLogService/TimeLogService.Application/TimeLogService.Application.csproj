@@ -7,37 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Feature\UserAction\Commands\DeleteUser\**" />
-    <Compile Remove="Feature\UserAction\Commands\UpdateUser\**" />
-    <Compile Remove="Feature\UserAction\Queries\**" />
-    <EmbeddedResource Remove="Feature\UserAction\Commands\DeleteUser\**" />
-    <EmbeddedResource Remove="Feature\UserAction\Commands\UpdateUser\**" />
-    <EmbeddedResource Remove="Feature\UserAction\Queries\**" />
-    <None Remove="Feature\UserAction\Commands\DeleteUser\**" />
-    <None Remove="Feature\UserAction\Commands\UpdateUser\**" />
-    <None Remove="Feature\UserAction\Queries\**" />
+    <Compile Remove="Featurs\ProjectActions\Queries\**" />
+    <EmbeddedResource Remove="Featurs\ProjectActions\Queries\**" />
+    <None Remove="Featurs\ProjectActions\Queries\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="AzureDevopsService.Contracts" Version="1.0.4" />
     <PackageReference Include="MassTransit" Version="8.2.5" />
     <PackageReference Include="MassTransit.Newtonsoft" Version="8.2.5" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="OneOf" Version="3.0.271" />
-    <PackageReference Include="TunNetCom.AionTime.AzureDevopsService.Contracts" Version="1.0.7" />
     <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel.csproj" />
     <ProjectReference Include="..\TimeLogService.Contracts\TimeLogService.Contracts.csproj" />
     <ProjectReference Include="..\TimeLogService.Domain\TimeLogService.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Events\DomainEvents\" />
-    <Folder Include="Feature\ProjectAction\Queries\" />
+    <Folder Include="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\" />
   </ItemGroup>
 
 </Project>

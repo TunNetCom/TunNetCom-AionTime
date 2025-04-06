@@ -3,5 +3,5 @@
 public class PublisherInputs
 {
     [JsonProperty("projectId")]
-    public string ProjectId { get; set; }
+    public required string ProjectId { get; set; }
 }
