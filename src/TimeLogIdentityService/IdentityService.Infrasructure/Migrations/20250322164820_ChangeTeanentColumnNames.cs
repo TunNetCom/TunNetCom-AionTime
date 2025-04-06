@@ -10,42 +10,42 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "OrganizationName",
                 table: "Tenants",
                 newName: "Name");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "OrganizationMobilePhone",
                 table: "Tenants",
                 newName: "MobilePhone");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "OrganizationLandPhone",
                 table: "Tenants",
                 newName: "LandPhone");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "OrganizationEmail",
                 table: "Tenants",
                 newName: "Email");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "OrganizationDescription",
                 table: "Tenants",
                 newName: "Description");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "OrganizationAddress",
                 table: "Tenants",
                 newName: "Address");
 
-            migrationBuilder.RenameIndex(
+            _ = migrationBuilder.RenameIndex(
                 name: "IX_Tenants_OrganizationName",
                 table: "Tenants",
                 newName: "IX_Tenants_Name");
 
-            migrationBuilder.RenameIndex(
+            _ = migrationBuilder.RenameIndex(
                 name: "IX_Tenants_OrganizationEmail",
                 table: "Tenants",
                 newName: "IX_Tenants_Email");
@@ -54,42 +54,42 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "Name",
                 table: "Tenants",
                 newName: "OrganizationName");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "MobilePhone",
                 table: "Tenants",
                 newName: "OrganizationMobilePhone");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "LandPhone",
                 table: "Tenants",
                 newName: "OrganizationLandPhone");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "Email",
                 table: "Tenants",
                 newName: "OrganizationEmail");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "Description",
                 table: "Tenants",
                 newName: "OrganizationDescription");
 
-            migrationBuilder.RenameColumn(
+            _ = migrationBuilder.RenameColumn(
                 name: "Address",
                 table: "Tenants",
                 newName: "OrganizationAddress");
 
-            migrationBuilder.RenameIndex(
+            _ = migrationBuilder.RenameIndex(
                 name: "IX_Tenants_Name",
                 table: "Tenants",
                 newName: "IX_Tenants_OrganizationName");
 
-            migrationBuilder.RenameIndex(
+            _ = migrationBuilder.RenameIndex(
                 name: "IX_Tenants_Email",
                 table: "Tenants",
                 newName: "IX_Tenants_OrganizationEmail");

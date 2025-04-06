@@ -3,17 +3,17 @@
 public class Links
 {
     [JsonProperty("self")]
-    public Link Self { get; set; }
+    public required Link Self { get; set; }
 
     [JsonProperty("consumer")]
-    public Link Consumer { get; set; }
+    public required Link Consumer { get; set; }
 
     [JsonProperty("actions")]
-    public Link Actions { get; set; }
+    public required Link Actions { get; set; }
 
     [JsonProperty("notifications")]
-    public Link Notifications { get; set; }
+    public required Link Notifications { get; set; }
 
     [JsonProperty("publisher")]
-    public Link Publisher { get; set; }
+    public required Link Publisher { get; set; }
 }

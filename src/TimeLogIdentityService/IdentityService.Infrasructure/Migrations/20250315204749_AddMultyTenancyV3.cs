@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 #nullable disable
 
@@ -11,7 +11,7 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
+            _ = migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Tenants",
                 type: "datetime2",
@@ -21,7 +21,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "datetime2",
                 oldDefaultValue: new DateTime(2025, 3, 15, 20, 43, 58, 527, DateTimeKind.Utc).AddTicks(6098));
 
-            migrationBuilder.AlterColumn<Guid>(
+            _ = migrationBuilder.AlterColumn<Guid>(
                 name: "Id",
                 table: "Tenants",
                 type: "uniqueidentifier",
@@ -34,7 +34,7 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
+            _ = migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Tenants",
                 type: "datetime2",
@@ -44,7 +44,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "datetime2",
                 oldDefaultValueSql: "GETUTCDATE()");
 
-            migrationBuilder.AlterColumn<Guid>(
+            _ = migrationBuilder.AlterColumn<Guid>(
                 name: "Id",
                 table: "Tenants",
                 type: "uniqueidentifier",

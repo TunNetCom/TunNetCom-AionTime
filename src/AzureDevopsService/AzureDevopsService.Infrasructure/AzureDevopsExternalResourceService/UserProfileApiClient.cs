@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.ExternalRequestModel;
-
-namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
+﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiClient> logger) : IUserProfileApiClient
 {
@@ -17,7 +15,10 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
         {
             UserProfile? user = await userProfileResult.Content.ReadFromJsonAsync<UserProfile>();
 
-            return user;
+            if (user != null)
+            {
+                return user;
+            }
         }
 
         _logger.LogError(await userProfileResult.Content.ReadAsStringAsync());
@@ -38,7 +39,10 @@ public class UserProfileApiClient(HttpClient httpClient, ILogger<UserProfileApiC
         {
             UserAccountOrganization? responce = await userOrganizationResult.Content.ReadFromJsonAsync<UserAccountOrganization>();
 
-            return responce;
+            if (responce != null)
+            {
+                return responce;
+            }
         }
 
         _logger.LogError(await userOrganizationResult.Content.ReadAsStringAsync());

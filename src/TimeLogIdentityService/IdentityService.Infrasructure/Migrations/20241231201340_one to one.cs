@@ -10,15 +10,15 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_GitHubInfo_IdentityUserId",
                 table: "GitHubInfo");
 
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_AzureInfo_IdentityUserId",
                 table: "AzureInfo");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "IdentityUserId",
                 table: "GitHubInfo",
                 type: "nvarchar(450)",
@@ -26,7 +26,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(450)");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "IdentityUserId",
                 table: "AzureInfo",
                 type: "nvarchar(450)",
@@ -34,14 +34,14 @@ namespace IdentityService.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(450)");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_GitHubInfo_IdentityUserId",
                 table: "GitHubInfo",
                 column: "IdentityUserId",
                 unique: true,
                 filter: "[IdentityUserId] IS NOT NULL");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AzureInfo_IdentityUserId",
                 table: "AzureInfo",
                 column: "IdentityUserId",
@@ -52,15 +52,15 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_GitHubInfo_IdentityUserId",
                 table: "GitHubInfo");
 
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_AzureInfo_IdentityUserId",
                 table: "AzureInfo");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "IdentityUserId",
                 table: "GitHubInfo",
                 type: "nvarchar(450)",
@@ -70,7 +70,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(450)",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "IdentityUserId",
                 table: "AzureInfo",
                 type: "nvarchar(450)",
@@ -80,12 +80,12 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(450)",
                 oldNullable: true);
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_GitHubInfo_IdentityUserId",
                 table: "GitHubInfo",
                 column: "IdentityUserId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AzureInfo_IdentityUserId",
                 table: "AzureInfo",
                 column: "IdentityUserId");

@@ -11,7 +11,7 @@ namespace AzureDevopsService.Infrasructure
     {
         public static IServiceCollection AddInfrasructureService(this IServiceCollection services, IConfiguration configuration)
         {
-            var azureDevopsSettings = new AzureDevopsSettings();
+            AzureDevopsSettings azureDevopsSettings = new();
             configuration.GetSection("AzureDevopsSettings").Bind(azureDevopsSettings);
 
             _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>((serviceProvider, client) =>

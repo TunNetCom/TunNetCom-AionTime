@@ -4,7 +4,7 @@
         <name>WebhookService.API</name>
     </assembly>
     <members>
-        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource},System.String)">
+        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureWorkItemsEventsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.WorkItemResource})">
             <summary>
             Work item commented on
             Work item updated
@@ -15,7 +15,7 @@
             <param name="workItemEvent">Not tested</param>
             <returns></returns>
         </member>
-        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureCodeEvntsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.CodeResource},System.String)">
+        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzureCodeEvntsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.CodeResource})">
             <summary>
             Code checked in
             Code pushed
@@ -26,7 +26,7 @@
             <param name="codeEvent">Not tested</param>
             <returns></returns>
         </member>
-        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzurePipelineEventEvntsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.PipeLinesResource},System.String)">
+        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.AzurePipelineEventEvntsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.PipeLinesResource})">
             <summary>
             Job state changed
             Run state changed
@@ -38,7 +38,7 @@
             <param name="pipelineEvent">Not tested</param>
             <returns></returns>
         </member>
-        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.BuildAndReleaseEvntsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.BuildAndReleaseResource},System.String)">
+        <member name="M:WebhookService.API.Controlleurs.AzureDevopsServiceHookController.BuildAndReleaseEvntsAsync(WebhookService.Contracts.EventModels.SharedModels.AzureWebhookModelEvent{WebhookService.Contracts.EventModels.SharedModels.ResourcesModels.BuildAndReleaseResource})">
             <summary>
             Build completed
             Release created

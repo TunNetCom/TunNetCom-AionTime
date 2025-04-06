@@ -10,36 +10,36 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            _ = migrationBuilder.DropForeignKey(
                 name: "FKOrganisationProject",
                 table: "Project");
 
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_Project_OrganizationId",
                 table: "Project");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "OrganizationId",
                 table: "Project");
 
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "AccountId",
                 table: "Project",
                 type: "nvarchar(100)",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: string.Empty);
 
-            migrationBuilder.AddUniqueConstraint(
+            _ = migrationBuilder.AddUniqueConstraint(
                 name: "AK_Organization_AccountId",
                 table: "Organization",
                 column: "AccountId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Project_AccountId",
                 table: "Project",
                 column: "AccountId");
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FKOrganisationProject",
                 table: "Project",
                 column: "AccountId",
@@ -51,35 +51,35 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            _ = migrationBuilder.DropForeignKey(
                 name: "FKOrganisationProject",
                 table: "Project");
 
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_Project_AccountId",
                 table: "Project");
 
-            migrationBuilder.DropUniqueConstraint(
+            _ = migrationBuilder.DropUniqueConstraint(
                 name: "AK_Organization_AccountId",
                 table: "Organization");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "AccountId",
                 table: "Project");
 
-            migrationBuilder.AddColumn<int>(
+            _ = migrationBuilder.AddColumn<int>(
                 name: "OrganizationId",
                 table: "Project",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Project_OrganizationId",
                 table: "Project",
                 column: "OrganizationId");
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FKOrganisationProject",
                 table: "Project",
                 column: "OrganizationId",

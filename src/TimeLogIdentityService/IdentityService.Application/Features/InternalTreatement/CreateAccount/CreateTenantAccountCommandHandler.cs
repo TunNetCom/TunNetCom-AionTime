@@ -1,3 +1,5 @@
+using IdentityService.Application.Events.DomainEvents.Events;
+
 namespace IdentityService.Application.Features.InternalTreatement.CreateAccount;
 
 public class CreateTenantAccountCommandHandler(UserManager<ApplicationUser> userManager, IMediator mediator)
@@ -36,7 +38,7 @@ public class CreateTenantAccountCommandHandler(UserManager<ApplicationUser> user
 
         if (result.Succeeded)
         {
-            await _mediator.Publish(new TenantCreatedNotification(tenant.Value, request.AzureDevopsPath, string.Empty, request.Email), cancellationToken);
+            await _mediator.Publish(new TenantCreatedDomainEvent(tenant.Value, request.AzureDevopsPath, string.Empty, request.Email), cancellationToken);
         }
 
         return Result.Ok(result);

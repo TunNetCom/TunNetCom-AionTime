@@ -8,8 +8,6 @@ global using IdentityService.Application;
 global using IdentityService.Application.Features;
 global using IdentityService.Application.Features.InternalTreatement.AddTenant;
 global using IdentityService.Application.Features.InternalTreatement.CreateAccount;
-global using IdentityService.Application.Features.InternalTreatement.Events.TenatCreated;
-global using IdentityService.Application.Features.MessageBroker.Producer;
 global using IdentityService.Contracts;
 global using IdentityService.Contracts.Constant;
 global using IdentityService.Domain.Models.Dbo;

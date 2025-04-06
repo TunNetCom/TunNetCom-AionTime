@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 #nullable disable
 
@@ -11,21 +11,21 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AzureInfo");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "GitHubInfo");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "IsPrincipalAccount",
                 table: "AspNetUsers");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "ParentId",
                 table: "AspNetUsers");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "AspNetUsers",
                 type: "nvarchar(50)",
@@ -35,7 +35,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(30)",
                 oldMaxLength: 30);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "LastName",
                 table: "AspNetUsers",
                 type: "nvarchar(50)",
@@ -45,7 +45,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(30)",
                 oldMaxLength: 30);
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AzureKeyInfo",
                 columns: table => new
                 {
@@ -58,26 +58,26 @@ namespace IdentityService.Infrastructure.Migrations
                     TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Revision = table.Column<int>(type: "int", nullable: false),
                     PublicKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PublicKeyExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    PublicKeyExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AzureKeyInfo", x => x.Id);
+                    _ = table.PrimaryKey("PK_AzureKeyInfo", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "Tenants",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", maxLength: 100, nullable: false),
                     TenantName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     TenantType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AzureKeyInfoId = table.Column<int>(type: "int", nullable: true)
+                    AzureKeyInfoId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tenants", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_Tenants", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_Tenants_AzureKeyInfo_AzureKeyInfoId",
                         column: x => x.AzureKeyInfoId,
                         principalTable: "AzureKeyInfo",
@@ -85,23 +85,23 @@ namespace IdentityService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "ApplicationUserTenant",
                 columns: table => new
                 {
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationUserTenant", x => new { x.ApplicationUserId, x.TenantId });
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_ApplicationUserTenant", x => new { x.ApplicationUserId, x.TenantId });
+                    _ = table.ForeignKey(
                         name: "FK_ApplicationUserTenant_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
+                    _ = table.ForeignKey(
                         name: "FK_ApplicationUserTenant_Tenants_TenantId",
                         column: x => x.TenantId,
                         principalTable: "Tenants",
@@ -109,17 +109,17 @@ namespace IdentityService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_ApplicationUserTenant_TenantId",
                 table: "ApplicationUserTenant",
                 column: "TenantId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Tenants_AzureKeyInfoId",
                 table: "Tenants",
                 column: "AzureKeyInfoId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Tenants_TenantName",
                 table: "Tenants",
                 column: "TenantName",
@@ -129,16 +129,16 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "ApplicationUserTenant");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "Tenants");
 
-            migrationBuilder.DropTable(
+            _ = migrationBuilder.DropTable(
                 name: "AzureKeyInfo");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "AspNetUsers",
                 type: "nvarchar(30)",
@@ -148,7 +148,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(50)",
                 oldMaxLength: 50);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "LastName",
                 table: "AspNetUsers",
                 type: "nvarchar(30)",
@@ -158,21 +158,21 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(50)",
                 oldMaxLength: 50);
 
-            migrationBuilder.AddColumn<bool>(
+            _ = migrationBuilder.AddColumn<bool>(
                 name: "IsPrincipalAccount",
                 table: "AspNetUsers",
                 type: "bit",
                 nullable: false,
                 defaultValue: false);
 
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "ParentId",
                 table: "AspNetUsers",
                 type: "nvarchar(450)",
                 maxLength: 450,
                 nullable: true);
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "AzureInfo",
                 columns: table => new
                 {
@@ -186,12 +186,12 @@ namespace IdentityService.Infrastructure.Migrations
                     PublicKeyExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Revision = table.Column<int>(type: "int", nullable: false),
                     TimeStamp = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AzureInfo", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_AzureInfo", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_AzureInfo_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
                         principalTable: "AspNetUsers",
@@ -199,7 +199,7 @@ namespace IdentityService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
+            _ = migrationBuilder.CreateTable(
                 name: "GitHubInfo",
                 columns: table => new
                 {
@@ -208,12 +208,12 @@ namespace IdentityService.Infrastructure.Migrations
                     IdentityUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     ExpirationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Key = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_GitHubInfo", x => x.Id);
-                    table.ForeignKey(
+                    _ = table.PrimaryKey("PK_GitHubInfo", x => x.Id);
+                    _ = table.ForeignKey(
                         name: "FK_GitHubInfo_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
                         principalTable: "AspNetUsers",
@@ -221,14 +221,14 @@ namespace IdentityService.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_AzureInfo_IdentityUserId",
                 table: "AzureInfo",
                 column: "IdentityUserId",
                 unique: true,
                 filter: "[IdentityUserId] IS NOT NULL");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_GitHubInfo_IdentityUserId",
                 table: "GitHubInfo",
                 column: "IdentityUserId",
