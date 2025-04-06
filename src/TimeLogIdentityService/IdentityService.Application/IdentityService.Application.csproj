@@ -39,4 +39,10 @@
     <ProjectReference Include="..\IdentityService.Infrasructure\IdentityService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\IntegrationEvents\EventsHandlers\" />
+    <Folder Include="Events\IntegrationEvents\Events\Incoming\" />
+    <Folder Include="Features\MessageBroker\Producer\" />
+  </ItemGroup>
+
 </Project>

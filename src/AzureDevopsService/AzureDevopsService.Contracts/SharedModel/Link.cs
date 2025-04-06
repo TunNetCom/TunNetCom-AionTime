@@ -3,5 +3,5 @@
 public class Link
 {
     [JsonProperty("href")]
-    public string Href { get; set; }
+    public required string Href { get; set; }
 }

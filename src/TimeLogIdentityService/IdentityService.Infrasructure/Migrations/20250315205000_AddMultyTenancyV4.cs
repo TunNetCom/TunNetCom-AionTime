@@ -10,7 +10,7 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Tenants_TenantName",
                 table: "Tenants",
                 column: "TenantName",
@@ -20,7 +20,7 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_Tenants_TenantName",
                 table: "Tenants");
         }

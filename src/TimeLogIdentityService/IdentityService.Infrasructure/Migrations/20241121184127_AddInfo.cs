@@ -10,14 +10,14 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "Name",
                 table: "GitHubInfo",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: string.Empty);
 
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "LastName",
                 table: "AspNetUsers",
                 type: "nvarchar(30)",
@@ -25,7 +25,7 @@ namespace IdentityService.Infrastructure.Migrations
                 nullable: false,
                 defaultValue: string.Empty);
 
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "Name",
                 table: "AspNetUsers",
                 type: "nvarchar(30)",
@@ -37,15 +37,15 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "Name",
                 table: "GitHubInfo");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "LastName",
                 table: "AspNetUsers");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "Name",
                 table: "AspNetUsers");
         }

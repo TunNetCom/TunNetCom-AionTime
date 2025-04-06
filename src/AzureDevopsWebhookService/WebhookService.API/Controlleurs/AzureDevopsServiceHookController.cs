@@ -16,7 +16,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     /// <param name="workItemEvent">Not tested</param>
     /// <returns></returns>
     [HttpPost("AzureWorkItemsEvents")]
-    public async Task<IActionResult> AzureWorkItemsEventsAsync(AzureWebhookModelEvent<WorkItemResource> workItemEvent,[FromQuery ]string organizationId)
+    public async Task<IActionResult> AzureWorkItemsEventsAsync(AzureWebhookModelEvent<WorkItemResource> workItemEvent)
     {
         await _mediator.Send(workItemEvent);
         return Ok();
@@ -32,7 +32,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     /// <param name="codeEvent">Not tested</param>
     /// <returns></returns>
     [HttpPost("AzureCodeEvents")]
-    public async Task<IActionResult> AzureCodeEvntsAsync(AzureWebhookModelEvent<CodeResource> codeEvent, string organizationId)
+    public async Task<IActionResult> AzureCodeEvntsAsync(AzureWebhookModelEvent<CodeResource> codeEvent)
     {
         await _mediator.Send(codeEvent);
         return Ok();
@@ -49,7 +49,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     /// <param name="pipelineEvent">Not tested</param>
     /// <returns></returns>
     [HttpPost("AzurePipelineEvents")]
-    public async Task<IActionResult> AzurePipelineEventEvntsAsync(AzureWebhookModelEvent<PipeLinesResource> pipelineEvent, string organizationId)
+    public async Task<IActionResult> AzurePipelineEventEvntsAsync(AzureWebhookModelEvent<PipeLinesResource> pipelineEvent)
     {
         await _mediator.Send(pipelineEvent);
         return Ok(pipelineEvent);
@@ -67,7 +67,7 @@ public class AzureDevopsServiceHookController(IMediator mediator) : ControllerBa
     /// <param name="buildAndReleaseEvnts">Not tested</param>
     /// <returns></returns>
     [HttpPost("BuildAndReleaseEvents")]
-    public async Task<IActionResult> BuildAndReleaseEvntsAsync(AzureWebhookModelEvent<BuildAndReleaseResource> buildAndReleaseEvnts, string organizationId)
+    public async Task<IActionResult> BuildAndReleaseEvntsAsync(AzureWebhookModelEvent<BuildAndReleaseResource> buildAndReleaseEvnts)
     {
         await _mediator.Send(buildAndReleaseEvnts);
         return Ok();

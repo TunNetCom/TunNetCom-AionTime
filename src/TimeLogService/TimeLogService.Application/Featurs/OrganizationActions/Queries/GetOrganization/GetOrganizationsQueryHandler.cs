@@ -1,0 +1,23 @@
+﻿using TimeLogService;
+using TimeLogService.Application;
+using TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganization;
+
+namespace TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganization;
+
+public class GetOrganizationsQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
+    : IRequestHandler<GetOrganizationsQuery, IReadOnlyList<OrganizationRequest>>
+{
+    private readonly IRepository<Organization> _organizationRepository = organizationRepository;
+    private readonly IMapper _mapper = mapper;
+
+    public async Task<IReadOnlyList<OrganizationRequest>> Handle(
+        GetOrganizationsQuery request,
+        CancellationToken cancellationToken)
+    {
+        IReadOnlyList<Organization> organisationList = await _organizationRepository.GetAsync();
+        IReadOnlyList<OrganizationRequest> organizations =
+            _mapper.Map<IReadOnlyList<OrganizationRequest>>(organisationList);
+
+        return organizations;
+    }
+}

@@ -5,7 +5,7 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
     private readonly HttpClient _httpClient = httpClient;
     private readonly ILogger<ProjectService> _logger = logger;
 
-    public async Task<OneOf<OrganizationProjects, CustomProblemDetailsResponce>> AllProjectUnderOrganization(string organizationName, string path)
+    public async Task<OneOf<OrganizationProjectsResponce, CustomProblemDetailsResponce>> AllProjectUnderOrganization(string organizationName, string path)
     {
         HttpClientHelper.SetAuthHeader(_httpClient, path);
 
@@ -13,7 +13,7 @@ public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logge
 
         if (projectsResult.StatusCode == HttpStatusCode.OK)
         {
-            OrganizationProjects? projects = await projectsResult.Content.ReadFromJsonAsync<OrganizationProjects>();
+            OrganizationProjectsResponce? projects = await projectsResult.Content.ReadFromJsonAsync<OrganizationProjectsResponce>();
 
             return projects;
         }

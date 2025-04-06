@@ -6,7 +6,7 @@ public abstract partial class BaseEntity : IRequest<int>
     public int Id { get; set; }
 
     /// <summary>
-    /// the TenantId is Identity user Id
+    /// Gets or sets the TenantId is Identity user Id
     /// </summary>
     public required string TenantId { get; set; }
 }

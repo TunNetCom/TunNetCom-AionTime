@@ -20,9 +20,9 @@ public class TimeLogServiceController(IMediator mediator) : ControllerBase
 
     [HttpPost]
     [Route("ProfileUser")]
-    public async Task<IActionResult> CreateOrganization(BaseRequest BaseRequest)
+    public async Task<IActionResult> CreateOrganization(BaseRequest baseRequest)
     {
-        await _mediator.Send(new ProfileUserCommand(BaseRequest));
+        await _mediator.Send(new ProfileUserCommand(baseRequest));
         return Ok();
     }
 

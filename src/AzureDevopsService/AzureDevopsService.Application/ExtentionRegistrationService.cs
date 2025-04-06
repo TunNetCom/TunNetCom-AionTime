@@ -1,14 +1,15 @@
-﻿namespace AzureDevopsService.Application;
+﻿using AzureDevopsService.Application.Events.IntegrationEvents.EventsHandlers;
+
+namespace AzureDevopsService.Application;
 
 public static class ExtentionRegistrationService
 {
     public static IServiceCollection AddApplicationService(this IServiceCollection services)
     {
-        // TODO move base adress to settings area
         _ = services.AddMassTransit(x =>
         {
             x.SetDefaultEndpointNameFormatter();
-            _ = x.AddConsumer<AzureDevopsConsumer>();
+            _ = x.AddConsumer<AzureDevopsIntegrationEventsHandlers>();
             x.SetDefaultEndpointNameFormatter();
 
             x.UsingRabbitMq((context, cfg) =>
@@ -24,7 +25,7 @@ public static class ExtentionRegistrationService
                 cfg.ReceiveEndpoint("AzureDevops", e =>
                 {
                     e.SetQueueArgument("x-message-ttl", 60000);
-                    e.ConfigureConsumer<AzureDevopsConsumer>(context);
+                    e.ConfigureConsumer<AzureDevopsIntegrationEventsHandlers>(context);
                 });
             });
         });

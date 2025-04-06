@@ -3,5 +3,5 @@
 public class PublisherInputsWebhookResponce
 {
     [JsonProperty("tfsSubscriptionId")]
-    public string TfsSubscriptionId { get; set; }
+    public required string TfsSubscriptionId { get; set; }
 }

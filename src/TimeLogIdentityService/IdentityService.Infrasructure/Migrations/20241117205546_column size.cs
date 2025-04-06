@@ -14,7 +14,7 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "EmailAddress",
                 table: "AzureKeys",
                 type: "nvarchar(100)",
@@ -23,7 +23,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "ParentId",
                 table: "AspNetUsers",
                 type: "nvarchar(450)",
@@ -37,7 +37,7 @@ namespace IdentityService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "EmailAddress",
                 table: "AzureKeys",
                 type: "nvarchar(max)",
@@ -46,7 +46,7 @@ namespace IdentityService.Infrastructure.Migrations
                 oldType: "nvarchar(100)",
                 oldMaxLength: 100);
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "ParentId",
                 table: "AspNetUsers",
                 type: "nvarchar(max)",

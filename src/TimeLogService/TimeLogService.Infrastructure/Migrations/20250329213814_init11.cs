@@ -10,19 +10,19 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
+            _ = migrationBuilder.DropForeignKey(
                 name: "FKUserOrganization",
                 table: "Organization");
 
-            migrationBuilder.DropUniqueConstraint(
+            _ = migrationBuilder.DropUniqueConstraint(
                 name: "AK_User_UserId",
                 table: "User");
 
-            migrationBuilder.DropIndex(
+            _ = migrationBuilder.DropIndex(
                 name: "IX_Organization_UserId",
                 table: "Organization");
 
-            migrationBuilder.DropColumn(
+            _ = migrationBuilder.DropColumn(
                 name: "UserId",
                 table: "Organization");
         }
@@ -30,25 +30,25 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            _ = migrationBuilder.AddColumn<string>(
                 name: "UserId",
                 table: "Organization",
                 type: "nvarchar(100)",
                 maxLength: 100,
                 nullable: false,
-                defaultValue: "");
+                defaultValue: string.Empty);
 
-            migrationBuilder.AddUniqueConstraint(
+            _ = migrationBuilder.AddUniqueConstraint(
                 name: "AK_User_UserId",
                 table: "User",
                 column: "UserId");
 
-            migrationBuilder.CreateIndex(
+            _ = migrationBuilder.CreateIndex(
                 name: "IX_Organization_UserId",
                 table: "Organization",
                 column: "UserId");
 
-            migrationBuilder.AddForeignKey(
+            _ = migrationBuilder.AddForeignKey(
                 name: "FKUserOrganization",
                 table: "Organization",
                 column: "UserId",

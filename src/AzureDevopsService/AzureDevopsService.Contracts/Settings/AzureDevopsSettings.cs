@@ -2,7 +2,7 @@
 
 public class AzureDevopsSettings
 {
-    public string BaseUrlAzure {  get; set; }
+    public required string BaseUrlAzure { get; set; }
 
-    public string BaseUrlVssps { get; set; }
+    public required string BaseUrlVssps { get; set; }
 }

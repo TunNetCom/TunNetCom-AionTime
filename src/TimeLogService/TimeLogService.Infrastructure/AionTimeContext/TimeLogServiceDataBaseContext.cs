@@ -5,21 +5,21 @@ namespace TimeLogService.Infrastructure.AionTimeContext;
 
 public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServiceDataBaseContext> options) : DbContext(options)
 {
-    public virtual DbSet<AionTimeSubscription> AionTimeSubscriptions { get; set; }
+    public virtual required DbSet<AionTimeSubscription> AionTimeSubscriptions { get; set; }
 
-    public virtual DbSet<AionTimeSubscriptionHistory> AionTimeSubscriptionHistories { get; set; }
+    public virtual required DbSet<AionTimeSubscriptionHistory> AionTimeSubscriptionHistories { get; set; }
 
-    public virtual DbSet<Organization> Organizations { get; set; }
+    public virtual required DbSet<Organization> Organizations { get; set; }
 
-    public virtual DbSet<Project> Projects { get; set; }
+    public virtual required DbSet<Project> Projects { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
+    public virtual required DbSet<User> Users { get; set; }
 
-    public virtual DbSet<WorkItem> WorkItems { get; set; }
+    public virtual required DbSet<WorkItem> WorkItems { get; set; }
 
-    public virtual DbSet<WorkItemHistory> WorkItemHistories { get; set; }
+    public virtual required DbSet<WorkItemHistory> WorkItemHistories { get; set; }
 
-    public virtual DbSet<WorkItemTimeLog> WorkItemTimeLogs { get; set; }
+    public virtual required DbSet<WorkItemTimeLog> WorkItemTimeLogs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

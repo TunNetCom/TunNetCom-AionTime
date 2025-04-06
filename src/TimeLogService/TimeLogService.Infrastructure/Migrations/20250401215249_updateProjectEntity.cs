@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 #nullable disable
 
@@ -11,17 +11,17 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "State",
                 table: "Project",
                 type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: "",
+                defaultValue: string.Empty,
                 oldClrType: typeof(int),
                 oldType: "int",
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<Guid>(
+            _ = migrationBuilder.AlterColumn<Guid>(
                 name: "ProjectId",
                 table: "Project",
                 type: "uniqueidentifier",
@@ -35,7 +35,7 @@ namespace TimeLogService.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
+            _ = migrationBuilder.AlterColumn<int>(
                 name: "State",
                 table: "Project",
                 type: "int",
@@ -43,7 +43,7 @@ namespace TimeLogService.Infrastructure.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
 
-            migrationBuilder.AlterColumn<string>(
+            _ = migrationBuilder.AlterColumn<string>(
                 name: "ProjectId",
                 table: "Project",
                 type: "nvarchar(100)",

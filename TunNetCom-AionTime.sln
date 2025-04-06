@@ -77,6 +77,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Domain", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureDevopsService.Infrasructure", "src\AzureDevopsService\AzureDevopsService.Infrasructure\AzureDevopsService.Infrasructure.csproj", "{4D9F98A5-9F0B-456B-A965-07FCEF91F4EA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TunNetCom.AionTime.SharedKernel", "TunNetCom.AionTime.SharedKernel", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunNetCom.AionTime.SharedKernel", "src\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel.csproj", "{1C74171D-0C75-4CCE-911D-21661B1555FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +163,10 @@ Global
 		{4D9F98A5-9F0B-456B-A965-07FCEF91F4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D9F98A5-9F0B-456B-A965-07FCEF91F4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D9F98A5-9F0B-456B-A965-07FCEF91F4EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C74171D-0C75-4CCE-911D-21661B1555FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C74171D-0C75-4CCE-911D-21661B1555FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C74171D-0C75-4CCE-911D-21661B1555FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C74171D-0C75-4CCE-911D-21661B1555FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +197,8 @@ Global
 		{46667226-E0EC-4D9A-A458-4B5187B16B47} = {9E366E19-579D-44C0-99A4-41A663FB073C}
 		{97441EFF-290D-4B26-979D-87C9B7D1E160} = {9E366E19-579D-44C0-99A4-41A663FB073C}
 		{4D9F98A5-9F0B-456B-A965-07FCEF91F4EA} = {B75B5856-BD77-4339-8247-0FA02F8AAF4D}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {97CACF4A-AA5F-4755-AB9D-C164B81B497E}
+		{1C74171D-0C75-4CCE-911D-21661B1555FB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9A31BB7-D618-49AB-A06A-907C5BA16305}
