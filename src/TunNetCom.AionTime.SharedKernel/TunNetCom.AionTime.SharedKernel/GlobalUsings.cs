@@ -1,4 +1,5 @@
-﻿global using Microsoft.Extensions.DependencyInjection;
+﻿global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using Polly;
@@ -19,3 +20,5 @@ global using System.Text.Json.Serialization.Metadata;
 global using System.Threading.Tasks;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Events;
+global using TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
+global using TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ.Extensions;

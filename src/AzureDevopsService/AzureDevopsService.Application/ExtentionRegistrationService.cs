@@ -1,4 +1,5 @@
 ﻿using AzureDevopsService.Application.Events.IntegrationEvents.EventsHandlers;
+using TunNetCom.AionTime.SharedKernel;
 
 namespace AzureDevopsService.Application;
 
@@ -6,29 +7,20 @@ public static class ExtentionRegistrationService
 {
     public static IServiceCollection AddApplicationService(this IServiceCollection services)
     {
-        _ = services.AddMassTransit(x =>
-        {
-            x.SetDefaultEndpointNameFormatter();
-            _ = x.AddConsumer<AzureDevopsIntegrationEventsHandlers>();
-            x.SetDefaultEndpointNameFormatter();
-
-            x.UsingRabbitMq((context, cfg) =>
+        _ = services.AddRabbitMQ(
+            config =>
             {
-                RabbitMqSettings rabbitMqSettings = context.GetRequiredService<IOptions<RabbitMqSettings>>().Value;
-
-                cfg.Host(rabbitMqSettings.ServiceName, "/", h =>
-                {
-                    h.Username(rabbitMqSettings.UserName);
-                    h.Password(rabbitMqSettings.Password);
-                });
-                cfg.UseNewtonsoftJsonSerializer();
-                cfg.ReceiveEndpoint("AzureDevops", e =>
-                {
-                    e.SetQueueArgument("x-message-ttl", 60000);
-                    e.ConfigureConsumer<AzureDevopsIntegrationEventsHandlers>(context);
-                });
+                config.EventBusConnection = "localhost";
+                config.EventBusUserName = "AionTime";
+                config.EventBusPassword = "AionTime";
+                config.ServiceName = "azure_devops_service";
+                config.EventBusRetryCount = 5;
+            },
+            eventBus =>
+            {
+                eventBus.Subscribe<TenantCreatedIntegrationEvent, TenantCreatedIntegrationEventHandler>();
             });
-        });
+
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
         return services;
