@@ -6,7 +6,7 @@ public class WebhookResponce
     public required string Id { get; set; }
 
     [JsonProperty("url")]
-    public required string Url { get; set; }
+    public required Uri Url { get; set; }
 
     [JsonProperty("status")]
     public required string Status { get; set; }

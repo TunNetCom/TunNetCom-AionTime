@@ -1,8 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.Application;
-using TimeLogService.Application.Featurs.OrganizationActions.Commands.AddOrganizationList;
-
-namespace TimeLogService.Application.Featurs.OrganizationActions.Commands.AddOrganizationList
+﻿namespace TimeLogService.Application.Featurs.OrganizationActions.Commands.AddOrganizationList
 {
     public class AddOrganizationListCommandHandler(IRepository<Organization> repository) : IRequestHandler<AddOrganizationListCommand>
     {

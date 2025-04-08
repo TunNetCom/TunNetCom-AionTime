@@ -1,5 +1,4 @@
-﻿global using MassTransit;
-global using MediatR;
+﻿global using MediatR;
 global using Microsoft.AspNetCore.Diagnostics;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.Mvc;
@@ -15,10 +14,7 @@ global using Serilog;
 global using Serilog.Events;
 global using Serilog.Sinks.Grafana.Loki;
 global using System.Net;
-global using System.Runtime.InteropServices;
-global using System.Threading.Channels;
 global using WebhookService.API;
-global using WebhookService.API.Controlleurs;
 global using WebhookService.API.Middelware;
 global using WebhookService.Application;
 global using WebhookService.Contracts.EventModels.SharedModels;

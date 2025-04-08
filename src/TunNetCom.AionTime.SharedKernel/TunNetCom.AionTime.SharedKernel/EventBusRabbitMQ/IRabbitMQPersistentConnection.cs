@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
-
-namespace TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
+﻿namespace TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
 
 public interface IRabbitMQPersistentConnection
     : IDisposable

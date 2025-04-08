@@ -4,8 +4,6 @@ namespace TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ.Extensions;
 
 public interface IEventBusSubscriptionsManager
 {
-    event EventHandler<EventRemovedEventArgs> OnEventRemoved;
-
     event EventHandler<string> OnEventRemoved;
 
     bool IsEmpty { get; }

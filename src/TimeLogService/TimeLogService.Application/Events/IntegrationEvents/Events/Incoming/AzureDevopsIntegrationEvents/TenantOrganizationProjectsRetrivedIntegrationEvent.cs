@@ -14,7 +14,7 @@ public record ProjectObject
 
     public string Name { get; } = string.Empty;
 
-    public required Uri Url { get; }
+    public required Uri Url { get; set; }
 
     public string State { get; } = string.Empty;
 

@@ -1,8 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.Application;
-using TimeLogService.Application.Featurs.OrganizationActions.Commands.DeletOrganization;
-
-namespace TimeLogService.Application.Featurs.OrganizationActions.Commands.DeletOrganization;
+﻿namespace TimeLogService.Application.Featurs.OrganizationActions.Commands.DeletOrganization;
 
 public class DeleteOrganizationCommandHandler(IRepository<Organization> organizationRepository)
     : IRequestHandler<DeleteOrganizationCommand, int>

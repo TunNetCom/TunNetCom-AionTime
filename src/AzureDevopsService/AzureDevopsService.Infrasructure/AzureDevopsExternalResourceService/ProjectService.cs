@@ -1,4 +1,6 @@
-﻿namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
+﻿using AzureDevopsService.Contracts.Internal.Interfaces;
+
+namespace AzureDevopsService.Infrasructure.AzureDevopsExternalResourceService;
 
 public class ProjectService(HttpClient httpClient, ILogger<ProjectService> logger) : IProjectService
 {

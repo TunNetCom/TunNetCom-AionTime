@@ -1,9 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.API;
-using TimeLogService.API.Middelware;
-using TimeLogService.API.Middelware;
-
-namespace TimeLogService.API.Middelware;
+﻿namespace TimeLogService.API.Middelware;
 
 internal sealed class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
     : IExceptionHandler

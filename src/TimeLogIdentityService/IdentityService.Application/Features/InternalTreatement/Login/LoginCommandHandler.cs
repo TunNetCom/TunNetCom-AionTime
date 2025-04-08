@@ -1,10 +1,3 @@
-using IdentityService;
-using IdentityService.Application;
-using IdentityService.Application.Features;
-using IdentityService.Application.Features.InternalTreatement.Login;
-using IdentityService.Contracts.Constant;
-using IdentityService.Domain.Models.Dbo;
-
 namespace IdentityService.Application.Features.InternalTreatement.Login;
 
 public class LoginCommandHandler(UserManager<ApplicationUser> userManager, IConfiguration configuration) :

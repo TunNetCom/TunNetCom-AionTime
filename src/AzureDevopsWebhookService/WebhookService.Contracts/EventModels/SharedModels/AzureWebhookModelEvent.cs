@@ -1,5 +1,4 @@
-﻿using WebhookService.Contracts.EventModels.SharedModels;
-using WebhookService.Contracts.EventModels.SharedModels.EventModels;
+﻿using WebhookService.Contracts.EventModels.SharedModels.EventModels;
 
 namespace WebhookService.Contracts.EventModels.SharedModels;
 

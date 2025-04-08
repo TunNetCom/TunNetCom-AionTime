@@ -1,5 +1,5 @@
-﻿using Mapster;
-using System.Threading;
+﻿using AzureDevopsService.Contracts.Internal.Interfaces;
+using Mapster;
 
 namespace AzureDevopsService.Application.Events.IntegrationEvents.EventsHandlers;
 

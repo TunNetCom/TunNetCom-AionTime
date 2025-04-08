@@ -1,8 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.Application;
-using TimeLogService.Application.Featurs.OrganizationActions.Commands.UpdateOrganization;
-
-namespace TimeLogService.Application.Featurs.OrganizationActions.Commands.UpdateOrganization;
+﻿namespace TimeLogService.Application.Featurs.OrganizationActions.Commands.UpdateOrganization;
 
 public class UpdateOrganizationCommandHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<UpdateOrganizationCommand, int>

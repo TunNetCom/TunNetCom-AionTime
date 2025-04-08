@@ -2,7 +2,7 @@
 
 public class AzureDevopsSettings
 {
-    public required string BaseUrlAzure { get; set; }
+    public Uri? BaseUrlAzure { get; set; }
 
-    public required string BaseUrlVssps { get; set; }
+    public Uri? BaseUrlVssps { get; set; }
 }

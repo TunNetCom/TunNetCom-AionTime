@@ -1,4 +1,4 @@
-﻿namespace AzureDevopsService.Contracts.Internal.Interface;
+﻿namespace AzureDevopsService.Contracts.Internal.Interfaces;
 
 public interface IWorkItemExternalService
 {

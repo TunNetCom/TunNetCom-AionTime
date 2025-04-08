@@ -1,5 +1,4 @@
-﻿using TimeLogService.Application.Events.IntegrationEvents;
-using TimeLogService.Application.Events.IntegrationEvents.EventsHandlers;
+﻿using TimeLogService.Application.Events.IntegrationEvents.EventsHandlers;
 using TunNetCom.AionTime.SharedKernel;
 
 namespace TimeLogService.Application

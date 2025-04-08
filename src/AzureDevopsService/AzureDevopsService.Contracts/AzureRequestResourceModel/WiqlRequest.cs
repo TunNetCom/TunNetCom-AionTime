@@ -1,6 +1,4 @@
-﻿using AzureDevopsService.Contracts.AzureRequestResourceModel;
-
-namespace AzureDevopsService.Contracts.AzureRequestResourceModel;
+﻿namespace AzureDevopsService.Contracts.AzureRequestResourceModel;
 
 public class WiqlRequest : BaseRequest
 {

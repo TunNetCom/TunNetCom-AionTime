@@ -12,14 +12,14 @@ public class EventBusRabbitMQService : IEventBus, IDisposable
     private readonly int _retryCount;
 
     private IModel _consumerChannel;
-    private string _queueName;
+    private string? _queueName;
 
     public EventBusRabbitMQService(
         IRabbitMQPersistentConnection persistentConnection,
         ILogger<EventBusRabbitMQService> logger,
         ILifetimeScope autofac,
         IEventBusSubscriptionsManager subsManager,
-        string queueName = null,
+        string? queueName = null,
         int retryCount = 5)
     {
         _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
@@ -94,6 +94,8 @@ public class EventBusRabbitMQService : IEventBus, IDisposable
                 basicProperties: properties,
                 body: body);
         });
+
+        return Task.CompletedTask;
     }
 
     public void SubscribeDynamic<TH>(string eventName)
