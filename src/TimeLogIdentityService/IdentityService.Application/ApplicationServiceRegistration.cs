@@ -1,7 +1,5 @@
-using AzureDevopsService.Contracts.AzureResponceModel;
 using IdentityService.Application.Features.MessageBroker.Consumer;
 using IdentityService.Contracts.Settings;
-using MassTransit;
 using Microsoft.Extensions.Options;
 
 namespace IdentityService.Application;

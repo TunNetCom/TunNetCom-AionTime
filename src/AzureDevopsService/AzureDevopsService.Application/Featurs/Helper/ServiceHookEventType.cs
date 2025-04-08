@@ -1,9 +1,4 @@
-﻿using AzureDevopsService;
-using AzureDevopsService.Application;
-using AzureDevopsService.Application.Featurs;
-using AzureDevopsService.Application.Featurs.Helper;
-
-namespace AzureDevopsService.Application.Featurs.Helper;
+﻿namespace AzureDevopsService.Application.Featurs.Helper;
 
 public static class ServiceHookEventType
 {

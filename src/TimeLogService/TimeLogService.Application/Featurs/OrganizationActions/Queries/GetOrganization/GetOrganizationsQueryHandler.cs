@@ -1,8 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.Application;
-using TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganization;
-
-namespace TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganization;
+﻿namespace TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganization;
 
 public class GetOrganizationsQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<GetOrganizationsQuery, IReadOnlyList<OrganizationRequest>>

@@ -1,10 +1,4 @@
-﻿using IdentityService;
-using IdentityService.Application;
-using IdentityService.Application.Features;
-using IdentityService.Application.Features.InternalTreatement.GeneratePasswordResetToken;
-using IdentityService.Domain.Models.Dbo;
-
-namespace IdentityService.Application.Features.InternalTreatement.GeneratePasswordResetToken;
+﻿namespace IdentityService.Application.Features.InternalTreatement.GeneratePasswordResetToken;
 
 public class GeneratePasswordResetTokenCommandHandler(UserManager<ApplicationUser> userManager)
     : IRequestHandler<GeneratePasswordResetTokenCommand, Result<string>>

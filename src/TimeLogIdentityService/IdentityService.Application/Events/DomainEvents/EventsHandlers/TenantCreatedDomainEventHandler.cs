@@ -1,8 +1,5 @@
 ﻿using IdentityService.Application.Events.DomainEvents.Events;
 using IdentityService.Application.Events.IntegrationEvents.Events.Outgoing;
-using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace IdentityService.Application.Events.DomainEvents.EventsHandlers;
 

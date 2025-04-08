@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace TunNetCom.AionTime.SharedKernel;
+﻿namespace TunNetCom.AionTime.SharedKernel;
 
 public static class ExtentionRegistrationService
 {

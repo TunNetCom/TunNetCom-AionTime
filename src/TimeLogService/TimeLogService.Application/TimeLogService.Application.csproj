@@ -14,15 +14,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="MassTransit" Version="8.2.5" />
-    <PackageReference Include="MassTransit.Newtonsoft" Version="8.2.5" />
-    <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.5" />
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AzureDevopsService\AzureDevopsService.Contracts\AzureDevopsService.Contracts.csproj" />
     <ProjectReference Include="..\..\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel.csproj" />
     <ProjectReference Include="..\TimeLogService.Contracts\TimeLogService.Contracts.csproj" />
     <ProjectReference Include="..\TimeLogService.Domain\TimeLogService.Domain.csproj" />

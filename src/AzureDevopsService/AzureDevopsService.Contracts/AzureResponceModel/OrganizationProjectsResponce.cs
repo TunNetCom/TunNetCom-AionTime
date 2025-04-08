@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace AzureDevopsService.Contracts.AzureResponceModel;
+﻿namespace AzureDevopsService.Contracts.AzureResponceModel;
 
 public class OrganizationProjectsResponce
 {

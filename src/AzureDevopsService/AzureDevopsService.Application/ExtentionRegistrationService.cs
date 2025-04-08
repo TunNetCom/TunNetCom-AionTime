@@ -1,5 +1,4 @@
-﻿using AzureDevopsService.Application.Events.IntegrationEvents.EventsHandlers;
-using TunNetCom.AionTime.SharedKernel;
+﻿using TunNetCom.AionTime.SharedKernel;
 
 namespace AzureDevopsService.Application;
 

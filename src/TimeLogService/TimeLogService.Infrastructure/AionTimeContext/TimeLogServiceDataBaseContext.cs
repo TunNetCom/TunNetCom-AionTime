@@ -1,5 +1,4 @@
-﻿using TimeLogService.Infrastructure.AionTimeContext;
-using TimeLogService.Infrastructure.AionTimeContext.Configurations;
+﻿using TimeLogService.Infrastructure.AionTimeContext.Configurations;
 
 namespace TimeLogService.Infrastructure.AionTimeContext;
 

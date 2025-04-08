@@ -1,8 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.Application;
-using TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganizationById;
-
-namespace TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganizationById;
+﻿namespace TimeLogService.Application.Featurs.OrganizationActions.Queries.GetOrganizationById;
 
 public class GetOrganizationQueryHandler(IRepository<Organization> organizationRepository, IMapper mapper)
     : IRequestHandler<GetOrganizationByIdQuery, OrganizationRequest>
