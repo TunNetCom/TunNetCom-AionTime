@@ -1,8 +1,4 @@
-﻿using TimeLogService;
-using TimeLogService.API;
-using TimeLogService.API;
-
-namespace TimeLogService.API;
+﻿namespace TimeLogService.API;
 
 public static class ExtentionServiceRegistration
 {

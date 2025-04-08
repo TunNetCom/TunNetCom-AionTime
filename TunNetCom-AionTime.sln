@@ -22,9 +22,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Contracts", "src\TimeLogService\TimeLogService.Contracts\TimeLogService.Contracts.csproj", "{C94CD26C-7C15-45F6-918A-03C2DEFF2E59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B0897E97-4679-4ED2-B3D7-2C7A704576A1}"
-	ProjectSection(SolutionItems) = preProject
-		StyleCop.ruleset = StyleCop.ruleset
-	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{17EBABCA-4F24-4EF0-B596-EAC210C06F77}"
 EndProject

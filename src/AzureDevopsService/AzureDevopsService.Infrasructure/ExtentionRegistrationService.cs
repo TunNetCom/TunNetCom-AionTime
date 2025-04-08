@@ -1,9 +1,6 @@
-﻿using AzureDevopsService.Contracts.Settings;
+﻿using AzureDevopsService.Contracts.Internal.Interfaces;
+using AzureDevopsService.Contracts.Settings;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace AzureDevopsService.Infrasructure
 {
@@ -16,22 +13,22 @@ namespace AzureDevopsService.Infrasructure
 
             _ = services.AddHttpClient<IUserProfileApiClient, UserProfileApiClient>((serviceProvider, client) =>
             {
-                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlVssps);
+                client.BaseAddress = azureDevopsSettings.BaseUrlVssps;
             });
 
             _ = services.AddHttpClient<IWorkItemExternalService, WorkItemExternalService>((serviceProvider, client) =>
             {
-                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlAzure);
+                client.BaseAddress = azureDevopsSettings.BaseUrlAzure;
             });
 
             _ = services.AddHttpClient<IProjectService, ProjectService>((serviceProvider, client) =>
             {
-                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlAzure);
+                client.BaseAddress = azureDevopsSettings.BaseUrlAzure;
             });
 
             _ = services.AddHttpClient<IWebhookService, WebhookService>((serviceProvider, client) =>
             {
-                client.BaseAddress = new Uri(azureDevopsSettings.BaseUrlAzure);
+                client.BaseAddress = azureDevopsSettings.BaseUrlAzure;
             });
 
             return services;

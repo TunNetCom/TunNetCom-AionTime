@@ -1,4 +1,6 @@
-﻿namespace TunNetCom.AionTime.SharedKernel.EventBus.Extensions;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace TunNetCom.AionTime.SharedKernel.EventBus.Extensions;
 
 public static class EventBusBuilderExtensions
 {
@@ -12,7 +14,11 @@ public static class EventBusBuilderExtensions
         return eventBusBuilder;
     }
 
-    public static IEventBusBuilder AddSubscription<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TH>(this IEventBusBuilder eventBusBuilder)
+    public static IEventBusBuilder AddSubscription<
+        T,
+        [DynamicallyAccessedMembers(
+        DynamicallyAccessedMemberTypes.PublicConstructors)] TH>(
+        this IEventBusBuilder eventBusBuilder)
         where T : IntegrationEvent
         where TH : class, IIntegrationEventHandler<T>
     {

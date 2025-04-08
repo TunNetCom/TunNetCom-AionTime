@@ -3,7 +3,7 @@
 public class ConsumerInputs
 {
     [JsonProperty("url")]
-    public required string Url { get; set; }
+    public required Uri Url { get; set; }
 
     [JsonProperty("httpHeaders")]
     public required string HttpHeaders { get; set; }

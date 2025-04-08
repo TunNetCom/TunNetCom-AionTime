@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AzureDevopsService.Contracts.SharedModel
+﻿namespace AzureDevopsService.Contracts.SharedModel
 {
     public class Organization
     {
@@ -12,6 +6,6 @@ namespace AzureDevopsService.Contracts.SharedModel
 
         public required string OrganizationId { get; set; }
 
-        public required List<string> ProjectsIds { get; set; }
+        // public required List<string> ProjectsIds { get; set; }
     }
 }

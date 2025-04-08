@@ -1,5 +1,5 @@
-﻿using AzureDevopsService.Application.Events.IntegrationEvents.Events;
-using AzureDevopsService.Application.Events.IntegrationEvents.Events.Incoming;
+﻿using AzureDevopsService.Application.Events.IntegrationEvents.Events.Incoming;
+using AzureDevopsService.Contracts.Internal.Interfaces;
 
 namespace AzureDevopsService.API;
 

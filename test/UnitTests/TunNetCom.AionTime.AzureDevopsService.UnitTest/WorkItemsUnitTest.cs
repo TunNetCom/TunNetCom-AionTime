@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Configuration;
-
 namespace TunNetCom.AionTime.AzureDevopsService.UnitTest;
 
 public class WorkItemsUnitTest

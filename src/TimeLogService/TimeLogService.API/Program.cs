@@ -1,9 +1,4 @@
-using MassTransit;
-using TimeLogService.API;
-using TimeLogService.API.Middelware;
-using TimeLogService.Application;
 using TimeLogService.Contracts.Settings;
-using TimeLogService.Infrastructure;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)

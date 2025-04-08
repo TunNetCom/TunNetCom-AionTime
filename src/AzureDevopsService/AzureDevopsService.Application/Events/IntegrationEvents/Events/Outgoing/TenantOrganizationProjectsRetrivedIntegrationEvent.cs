@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace AzureDevopsService.Application.Events.IntegrationEvents.Events.Outgoing;
+﻿namespace AzureDevopsService.Application.Events.IntegrationEvents.Events.Outgoing;
 
 internal record class TenantOrganizationProjectsRetrivedIntegrationEvent(
     string Email,
