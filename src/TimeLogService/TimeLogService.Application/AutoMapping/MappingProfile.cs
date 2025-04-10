@@ -1,5 +1,7 @@
 ﻿using AzureDevopsService.Contracts.AzureResponceModel;
+using TimeLogService.Contracts.AzureDevopsPublicApiTemporary.AzureResponceModel;
 using Project = TimeLogService.Domain.Models.Dbo.Project;
+using UserProfile = TimeLogService.Contracts.AzureDevopsPublicApiTemporary.AzureResponceModel.UserProfile;
 using WorkItem = TimeLogService.Domain.Models.Dbo.WorkItem;
 using WorkItemRequest = TimeLogService.Contracts.DTOs.Request.WorkItemRequest;
 

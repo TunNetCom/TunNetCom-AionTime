@@ -12,8 +12,8 @@ using TimeLogService.Infrastructure.AionTimeContext;
 namespace TimeLogService.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeLogServiceDataBaseContext))]
-    [Migration("20250304220428_TeneantId")]
-    partial class TeneantId
+    [Migration("20250410193845_Refactorisation2")]
+    partial class Refactorisation2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,11 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.Property<DateTime?>("SubsecriptionDate")
                         .HasColumnType("datetime");
 
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrganizationId");
@@ -60,6 +65,11 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.Property<int>("SubscriptionId")
                         .HasColumnType("int");
 
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SubscriptionId");
@@ -75,17 +85,6 @@ namespace TimeLogService.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AccountId")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("AccountUri")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(200)");
-
                     b.Property<bool>("IsAionTimeApproved")
                         .HasColumnType("bit");
 
@@ -95,17 +94,17 @@ namespace TimeLogService.Infrastructure.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("Pat")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("TenantId")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex(new[] { "AccountId" }, "IX_Organization_AccountId")
-                        .IsUnique();
 
                     b.HasIndex(new[] { "Name" }, "IX_Organization_Name_Unique")
                         .IsUnique();
@@ -121,9 +120,9 @@ namespace TimeLogService.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AccountId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<Guid>("AzureProjectId")
+                        .HasMaxLength(100)
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastUpdateTime")
                         .HasColumnType("datetime");
@@ -134,13 +133,17 @@ namespace TimeLogService.Infrastructure.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("ProjectId")
+                    b.Property<int>("OrganizationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenantId")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<int?>("State")
-                        .HasColumnType("int");
 
                     b.Property<string>("Url")
                         .IsRequired()
@@ -155,10 +158,7 @@ namespace TimeLogService.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
-
-                    b.HasIndex(new[] { "ProjectId" }, "IX_Project_ProjectId")
-                        .IsUnique();
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Project", (string)null);
                 });
@@ -188,6 +188,11 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.Property<int>("Revision")
                         .HasColumnType("int");
 
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<DateTime>("TimeStamp")
                         .HasColumnType("datetime");
 
@@ -212,13 +217,38 @@ namespace TimeLogService.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Discription")
+                    b.Property<int>("AzureId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("History")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Title")
                         .HasMaxLength(1000)
                         .IsUnicode(false)
                         .HasColumnType("varchar(1000)");
 
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WorkItemUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -239,6 +269,11 @@ namespace TimeLogService.Infrastructure.Migrations
                         .HasMaxLength(1000)
                         .IsUnicode(false)
                         .HasColumnType("varchar(1000)");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("WorkItemId")
                         .HasColumnType("int");
@@ -263,6 +298,11 @@ namespace TimeLogService.Infrastructure.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(200)");
 
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<DateTime?>("Time")
                         .HasColumnType("datetime");
 
@@ -274,6 +314,52 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.HasIndex("WorkItemId");
 
                     b.ToTable("WorkItemTimeLog", (string)null);
+                });
+
+            modelBuilder.Entity("TimeLogService.Domain.Models.dbo.WorkItemComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AzureCommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AzureWorkItemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(8000)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(8000)");
+
+                    b.Property<string>("CreatedByUser")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedByUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TenantId")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WorkItemId");
+
+                    b.ToTable("WorkItemComment", (string)null);
                 });
 
             modelBuilder.Entity("TimeLogService.Domain.Models.Dbo.AionTimeSubscription", b =>
@@ -300,25 +386,11 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.Navigation("Subscription");
                 });
 
-            modelBuilder.Entity("TimeLogService.Domain.Models.Dbo.Organization", b =>
-                {
-                    b.HasOne("TimeLogService.Domain.Models.Dbo.User", "User")
-                        .WithMany("Organizations")
-                        .HasForeignKey("UserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FKUserOrganization");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("TimeLogService.Domain.Models.Dbo.Project", b =>
                 {
                     b.HasOne("TimeLogService.Domain.Models.Dbo.Organization", "Organization")
                         .WithMany("Projects")
-                        .HasForeignKey("AccountId")
-                        .HasPrincipalKey("AccountId")
+                        .HasForeignKey("OrganizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FKOrganisationProject");
@@ -362,6 +434,18 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.Navigation("WorkItem");
                 });
 
+            modelBuilder.Entity("TimeLogService.Domain.Models.dbo.WorkItemComment", b =>
+                {
+                    b.HasOne("TimeLogService.Domain.Models.Dbo.WorkItem", "WorkItem")
+                        .WithMany("WorkItemComments")
+                        .HasForeignKey("WorkItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_WorkItem_WorkItemComment");
+
+                    b.Navigation("WorkItem");
+                });
+
             modelBuilder.Entity("TimeLogService.Domain.Models.Dbo.AionTimeSubscription", b =>
                 {
                     b.Navigation("AionTimeSubscriptionHistories");
@@ -379,13 +463,10 @@ namespace TimeLogService.Infrastructure.Migrations
                     b.Navigation("WorkItems");
                 });
 
-            modelBuilder.Entity("TimeLogService.Domain.Models.Dbo.User", b =>
-                {
-                    b.Navigation("Organizations");
-                });
-
             modelBuilder.Entity("TimeLogService.Domain.Models.Dbo.WorkItem", b =>
                 {
+                    b.Navigation("WorkItemComments");
+
                     b.Navigation("WorkItemHistories");
 
                     b.Navigation("WorkItemTimeLogs");

@@ -6,13 +6,12 @@
         {
             _ = builder.ToTable("Project");
 
-            _ = builder.HasIndex(e => e.ProjectId, "IX_Project_ProjectId").IsUnique();
             _ = builder.Property(e => e.TenantId).HasMaxLength(100);
             _ = builder.Property(e => e.LastUpdateTime).HasColumnType("datetime");
             _ = builder.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            _ = builder.Property(e => e.ProjectId).HasMaxLength(100);
+            _ = builder.Property(e => e.AzureProjectId).HasMaxLength(100);
             _ = builder.Property(e => e.Url)
                 .HasMaxLength(200)
                 .IsUnicode(false);
@@ -21,8 +20,8 @@
                 .IsUnicode(false);
 
             _ = builder.HasOne(d => d.Organization).WithMany(p => p.Projects)
-                .HasPrincipalKey(p => p.AccountId)
-                .HasForeignKey(d => d.AccountId)
+                .HasPrincipalKey(p => p.Id)
+                .HasForeignKey(d => d.OrganizationId)
                 .HasConstraintName("FKOrganisationProject");
 
             OnConfigurePartial(builder);

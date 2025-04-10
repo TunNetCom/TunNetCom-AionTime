@@ -8,13 +8,13 @@ public class TenantOrganizationProjectsRetrivedIntegrationEventHandler(
 {
     public async Task Handle(TenantOrganizationProjectsRetrivedIntegrationEvent integrationEvent)
     {
-        HashSet<Guid> existingProjectIds = [.. (await repository.GetAsync()).Select(x => x.ProjectId)];
+        HashSet<Guid> existingProjectIds = [.. (await repository.GetAsync()).Select(x => x.AzureProjectId)];
 
         ReadOnlyCollection<Project> project = integrationEvent.OrganizationProjects.Value
             .Select(p => new Project()
             {
-                AccountId = integrationEvent.OrganizationId,
-                ProjectId = p.Id,
+                OrganizationId = integrationEvent.OrganizationId,
+                AzureProjectId = p.Id,
                 Name = p.Name,
                 Url = p.Url,
                 Visibility = p.Visibility,
@@ -22,7 +22,7 @@ public class TenantOrganizationProjectsRetrivedIntegrationEventHandler(
                 State = p.State,
                 TenantId = integrationEvent.TenantId,
             })
-            .Where(x => !existingProjectIds.Contains(x.ProjectId))
+            .Where(x => !existingProjectIds.Contains(x.AzureProjectId))
             .ToList()
             .AsReadOnly();
 

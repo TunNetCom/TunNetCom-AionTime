@@ -6,6 +6,6 @@ public class AddProjectCommandHandler(IRepository<Project> repository) : IReques
     {
         await repository.AddRangeAsync(request.Projects);
 
-        return [.. request.Projects.Select(x => x.ProjectId.ToString())];
+        return [.. request.Projects.Select(x => x.AzureProjectId.ToString())];
     }
 }
