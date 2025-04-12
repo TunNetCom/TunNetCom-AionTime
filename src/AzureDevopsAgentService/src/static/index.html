@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReAct Agent Chat</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; border: 1px solid #eee; border-radius: 8px; display: flex; flex-direction: column; height: calc(100vh - 80px); }
+        h1 { text-align: center; margin-bottom: 20px; color: #333; }
+        #chat-form { display: flex; margin-top: auto; padding-top: 20px; border-top: 1px solid #eee; }
+        #query-input { flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; }
+        button { padding: 10px 15px; border: 1px solid #007bff; background-color: #007bff; color: white; border-radius: 0 4px 4px 0; cursor: pointer; white-space: nowrap; }
+        button:hover { background-color: #0056b3; }
+        #chat-history { flex-grow: 1; overflow-y: auto; border: 1px solid #eee; padding: 15px; border-radius: 4px; margin-bottom: 20px; background-color: #f9f9f9; }
+        .message { margin-bottom: 15px; padding: 10px; border-radius: 8px; line-height: 1.4; }
+        .message.user { background-color: #e1f5fe; text-align: right; margin-left: 40px; border-bottom-right-radius: 0; }
+        .message.ai { background-color: #fff; border: 1px solid #eee; text-align: left; margin-right: 40px; border-bottom-left-radius: 0; }
+        .message.tool { background-color: #f0f0f0; color: #555; font-style: italic; text-align: center; margin: 5px 40px; font-size: 0.9em; }
+        .message strong { font-weight: 600; }
+        .message pre { white-space: pre-wrap; word-wrap: break-word; background-color: #eee; padding: 8px; border-radius: 4px; margin-top: 5px; font-family: monospace; }
+        .loading { color: #888; font-style: italic; text-align: center; padding: 10px; }
+        .error { color: red; font-weight: bold; }
+        .status { text-align: center; margin-top: 10px; color: #888; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>AionTime Agent Chat</h1>
+    <div id="chat-history">
+        <!-- Chat messages will be appended here -->
+    </div>
+    <form id="chat-form">
+        <input type="text" id="query-input" placeholder="Enter your query..." required>
+        <button type="submit">Send</button>
+    </form>
+    <div id="status-area" class="status" aria-live="polite"></div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const input = document.getElementById('query-input');
+        const chatHistoryDiv = document.getElementById('chat-history');
+        const statusArea = document.getElementById('status-area');
+
+        // Store chat history in a JS array
+        let chatHistory = [];
+        let eventSource = null; // To hold the EventSource connection
+
+        // --- Rendering Logic ---
+        function escapeHtml(unsafe) {
+            if (!unsafe) return "";
+            if (typeof unsafe !== 'string') {
+                try {
+                    unsafe = JSON.stringify(unsafe, null, 2); // Pretty print objects/arrays
+                } catch (e) {
+                    unsafe = String(unsafe);
+                }
+            }
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+
+        function renderHistory() {
+            chatHistoryDiv.innerHTML = ''; // Clear previous messages
+            let currentAIMessageDiv = null; // To append chunks
+
+            chatHistory.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', msg.role);
+
+                let contentHTML = escapeHtml(msg.content);
+
+                // Basic Markdown-like rendering (apply after escaping)
+                contentHTML = contentHTML.replace(/```(.*?)```/gs, (match, code) => {
+                    // Code is already escaped, just wrap it
+                    return `<pre><code>${code.trim()}</code></pre>`;
+                });
+                contentHTML = contentHTML.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
+                contentHTML = contentHTML.replace(/\n/g, '<br>'); // Newlines
+
+                // Add role prefix
+                let rolePrefix = msg.role.toUpperCase();
+                if (msg.role === 'tool_call') {
+                    rolePrefix = `TOOL CALL: ${escapeHtml(msg.tool_name || '')}`;
+                    // Display args nicely
+                    contentHTML = `<pre><code>${escapeHtml(msg.tool_args || {})}</code></pre>`;
+                } else if (msg.role === 'tool_result') {
+                    rolePrefix = `TOOL RESULT (Call ID: ${escapeHtml(msg.tool_call_id || '')})`;
+                    // Display result content (could be JSON)
+                    contentHTML = `<pre><code>${escapeHtml(msg.content || '')}</code></pre>`;
+                }
+
+                messageDiv.innerHTML = `<strong>${rolePrefix}:</strong><br>${contentHTML}`;
+
+                chatHistoryDiv.appendChild(messageDiv);
+
+                // Keep track of the last AI div for streaming
+                if (msg.role === 'ai') {
+                    currentAIMessageDiv = messageDiv;
+                }
+            });
+
+            // Scroll to the bottom
+            chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight;
+            return currentAIMessageDiv; // Return the last AI div reference
+        }
+
+        // --- EventSource Handling ---
+        function setupEventSource(query, historyToSend) {
+            if (eventSource) {
+                eventSource.close(); // Close existing connection if any
+            }
+
+            // Use EventSource for streaming
+            // Pass history and query via query parameters (ensure proper encoding)
+            const params = new URLSearchParams({
+                query: query,
+                // History needs to be stringified; backend needs to parse it.
+                // Modify API endpoint if expecting query params instead of POST body
+                // For now, sticking to POST body as it's better for complex data
+                // We will POST first to initiate, then use EventSource if needed.
+                // Let's adjust the flow: POST to start, receive stream URL or stream directly.
+                // The current FastAPI setup streams directly on POST.
+            });
+            // const url = `/api/chat_stream?${params.toString()}`;
+            // Sticking with POST /api/chat which returns the stream
+
+            let currentAIMessageDiv = null; // The div we are appending to
+            let currentAIContent = ""; // Track full content of the current AI message
+
+            // Add placeholder for AI response
+            chatHistory.push({ role: 'ai', content: '' });
+            currentAIMessageDiv = renderHistory(); // Render and get the new AI div
+            if (!currentAIMessageDiv) { // Safety check
+                 currentAIMessageDiv = document.createElement('div');
+                 currentAIMessageDiv.classList.add('message', 'ai');
+                 chatHistoryDiv.appendChild(currentAIMessageDiv);
+            }
+
+            // Initiate the stream via POST
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'text/event-stream' // Indicate we want a stream
+                },
+                body: JSON.stringify({ query: query, history: historyToSend })
+            }).then(response => {
+                 if (!response.ok) {
+                    return response.json().then(err => {
+                         throw new Error(`HTTP error! status: ${response.status}, message: ${err.detail || 'Failed to start stream'}`);
+                    });
+                 }
+                 if (!response.body) {
+                     throw new Error("ReadableStream not yet supported in this browser.");
+                 }
+
+                 statusArea.textContent = 'Receiving response...';
+                 statusArea.className = 'status loading';
+
+                 const reader = response.body.pipeThrough(new TextDecoderStream()).getReader();
+
+                 function processStream() {
+                     reader.read().then(({ value, done }) => {
+                         if (done) {
+                             console.log('Stream finished.');
+                             statusArea.textContent = 'Finished.';
+                             statusArea.className = 'status';
+                             finalizeChat();
+                             return;
+                         }
+
+                         // Process Server-Sent Events (SSE) manually
+                         const lines = value.split('\n');
+                         lines.forEach(line => {
+                             if (line.startsWith('data:')) {
+                                 const jsonData = line.substring(5).trim();
+                                 if (jsonData) {
+                                     try {
+                                         const data = JSON.parse(jsonData);
+                                         handleStreamData(data);
+                                     } catch (e) {
+                                         console.error('Error parsing SSE data:', e, 'Data:', jsonData);
+                                     }
+                                 }
+                             }
+                         });
+
+                         processStream(); // Read the next chunk
+                     }).catch(error => {
+                         console.error('Error reading stream:', error);
+                         statusArea.textContent = `Stream error: ${error.message}`;
+                         statusArea.className = 'status error';
+                         finalizeChat(true); // Pass error flag
+                     });
+                 }
+
+                 processStream(); // Start processing the stream
+
+            }).catch(error => {
+                console.error('Error initiating chat stream:', error);
+                statusArea.textContent = `Error: ${error.message}`;
+                statusArea.className = 'status error';
+                finalizeChat(true);
+            });
+
+            function handleStreamData(data) {
+                 console.log('SSE Data:', data);
+                 switch (data.type) {
+                     case 'ai_response_chunk':
+                         currentAIContent += data.content;
+                         // Re-render the last AI message content
+                         let contentHTML = escapeHtml(currentAIContent);
+                         contentHTML = contentHTML.replace(/```(.*?)```/gs, `<pre><code>$1</code></pre>`);
+                         contentHTML = contentHTML.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                         contentHTML = contentHTML.replace(/\n/g, '<br>');
+                         currentAIMessageDiv.innerHTML = `<strong>AI:</strong><br>${contentHTML}`;
+                         chatHistory[chatHistory.length - 1].content = currentAIContent; // Update history array
+                         chatHistoryDiv.scrollTop = chatHistoryDiv.scrollHeight; // Scroll down
+                         break;
+                     case 'tool_call':
+                         // Add tool call as a separate message
+                         chatHistory.push({ role: 'tool_call', content: `Calling ${data.tool_name}...`, tool_name: data.tool_name, tool_args: data.tool_args });
+                         renderHistory(); // Re-render to show tool call
+                         statusArea.textContent = `Calling tool: ${data.tool_name}...`;
+                         break;
+                     case 'tool_result':
+                         // Add tool result as a separate message
+                         chatHistory.push({ role: 'tool_result', content: data.content, tool_call_id: data.tool_call_id });
+                         renderHistory(); // Re-render to show tool result
+                         statusArea.textContent = `Received result from tool.`;
+                         // Prepare for next AI response chunk
+                         currentAIContent = "";
+                         chatHistory.push({ role: 'ai', content: '' });
+                         currentAIMessageDiv = renderHistory();
+                         if (!currentAIMessageDiv) { // Safety check
+                             currentAIMessageDiv = document.createElement('div');
+                             currentAIMessageDiv.classList.add('message', 'ai');
+                             chatHistoryDiv.appendChild(currentAIMessageDiv);
+                         }
+                         break;
+                     case 'stream_end':
+                         console.log('Stream end signal received.');
+                         // Finalization happens in the processStream loop's done condition
+                         break;
+                     case 'error':
+                         console.error('Stream error event:', data.detail);
+                         statusArea.textContent = `Error: ${data.detail}`;
+                         statusArea.className = 'status error';
+                         // Finalization might happen in the catch block already
+                         break;
+                 }
+             }
+        }
+
+        function finalizeChat(errorOccurred = false) {
+             input.disabled = false;
+             form.querySelector('button').disabled = false;
+             if (!errorOccurred) {
+                statusArea.textContent = 'Ready';
+                statusArea.className = 'status';
+             }
+             input.focus();
+        }
+
+        // --- Form Submission ---
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const query = input.value.trim();
+            if (!query) return;
+
+            // Add user message immediately to history and render
+            chatHistory.push({ role: 'user', content: query });
+            renderHistory(); // Render optimistic update
+
+            // Display thinking status
+            statusArea.textContent = 'Sending request...';
+            statusArea.className = 'status loading';
+            input.disabled = true;
+            form.querySelector('button').disabled = true;
+
+            // History to send: all messages *before* the current user query
+            // Filter out tool messages AND empty AI placeholders before sending to the backend
+            const historyToSend = chatHistory.slice(0, -1).filter(msg => 
+                (msg.role === 'user' || msg.role === 'ai') && msg.content
+            );
+
+            input.value = ''; // Clear input immediately
+
+            // Setup EventSource to handle the stream
+            setupEventSource(query, historyToSend);
+        });
+
+        // Initial render
+        renderHistory();
+        statusArea.textContent = 'Ready';
+    </script>
+</body>
+</html> 
