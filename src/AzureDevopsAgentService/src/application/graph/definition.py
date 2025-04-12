@@ -5,8 +5,9 @@ Works with a chat model with tool calling support.
 
 from datetime import datetime, timezone
 from typing import Dict, List, Literal, cast
+import logging  # Import logging module
 
-from langchain_core.messages import AIMessage, BaseMessage
+from langchain_core.messages import AIMessage, BaseMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
 from langgraph.graph import StateGraph
 from langgraph.prebuilt import ToolNode
@@ -58,6 +59,26 @@ async def call_model(
     system_message = prompts.SYSTEM_PROMPT.format(
         system_time=datetime.now(tz=timezone.utc).isoformat()
     )
+
+    # --- Debug Logging Added ---
+    print(f"\n--- Debug: Entering call_model ---")
+    print(f"Is Last Step: {state.is_last_step}")
+    print(f"Current Messages ({len(state.messages)} total):")
+    for i, msg in enumerate(state.messages):
+        print(f"  {i+1}. Type: {type(msg).__name__}, ID: {getattr(msg, 'id', 'N/A')}")
+        # Safely print content, truncating long tool outputs
+        content_str = str(getattr(msg, "content", ""))
+        if isinstance(msg, (AIMessage)) and msg.tool_calls:
+            print(f"     Tool Calls: {msg.tool_calls}")
+        elif isinstance(msg, (ToolMessage)):  # Corrected import
+            print(f"     Tool Call ID: {getattr(msg, 'tool_call_id', 'N/A')}")
+            print(
+                f"     Content (truncated): {content_str[:200]}{'...' if len(content_str) > 200 else ''}"
+            )
+        else:
+            print(f"     Content: {content_str}")
+    print(f"------------------------------------\n")
+    # --- End Debug Logging ---
 
     # Get the model's response
     response = cast(

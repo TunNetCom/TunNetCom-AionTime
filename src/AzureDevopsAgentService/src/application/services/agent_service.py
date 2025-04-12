@@ -98,34 +98,53 @@ class AgentService:
 
                 # Event: Tool execution ends
                 elif kind == "on_tool_end":
-                    tool_output_data = event["data"].get(
-                        "output"
-                    )  # LangGraph output is often a dict
+                    tool_output_data = event["data"].get("output")
                     tool_output_content = None
-                    # Handle various possible output structures from ToolNode/tools
-                    if isinstance(tool_output_data, BaseMessage):  # e.g., ToolMessage
-                        tool_output_content = tool_output_data.content
-                    elif (
-                        isinstance(tool_output_data, dict)
-                        and "output" in tool_output_data
-                    ):
-                        tool_output_content = str(
-                            tool_output_data.get("output", "")
-                        )  # Extract from dict if needed
-                    elif tool_output_data is not None:
-                        tool_output_content = str(
-                            tool_output_data
-                        )  # Fallback to string
+                    tool_name = event["name"]  # Get tool name earlier for logging
 
-                    tool_name = event["name"]  # Name of the ToolNode or specific tool
+                    # --- Improved Tool Output Handling ---
+                    try:
+                        if isinstance(tool_output_data, BaseMessage):
+                            # If output is already a message, extract content
+                            tool_output_content = tool_output_data.content
+                        elif tool_output_data is not None:
+                            # Attempt to serialize complex objects (like dicts/lists) to JSON string
+                            try:
+                                tool_output_content = json.dumps(tool_output_data)
+                            except TypeError:
+                                # Fallback for non-serializable objects
+                                print(
+                                    f"Warning: Tool '{tool_name}' output type {type(tool_output_data)} is not JSON serializable. Falling back to str()."
+                                )
+                                tool_output_content = str(tool_output_data)
+                        else:
+                            tool_output_content = ""  # Handle None case explicitly
+
+                        print(
+                            f"Debug: Tool '{tool_name}' output processed: {tool_output_content[:200]}..."
+                        )  # Log processed output
+
+                    except Exception as tool_proc_err:
+                        print(
+                            f"Error processing output of tool '{tool_name}': {tool_proc_err}"
+                        )
+                        tool_output_content = (
+                            f"Error processing tool output: {tool_proc_err}"
+                        )
+                    # --- End Improved Handling ---
+
                     if current_tool_call_id and tool_output_content is not None:
                         tool_result_data = {
                             "type": "tool_result",
-                            "tool_name": tool_name,
+                            "tool_name": tool_name,  # Use captured tool_name
                             "tool_call_id": current_tool_call_id,
-                            "content": tool_output_content,
+                            "content": tool_output_content,  # Use processed content
                         }
                         yield f"data: {json.dumps(tool_result_data)}\n\n"
+                    else:
+                        print(
+                            f"Warning: Could not yield tool_result. ID: {current_tool_call_id}, Content available: {tool_output_content is not None}"
+                        )
 
                     # Reset tool state after tool ends
                     current_tool_call_id = None

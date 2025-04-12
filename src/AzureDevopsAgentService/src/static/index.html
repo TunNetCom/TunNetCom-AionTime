@@ -282,8 +282,10 @@
             form.querySelector('button').disabled = true;
 
             // History to send: all messages *before* the current user query
-            // Filter out tool messages before sending to the backend
-            const historyToSend = chatHistory.slice(0, -1).filter(msg => msg.role === 'user' || msg.role === 'ai');
+            // Filter out tool messages AND empty AI placeholders before sending to the backend
+            const historyToSend = chatHistory.slice(0, -1).filter(msg => 
+                (msg.role === 'user' || msg.role === 'ai') && msg.content
+            );
 
             input.value = ''; // Clear input immediately
 
