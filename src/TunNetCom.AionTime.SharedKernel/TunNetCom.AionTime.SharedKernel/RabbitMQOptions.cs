@@ -2,13 +2,9 @@
 
 public class RabbitMQOptions
 {
-    public required string EventBusUserName { get; set; }
-
-    public required string EventBusPassword { get; set; }
-
-    public int EventBusRetryCount { get; set; } = 0;
-
-    public required string ServiceName { get; set; }
-
     public string EventBusConnection { get; set; } = "localhost";
+    public string EventBusUserName { get; set; } = "guest";
+    public string EventBusPassword { get; set; } = "guest";
+    public string BrokerName { get; set; } = "aion_time_event_bus";
+    public int EventBusRetryCount { get; set; } = 5;
 }

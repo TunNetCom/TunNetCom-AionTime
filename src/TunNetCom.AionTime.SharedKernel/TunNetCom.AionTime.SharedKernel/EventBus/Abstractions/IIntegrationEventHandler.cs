@@ -1,6 +1,4 @@
-﻿namespace TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
-
-public interface IIntegrationEventHandler<in TIntegrationEvent> : IIntegrationEventHandler
+﻿public interface IIntegrationEventHandler<in TIntegrationEvent> : IIntegrationEventHandler
 where TIntegrationEvent : IntegrationEvent
 {
     Task Handle(TIntegrationEvent @integrationEvent);

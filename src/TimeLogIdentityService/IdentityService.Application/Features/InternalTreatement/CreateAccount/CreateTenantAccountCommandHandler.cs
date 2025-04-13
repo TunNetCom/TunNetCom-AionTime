@@ -1,8 +1,11 @@
 using IdentityService.Application.Events.DomainEvents.Events;
+using IdentityService.Application.Events.IntegrationEvents.Events.Outgoing;
+using MediatR;
+using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 
 namespace IdentityService.Application.Features.InternalTreatement.CreateAccount;
 
-public class CreateTenantAccountCommandHandler(UserManager<ApplicationUser> userManager, IMediator mediator)
+public class CreateTenantAccountCommandHandler(UserManager<ApplicationUser> userManager, IMediator mediator, IEventBus eventBus)
     : IRequestHandler<CreateTenantAccountCommand, Result<IdentityResult>>
 {
     private readonly UserManager<ApplicationUser> _userManager = userManager;
@@ -38,7 +41,9 @@ public class CreateTenantAccountCommandHandler(UserManager<ApplicationUser> user
 
         if (result.Succeeded)
         {
-            await _mediator.Publish(new TenantCreatedDomainEvent(tenant.Value, request.AzureDevopsPath, string.Empty, request.Email), cancellationToken);
+            //await _mediator.Publish(new TenantCreatedDomainEvent(tenant.Value, request.AzureDevopsPath, string.Empty, request.Email), cancellationToken);
+            TenantCreatedIntegrationEvent retriveUserOrganizationIntegrationEvent = new(request.Email, request.AzureDevopsPath, tenant.Value);
+            await eventBus.PublishAsync(retriveUserOrganizationIntegrationEvent);
         }
 
         return Result.Ok(result);

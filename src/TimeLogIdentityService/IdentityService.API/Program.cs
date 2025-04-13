@@ -1,5 +1,6 @@
 #pragma warning disable CS8604 // Possible null reference argument.
 using IdentityService.API.Middelware;
+using RabbitMQ.Client;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,8 @@ try
         {
             options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
-
+    Console.WriteLine(typeof(ConnectionFactory).Assembly.Location);
+    Console.WriteLine(typeof(ConnectionFactory).Assembly.FullName);
     _ = builder.Services.AddCors(options =>
     {
         options.AddPolicy(

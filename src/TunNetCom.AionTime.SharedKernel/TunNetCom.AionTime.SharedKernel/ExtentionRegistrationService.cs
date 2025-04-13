@@ -2,72 +2,18 @@
 
 public static class ExtentionRegistrationService
 {
-    public static IServiceCollection AddRabbitMQ(
-        this IServiceCollection services,
-        Action<RabbitMQOptions> configure,
-        Action<IEventBus>? configureSubscriptions = null)
+    public static IServiceCollection AddRabbitMQ(this IServiceCollection services, Action<RabbitMQOptions> configure)
     {
-        RabbitMQOptions options = new()
-        {
-            EventBusPassword = "AionTime",
-            EventBusUserName = "AionTime",
-            EventBusConnection = "localhost",
-            ServiceName = "Mayservice",
-        };
-        configure?.Invoke(options);
-        _ = services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
-        {
-            ILogger<DefaultRabbitMQPersistentConnection> logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+        if (services == null)
+            throw new ArgumentNullException(nameof(services));
+        if (configure == null)
+            throw new ArgumentNullException(nameof(configure));
 
-            ConnectionFactory factory = new()
-            {
-                HostName = options.EventBusConnection,
-                DispatchConsumersAsync = true,
-            };
+        var config = new RabbitMQOptions();
+        configure(config);
 
-            if (!string.IsNullOrEmpty(options.EventBusConnection))
-            {
-                factory.UserName = options.EventBusUserName;
-            }
-
-            if (!string.IsNullOrEmpty(options.EventBusPassword))
-            {
-                factory.Password = options.EventBusPassword;
-            }
-
-            return new DefaultRabbitMQPersistentConnection(factory, logger, options.EventBusRetryCount);
-        });
-        _ = services.AddSingleton<IEventBus, EventBusRabbitMQService>(sp =>
-        {
-            IRabbitMQPersistentConnection rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-            ILifetimeScope iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-            ILogger<EventBusRabbitMQService> logger = sp.GetRequiredService<ILogger<EventBusRabbitMQService>>();
-            IEventBusSubscriptionsManager eventBusSubscriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
-
-            return new EventBusRabbitMQService(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubscriptionsManager, options.ServiceName, options.EventBusRetryCount);
-        });
-
-        _ = services.AddSingleton<IEventBus>(sp =>
-        {
-            IRabbitMQPersistentConnection rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-            ILifetimeScope lifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-            ILogger<EventBusRabbitMQService> logger = sp.GetRequiredService<ILogger<EventBusRabbitMQService>>();
-            IEventBusSubscriptionsManager eventBusSubscriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
-
-            EventBusRabbitMQService eventBus = new(
-                rabbitMQPersistentConnection,
-                logger,
-                lifetimeScope,
-                eventBusSubscriptionsManager,
-                options.ServiceName,
-                options.EventBusRetryCount);
-
-            configureSubscriptions?.Invoke(eventBus);
-
-            return eventBus;
-        });
-
-        _ = services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+        services.AddSingleton(config);
+        services.AddSingleton<IEventBus, RabbitMQEventBus>();
 
         return services;
     }

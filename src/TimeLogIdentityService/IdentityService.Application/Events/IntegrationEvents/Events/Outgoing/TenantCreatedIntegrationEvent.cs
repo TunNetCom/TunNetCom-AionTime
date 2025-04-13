@@ -1,3 +1,5 @@
-﻿namespace IdentityService.Application.Events.IntegrationEvents.Events.Outgoing;
+﻿using TunNetCom.AionTime.SharedKernel.EventBus.Events;
 
-public record class TenantCreatedIntegrationEvent(string Email, string Path, Guid TenantId) : IRequest;
+namespace IdentityService.Application.Events.IntegrationEvents.Events.Outgoing;
+
+public record class TenantCreatedIntegrationEvent(string Email, string Path, Guid TenantId) : IntegrationEvent;

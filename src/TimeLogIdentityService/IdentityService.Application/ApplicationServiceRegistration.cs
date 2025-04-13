@@ -1,6 +1,5 @@
-using IdentityService.Application.Features.MessageBroker.Consumer;
-using IdentityService.Contracts.Settings;
-using Microsoft.Extensions.Options;
+using IdentityService.Application.Events.DomainEvents.EventsHandlers;
+using TunNetCom.AionTime.SharedKernel;
 
 namespace IdentityService.Application;
 
@@ -8,31 +7,17 @@ public static class ApplicationServiceRegistration
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
-        _ = services.AddMassTransit(x =>
-        {
-            x.SetDefaultEndpointNameFormatter();
-            _ = x.AddConsumer<IdentityConsumer>();
-            x.SetDefaultEndpointNameFormatter();
-
-            x.UsingRabbitMq((context, cfg) =>
+        _ = services.AddRabbitMQ(
+            config =>
             {
-                RabbitMqSettings rabbitMqSettings = context.GetRequiredService<IOptions<RabbitMqSettings>>().Value;
-
-                cfg.Host(rabbitMqSettings.ServiceName, "/", h =>
-                {
-                    h.Username(rabbitMqSettings.UserName);
-                    h.Password(rabbitMqSettings.Password);
-                });
-
-                cfg.UseNewtonsoftJsonSerializer();
-
-                cfg.ReceiveEndpoint("identity-service-queue", e =>
-                {
-                    e.UseMessageRetry(r => r.Interval(3, TimeSpan.FromSeconds(5)));
-                    e.ConfigureConsumer<IdentityConsumer>(context);
-                });
+                config.EventBusConnection = "RabbitMq";
+                config.EventBusUserName = "guest";
+                config.EventBusPassword = "guest";
+                config.BrokerName = "aion_time_exchange";
+                config.EventBusRetryCount = 5;
             });
-        });
+
+        services.AddTransient<TenantCreatedDomainEventHandler>();
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
         return services;
     }

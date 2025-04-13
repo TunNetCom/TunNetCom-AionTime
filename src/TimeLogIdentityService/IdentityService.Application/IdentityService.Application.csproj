@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel.csproj" />
     <ProjectReference Include="..\IdentityService.Contracts\IdentityService.Contracts.csproj" />
     <ProjectReference Include="..\IdentityService.Domain\IdentityService.Domain.csproj" />
     <ProjectReference Include="..\IdentityService.Infrasructure\IdentityService.Infrastructure.csproj" />
