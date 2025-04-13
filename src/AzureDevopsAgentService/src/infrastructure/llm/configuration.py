@@ -24,7 +24,7 @@ class Configuration:
     )
 
     model: Annotated[str, {"__template_metadata__": {"kind": "llm"}}] = field(
-        default="openrouter/google/gemini-2.0-flash-exp:free",
+        default="openrouter/openrouter/optimus-alpha",
         metadata={
             "description": "The name of the language model to use for the agent's main interactions. "
             "Should be in the form: provider/model-name. "

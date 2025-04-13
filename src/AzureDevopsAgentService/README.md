@@ -134,7 +134,7 @@ cp .env.example .env
     source .venv/bin/activate 
     
     # On Windows PowerShell, use this command instead:
-    # .\\.venv\\Scripts\\Activate.ps1 
+    # .\.venv\Scripts\Activate.ps1 
     ```
     *Note: You must activate the environment in each new terminal session where you want to work on the project.* 
 
