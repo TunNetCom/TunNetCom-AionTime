@@ -10,19 +10,14 @@ namespace TimeLogService.Application
             _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             _ = services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            _ = services.AddRabbitMQ(
-                config =>
-                {
-                    config.EventBusConnection = "localhost";
-                    config.EventBusUserName = "AionTime";
-                    config.EventBusPassword = "AionTime";
-                    config.ServiceName = "timelog_service";
-                    config.EventBusRetryCount = 5;
-                },
-                eventBus =>
-                {
-                    eventBus.Subscribe<TenantOrganizationProjectsRetrivedIntegrationEvent, TenantOrganizationProjectsRetrivedIntegrationEventHandler>();
-                });
+            _ = services.AddRabbitMQ(config =>
+            {
+                config.EventBusConnection = "localhost";
+                config.EventBusUserName = "guest";
+                config.EventBusPassword = "guest";
+                config.BrokerName = "timelog_service";
+                config.EventBusRetryCount = 3;
+            });
 
             return services;
         }

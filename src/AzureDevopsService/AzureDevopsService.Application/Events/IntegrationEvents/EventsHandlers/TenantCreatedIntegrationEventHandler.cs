@@ -3,7 +3,7 @@ using Mapster;
 
 namespace AzureDevopsService.Application.Events.IntegrationEvents.EventsHandlers;
 
-internal class TenantCreatedIntegrationEventHandler(
+public class TenantCreatedIntegrationEventHandler(
     ILogger<TenantCreatedIntegrationEventHandler> logger,
     IProjectService projectService,
     IEventBus eventBus) : IIntegrationEventHandler<TenantCreatedIntegrationEvent>

@@ -18,4 +18,3 @@ global using System.Threading.Tasks;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Events;
 global using TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
-global using TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ.Extensions;

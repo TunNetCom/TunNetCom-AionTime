@@ -1,4 +1,7 @@
+using AzureDevopsService.Application.Events.IntegrationEvents.Events.Incoming;
+using AzureDevopsService.Application.Events.IntegrationEvents.EventsHandlers;
 using AzureDevopsService.Infrasructure;
+using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -29,6 +32,12 @@ try
     {
         _ = app.UseSwagger();
         _ = app.UseSwaggerUI();
+    }
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var eventBus = scope.ServiceProvider.GetRequiredService<IEventBus>();
+        eventBus.Subscribe<TenantCreatedIntegrationEvent, TenantCreatedIntegrationEventHandler>();
     }
 
     _ = app.MapPrometheusScrapingEndpoint();
