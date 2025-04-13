@@ -14,7 +14,7 @@ internal record OrganizationObject
 {
     public required string OrganizationName { get; set; }
 
-    public required string OrganizationId { get; set; }
+    public  int OrganizationId { get; set; }
 
     public required List<string> ProjectsIds { get; set; }
 }

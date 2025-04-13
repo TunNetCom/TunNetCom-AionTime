@@ -4,7 +4,7 @@ public record class TenantOrganizationProjectsRetrivedIntegrationEvent(
 string Email,
 string Path,
 string TenantId,
-string OrganizationId,
+int OrganizationId,
 string OrganizationName,
 OrganizationProjectsObject OrganizationProjects) : IntegrationEvent;
 

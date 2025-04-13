@@ -1,4 +1,5 @@
-﻿using TimeLogService.Infrastructure.AionTimeContext.Configurations;
+﻿using TimeLogService.Domain.Models.dbo;
+using TimeLogService.Infrastructure.AionTimeContext.Configurations;
 
 namespace TimeLogService.Infrastructure.AionTimeContext;
 
@@ -20,6 +21,8 @@ public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServi
 
     public virtual required DbSet<WorkItemTimeLog> WorkItemTimeLogs { get; set; }
 
+    public virtual required DbSet<WorkItemComment> WorkItemComments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         _ = modelBuilder.ApplyConfiguration(new AionTimeSubscriptionConfiguration());
@@ -30,6 +33,7 @@ public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServi
         _ = modelBuilder.ApplyConfiguration(new WorkItemConfiguration());
         _ = modelBuilder.ApplyConfiguration(new WorkItemHistoryConfiguration());
         _ = modelBuilder.ApplyConfiguration(new WorkItemTimeLogConfiguration());
+        _ = modelBuilder.ApplyConfiguration(new WorkItemCommentConfiguration());
 
         OnModelCreatingPartial(modelBuilder);
     }

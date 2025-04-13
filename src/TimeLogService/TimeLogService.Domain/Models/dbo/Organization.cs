@@ -4,9 +4,7 @@ public partial class Organization : BaseEntity
 {
     public required string Name { get; set; }
 
-    public required string AccountId { get; set; }
-
-    public required Uri AccountUri { get; set; }
+    public required string Pat { get; set; }
 
     public bool IsAionTimeApproved { get; set; }
 

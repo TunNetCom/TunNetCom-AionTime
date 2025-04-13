@@ -2,9 +2,9 @@
 
 public partial class Project : BaseEntity
 {
-    public required string AccountId { get; set; }
+    public required int OrganizationId { get; set; }
 
-    public Guid ProjectId { get; set; }
+    public Guid AzureProjectId { get; set; }
 
     public required string Name { get; set; }
 
