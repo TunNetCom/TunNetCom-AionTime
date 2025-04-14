@@ -4,6 +4,7 @@ Aion Time is a complementary app designed to enhance time tracking for Azure Boa
 
 ## Features
 
+- **AI agent**: An AI-powered agent designed to analyze and summarize the history of Azure DevOps work items, as well as provide insights into sprint progress and activities.
 - **Integration with Azure Boards**: Aion Time seamlessly integrates with Azure Boards, allowing users to track time directly from work items.
 - **Time Tracking**: Easily track time spent on individual work items, tasks, or projects.
 - **Reporting**: Generate detailed reports on time spent across various work items, enabling better project management and resource allocation.
