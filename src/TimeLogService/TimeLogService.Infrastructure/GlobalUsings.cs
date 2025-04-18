@@ -5,7 +5,6 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using System;
 global using System.Collections.Generic;
-global using TimeLogService.Domain.Interfaces.Repositories;
 global using TimeLogService.Domain.Models.Dbo;
 global using TimeLogService.Infrastructure.AionTimeContext;
 global using TimeLogService.Infrastructure.MultiTenancy;

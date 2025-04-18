@@ -1,6 +1,4 @@
-﻿using TimeLogService.Contracts.AzureDevopsPublicApiTemporary;
-using TimeLogService.Contracts.AzureDevopsPublicApiTemporary.Settings;
-using TimeLogService.Infrastructure.AzureDevopsPublicApiTempraryService;
+﻿using TunNetCom.AionTime.SharedKernel.Data;
 
 namespace TimeLogService.Infrastructure;
 
@@ -10,9 +8,6 @@ public static class InfrastructureServiceRegistration
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        AzureDevopsSettings azureDevopsSettings = new();
-        configuration.GetSection("AzureDevopsSettings").Bind(azureDevopsSettings);
-
         bool isDocker = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
         string? connectionString = isDocker
            ? configuration.GetConnectionString("TimeLogContextDocker")
@@ -30,17 +25,6 @@ public static class InfrastructureServiceRegistration
 
             _ = options.EnableSensitiveDataLogging();
         });
-
-        _ = services.AddHttpClient<IWorkItemExternalService, WorkItemExternalService>((serviceProvider, client) =>
-        {
-            client.BaseAddress = azureDevopsSettings.BaseUrlAzure;
-        });
-
-        _ = services.AddHttpClient<IProjectService, ProjectService>((serviceProvider, client) =>
-        {
-            client.BaseAddress = azureDevopsSettings.BaseUrlAzure;
-        });
-
         _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         return services;

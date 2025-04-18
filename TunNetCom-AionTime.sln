@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34526.213
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Domain", "src\TimeLogService\TimeLogService.Domain\TimeLogService.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AzureDevOps.TimeLogService.Domain", "src\TimeLogService\TimeLogService.Domain\TunNetCom.AzureDevOps.TimeLogService.Domain.csproj", "{675B95E6-2277-44E4-9D29-C8BA92C55B8F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{97CACF4A-AA5F-4755-AB9D-C164B81B497E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{641ADFEA-5755-4724-9A95-237298626BDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.API", "src\TimeLogService\TimeLogService.API\TimeLogService.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AzureDevOps.TimeLogService.API", "src\TimeLogService\TimeLogService.API\TunNetCom.AzureDevOps.TimeLogService.API.csproj", "{93A58C27-047A-4C95-9A4D-BB10B1BF4512}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TimeLogService", "TimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevOpsTimeLogService", "AzureDevOpsTimeLogService", "{4A46A43C-6D79-455A-8039-355120211320}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevopsService", "AzureDevopsService", "{B75B5856-BD77-4339-8247-0FA02F8AAF4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Infrastructure", "src\TimeLogService\TimeLogService.Infrastructure\TimeLogService.Infrastructure.csproj", "{473BA510-4088-4A23-9A9E-133273A5CC93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AzureDevOps.TimeLogService.Infrastructure", "src\TimeLogService\TimeLogService.Infrastructure\TunNetCom.AzureDevOps.TimeLogService.Infrastructure.csproj", "{473BA510-4088-4A23-9A9E-133273A5CC93}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Application", "src\TimeLogService\TimeLogService.Application\TimeLogService.Application.csproj", "{8AB1FCC4-64E4-4302-9029-A44E4447D188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AzureDevOps.TimeLogService.Application", "src\TimeLogService\TimeLogService.Application\TunNetCom.AzureDevOps.TimeLogService.Application.csproj", "{8AB1FCC4-64E4-4302-9029-A44E4447D188}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeLogService.Contracts", "src\TimeLogService\TimeLogService.Contracts\TimeLogService.Contracts.csproj", "{C94CD26C-7C15-45F6-918A-03C2DEFF2E59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TunNetCom.AzureDevOps.TimeLogService.Contracts", "src\TimeLogService\TimeLogService.Contracts\TunNetCom.AzureDevOps.TimeLogService.Contracts.csproj", "{C94CD26C-7C15-45F6-918A-03C2DEFF2E59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B0897E97-4679-4ED2-B3D7-2C7A704576A1}"
 EndProject

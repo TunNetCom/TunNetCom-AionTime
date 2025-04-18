@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EventBusRabbitMQ\Extensions\" />
+    <Folder Include="EventSourcing\EventBusRabbitMQ\Extensions\" />
   </ItemGroup>
 
 </Project>

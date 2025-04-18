@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using OneOf;
-using System;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json.Serialization;
@@ -69,7 +67,7 @@ public class WorkItemExternalService(HttpClient httpClient, ILogger<WorkItemExte
 
         if (workItemResponse.StatusCode == HttpStatusCode.OK)
         {
-            WorkItemDetails? workItemDetails = JsonConvert.DeserializeObject<WorkItemDetails>(await workItemResponse.Content.ReadAsStringAsync());
+            WorkItemDetails? workItemDetails = null; //JsonConverter.DeserializeObject<WorkItemDetails>(await workItemResponse.Content.ReadAsStringAsync());
 
             return workItemDetails;
         }

@@ -1,25 +1,23 @@
-﻿using TimeLogService.Application.Events.IntegrationEvents.EventsHandlers;
-using TunNetCom.AionTime.SharedKernel;
+﻿using TunNetCom.AionTime.SharedKernel;
 
-namespace TimeLogService.Application
+namespace TimeLogService.Application;
+
+public static class ApplicationServiceRegistration
 {
-    public static class ApplicationServiceRegistration
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+        _ = services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        _ = services.AddRabbitMQ(config =>
         {
-            _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
-            _ = services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            config.EventBusConnection = "localhost";
+            config.EventBusUserName = "guest";
+            config.EventBusPassword = "guest";
+            config.BrokerName = "timelog_service";
+            config.EventBusRetryCount = 3;
+        });
 
-            _ = services.AddRabbitMQ(config =>
-            {
-                config.EventBusConnection = "localhost";
-                config.EventBusUserName = "guest";
-                config.EventBusPassword = "guest";
-                config.BrokerName = "timelog_service";
-                config.EventBusRetryCount = 3;
-            });
-
-            return services;
-        }
+        return services;
     }
 }

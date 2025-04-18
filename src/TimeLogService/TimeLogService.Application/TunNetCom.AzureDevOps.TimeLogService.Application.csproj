@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Features\Projects\Queries\**" />
+    <EmbeddedResource Remove="Features\Projects\Queries\**" />
+    <None Remove="Features\Projects\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR" Version="12.3.0" />
+    <PackageReference Include="OneOf" Version="3.0.271" />
+    <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AzureDevopsService\AzureDevopsService.Contracts\AzureDevopsService.Contracts.csproj" />
+    <ProjectReference Include="..\..\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel\TunNetCom.AionTime.SharedKernel.csproj" />
+    <ProjectReference Include="..\TimeLogService.Contracts\TunNetCom.AzureDevOps.TimeLogService.Contracts.csproj" />
+    <ProjectReference Include="..\TimeLogService.Domain\TunNetCom.AzureDevOps.TimeLogService.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\DomainEvents\" />
+    <Folder Include="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\" />
+  </ItemGroup>
+
+</Project>

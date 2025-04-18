@@ -1,4 +1,6 @@
 ﻿using System.Linq.Expressions;
+using TunNetCom.AionTime.SharedKernel.BaseEntites;
+using TunNetCom.AionTime.SharedKernel.Data;
 
 namespace TimeLogService.Infrastructure.Repositories;
 

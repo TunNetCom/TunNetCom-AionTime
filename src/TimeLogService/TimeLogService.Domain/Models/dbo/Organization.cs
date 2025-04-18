@@ -1,7 +1,13 @@
-﻿namespace TimeLogService.Domain.Models.Dbo;
+﻿using TunNetCom.AionTime.SharedKernel.BaseEntites;
+
+namespace TimeLogService.Domain.Models.Dbo;
 
 public partial class Organization : BaseEntity
 {
+    public Organization(Guid tenantId) : base(tenantId)
+    {
+    }
+
     public required string Name { get; set; }
 
     public required string Pat { get; set; }
