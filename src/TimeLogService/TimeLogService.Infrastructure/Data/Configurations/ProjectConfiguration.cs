@@ -1,4 +1,6 @@
-﻿namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
+﻿using TimeLogService.Domain.Entites;
+
+namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
 {
     public partial class ProjectConfiguration : IEntityTypeConfiguration<Project>
     {

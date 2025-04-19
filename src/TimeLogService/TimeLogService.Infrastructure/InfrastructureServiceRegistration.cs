@@ -14,7 +14,7 @@ public static class InfrastructureServiceRegistration
            : configuration.GetConnectionString("TimeLogContext");
 
         _ = services.AddScoped<MultiTenancyService>();
-        _ = services.AddDbContext<TimeLogServiceDataBaseContext>(options =>
+        _ = services.AddDbContext<AzureDevOpsTimeLogDBContext>(options =>
         {
             _ = options.UseSqlServer(
                 connectionString,
@@ -25,7 +25,7 @@ public static class InfrastructureServiceRegistration
 
             _ = options.EnableSensitiveDataLogging();
         });
-        _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<,>));
 
         return services;
     }

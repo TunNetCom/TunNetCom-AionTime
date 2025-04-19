@@ -3,26 +3,24 @@ using TunNetCom.AionTime.SharedKernel.BaseEntites;
 
 namespace TunNetCom.AionTime.SharedKernel.Data;
 
-public interface IRepository<T>
-    where T : BaseEntity
+public interface IRepository<TEntity>
+    where TEntity : BaseEntity
 {
-    Task<IReadOnlyList<T>> GetAsync();
+    Task<int> AddAsync(TEntity entity, CancellationToken cancellationToken);
 
-    Task<T?> GetByIdAsync(int id);
+    Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
 
-    Task<IReadOnlyList<T>> GetManyAsync(Expression<Func<T, bool>> predicate);
+    Task UpdateAsync(TEntity entity, CancellationToken cancellationToken);
 
-    Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate);
+    Task UpdateRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
 
-    Task AddAsync(T entity);
+    Task DeleteAsync(int id, CancellationToken cancellationToken);
 
-    Task AddRangeAsync(IEnumerable<T> entities);
+    Task DeleteRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken);
 
-    Task UpdateAsync(T entity);
-
-    Task UpdateRangeAsync(IEnumerable<T> entities);
-
-    Task DeleteAsync(int id);
-
-    Task DeleteRangeAsync(IEnumerable<T> entities);
+    Task<bool> IsPropertyExistAsync<TProperty>(
+        Expression<Func<TEntity, TProperty>> propertySelector,
+        TProperty value,
+        object? excludeId = null,
+        bool caseSensitive = false);
 }

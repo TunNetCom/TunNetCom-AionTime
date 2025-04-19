@@ -1,4 +1,6 @@
-﻿namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
+﻿using TimeLogService.Domain.Entites;
+
+namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
 {
     public partial class OrganizationConfiguration : IEntityTypeConfiguration<Organization>
     {
@@ -8,7 +10,6 @@
 
             _ = builder.HasIndex(e => e.Name, "IX_Organization_Name_Unique").IsUnique();
             _ = builder.Property(e => e.TenantId).HasMaxLength(100);
-            _ = builder.Property(e => e.Pat).HasMaxLength(200);
 
             _ = builder.Property(e => e.Name)
                 .HasMaxLength(255)

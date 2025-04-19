@@ -18,3 +18,4 @@ global using RabbitMQ.Client.Exceptions;
 global using Polly;
 global using TunNetCom.AionTime.SharedKernel.EventSourcing.EventBusRabbitMQ.Extensions;
 global using Microsoft.Extensions.Hosting;
+global using Autofac;

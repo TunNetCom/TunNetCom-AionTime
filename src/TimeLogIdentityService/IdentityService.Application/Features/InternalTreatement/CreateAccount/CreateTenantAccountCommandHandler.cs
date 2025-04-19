@@ -1,6 +1,4 @@
-using IdentityService.Application.Events.DomainEvents.Events;
 using IdentityService.Application.Events.IntegrationEvents.Events.Outgoing;
-using MediatR;
 using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 
 namespace IdentityService.Application.Features.InternalTreatement.CreateAccount;

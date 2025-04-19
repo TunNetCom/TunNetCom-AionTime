@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TimeLogService.Domain.Models.dbo;
-using TimeLogService.Domain.Models.Dbo;
+﻿using TimeLogService.Domain.Entites;
 
 namespace TimeLogService.Infrastructure.AionTimeContext.Configurations
 {

@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.SharedKernel.BaseEntites;
-
-namespace TimeLogService.Domain.Models.Dbo;
+﻿namespace TimeLogService.Domain.Entites;
 
 public partial class WorkItemHistory : BaseEntity
 {
