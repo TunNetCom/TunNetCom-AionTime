@@ -3,10 +3,8 @@
 public record TenantCreatedIntegrationEvent(
     string Email,
 
-    string Path,
+    string Pat,
 
-    string TenantId,
-
-    string OrganizationId,
+    Guid TenantId,
 
     string OrganizationName) : IntegrationEvent;

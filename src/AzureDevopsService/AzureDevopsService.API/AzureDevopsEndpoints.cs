@@ -10,7 +10,7 @@ public static class AzureDevopsEndpoints
         _ = app.MapPost("/GetAdminProfile", async (IUserProfileApiClient externalResourceService, [FromBody]
         TenantCreatedIntegrationEvent user) =>
         {
-            OneOf<UserProfile, CustomProblemDetailsResponce> result = await externalResourceService.GetAdminInfo(user.Path);
+            OneOf<UserProfile, CustomProblemDetailsResponce> result = await externalResourceService.GetAdminInfo(user.Pat);
             if (result.IsT1)
             {
                 return Results.BadRequest(result.AsT1);

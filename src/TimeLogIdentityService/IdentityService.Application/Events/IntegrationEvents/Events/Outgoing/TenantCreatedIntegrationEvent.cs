@@ -2,4 +2,8 @@
 
 namespace IdentityService.Application.Events.IntegrationEvents.Events.Outgoing;
 
-public record class TenantCreatedIntegrationEvent(string Email, string Path, Guid TenantId) : IntegrationEvent;
+public record class TenantCreatedIntegrationEvent(
+    string Email,
+    string Pat,
+    Guid TenantId,
+    string OrganizationName) : IntegrationEvent;

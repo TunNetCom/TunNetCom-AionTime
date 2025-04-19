@@ -1,8 +1,12 @@
-﻿namespace TunNetCom.AionTime.SharedKernel;
+﻿using TunNetCom.AionTime.SharedKernel.EventSourcing.EventBusRabbitMQ.Extensions;
+
+namespace TunNetCom.AionTime.SharedKernel;
 
 public static class ExtentionRegistrationService
 {
-    public static IServiceCollection AddRabbitMQ(this IServiceCollection services, Action<RabbitMQOptions> configure)
+    public static IServiceCollection AddRabbitMQ(
+        this IServiceCollection services,
+        Action<RabbitMQOptions> configure)
     {
         if (services == null)
             throw new ArgumentNullException(nameof(services));
@@ -13,6 +17,7 @@ public static class ExtentionRegistrationService
         configure(config);
 
         services.AddSingleton(config);
+        services.AddSingleton<IRabbitMQConnectionManager, RabbitMQConnectionManager>();
         services.AddSingleton<IEventBus, RabbitMQEventBus>();
 
         return services;

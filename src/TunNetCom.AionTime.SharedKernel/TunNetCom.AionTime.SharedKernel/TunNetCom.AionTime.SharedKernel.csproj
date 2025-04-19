@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EventSourcing\EventBusRabbitMQ\Extensions\**" />
+    <EmbeddedResource Remove="EventSourcing\EventBusRabbitMQ\Extensions\**" />
+    <None Remove="EventSourcing\EventBusRabbitMQ\Extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="8.2.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
@@ -14,10 +20,6 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
     <PackageReference Include="Polly" Version="8.5.2" />
     <PackageReference Include="RabbitMQ.Client" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="EventSourcing\EventBusRabbitMQ\Extensions\" />
   </ItemGroup>
 
 </Project>

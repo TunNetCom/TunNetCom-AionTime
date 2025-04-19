@@ -13,15 +13,14 @@ public class TenantCreatedIntegrationEventHandler(
         logger.LogInformation("Handling integration event: {IntegrationEventId} - ({@IntegrationEvent})", @event.Id, @event);
 
         OneOf<OrganizationProjectsResponce, CustomProblemDetailsResponce> projectsResponse =
-            await projectService.AllProjectUnderOrganization(@event.OrganizationName, @event.Path);
+            await projectService.AllProjectUnderOrganization(@event.OrganizationName, @event.Pat);
 
         if (projectsResponse.IsT0)
         {
             TenantOrganizationProjectsRetrivedIntegrationEvent organizationProjectsResponse = new(
                 Email: @event.Email,
-                Path: @event.Path,
+                Path: @event.Pat,
                 TenantId: @event.TenantId,
-                OrganizationId: @event.OrganizationId,
                 OrganizationName: @event.OrganizationName,
                 OrganizationProjects: projectsResponse.AsT0.Adapt<OrganizationProjects>());
 

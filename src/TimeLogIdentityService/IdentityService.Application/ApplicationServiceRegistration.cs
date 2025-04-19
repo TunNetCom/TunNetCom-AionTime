@@ -17,7 +17,7 @@ public static class ApplicationServiceRegistration
                 config.EventBusRetryCount = 5;
             });
 
-        services.AddTransient<TenantCreatedDomainEventHandler>();
+        //services.AddTransient<TenantCreatedDomainEventHandler>();
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
         return services;
     }
