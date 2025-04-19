@@ -14,8 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Carter" Version="8.2.1" />
+    <PackageReference Include="FluentResults" Version="3.16.0" />
     <PackageReference Include="MediatR" Version="12.3.0" />
-    <PackageReference Include="OneOf" Version="3.0.271" />
     <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 

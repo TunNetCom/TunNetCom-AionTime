@@ -9,7 +9,7 @@ public class DeleteOrganizationCommandHandler(IRepository<Organization> organiza
 
     public async Task<int> Handle(DeleteOrganizationCommand request, CancellationToken cancellationToken)
     {
-        await _organizationRepository.DeleteAsync(request.Id);
+        await _organizationRepository.DeleteAsync(request.Id, cancellationToken);
         return request.Id;
     }
 }

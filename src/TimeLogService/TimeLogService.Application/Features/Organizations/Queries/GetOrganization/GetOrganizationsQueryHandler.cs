@@ -12,7 +12,7 @@ public class GetOrganizationsQueryHandler(IRepository<Organization> organization
         GetOrganizationsQuery request,
         CancellationToken cancellationToken)
     {
-        IReadOnlyList<Organization> organisationList = await _organizationRepository.GetAsync();
+        IReadOnlyList<Organization> organisationList = await _organizationRepository.GetAsync(cancellationToken);
         IReadOnlyList<OrganizationRequest> organizations =
             _mapper.Map<IReadOnlyList<OrganizationRequest>>(organisationList);
 

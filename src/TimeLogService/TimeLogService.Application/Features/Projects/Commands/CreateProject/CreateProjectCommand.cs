@@ -4,7 +4,10 @@ public record CreateProjectCommand(
     int OrganizationId,
     Guid AzureProjectId,
     string Name,
+    Uri Url,
     string State,
-    string Visibility,
-    DateTime LastUpdateTime) : IRequest<int>;
+    int Revision,
+    string? Visibility,
+    DateTime? LastUpdateTime,
+    Guid TenantId) : IRequest<int>;
 

@@ -11,7 +11,7 @@ public class UpdateOrganizationCommandHandler(IRepository<Organization> organiza
     public async Task<int> Handle(UpdateOrganizationCommand request, CancellationToken cancellationToken)
     {
         Organization organization = _mapper.Map<Organization>(request.Organization);
-        await _organizationRepository.UpdateAsync(organization);
+        await _organizationRepository.UpdateAsync(organization, cancellationToken);
         return organization.Id;
     }
 }

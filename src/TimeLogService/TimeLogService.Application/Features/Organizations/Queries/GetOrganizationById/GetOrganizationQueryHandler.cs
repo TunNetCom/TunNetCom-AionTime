@@ -10,7 +10,7 @@ public class GetOrganizationQueryHandler(IRepository<Organization> organizationR
 
     public async Task<OrganizationRequest> Handle(GetOrganizationByIdQuery request, CancellationToken cancellationToken)
     {
-        Organization? organization = await _organizationRepository.GetByIdAsync(request.Id);
+        Organization? organization = await _organizationRepository.GetByIdAsync(request.Id, cancellationToken);
         OrganizationRequest organizationRequest = _mapper.Map<OrganizationRequest>(organization);
 
         // if (organizationRequest is null)

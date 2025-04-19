@@ -8,7 +8,7 @@ namespace TimeLogService.Application.Features.Organizations.Commands.AddOrganiza
 
         public async Task Handle(AddOrganizationListCommand request, CancellationToken cancellationToken)
         {
-            await _repository.AddRangeAsync(request.Organizations);
+            await _repository.AddRangeAsync(request.Organizations, cancellationToken);
         }
     }
 }

@@ -11,7 +11,7 @@ public class AddOrganizationCommandHandler(IRepository<Organization> organizatio
     public async Task<int> Handle(AddOrganizationCommand request, CancellationToken cancellationToken)
     {
         Organization organization = _mapper.Map<Organization>(request.Organization);
-        await _organizationRepository.AddAsync(organization);
+        await _organizationRepository.AddAsync(organization, cancellationToken);
         return organization.Id;
     }
 }
