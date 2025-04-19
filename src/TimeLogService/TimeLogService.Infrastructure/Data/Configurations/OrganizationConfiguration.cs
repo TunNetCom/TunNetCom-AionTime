@@ -8,7 +8,6 @@
 
             _ = builder.HasIndex(e => e.Name, "IX_Organization_Name_Unique").IsUnique();
             _ = builder.Property(e => e.TenantId).HasMaxLength(100);
-            _ = builder.Property(e => e.Pat).HasMaxLength(200);
 
             _ = builder.Property(e => e.Name)
                 .HasMaxLength(255)

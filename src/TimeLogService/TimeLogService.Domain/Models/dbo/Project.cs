@@ -59,7 +59,7 @@ public class Project : BaseEntity, IEntity
 
     public DateTime? LastUpdateTime { get; private set; }
 
-    public virtual Organization? Organization { get; set; }
+    public virtual Organization? Organization { get; private set; }
 
     public virtual ICollection<WorkItem>? WorkItems { get; private set; }
 }
