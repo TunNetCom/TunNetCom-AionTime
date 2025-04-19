@@ -34,12 +34,6 @@ try
         _ = app.UseSwaggerUI();
     }
 
-    using (var scope = app.Services.CreateScope())
-    {
-        var eventBus = scope.ServiceProvider.GetRequiredService<IEventBus>();
-        eventBus.Subscribe<TenantCreatedIntegrationEvent, TenantCreatedIntegrationEventHandler>();
-    }
-
     _ = app.MapPrometheusScrapingEndpoint();
     app.AddEndpoints();
 

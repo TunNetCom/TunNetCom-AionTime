@@ -1,9 +1,4 @@
-﻿using Polly;
-using RabbitMQ.Client;
-using System;
-using System.Threading.Tasks;
-
-namespace TunNetCom.AionTime.SharedKernel.EventSourcing.EventBusRabbitMQ.Extensions;
+﻿namespace TunNetCom.AionTime.SharedKernel.EventSourcing.EventBusRabbitMQ.Extensions;
 
 public class RabbitMQConnectionManager : IRabbitMQConnectionManager
 {
@@ -81,9 +76,6 @@ public class RabbitMQConnectionManager : IRabbitMQConnectionManager
         }
     }
 
-    /// <summary>
-    /// Disposes of the RabbitMQ connection and channel.
-    /// </summary>
     public async ValueTask DisposeAsync()
     {
         if (_disposed) return;

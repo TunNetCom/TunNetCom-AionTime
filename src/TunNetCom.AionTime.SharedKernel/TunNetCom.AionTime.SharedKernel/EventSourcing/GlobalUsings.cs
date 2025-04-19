@@ -14,3 +14,7 @@ global using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Events;
 global using TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
 global using TunNetCom.AionTime.SharedKernel.EventSourcing.EventBusRabbitMQ.Extentions;
+global using RabbitMQ.Client.Exceptions;
+global using Polly;
+global using TunNetCom.AionTime.SharedKernel.EventSourcing.EventBusRabbitMQ.Extensions;
+global using Microsoft.Extensions.Hosting;

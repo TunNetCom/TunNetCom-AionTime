@@ -1,6 +1,4 @@
-﻿using RabbitMQ.Client.Exceptions;
- 
-namespace TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
+﻿ namespace TunNetCom.AionTime.SharedKernel.EventBusRabbitMQ;
 
 public class RabbitMQEventBus : IEventBus, IDisposable
 {
