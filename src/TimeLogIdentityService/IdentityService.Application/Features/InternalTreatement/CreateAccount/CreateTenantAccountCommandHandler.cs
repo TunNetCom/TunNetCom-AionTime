@@ -39,9 +39,12 @@ public class CreateTenantAccountCommandHandler(UserManager<ApplicationUser> user
 
         if (result.Succeeded)
         {
-            //await _mediator.Publish(new TenantCreatedDomainEvent(tenant.Value, request.AzureDevopsPath, string.Empty, request.Email), cancellationToken);
-            TenantCreatedIntegrationEvent retriveUserOrganizationIntegrationEvent = new(request.Email, request.AzureDevopsPath, tenant.Value);
-            await eventBus.PublishAsync(retriveUserOrganizationIntegrationEvent);
+            await _mediator.Publish(new TenantCreatedDomainEvent(
+                TenantId:tenant.Value,
+                AzureDevOpsPath:request.AzureDevopsPath,
+                OrganizationName: request.OrganizationName,
+                GithubPath: string.Empty,
+                UserEmail:request.Email), cancellationToken);
         }
 
         return Result.Ok(result);

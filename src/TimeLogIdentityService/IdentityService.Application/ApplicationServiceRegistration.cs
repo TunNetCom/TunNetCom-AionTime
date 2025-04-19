@@ -16,8 +16,6 @@ public static class ApplicationServiceRegistration
                 config.BrokerName = "aion_time_exchange";
                 config.EventBusRetryCount = 5;
             });
-
-        services.AddTransient<TenantCreatedDomainEventHandler>();
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
         return services;
     }

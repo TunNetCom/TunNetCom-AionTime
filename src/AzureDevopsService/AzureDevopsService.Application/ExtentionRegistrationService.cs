@@ -13,9 +13,10 @@ public static class ExtentionRegistrationService
             config.EventBusPassword = "guest";
             config.BrokerName = "aion_time_exchange";
             config.EventBusRetryCount = 3;
+        }).AddConsumer(consumer =>
+        {
+            consumer.Add<TenantCreatedIntegrationEvent, TenantCreatedIntegrationEventHandler>();
         });
-
-        services.AddTransient<TenantCreatedIntegrationEventHandler>();
 
         _ = services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 

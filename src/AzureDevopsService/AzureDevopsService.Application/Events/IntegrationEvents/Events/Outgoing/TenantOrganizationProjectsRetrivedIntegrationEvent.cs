@@ -3,8 +3,7 @@
 internal record class TenantOrganizationProjectsRetrivedIntegrationEvent(
     string Email,
     string Path,
-    string TenantId,
-    string OrganizationId,
+    Guid TenantId,
     string OrganizationName,
     OrganizationProjects OrganizationProjects) : IntegrationEvent;
 
