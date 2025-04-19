@@ -16,8 +16,6 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Carter" Version="8.2.1" />
     <PackageReference Include="FluentResults" Version="3.16.0" />
-    <PackageReference Include="MediatR" Version="12.3.0" />
-    <PackageReference Include="WebhookService.Contracts" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,7 +28,6 @@
   <ItemGroup>
     <Folder Include="Events\DomainEvents\" />
     <Folder Include="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\" />
-    <Folder Include="Features\Organizations\Commands\" />
     <Folder Include="Features\Organizations\Queries\" />
   </ItemGroup>
 

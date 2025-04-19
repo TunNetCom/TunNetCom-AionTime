@@ -1,4 +1,6 @@
-﻿namespace AzureDevopsService.Application.Featurs.Helper;
+﻿using WebhookService.Contracts.Constant;
+
+namespace AzureDevopsService.Application.Featurs.Helper;
 
 public static class ServiceHookEventType
 {

@@ -1,13 +1,11 @@
-﻿using TunNetCom.AionTime.SharedKernel.Data;
-
-namespace TimeLogService.Application.Features.ProjectActions.Commands;
+﻿namespace TimeLogService.Application.Features.ProjectActions.Commands;
 
 public class CreateProjectCommandHandler(
         IRepository<Project> projectRepository,
         ILogger<CreateProjectCommandHandler> logger)
-        : IRequestHandler<CreateProjectCommand, int>
+        : IRequestHandler<CreateProjectCommand, Result<int>>
 {
-    public async Task<int> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
+    public async Task<Result<int>> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation(
             "Creating new project. OrganizationId: {OrganizationId}, ProjectName: {ProjectName}, AzureProjectId: {AzureProjectId}",

@@ -28,7 +28,7 @@ try
     {
         using (IServiceScope scope = app.Services.CreateScope())
         {
-            TimeLogServiceDataBaseContext dbContext = scope.ServiceProvider.GetRequiredService<TimeLogServiceDataBaseContext>();
+            AzureDevOpsTimeLogDBContext dbContext = scope.ServiceProvider.GetRequiredService<AzureDevOpsTimeLogDBContext>();
             _ = dbContext.Database.EnsureCreated();
         }
 

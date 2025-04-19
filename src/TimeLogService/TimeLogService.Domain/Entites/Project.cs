@@ -1,4 +1,4 @@
-﻿namespace TimeLogService.Domain.Models.Dbo;
+﻿namespace TimeLogService.Domain.Entites;
 
 public class Project : BaseEntity, IEntity
 {

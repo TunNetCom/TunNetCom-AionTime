@@ -2,7 +2,6 @@
 using OneOf;
 using System.Net;
 using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 using TimeLogService.Contracts.AzureDevopsPublicApiTemporary;
 using TimeLogService.Contracts.AzureDevopsPublicApiTemporary.AzureRequestResourceModel;
 using TimeLogService.Contracts.AzureDevopsPublicApiTemporary.AzureResponceModel;

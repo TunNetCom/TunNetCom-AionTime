@@ -16,4 +16,3 @@ global using System.Reflection;
 global using System.Threading.Tasks;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Abstractions;
 global using TunNetCom.AionTime.SharedKernel.EventBus.Events;
-global using WebhookService.Contracts.Constant;

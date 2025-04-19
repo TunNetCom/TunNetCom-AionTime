@@ -1,9 +1,8 @@
-﻿using TimeLogService.Domain.Models.dbo;
-using TimeLogService.Infrastructure.AionTimeContext.Configurations;
+﻿using TimeLogService.Domain.Entites;
 
 namespace TimeLogService.Infrastructure.AionTimeContext;
 
-public partial class TimeLogServiceDataBaseContext(DbContextOptions<TimeLogServiceDataBaseContext> options)
+public partial class AzureDevOpsTimeLogDBContext(DbContextOptions<AzureDevOpsTimeLogDBContext> options)
     : DbContext(options)
 {
     public virtual required DbSet<Organization> Organizations { get; set; }

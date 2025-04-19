@@ -11,4 +11,5 @@ public interface IReadOnlyRepository<T>
     Task<IReadOnlyList<T>> GetManyAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
 
     Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+
 }

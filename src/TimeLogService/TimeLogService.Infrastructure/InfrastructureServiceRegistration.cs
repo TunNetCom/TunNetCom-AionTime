@@ -14,7 +14,7 @@ public static class InfrastructureServiceRegistration
            : configuration.GetConnectionString("TimeLogContext");
 
         _ = services.AddScoped<MultiTenancyService>();
-        _ = services.AddDbContext<TimeLogServiceDataBaseContext>(options =>
+        _ = services.AddDbContext<AzureDevOpsTimeLogDBContext>(options =>
         {
             _ = options.UseSqlServer(
                 connectionString,

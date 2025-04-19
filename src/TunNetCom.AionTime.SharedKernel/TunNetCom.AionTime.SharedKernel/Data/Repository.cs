@@ -1,50 +1,60 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Reflection;
 using TunNetCom.AionTime.SharedKernel.BaseEntites;
 
 namespace TunNetCom.AionTime.SharedKernel.Data;
 
-public class Repository<TEntity,TDBContext>(TDBContext context)
+public class Repository<TEntity,TDBContext>
     : IRepository<TEntity>
     where TEntity : BaseEntity
     where TDBContext : DbContext
 {
-    private readonly TDBContext _context = context;
+    protected readonly TDBContext _context;
+    protected readonly DbSet<TEntity> _dbSet;
+
+    public Repository(TDBContext context)
+    {
+        _context = context;
+        _dbSet = context.Set<TEntity>();
+    }
 
     public async Task AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
     {
-        await _context.AddRangeAsync(entities);
+        await _dbSet.AddRangeAsync(entities);
         _ = await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task AddAsync(TEntity entity, CancellationToken cancellationToken)
+    public async Task<int> AddAsync(TEntity entity, CancellationToken cancellationToken)
     {
-        _ = await _context.AddAsync(entity, cancellationToken);
+        _ = await _dbSet.AddAsync(entity, cancellationToken);
         _ = await _context.SaveChangesAsync(cancellationToken);
+
+        return entity.Id;
     }
 
     public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
-        TEntity? entity = await _context.Set<TEntity>().SingleOrDefaultAsync(x => x.Id == id, cancellationToken)
+        TEntity? entity = await _dbSet.SingleOrDefaultAsync(x => x.Id == id, cancellationToken)
             ?? throw new KeyNotFoundException(id.ToString());
 
-        _ = _context.Remove(entity);
+        _ = _dbSet.Remove(entity);
         _ = await _context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<IReadOnlyList<TEntity>> GetAsync(CancellationToken cancellationToken)
     {
-        return await _context.Set<TEntity>().AsNoTracking().ToListAsync(cancellationToken);
+        return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
     }
 
     public async Task<TEntity?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
-        return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(q => q.Id == id, cancellationToken);
+        return await _dbSet.AsNoTracking().FirstOrDefaultAsync(q => q.Id == id, cancellationToken);
     }
 
     public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
     {
-        _ = _context.Entry(entity).State = EntityState.Modified;
+        _ = _dbSet.Entry(entity).State = EntityState.Modified;
         _ = await _context.SaveChangesAsync(cancellationToken);
     }
 
@@ -56,17 +66,92 @@ public class Repository<TEntity,TDBContext>(TDBContext context)
 
     public async Task DeleteRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken)
     {
-        _context.RemoveRange(entities);
+        _dbSet.RemoveRange(entities);
         _ = await _context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<IReadOnlyList<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
     {
-        return await _context.Set<TEntity>().AsNoTracking().Where(predicate).ToListAsync();
+        return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
     }
 
     public async Task<TEntity?> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
     {
-        return await _context.Set<TEntity>().AsNoTracking().Where(predicate).FirstOrDefaultAsync(cancellationToken);
+        return await _dbSet.AsNoTracking().Where(predicate).FirstOrDefaultAsync(cancellationToken);
+    }
+
+    public async Task<bool> IsPropertyExistAsync<TProperty>(
+        Expression<Func<TEntity, TProperty>> propertySelector,
+        TProperty value,
+        object? excludeId = null,
+        bool caseSensitive = false)
+    {
+        // Handle null values (decide if null should be considered unique)
+        if (value == null) return true;
+
+        // Get property name from selector
+        if (propertySelector.Body is not MemberExpression memberExpression)
+            throw new ArgumentException("Invalid property selector");
+
+        var propertyName = memberExpression.Member.Name;
+        var propertyInfo = typeof(TEntity).GetProperty(propertyName);
+
+        if (propertyInfo == null)
+            throw new ArgumentException($"Property {propertyName} not found on {typeof(TEntity).Name}");
+
+        // Build the comparison expression
+        var parameter = Expression.Parameter(typeof(TEntity), "x");
+        var propertyAccess = Expression.Property(parameter, propertyInfo);
+        Expression comparison;
+
+        // Handle string comparison (case sensitive/insensitive)
+        if (propertyInfo.PropertyType == typeof(string) && !caseSensitive)
+        {
+            // Case-insensitive comparison
+            var toLowerMethod = typeof(string).GetMethod("ToLower", Type.EmptyTypes);
+            var lowerProperty = Expression.Call(propertyAccess, toLowerMethod);
+            var lowerValue = Expression.Constant(value.ToString().ToLower());
+            comparison = Expression.Equal(lowerProperty, lowerValue);
+        }
+        else
+        {
+            // Default comparison
+            comparison = Expression.Equal(propertyAccess, Expression.Constant(value));
+        }
+
+        var lambda = Expression.Lambda<Func<TEntity, bool>>(comparison, parameter);
+        var query = _dbSet.Where(lambda);
+
+        // Handle excluded ID (for updates)
+        if (excludeId != null)
+        {
+            var idProperty = FindIdProperty();
+            if (idProperty != null)
+            {
+                var idParameter = Expression.Parameter(typeof(TEntity), "x");
+                var idPropertyAccess = Expression.Property(idParameter, idProperty);
+                var idComparison = Expression.NotEqual(
+                    idPropertyAccess,
+                    Expression.Convert(Expression.Constant(excludeId), idProperty.PropertyType));
+                var idLambda = Expression.Lambda<Func<TEntity, bool>>(idComparison, idParameter);
+                query = query.Where(idLambda);
+            }
+        }
+
+        return await query.AnyAsync();
+    }
+
+    private PropertyInfo FindIdProperty()
+    {
+        // Look for common ID property names
+        var idNames = new[] { "Id", "ID", $"{typeof(TEntity).Name}Id", $"{typeof(TEntity).Name}ID" };
+
+        foreach (var name in idNames)
+        {
+            var prop = typeof(TEntity).GetProperty(name);
+            if (prop != null) return prop;
+        }
+
+        return null;
     }
 }
