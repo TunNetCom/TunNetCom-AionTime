@@ -1,12 +1,12 @@
 ﻿namespace TimeLogService.Application.Events.IntegrationEvents.Events.Incoming.AzureDevopsIntegrationEvents;
 
-public record class TenantOrganizationProjectsRetrivedIntegrationEvent(
-string Email,
-string Path,
-string TenantId,
-int OrganizationId,
-string OrganizationName,
-OrganizationProjectsObject OrganizationProjects) : IntegrationEvent;
+public record class TenantOrganizationAndProjectsRetrivedIntegrationEvent(
+    string Email,
+    string Path,
+    string TenantId,
+    int OrganizationId,
+    string OrganizationName,
+    OrganizationProjectsObject OrganizationProjects) : IntegrationEvent;
 
 public record ProjectObject
 {

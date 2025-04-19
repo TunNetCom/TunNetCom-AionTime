@@ -42,16 +42,6 @@ public class Repository<TEntity,TDBContext>
         _ = await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IReadOnlyList<TEntity>> GetAsync(CancellationToken cancellationToken)
-    {
-        return await _dbSet.AsNoTracking().ToListAsync(cancellationToken);
-    }
-
-    public async Task<TEntity?> GetByIdAsync(int id, CancellationToken cancellationToken)
-    {
-        return await _dbSet.AsNoTracking().FirstOrDefaultAsync(q => q.Id == id, cancellationToken);
-    }
-
     public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken)
     {
         _ = _dbSet.Entry(entity).State = EntityState.Modified;
@@ -68,16 +58,6 @@ public class Repository<TEntity,TDBContext>
     {
         _dbSet.RemoveRange(entities);
         _ = await _context.SaveChangesAsync(cancellationToken);
-    }
-
-    public async Task<IReadOnlyList<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
-    {
-        return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
-    }
-
-    public async Task<TEntity?> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
-    {
-        return await _dbSet.AsNoTracking().Where(predicate).FirstOrDefaultAsync(cancellationToken);
     }
 
     public async Task<bool> IsPropertyExistAsync<TProperty>(

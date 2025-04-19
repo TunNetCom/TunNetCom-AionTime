@@ -12,6 +12,10 @@ public class CreateOrganizationCommandHandler(
             request.Name,
             request.TenantId);
 
+        _logger.LogInformation(
+            "Checking if organization with name {OrganizationName} already exists.",
+            request.Name);
+
         bool isOrganisationExist = await _repository.IsPropertyExistAsync(
             x => x.Name,
             request.Name);
@@ -27,6 +31,11 @@ public class CreateOrganizationCommandHandler(
         var organization = Organization.Create(tenantId: request.TenantId, name: request.Name);
 
         int organizationId = await _repository.AddAsync(organization, cancellationToken);
+
+        _logger.LogInformation(
+            "Successfully created organization. OrganizationId: {OrganizationId}, Name: {OrganizationName}",
+            organization.Id,
+            organization.Name);
 
         return organizationId;
     }

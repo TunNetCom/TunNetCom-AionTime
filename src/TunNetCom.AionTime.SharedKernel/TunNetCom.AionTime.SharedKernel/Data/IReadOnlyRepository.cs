@@ -2,14 +2,13 @@
 
 namespace TunNetCom.AionTime.SharedKernel.Data;
 
-public interface IReadOnlyRepository<T>
+public interface IReadOnlyRepository<TEntity>
 {
-    Task<IReadOnlyList<T>> GetAsync(CancellationToken cancellationToken);
+    Task<IReadOnlyList<TEntity>> GetAsync(CancellationToken cancellationToken);
 
-    Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken);
+    Task<TEntity?> GetByIdAsync(int id, CancellationToken cancellationToken);
 
-    Task<IReadOnlyList<T>> GetManyAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
+    Task<IReadOnlyList<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 
-    Task<T?> GetSingleAsync(Expression<Func<T, bool>> predicate, CancellationToken cancellationToken);
-
+    Task<TEntity?> GetSingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 }

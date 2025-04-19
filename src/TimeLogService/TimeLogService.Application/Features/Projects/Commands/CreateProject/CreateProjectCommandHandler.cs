@@ -13,16 +13,29 @@ public class CreateProjectCommandHandler(
             request.Name,
             request.AzureProjectId);
 
+        bool isProjectExist = await projectRepository.IsPropertyExistAsync(
+            p => p.AzureProjectId,
+            request.AzureProjectId);
+
+        if (isProjectExist)
+        {
+            logger.LogWarning(
+                "Project with AzureProjectId: {AzureProjectId} already exists. Skipping creation.",
+                request.AzureProjectId);
+
+            return Result.Fail<int>($"Project with AzureProjectId: {request.AzureProjectId} already exists.");
+        }
+
         var project = Project.Create(
-            organizationId: request.OrganizationId,
-            azureProjectId: request.AzureProjectId,
-            name: request.Name,
-            url: request.Url,
-            state: request.State,
-            revision: request.Revision,
-            visibility: request.Visibility,
-            lastUpdateTime: request.LastUpdateTime,
-            tenantId: request.TenantId);
+        organizationId: request.OrganizationId,
+        azureProjectId: request.AzureProjectId,
+        name: request.Name,
+        url: request.Url,
+        state: request.State,
+        revision: request.Revision,
+        visibility: request.Visibility,
+        lastUpdateTime: request.LastUpdateTime,
+        tenantId: request.TenantId);
 
         await projectRepository.AddAsync(project, cancellationToken);
 
