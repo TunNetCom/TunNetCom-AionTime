@@ -30,6 +30,8 @@
   <ItemGroup>
     <Folder Include="Events\DomainEvents\" />
     <Folder Include="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\" />
+    <Folder Include="Features\Organizations\Commands\" />
+    <Folder Include="Features\Organizations\Queries\" />
   </ItemGroup>
 
 </Project>

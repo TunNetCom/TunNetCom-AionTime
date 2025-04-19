@@ -25,7 +25,7 @@ public static class InfrastructureServiceRegistration
 
             _ = options.EnableSensitiveDataLogging();
         });
-        _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        _ = services.AddScoped(typeof(IRepository<>), typeof(Repository<,>));
 
         return services;
     }

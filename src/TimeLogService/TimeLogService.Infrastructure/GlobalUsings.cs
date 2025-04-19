@@ -8,4 +8,3 @@ global using System.Collections.Generic;
 global using TimeLogService.Domain.Models.Dbo;
 global using TimeLogService.Infrastructure.AionTimeContext;
 global using TimeLogService.Infrastructure.MultiTenancy;
-global using TimeLogService.Infrastructure.Repositories;
