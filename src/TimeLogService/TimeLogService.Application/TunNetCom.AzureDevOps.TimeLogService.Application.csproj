@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\DomainEvents\**" />
+    <Compile Remove="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\**" />
     <Compile Remove="Features\Projects\Queries\**" />
+    <EmbeddedResource Remove="Events\DomainEvents\**" />
+    <EmbeddedResource Remove="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\**" />
     <EmbeddedResource Remove="Features\Projects\Queries\**" />
+    <None Remove="Events\DomainEvents\**" />
+    <None Remove="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\**" />
     <None Remove="Features\Projects\Queries\**" />
   </ItemGroup>
 
@@ -26,8 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Events\DomainEvents\" />
-    <Folder Include="Events\IntegrationEvents\Events\Incoming\WebhookIntegrationEvents\" />
     <Folder Include="Features\Organizations\Queries\" />
   </ItemGroup>
 

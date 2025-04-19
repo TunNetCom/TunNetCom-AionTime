@@ -1,6 +1,4 @@
-﻿using TunNetCom.AionTime.SharedKernel.Mediator;
-
-namespace TimeLogService.Application.Features.ProjectActions.Commands;
+﻿namespace TimeLogService.Application.Features.ProjectActions.Commands;
 
 public class CreateProjectCommand : TenantCommand<Result<int>>
 {
